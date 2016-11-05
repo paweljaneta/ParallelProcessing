@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clientMain.cs" />
+    <Compile Include="ClientThread.cs" />
+    <Compile Include="CpuLoadThread.cs" />
+    <Compile Include="Measurments.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
