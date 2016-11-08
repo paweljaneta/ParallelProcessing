@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using communicationLibrary;
+using System.Net.Sockets;
+using System.IO;
+using communicationLibrary;
 
 namespace client
 {
@@ -11,21 +15,36 @@ namespace client
     {
         static void Main(string[] args)
         {
+            string ipAdress = "127.0.0.1";
+            int port = 1807;
+
             List<Thread> workingThreads = new List<Thread>();
             Thread cpuLoadThread;
             int numberOfCPUcores = Environment.ProcessorCount;
             double flops;
 
-            while(true) //infinite loop
+            ClientThread connectionThread = new ClientThread(ipAdress, port);
+           // ClientThread connectionThread2 = new ClientThread("127.0.0.1", 1807);
+
+            while (true) //infinite loop
             {
                 //connect to server
+                TcpClient connection = new TcpClient(ipAdress, port);
+
+                BinaryWriter outStream = new BinaryWriter(connection.GetStream());
+                BinaryReader inStream = new BinaryReader(connection.GetStream());
 
                 //do tests
 
                 //get dll
+                outStream.Write(Messages.dllRequest);
+
 
                 //start threads
                 //wait until finished
+
+
+
                 while(!threadsFinished(workingThreads))
                 {
                     Thread.Sleep(1);

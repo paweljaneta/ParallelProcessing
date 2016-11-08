@@ -52,6 +52,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\communicationLibrary\communicationLibrary.csproj">
+      <Project>{6f6960a5-21f0-4c22-818d-27ee5100f3a7}</Project>
+      <Name>communicationLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

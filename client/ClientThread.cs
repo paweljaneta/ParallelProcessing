@@ -7,6 +7,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Threading;
 using System.Net;
+using communicationLibrary;
 
 namespace client
 {
@@ -20,7 +21,7 @@ namespace client
 
         Thread thread;
 
-        ClientThread(string adress, int port)
+       public ClientThread(string adress, int port)
         {
             try
             {
@@ -28,6 +29,12 @@ namespace client
 
                 inputStream = new BinaryReader(connection.GetStream());
                 outputStream = new BinaryWriter(connection.GetStream());
+
+                outputStream.Write(Messages.dataRequest);
+
+                thread = new Thread(run);
+                thread.Start();
+
             }
             catch (Exception e)
             {
@@ -39,6 +46,8 @@ namespace client
         {
             //load dll
             //execute
+
+            Console.WriteLine(inputStream.ReadString());
         }
 
         public bool isThreadAlive()

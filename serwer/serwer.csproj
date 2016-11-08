@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientConnectionThread.cs" />
+    <Compile Include="Measurments.cs" />
     <Compile Include="serwerMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -50,6 +52,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\communicationLibrary\communicationLibrary.csproj">
+      <Project>{6f6960a5-21f0-4c22-818d-27ee5100f3a7}</Project>
+      <Name>communicationLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\serwerDll\serwerDll.csproj">
       <Project>{6c142425-9518-45aa-94c1-97740ba6652d}</Project>
       <Name>serwerDll</Name>
