@@ -38,7 +38,7 @@ namespace client
 
                 //get dll
                 outStream.Write(Messages.dllRequest);
-
+                getDll(inStream);
 
                 //start threads
                 //wait until finished
@@ -53,6 +53,18 @@ namespace client
             }
 
         }
+
+        public static void getDll(BinaryReader reader)
+        {
+            int dllSize = reader.ReadInt32();
+
+            byte[] file;
+
+            file = reader.ReadBytes(dllSize);
+            File.WriteAllBytes("dllka.dll", file);
+        }
+
+
 
         public static bool threadsFinished(List<Thread> threads)
         {
