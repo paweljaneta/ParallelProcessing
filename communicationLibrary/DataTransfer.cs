@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using communicationLibrary;
 
 namespace communicationLibrary
 {
@@ -32,6 +31,11 @@ namespace communicationLibrary
         {
 
         }
+        private void EndOfStreamExceptionHandler(EndOfStreamException EOSEx)
+        {
+
+        }
+
         #endregion
 
         #region simpleTypeSend
@@ -1412,109 +1416,1460 @@ namespace communicationLibrary
         #region simpleTypeRecieve
         public bool recieveBool()
         {
-            bool result;
+            bool result=false;
 
+            try
+            {
+                string message;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.boolTransfer))
+                {
+                    result = inStream.ReadBoolean();   
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: "+Messages.boolTransfer+"Recieved: "+message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
+
         }
+
         public short recieveShort()
         {
-            short result;
+            short result = 0;
 
+            try
+            {
+                string message;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.shortTransfer))
+                {
+                    result = inStream.ReadInt16();
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.shortTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
         }
+
         public int recieveInt()
         {
-            int result;
+            int result=0;
 
+            try
+            {
+                string message;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.intTransfer))
+                {
+                    result = inStream.ReadInt32();
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.intTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
         }
+
         public long recieveLong()
         {
-            long result;
+            long result=0;
 
+            try
+            {
+                string message;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.longTransfer))
+                {
+                    result = inStream.ReadInt64();
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.longTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
         }
+
+
         public ushort recieveUShort()
         {
-            ushort result;
+            ushort result=0;
 
+            try
+            {
+                string message;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.ushortTransfer))
+                {
+                    result = inStream.ReadUInt16();
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.ushortTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
         }
+
+
         public uint recieveUInt()
         {
-            uint result;
+            uint result=0;
 
+            try
+            {
+                string message;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.uintTransfer))
+                {
+                    result = inStream.ReadUInt32();
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.uintTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
         }
+
+
         public ulong recieveULong()
         {
-            ulong result;
+            ulong result=0;
 
+            try
+            {
+                string message;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.ulongTransfer))
+                {
+                    result = inStream.ReadUInt64();
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.ulongTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
         }
+
+
         public byte recieveByte()
         {
-            byte result;
+            byte result=0;
 
+            try
+            {
+                string message;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.byteTransfer))
+                {
+                    result = inStream.ReadByte();
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.byteTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
         }
+
+
         public sbyte recieveSByte()
         {
-            sbyte result;
+            sbyte result=0;
 
+            try
+            {
+                string message;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.sbyteTransfer))
+                {
+                    result = inStream.ReadSByte();
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.sbyteTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
         }
+
         public char recieveChar()
         {
-            char result;
+            char result='0';
 
+            try
+            {
+                string message;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.charTransfer))
+                {
+                    result = inStream.ReadChar();
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.charTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
         }
+
+
         public string recieveString()
         {
-            string result;
+            string result = "";
 
+            try
+            {
+                string message;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.stringTransfer))
+                {
+                    result = inStream.ReadString();
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.stringTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
         }
         public decimal recieveDecimal()
         {
-            decimal result;
+            decimal result=0;
 
+            try
+            {
+                string message;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.decimalTransfer))
+                {
+                    result = inStream.ReadDecimal();
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.decimalTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
         }
+
+
         public float recieveFloat()
         {
-            float result;
+            float result=0.0f;
 
+            try
+            {
+                string message;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.floatTransfer))
+                {
+                    result = inStream.ReadSingle();
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.floatTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
         }
+
+
         public double recieveDouble()
         {
-            double result;
+            double result=0.0;
 
+            try
+            {
+                string message;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.doubleTransfer))
+                {
+                    result = inStream.ReadDouble();
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.doubleTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
         }
-        public object recieveObject()
+
+
+        //public object recieveObject()
+        //{
+        //    object result;
+
+        //    try
+        //    {
+        //        string message;
+
+        //        message = inStream.ReadString();
+
+        //        if (message.Equals(Messages.boolTransfer))
+        //        {
+        //            result = //inStream.ReadBoolean();
+        //        }
+        //        else
+        //        {
+        //            throw new TypeNotMatchException("Expected: " + Messages.boolTransfer + "Recieved: " + message);
+        //        }
+
+        //    }
+        //    catch (EndOfStreamException EOSEx)
+        //    {
+        //        EndOfStreamExceptionHandler(EOSEx);
+        //    }
+        //    catch (ObjectDisposedException ObjDispEx)
+        //    {
+        //        ObjectDisposedExceptionHandler(ObjDispEx);
+        //    }
+        //    catch (IOException IOEx)
+        //    {
+        //        IOExceptionHandler(IOEx);
+        //    }
+        //    catch (TypeNotMatchException TypeNotMatchEx)
+        //    {
+        //        throw TypeNotMatchEx;
+        //    }
+
+        //    return result;
+        //}
+        #endregion
+
+        #region arrayTypeRecieve
+        public bool[] recieveArrayOfBools()
         {
-            object result;
+            bool[] result = new bool[1];
 
+            try
+            {
+                string message;
+                int count;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.boolArrayTransfer))
+                {
+                    count = inStream.ReadInt32();
+                    
+                    if(count>=0)
+                    {
+                        result = new bool[count];
+
+                        for(int i=0;i<count;i++)
+                        {
+                            result[i] = inStream.ReadBoolean();
+                        }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                    }
+
+
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.boolArrayTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
+
+            return result;
+
+        }
+
+        public short[] recieveArrayOfShorts()
+        {
+            short[] result = new short[1];
+
+            try
+            {
+                string message;
+                int count;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.shortArrayTransfer))
+                {
+                    count = inStream.ReadInt32();
+
+                    if (count >= 0)
+                    {
+                        result = new short[count];
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            result[i] = inStream.ReadInt16();
+                        }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                    }
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.shortArrayTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
 
             return result;
         }
+
+        public int[] recieveArrayOfInts()
+        {
+            int[] result = new int[1];
+
+            try
+            {
+                string message;
+                int count;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.intArrayTransfer))
+                {
+                    count = inStream.ReadInt32();
+
+                    if (count >= 0)
+                    {
+                        result = new int[count];
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            result[i] = inStream.ReadInt32();
+                        }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                    }
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.intArrayTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
+
+            return result;
+        }
+
+        public long[] recieveArrayOfLongs()
+        {
+            long[] result = new long[1];
+
+            try
+            {
+                string message;
+                int count;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.longArrayTransfer))
+                {
+                    count = inStream.ReadInt32();
+
+                    if (count >= 0)
+                    {
+                        result = new long[count];
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            result[i] = inStream.ReadInt64();
+                        }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                    }
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.longArrayTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
+
+            return result;
+        }
+
+
+        public ushort[] recieveArrayOfUShorts()
+        {
+            ushort[] result = new ushort[1];
+
+            try
+            {
+                string message;
+                int count;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.ushortArrayTransfer))
+                {
+                    count = inStream.ReadInt32();
+
+                    if (count >= 0)
+                    {
+                        result = new ushort[count];
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            result[i] = inStream.ReadUInt16();
+                        }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                    }
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.ushortArrayTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
+
+            return result;
+        }
+
+
+        public uint[] recieveArrayOfUInts()
+        {
+            uint[] result = new uint[1];
+
+            try
+            {
+                string message;
+                int count;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.uintArrayTransfer))
+                {
+                    count = inStream.ReadInt32();
+
+                    if (count >= 0)
+                    {
+                        result = new uint[count];
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            result[i] = inStream.ReadUInt32();
+                        }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                    }
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.uintArrayTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
+
+            return result;
+        }
+
+
+        public ulong[] recieveArrayOfULongs()
+        {
+            ulong[] result = new ulong[1];
+
+            try
+            {
+                string message;
+                int count;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.ulongArrayTransfer))
+                {
+                    count = inStream.ReadInt32();
+
+                    if (count >= 0)
+                    {
+                        result = new ulong[count];
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            result[i] = inStream.ReadUInt64();
+                        }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                    }
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.ulongArrayTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
+
+            return result;
+        }
+
+
+        public byte[] recieveArrayOfBytes()
+        {
+            byte[] result = new byte[1];
+
+            try
+            {
+                string message;
+                int count;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.byteArrayTransfer))
+                {
+                    count = inStream.ReadInt32();
+
+                    if (count >= 0)
+                    {
+                       // result = new byte[count];
+
+                        result = inStream.ReadBytes(count);
+
+                        //for (int i = 0; i < count; i++)
+                        //{
+                        //    result[i] = inStream.ReadInt32();
+                        //}
+
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                    }
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.byteArrayTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
+
+            return result;
+        }
+
+
+        public sbyte[] recieveArrayOfSBytes()
+        {
+            sbyte[] result = new sbyte[1];
+
+            try
+            {
+                string message;
+                int count;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.sbyteArrayTransfer))
+                {
+                    count = inStream.ReadInt32();
+
+                    if (count >= 0)
+                    {
+                        result = new sbyte[count];
+
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            result[i] = inStream.ReadSByte();
+                        }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                    }
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.sbyteArrayTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
+
+            return result;
+        }
+
+        public char[] recieveArrayOfChars()
+        {
+            char[] result = new char[1];
+
+            try
+            {
+                string message;
+                int count;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.charArrayTransfer))
+                {
+                    count = inStream.ReadInt32();
+
+                    if (count >= 0)
+                    {
+                       // result = new int[count];
+
+                        result = inStream.ReadChars(count);
+
+                      //  for (int i = 0; i < count; i++)
+                      //  {
+                     //       result[i] = inStream.ReadInt32();
+                     //   }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                    }
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.charArrayTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
+
+            return result;
+        }
+
+
+        public string[] recieveArrayOfStrings()
+        {
+            string[] result = new string[1];
+
+            try
+            {
+                string message;
+                int count;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.stringArrayTransfer))
+                {
+                    count = inStream.ReadInt32();
+
+                    if (count >= 0)
+                    {
+                        result = new string[count];
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            result[i] = inStream.ReadString();
+                        }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                    }
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.stringArrayTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
+
+            return result;
+        }
+
+
+        public decimal[] recieveArrayOfDecimals()
+        {
+            decimal[] result = new decimal[1];
+
+            try
+            {
+                string message;
+                int count;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.decimalArrayTransfer))
+                {
+                    count = inStream.ReadInt32();
+
+                    if (count >= 0)
+                    {
+                        result = new decimal[count];
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            result[i] = inStream.ReadDecimal();
+                        }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                    }
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.decimalArrayTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
+
+            return result;
+        }
+
+
+        public float[] recieveArrayOfFloats()
+        {
+            float[] result = new float[1];
+
+            try
+            {
+                string message;
+                int count;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.floatArrayTransfer))
+                {
+                    count = inStream.ReadInt32();
+
+                    if (count >= 0)
+                    {
+                        result = new float[count];
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            result[i] = inStream.ReadSingle();
+                        }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                    }
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.floatArrayTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
+
+            return result;
+        }
+
+
+        public double[] recieveArrayOfDoubles()
+        {
+            double[] result = new double[1];
+
+            try
+            {
+                string message;
+                int count;
+
+                message = inStream.ReadString();
+
+                if (message.Equals(Messages.doubleArrayTransfer))
+                {
+                    count = inStream.ReadInt32();
+
+                    if (count >= 0)
+                    {
+                        result = new double[count];
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            result[i] = inStream.ReadDouble();
+                        }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                    }
+                }
+                else
+                {
+                    throw new TypeNotMatchException("Expected: " + Messages.doubleArrayTransfer + "Recieved: " + message);
+                }
+
+            }
+            catch (EndOfStreamException EOSEx)
+            {
+                EndOfStreamExceptionHandler(EOSEx);
+            }
+            catch (ObjectDisposedException ObjDispEx)
+            {
+                ObjectDisposedExceptionHandler(ObjDispEx);
+            }
+            catch (IOException IOEx)
+            {
+                IOExceptionHandler(IOEx);
+            }
+            catch (TypeNotMatchException TypeNotMatchEx)
+            {
+                throw TypeNotMatchEx;
+            }
+
+            return result;
+        }
+
+
+        //public object recieveObject()
+        //{
+        //    object result;
+
+        //    try
+        //    {
+        //        string message;
+
+        //        message = inStream.ReadString();
+
+        //        if (message.Equals(Messages.boolTransfer))
+        //        {
+        //            result = //inStream.ReadBoolean();
+        //        }
+        //        else
+        //        {
+        //            throw new TypeNotMatchException("Expected: " + Messages.boolTransfer + "Recieved: " + message);
+        //        }
+
+        //    }
+        //    catch (EndOfStreamException EOSEx)
+        //    {
+        //        EndOfStreamExceptionHandler(EOSEx);
+        //    }
+        //    catch (ObjectDisposedException ObjDispEx)
+        //    {
+        //        ObjectDisposedExceptionHandler(ObjDispEx);
+        //    }
+        //    catch (IOException IOEx)
+        //    {
+        //        IOExceptionHandler(IOEx);
+        //    }
+        //    catch (TypeNotMatchException TypeNotMatchEx)
+        //    {
+        //        throw TypeNotMatchEx;
+        //    }
+
+        //    return result;
+        //}
+        #endregion
+
+        #region listTypeRecieve
+
         #endregion
 
     }
