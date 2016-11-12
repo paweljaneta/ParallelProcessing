@@ -1409,5 +1409,68 @@ namespace communicationLibrary
         //}
         #endregion
 
+        #region simpleTypeRecieve
+        public bool recieveBool()
+        {
+
+        }
+        public short recieveShort()
+        {
+
+        }
+        public int recieveInt()
+        {
+
+        }
+        public long recieveLong()
+        {
+
+        }
+        public ushort recieveUShort()
+        {
+
+        }
+        public uint recieveUInt()
+        {
+
+        }
+        public ulong recieveULong()
+        {
+
+        }
+        public byte recieveByte()
+        {
+
+        }
+        public sbyte recieveSByte()
+        {
+
+        }
+        public char recieveChar()
+        {
+
+        }
+        public string recieveString()
+        {
+
+        }
+        public decimal recieveDecimal()
+        {
+
+        }
+        public float recieveFloat()
+        {
+
+        }
+        public double recieveDouble()
+        {
+
+        }
+        public object recieveObject()
+        {
+
+        }
+        #endregion
+
     }
 }
