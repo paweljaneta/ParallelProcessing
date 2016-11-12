@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculationsView.cs" />
     <Compile Include="ClientConnectionThread.cs" />
     <Compile Include="Measurments.cs" />
     <Compile Include="serwerMain.cs" />

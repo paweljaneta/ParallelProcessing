@@ -8,11 +8,14 @@ namespace communicationLibrary
 {
     public class Messages
     {
-        public static string dllRequest = "dllReq";
-        public static string dataRequest = "dataReq";
-        public static string measurmentsRequest = "measReq";
-        public static string deadlyPill = "deadlyPill";
-        public static string beginCalculations = "beginCalc";
+        public const string dllRequest = "dllReq";
+        public const string dataRequest = "dataReq";
+        public const string measurmentsRequest = "measReq";
+        public const string deadlyPill = "deadlyPill";
+        public const string beginCalculations = "beginCalc";
+        public const string executionTime = "execTime";
+        public const string connectionSpeedMeasurment = "conSpeedMeas";
+        public const string flops = "FLOPS";
 
     }
 }

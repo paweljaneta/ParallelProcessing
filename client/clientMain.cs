@@ -17,13 +17,18 @@ namespace client
         {
             string ipAdress = "127.0.0.1";
             int port = 1807;
+            int clientID;
 
-            List<Thread> workingThreads = new List<Thread>();
-            Thread cpuLoadThread;
+
+            List<ClientThread> workingThreads = new List<ClientThread>();
+           // Thread cpuLoadThread;
             int numberOfCPUcores = Environment.ProcessorCount;
             double flops;
 
-            ClientThread connectionThread = new ClientThread(ipAdress, port);
+            Measurments mesurments = new Measurments();
+
+
+           // ClientThread connectionThread = new ClientThread(ipAdress, port);
            // ClientThread connectionThread2 = new ClientThread("127.0.0.1", 1807);
 
             while (true) //infinite loop
@@ -34,13 +39,29 @@ namespace client
                 BinaryWriter outStream = new BinaryWriter(connection.GetStream());
                 BinaryReader inStream = new BinaryReader(connection.GetStream());
 
-                //do tests
-
                 //get dll
                 outStream.Write(Messages.dllRequest);
                 getDll(inStream);
 
+                //do tests
+                flops = mesurments.CPUPerformanceFLOPS();
+                outStream.Write(Messages.flops);
+                outStream.Write(flops);
+                mesurments.networkSpeed(inStream, outStream);
+
+
+                clientID = inStream.ReadInt32();
+
+
+                connection.Close();
+
                 //start threads
+                
+                for (int i=0;i<numberOfCPUcores;i++)
+                {
+                    workingThreads.Add(new ClientThread(ipAdress, port));
+                }
+                
                 //wait until finished
 
 
@@ -66,13 +87,13 @@ namespace client
 
 
 
-        public static bool threadsFinished(List<Thread> threads)
+        public static bool threadsFinished(List<ClientThread> threads)
         {
             bool result = true;
 
-            foreach(Thread thread in threads)
+            foreach(ClientThread thread in threads)
             {
-                if (thread.IsAlive)
+                if (thread.isThreadAlive())
                     result = false;
             }
 
