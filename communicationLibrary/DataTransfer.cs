@@ -1412,63 +1412,108 @@ namespace communicationLibrary
         #region simpleTypeRecieve
         public bool recieveBool()
         {
+            bool result;
 
+
+            return result;
         }
         public short recieveShort()
         {
+            short result;
 
+
+            return result;
         }
         public int recieveInt()
         {
+            int result;
 
+
+            return result;
         }
         public long recieveLong()
         {
+            long result;
 
+
+            return result;
         }
         public ushort recieveUShort()
         {
+            ushort result;
 
+
+            return result;
         }
         public uint recieveUInt()
         {
+            uint result;
 
+
+            return result;
         }
         public ulong recieveULong()
         {
+            ulong result;
 
+
+            return result;
         }
         public byte recieveByte()
         {
+            byte result;
 
+
+            return result;
         }
         public sbyte recieveSByte()
         {
+            sbyte result;
 
+
+            return result;
         }
         public char recieveChar()
         {
+            char result;
 
+
+            return result;
         }
         public string recieveString()
         {
+            string result;
 
+
+            return result;
         }
         public decimal recieveDecimal()
         {
+            decimal result;
 
+
+            return result;
         }
         public float recieveFloat()
         {
+            float result;
 
+
+            return result;
         }
         public double recieveDouble()
         {
+            double result;
 
+
+            return result;
         }
         public object recieveObject()
         {
+            object result;
 
+
+            return result;
         }
         #endregion
 
