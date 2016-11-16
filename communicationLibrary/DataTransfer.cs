@@ -7,7 +7,7 @@ using System.IO;
 
 namespace communicationLibrary
 {
-    class DataTransfer
+    public class DataTransfer
     {
         private BinaryReader inStream;
         private BinaryWriter outStream;
