@@ -61,7 +61,7 @@ namespace serwer
         public void recieveBool()
         {
             readThread = new Thread(recieveBoolThread);
-            thread.Name = "recieveBoolThread";
+            readThread.Name = "recieveBoolThread";
             readThread.Start();
         }
         private void recieveBoolThread()
@@ -79,7 +79,7 @@ namespace serwer
         public void recieveShort()
         {
             readThread = new Thread(recieveShortThread);
-            thread.Name = "recieveShortThread";
+            readThread.Name = "recieveShortThread";
             readThread.Start();
         }
         private void recieveShortThread()
@@ -97,7 +97,7 @@ namespace serwer
         public void recieveInt()
         {
             readThread = new Thread(recieveIntThread);
-            thread.Name = "recieveIntThread";
+            readThread.Name = "recieveIntThread";
             readThread.Start();
         }
         private void recieveIntThread()
@@ -116,7 +116,7 @@ namespace serwer
         public void recieveLong()
         {
             readThread = new Thread(recieveLongThread);
-            thread.Name = "recieveLongThread";
+            readThread.Name = "recieveLongThread";
             readThread.Start();
         }
         private void recieveLongThread()
@@ -135,7 +135,7 @@ namespace serwer
         public void recieveUShort()
         {
             readThread = new Thread(recieveUShortThread);
-            thread.Name = "recieveUShortThread";
+            readThread.Name = "recieveUShortThread";
             readThread.Start();
         }
         private void recieveUShortThread()
@@ -154,7 +154,7 @@ namespace serwer
         public void recieveUInt()
         {
             readThread = new Thread(recieveUIntThread);
-            thread.Name = "recieveUIntThread";
+            readThread.Name = "recieveUIntThread";
             readThread.Start();
         }
         private void recieveUIntThread()
@@ -173,7 +173,7 @@ namespace serwer
         public void recieveULong()
         {
             readThread = new Thread(recieveULongThread);
-            thread.Name = "recieveULongThread";
+            readThread.Name = "recieveULongThread";
             readThread.Start();
         }
         private void recieveULongThread()
@@ -192,7 +192,7 @@ namespace serwer
         public void recieveByte()
         {
             readThread = new Thread(recieveByteThread);
-            thread.Name = "recieveByteThread";
+            readThread.Name = "recieveByteThread";
             readThread.Start();
         }
         private void recieveByteThread()
@@ -211,7 +211,7 @@ namespace serwer
         public void recieveSByte()
         {
             readThread = new Thread(recieveSByteThread);
-            thread.Name = "recieveSByteThread";
+            readThread.Name = "recieveSByteThread";
             readThread.Start();
         }
         private void recieveSByteThread()
@@ -229,7 +229,7 @@ namespace serwer
         public void recieveChar()
         {
             readThread = new Thread(recieveCharThread);
-            thread.Name = "recieveCharThread";
+            readThread.Name = "recieveCharThread";
             readThread.Start();
         }
         private void recieveCharThread()
@@ -248,7 +248,7 @@ namespace serwer
         public void recieveString()
         {
             readThread = new Thread(recieveStringThread);
-            thread.Name = "recieveStringThread";
+            readThread.Name = "recieveStringThread";
             readThread.Start();
         }
         private void recieveStringThread()
@@ -267,7 +267,7 @@ namespace serwer
         public void recieveDecimal()
         {
             readThread = new Thread(recieveDecimalThread);
-            thread.Name = "recieveDecimalThread";
+            readThread.Name = "recieveDecimalThread";
             readThread.Start();
         }
         private void recieveDecimalThread()
@@ -286,7 +286,7 @@ namespace serwer
         public void recieveFloat()
         {
             readThread = new Thread(recieveFloatThread);
-            thread.Name = "recieveFloatThread";
+            readThread.Name = "recieveFloatThread";
             readThread.Start();
         }
         private void recieveFloatThread()
@@ -305,7 +305,7 @@ namespace serwer
         public void recieveDouble()
         {
             readThread = new Thread(recieveDoubleThread);
-            thread.Name = "recieveDoubleThread";
+            readThread.Name = "recieveDoubleThread";
             readThread.Start();
         }
         private void recieveDoubleThread()
@@ -326,7 +326,7 @@ namespace serwer
         public void recieveBoolArray()
         {
             readThread = new Thread(recieveBoolArrayThread);
-            thread.Name = "recieveBoolArrayThread";
+            readThread.Name = "recieveBoolArrayThread";
             readThread.Start();
         }
         private void recieveBoolArrayThread()
@@ -345,7 +345,7 @@ namespace serwer
         public void recieveShortArray()
         {
             readThread = new Thread(recieveShortArrayThread);
-            thread.Name = "recieveShortArrayThread";
+            readThread.Name = "recieveShortArrayThread";
             readThread.Start();
         }
         private void recieveShortArrayThread()
@@ -363,7 +363,7 @@ namespace serwer
         public void recieveIntArray()
         {
             readThread = new Thread(recieveIntArrayThread);
-            thread.Name = "recieveIntArrayThread";
+            readThread.Name = "recieveIntArrayThread";
             readThread.Start();
         }
         private void recieveIntArrayThread()
@@ -381,7 +381,7 @@ namespace serwer
         public void recieveLongArray()
         {
             readThread = new Thread(recieveLongArrayThread);
-            thread.Name = "recieveLongArrayThread";
+            readThread.Name = "recieveLongArrayThread";
             readThread.Start();
         }
         private void recieveLongArrayThread()
@@ -400,7 +400,7 @@ namespace serwer
         public void recieveUShortArray()
         {
             readThread = new Thread(recieveUShortArrayThread);
-            thread.Name = "recieveUShortArrayThread";
+            readThread.Name = "recieveUShortArrayThread";
             readThread.Start();
         }
         private void recieveUShortArrayThread()
@@ -419,7 +419,7 @@ namespace serwer
         public void recieveUIntArray()
         {
             readThread = new Thread(recieveUIntArrayThread);
-            thread.Name = "recieveUIntArrayThread";
+            readThread.Name = "recieveUIntArrayThread";
             readThread.Start();
         }
         private void recieveUIntArrayThread()
@@ -438,7 +438,7 @@ namespace serwer
         public void recieveULongArray()
         {
             readThread = new Thread(recieveULongArrayThread);
-            thread.Name = "recieveULongArrayThread";
+            readThread.Name = "recieveULongArrayThread";
             readThread.Start();
         }
         private void recieveULongArrayThread()
@@ -457,7 +457,7 @@ namespace serwer
         public void recieveByteArray()
         {
             readThread = new Thread(recieveByteArrayThread);
-            thread.Name = "recieveByteArrayThread";
+            readThread.Name = "recieveByteArrayThread";
             readThread.Start();
         }
         private void recieveByteArrayThread()
@@ -476,7 +476,7 @@ namespace serwer
         public void recieveSByteArray()
         {
             readThread = new Thread(recieveSByteArrayThread);
-            thread.Name = "recieveSByteArrayThread";
+            readThread.Name = "recieveSByteArrayThread";
             readThread.Start();
         }
         private void recieveSByteArrayThread()
@@ -495,7 +495,7 @@ namespace serwer
         public void recieveCharArray()
         {
             readThread = new Thread(recieveCharArrayThread);
-            thread.Name = "recieveCharArrayThread";
+            readThread.Name = "recieveCharArrayThread";
             readThread.Start();
         }
         private void recieveCharArrayThread()
@@ -514,7 +514,7 @@ namespace serwer
         public void recieveStringArray()
         {
             readThread = new Thread(recieveStringArrayThread);
-            thread.Name = "recieveStringArrayThread";
+            readThread.Name = "recieveStringArrayThread";
             readThread.Start();
         }
         private void recieveStringArrayThread()
@@ -533,7 +533,7 @@ namespace serwer
         public void recieveDecimalArray()
         {
             readThread = new Thread(recieveDecimalArrayThread);
-            thread.Name = "recieveDecimalArrayThread";
+            readThread.Name = "recieveDecimalArrayThread";
             readThread.Start();
         }
         private void recieveDecimalArrayThread()
@@ -552,7 +552,7 @@ namespace serwer
         public void recieveFloatArray()
         {
             readThread = new Thread(recieveFloatArrayThread);
-            thread.Name = "recieveFloatArrayThread";
+            readThread.Name = "recieveFloatArrayThread";
             readThread.Start();
         }
         private void recieveFloatArrayThread()
@@ -571,7 +571,7 @@ namespace serwer
         public void recieveDoubleArray()
         {
             readThread = new Thread(recieveDoubleArrayThread);
-            thread.Name = "recieveDoubleArrayThread";
+            readThread.Name = "recieveDoubleArrayThread";
             readThread.Start();
         }
         private void recieveDoubleArrayThread()
@@ -593,7 +593,7 @@ namespace serwer
         public void recieveBoolList()
         {
             readThread = new Thread(recieveBoolListThread);
-            thread.Name = "recieveBoolListThread";
+            readThread.Name = "recieveBoolListThread";
             readThread.Start();
         }
         private void recieveBoolListThread()
@@ -611,7 +611,7 @@ namespace serwer
         public void recieveShortList()
         {
             readThread = new Thread(recieveShortListThread);
-            thread.Name = "recieveShortListThread";
+            readThread.Name = "recieveShortListThread";
             readThread.Start();
         }
         private void recieveShortListThread()
@@ -630,7 +630,7 @@ namespace serwer
         public void recieveIntList()
         {
             readThread = new Thread(recieveIntListThread);
-            thread.Name = "recieveIntListThread";
+            readThread.Name = "recieveIntListThread";
             readThread.Start();
         }
         private void recieveIntListThread()
@@ -649,7 +649,7 @@ namespace serwer
         public void recieveLongList()
         {
             readThread = new Thread(recieveLongListThread);
-            thread.Name = "recieveLongListThread";
+            readThread.Name = "recieveLongListThread";
             readThread.Start();
         }
         private void recieveLongListThread()
@@ -668,7 +668,7 @@ namespace serwer
         public void recieveUShortList()
         {
             readThread = new Thread(recieveUShortListThread);
-            thread.Name = "recieveUShortListThread";
+            readThread.Name = "recieveUShortListThread";
             readThread.Start();
         }
         private void recieveUShortListThread()
@@ -687,7 +687,7 @@ namespace serwer
         public void recieveUIntList()
         {
             readThread = new Thread(recieveUIntListThread);
-            thread.Name = "recieveUIntListThread";
+            readThread.Name = "recieveUIntListThread";
             readThread.Start();
         }
         private void recieveUIntListThread()
@@ -706,7 +706,7 @@ namespace serwer
         public void recieveULongList()
         {
             readThread = new Thread(recieveULongListThread);
-            thread.Name = "recieveULongListThread";
+            readThread.Name = "recieveULongListThread";
             readThread.Start();
         }
         private void recieveULongListThread()
@@ -725,7 +725,7 @@ namespace serwer
         public void recieveByteList()
         {
             readThread = new Thread(recieveByteListThread);
-            thread.Name = "recieveByteListThread";
+            readThread.Name = "recieveByteListThread";
             readThread.Start();
         }
         private void recieveByteListThread()
@@ -744,7 +744,7 @@ namespace serwer
         public void recieveSByteList()
         {
             readThread = new Thread(recieveSByteListThread);
-            thread.Name = "recieveSByteListThread";
+            readThread.Name = "recieveSByteListThread";
             readThread.Start();
         }
         private void recieveSByteListThread()
@@ -763,7 +763,7 @@ namespace serwer
         public void recieveCharList()
         {
             readThread = new Thread(recieveCharListThread);
-            thread.Name = "recieveCharListThread";
+            readThread.Name = "recieveCharListThread";
             readThread.Start();
         }
         private void recieveCharListThread()
@@ -782,7 +782,7 @@ namespace serwer
         public void recieveStringList()
         {
             readThread = new Thread(recieveStringListThread);
-            thread.Name = "recieveStringListThread";
+            readThread.Name = "recieveStringListThread";
             readThread.Start();
         }
         private void recieveStringListThread()
@@ -801,7 +801,7 @@ namespace serwer
         public void recieveDecimalList()
         {
             readThread = new Thread(recieveDecimalListThread);
-            thread.Name = "recieveDecimalListThread";
+            readThread.Name = "recieveDecimalListThread";
             readThread.Start();
         }
         private void recieveDecimalListThread()
@@ -820,7 +820,7 @@ namespace serwer
         public void recieveFloatList()
         {
             readThread = new Thread(recieveFloatListThread);
-            thread.Name = "recieveFloatListThread";
+            readThread.Name = "recieveFloatListThread";
             readThread.Start();
         }
         private void recieveFloatListThread()
@@ -839,7 +839,7 @@ namespace serwer
         public void recieveDoubleList()
         {
             readThread = new Thread(recieveDoubleListThread);
-            thread.Name = "recieveDoubleListThread";
+            readThread.Name = "recieveDoubleListThread";
             readThread.Start();
         }
         private void recieveDoubleListThread()
