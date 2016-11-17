@@ -9,5 +9,10 @@ namespace serwer
     class ClientConnections
     {
         private List<ClientConnectionThread> connectedClientsList = new List<ClientConnectionThread>();
+
+        public void Add(ClientConnectionThread clientConnection)
+        {
+            connectedClientsList.Add(clientConnection);
+        }
     }
 }
