@@ -1780,6 +1780,7 @@ namespace communicationLibrary
             return result;
         }
 
+
         public char recieveChar()
         {
             char result='0';
@@ -1860,6 +1861,8 @@ namespace communicationLibrary
 
             return result;
         }
+
+
         public decimal recieveDecimal()
         {
             decimal result=0;
