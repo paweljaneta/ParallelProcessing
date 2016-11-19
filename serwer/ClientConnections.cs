@@ -833,6 +833,415 @@ namespace serwer
         #endregion
 
 
+        #region listTypes
+
+        public List<bool> readBoolList()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveBoolList();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readBoolList();
+        }
+
+
+        public List<short> readShortList()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveShortList();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readShortList();
+        }
+
+
+        public List<int> readIntList()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveIntList();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readIntList();
+        }
+
+
+        public List<long> readLongList()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveLongList();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readLongList();
+        }
+
+
+        public List<ushort> readUShortList()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveUShortList();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readUShortList();
+        }
+
+
+        public List<uint> readUIntList()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveUIntList();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readUIntList();
+        }
+
+
+        public List<ulong> readULongList()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveULongList();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readULongList();
+        }
+
+
+        public List<byte> readByteList()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveByteList();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readByteList();
+        }
+
+
+        public List<sbyte> readSByteList()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveSByteList();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readSByteList();
+        }
+
+
+        public List<char> readCharList()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveCharList();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readCharList();
+        }
+
+
+        public List<string> readStringList()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveStringList();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readStringList();
+        }
+
+
+        public List<decimal> readDecimalList()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveDecimalList();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readDecimalList();
+        }
+
+
+        public List<float> readFloatList()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveFloatList();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readFloatList();
+        }
+
+
+        public List<double> readDoubleList()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveDoubleList();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readDoubleList();
+        }
+
+        #endregion
+
 
 
     }
