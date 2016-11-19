@@ -25,6 +25,7 @@ namespace serwer
         DataTransfer dataTransferConnection;
 
         bool dataRead;
+        bool hasThreadData;
         DTO recievedData;
 
         public ClientConnectionThread(TcpClient connection)
@@ -41,6 +42,7 @@ namespace serwer
                 thread.Start();
 
                 dataRead = false;
+                hasThreadData = false;
                 recievedData = new DTO();
                 readThread = null;
 
@@ -59,6 +61,16 @@ namespace serwer
         public bool isDataRead()
         {
             return dataRead;
+        }
+
+        public bool hasDataSend()
+        {
+            return hasThreadData;
+        }
+
+        public int getThreadID()
+        {
+            return threadID;
         }
 
         #region readSimple
@@ -1160,6 +1172,18 @@ namespace serwer
             return recievedData.DoubleList;
         }
 
+
+        #endregion
+
+        #region sendSimple
+
+        #endregion
+
+        #region sendArray
+
+        #endregion
+
+        #region sendList
 
         #endregion
 
