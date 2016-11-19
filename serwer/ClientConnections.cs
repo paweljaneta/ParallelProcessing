@@ -2303,6 +2303,428 @@ namespace serwer
 
         #endregion
 
+        #region readListByID
+        public List<bool> readBoolListByID(int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].recieveBoolList();
+            }
+
+            while (!connectedClientsList[foundIndex].isDataRead())
+            {
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[foundIndex].readBoolList();
+        }
+
+        public List<short> readShortListByID(int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].recieveShortList();
+            }
+
+            while (!connectedClientsList[foundIndex].isDataRead())
+            {
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[foundIndex].readShortList();
+        }
+
+
+        public List<int> readIntListByID(int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].recieveIntList();
+            }
+
+            while (!connectedClientsList[foundIndex].isDataRead())
+            {
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[foundIndex].readIntList();
+        }
+
+
+        public List<long> readLongListByID(int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].recieveLongList();
+            }
+
+            while (!connectedClientsList[foundIndex].isDataRead())
+            {
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[foundIndex].readLongList();
+        }
+
+
+        public List<ushort> readUShortListByID(int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].recieveUShortList();
+            }
+
+            while (!connectedClientsList[foundIndex].isDataRead())
+            {
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[foundIndex].readUShortList();
+        }
+
+
+        public List<uint> readUIntListByID(int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].recieveUIntList();
+            }
+
+            while (!connectedClientsList[foundIndex].isDataRead())
+            {
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[foundIndex].readUIntList();
+        }
+
+
+        public List<ulong> readULongListByID(int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].recieveULongList();
+            }
+
+            while (!connectedClientsList[foundIndex].isDataRead())
+            {
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[foundIndex].readULongList();
+        }
+
+
+        public List<byte> readByteListByID(int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].recieveByteList();
+            }
+
+            while (!connectedClientsList[foundIndex].isDataRead())
+            {
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[foundIndex].readByteList();
+        }
+
+
+        public List<sbyte> readSByteListByID(int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].recieveSByteList();
+            }
+
+            while (!connectedClientsList[foundIndex].isDataRead())
+            {
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[foundIndex].readSByteList();
+        }
+
+
+        public List<char> readCharListByID(int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].recieveCharList();
+            }
+
+            while (!connectedClientsList[foundIndex].isDataRead())
+            {
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[foundIndex].readCharList();
+        }
+
+
+        public List<string> readStringListByID(int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].recieveStringList();
+            }
+
+            while (!connectedClientsList[foundIndex].isDataRead())
+            {
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[foundIndex].readStringList();
+        }
+
+
+        public List<decimal> readDecimalListByID(int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].recieveDecimalList();
+            }
+
+            while (!connectedClientsList[foundIndex].isDataRead())
+            {
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[foundIndex].readDecimalList();
+        }
+
+
+        public List<float> readFloatListByID(int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].recieveFloatList();
+            }
+
+            while (!connectedClientsList[foundIndex].isDataRead())
+            {
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[foundIndex].readFloatList();
+        }
+
+
+        public List<double> readDoubleListByID(int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].recieveDoubleList();
+            }
+
+            while (!connectedClientsList[foundIndex].isDataRead())
+            {
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[foundIndex].readDoubleList();
+        }
+
+
+        #endregion
+
         #endregion
 
         #endregion
