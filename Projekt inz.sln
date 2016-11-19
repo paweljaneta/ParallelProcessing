@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "clientDll", "clientDll\clie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "communicationLibrary", "communicationLibrary\communicationLibrary.csproj", "{6F6960A5-21F0-4C22-818D-27EE5100F3A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsServer", "TestsServer\TestsServer.csproj", "{A0045644-42D0-4C74-B24D-7480AD510423}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsCommunicationLibrary", "TestsCommunicationLibrary\TestsCommunicationLibrary.csproj", "{529772ED-400F-4F4C-BD8A-007C700CC32F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{6F6960A5-21F0-4C22-818D-27EE5100F3A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F6960A5-21F0-4C22-818D-27EE5100F3A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F6960A5-21F0-4C22-818D-27EE5100F3A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0045644-42D0-4C74-B24D-7480AD510423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0045644-42D0-4C74-B24D-7480AD510423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0045644-42D0-4C74-B24D-7480AD510423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0045644-42D0-4C74-B24D-7480AD510423}.Release|Any CPU.Build.0 = Release|Any CPU
+		{529772ED-400F-4F4C-BD8A-007C700CC32F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{529772ED-400F-4F4C-BD8A-007C700CC32F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{529772ED-400F-4F4C-BD8A-007C700CC32F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{529772ED-400F-4F4C-BD8A-007C700CC32F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
