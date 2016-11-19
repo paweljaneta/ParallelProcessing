@@ -17,7 +17,7 @@ namespace serwer
         }
 
 
-
+        #region readSimple
         public bool readBool()
         {
             foreach(ClientConnectionThread client in connectedClientsList)
@@ -422,7 +422,415 @@ namespace serwer
 
             return connectedClientsList[indexThatRecieved].readDouble();
         }
+        #endregion
 
+        #region readArray
+        public bool[] readBoolArray()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveBoolArray();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readBoolArray();
+        }
+
+
+        public short[] readShortArray()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveShortArray();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readShortArray();
+        }
+
+
+        public int[] readIntArray()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveIntArray();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readIntArray();
+        }
+
+
+        public long[] readLongArray()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveLongArray();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readLongArray();
+        }
+
+
+        public ushort[] readUShortArray()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveUShortArray();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readUShortArray();
+        }
+
+
+        public uint[] readUIntArray()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveUIntArray();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readUIntArray();
+        }
+
+
+        public ulong[] readULongArray()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveULongArray();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readULongArray();
+        }
+
+
+        public byte[] readByteArray()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveByteArray();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readByteArray();
+        }
+
+
+        public sbyte[] readSByteArray()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveSByteArray();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readSByteArray();
+        }
+
+
+        public char[] readCharArray()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveCharArray();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readCharArray();
+        }
+
+
+        public string[] readStringArray()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveStringArray();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readStringArray();
+        }
+
+
+        public decimal[] readDecimalArray()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveDecimalArray();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readDecimalArray();
+        }
+
+
+        public float[] readFloatArray()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveFloatArray();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readFloatArray();
+        }
+
+
+        public double[] readDoubleArray()
+        {
+            foreach (ClientConnectionThread client in connectedClientsList)
+            {
+                client.recieveDoubleArray();
+            }
+
+            bool dataRead = false;
+
+            int indexThatRecieved = -1;
+
+            while (!dataRead)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
+                    {
+                        dataRead = true;
+                        indexThatRecieved = i;
+                    }
+                }
+
+                Thread.Sleep(1);
+            }
+
+            return connectedClientsList[indexThatRecieved].readDoubleArray();
+        }
+
+        #endregion
 
 
 
