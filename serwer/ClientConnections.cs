@@ -16,30 +16,36 @@ namespace serwer
             connectedClientsList.Add(clientConnection);
         }
 
+        #region readMethods
 
         #region readSimple
         public bool readBool()
         {
-            foreach(ClientConnectionThread client in connectedClientsList)
+            foreach (ClientConnectionThread client in connectedClientsList)
             {
                 client.recieveBool();
             }
 
             bool dataRead = false;
 
-            int indexThatRecieved=-1;
+            int indexThatRecieved = -1;
 
-            while(!dataRead)
+            while (!dataRead)
             {
-                for(int i=0;i<connectedClientsList.Count;i++)
+                if (connectedClientsList.Count == 0)
                 {
-                    if(connectedClientsList[i].isDataRead())
+                    throw new ArgumentException("No clients to read data from");
+                }
+
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
                         indexThatRecieved = i;
                     }
                 }
-         
+
                 Thread.Sleep(1);
             }
 
@@ -60,6 +66,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -89,6 +100,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -118,6 +134,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -147,6 +168,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -176,6 +202,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -205,6 +236,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -234,6 +270,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -263,6 +304,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -292,6 +338,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -321,6 +372,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -350,6 +406,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -379,6 +440,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -408,6 +474,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -438,6 +509,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -467,6 +543,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -496,6 +577,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -525,6 +611,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -554,6 +645,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -583,6 +679,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -612,6 +713,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -641,6 +747,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -670,6 +781,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -699,6 +815,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -728,6 +849,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -757,6 +883,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -782,10 +913,13 @@ namespace serwer
 
             bool dataRead = false;
 
-            int indexThatRecieved = -1;
-
-            while (!dataRead)
+            int indexThatRecieved = -1; while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -815,6 +949,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -848,6 +987,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -877,6 +1021,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -906,6 +1055,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -935,6 +1089,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -964,6 +1123,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -993,6 +1157,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -1022,6 +1191,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -1051,6 +1225,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -1080,6 +1259,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -1109,6 +1293,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -1138,6 +1327,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -1167,6 +1361,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -1196,6 +1395,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -1225,6 +1429,11 @@ namespace serwer
 
             while (!dataRead)
             {
+                if (connectedClientsList.Count == 0)
+                {
+                    throw new ArgumentException("No clients to read data from");
+                }
+
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (connectedClientsList[i].isDataRead())
@@ -1242,7 +1451,11 @@ namespace serwer
 
         #endregion
 
+        #endregion
 
+        #region sendMethods
+
+        #endregion
 
     }
 }
