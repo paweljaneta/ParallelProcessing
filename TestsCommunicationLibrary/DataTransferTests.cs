@@ -2632,7 +2632,7 @@ namespace TestsCommunicationLibrary
         public void clientShouldRecieveUIntList()
         {
             ///given
-            List<uint> expected = new List< uint>();
+            List<uint> expected = new List<uint>();
             List<uint> result;
 
             for (int i = 0; i < numberOfElements; i++)
@@ -2683,7 +2683,7 @@ namespace TestsCommunicationLibrary
         public void clientShouldRecieveULongList()
         {
             ///given
-            List<ulong> expected = new List< ulong>();
+            List<ulong> expected = new List<ulong>();
             List<ulong> result;
 
             for (int i = 0; i < numberOfElements; i++)

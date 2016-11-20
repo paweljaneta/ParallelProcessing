@@ -1321,40 +1321,6 @@ namespace communicationLibrary
             }
         }
 
-        // not sure if working
-        //public void send(List<object> data)
-        //{
-        //    int count = data.Count;
-
-        //    if (count > 0)
-        //    {
-        //        try
-        //        {
-        //            outStream.Write(Messages.objectListTransfer);
-        //            outStream.Write(count);
-
-        //            for (int i = 0; i < count; i++)
-        //            {
-        //                outStream.Write(data[i]);
-        //            }
-
-        //        }
-        //        catch (IOException IOEx)
-        //        {
-        //            IOExceptionHandler(IOEx);
-
-        //        }
-        //        catch (ArgumentNullException ArgNullEx)
-        //        {
-        //            ArgumentNullExceptionHandler(ArgNullEx);
-
-        //        }
-        //        catch (ObjectDisposedException ObjDisposedEx)
-        //        {
-        //            ObjectDisposedExceptionHandler(ObjDisposedEx);
-        //        }
-        //    }
-        //}
         #endregion
 
         #region simpleTypeRecieve
@@ -1399,6 +1365,7 @@ namespace communicationLibrary
 
         }
 
+
         public short recieveShort()
         {
             short result = 0;
@@ -1439,6 +1406,7 @@ namespace communicationLibrary
             return result;
         }
 
+
         public int recieveInt()
         {
             int result=0;
@@ -1478,6 +1446,7 @@ namespace communicationLibrary
 
             return result;
         }
+
 
         public long recieveLong()
         {
@@ -1930,45 +1899,6 @@ namespace communicationLibrary
         }
 
 
-        //public object recieveObject()
-        //{
-        //    object result;
-
-        //    try
-        //    {
-        //        string message;
-
-        //        message = inStream.ReadString();
-
-        //        if (message.Equals(Messages.boolTransfer))
-        //        {
-        //            result = //inStream.ReadBoolean();
-        //        }
-        //        else
-        //        {
-        //            throw new TypeNotMatchException("Expected: " + Messages.boolTransfer + "Recieved: " + message);
-        //        }
-
-        //    }
-        //    catch (EndOfStreamException EOSEx)
-        //    {
-        //        EndOfStreamExceptionHandler(EOSEx);
-        //    }
-        //    catch (ObjectDisposedException ObjDispEx)
-        //    {
-        //        ObjectDisposedExceptionHandler(ObjDispEx);
-        //    }
-        //    catch (IOException IOEx)
-        //    {
-        //        IOExceptionHandler(IOEx);
-        //    }
-        //    catch (TypeNotMatchException TypeNotMatchEx)
-        //    {
-        //        throw TypeNotMatchEx;
-        //    }
-
-        //    return result;
-        //}
         #endregion
 
         #region arrayTypeRecieve
@@ -2087,6 +2017,7 @@ namespace communicationLibrary
             return result;
         }
 
+
         public int[] recieveArrayOfInts()
         {
             int[] result = new int[1];
@@ -2142,6 +2073,7 @@ namespace communicationLibrary
 
             return result;
         }
+
 
         public long[] recieveArrayOfLongs()
         {
@@ -2487,6 +2419,7 @@ namespace communicationLibrary
             return result;
         }
 
+
         public char[] recieveArrayOfChars()
         {
             char[] result = new char[1];
@@ -2774,45 +2707,6 @@ namespace communicationLibrary
         }
 
 
-        //public object recieveObject()
-        //{
-        //    object result;
-
-        //    try
-        //    {
-        //        string message;
-
-        //        message = inStream.ReadString();
-
-        //        if (message.Equals(Messages.boolTransfer))
-        //        {
-        //            result = //inStream.ReadBoolean();
-        //        }
-        //        else
-        //        {
-        //            throw new TypeNotMatchException("Expected: " + Messages.boolTransfer + "Recieved: " + message);
-        //        }
-
-        //    }
-        //    catch (EndOfStreamException EOSEx)
-        //    {
-        //        EndOfStreamExceptionHandler(EOSEx);
-        //    }
-        //    catch (ObjectDisposedException ObjDispEx)
-        //    {
-        //        ObjectDisposedExceptionHandler(ObjDispEx);
-        //    }
-        //    catch (IOException IOEx)
-        //    {
-        //        IOExceptionHandler(IOEx);
-        //    }
-        //    catch (TypeNotMatchException TypeNotMatchEx)
-        //    {
-        //        throw TypeNotMatchEx;
-        //    }
-
-        //    return result;
-        //}
         #endregion
 
         #region listTypeRecieve
@@ -2872,6 +2766,7 @@ namespace communicationLibrary
 
         }
 
+
         public List<short> recieveListOfShorts()
         {
             List<short> result = new List<short>();
@@ -2927,6 +2822,7 @@ namespace communicationLibrary
 
             return result;
         }
+
 
         public List<int> recieveListOfInts()
         {
@@ -2984,6 +2880,7 @@ namespace communicationLibrary
 
             return result;
         }
+
 
         public List<long> recieveListOfLongs()
         {
@@ -3330,6 +3227,7 @@ namespace communicationLibrary
 
             return result;
         }
+
 
         public List<char> recieveListOfChars()
         {
