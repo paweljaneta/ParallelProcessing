@@ -22,7 +22,7 @@ namespace TestsCommunicationLibrary
 
         private DataTransfer clientDataTransferConnection, serverDataTransferConnection;
 
-        private int numberOfElements = 100;
+        private int numberOfElements = 5;
         Random random;
 
         [TestInitialize]
@@ -1630,7 +1630,7 @@ namespace TestsCommunicationLibrary
 
         [TestCategory("simpleTypeRecieve")]
         [TestMethod]
-        public void clientShouldRecieveFloatDouble()
+        public void clientShouldRecieveDoubleException()
         {
             //given
             double expected = double.MinValue;
@@ -1654,7 +1654,720 @@ namespace TestsCommunicationLibrary
         #endregion
 
         #region arrayTypeRecieve
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveBoolArray()
+        {
+            //given
+            bool[] expected =new bool[numberOfElements];
+            bool[] result;
 
+            for(int i=0;i<numberOfElements;i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+
+            //when
+            serverOutStream.Write(Messages.boolArrayTransfer);
+            serverOutStream.Write(numberOfElements);
+
+            
+
+            for(int i=0;i<numberOfElements;i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveArrayOfBools();
+            //then
+            for(int i=0;i<numberOfElements;i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+           
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveBoolArrayException()
+        {
+            //when
+            serverOutStream.Write(Messages.intArrayTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveArrayOfBools();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveShortArray()
+        {
+            //given
+            short[] expected = new short[numberOfElements];
+            short[] result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToInt16(random.Next(-32768, 32767));
+            }
+
+            //when
+            serverOutStream.Write(Messages.shortArrayTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveArrayOfShorts();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveShortArrayException()
+        {
+            //when
+            serverOutStream.Write(Messages.intArrayTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveArrayOfShorts();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveIntArray()
+        {
+            //given
+            int[] expected = new int[numberOfElements];
+            int[] result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = random.Next();
+            }
+
+            //when
+            serverOutStream.Write(Messages.intArrayTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveArrayOfInts();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveIntArrayException()
+        {
+            //when
+            serverOutStream.Write(Messages.boolArrayTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveArrayOfInts();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveLongArray()
+        {
+            //given
+            long[] expected = new long[numberOfElements];
+            long[] result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = int.MinValue - random.Next(1, int.MaxValue);
+            }
+
+            //when
+            serverOutStream.Write(Messages.longArrayTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveArrayOfLongs();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveLongArrayException()
+        {
+            //when
+            serverOutStream.Write(Messages.intArrayTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveArrayOfLongs();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveUShortArray()
+        {
+            ///given
+            ushort[] expected = new ushort[numberOfElements];
+            ushort[] result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToUInt16(random.Next(ushort.MaxValue));
+            }
+
+            //when
+            serverOutStream.Write(Messages.ushortArrayTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveArrayOfUShorts();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveUShortArrayException()
+        {
+            //when
+            serverOutStream.Write(Messages.intArrayTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveArrayOfUShorts();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveUIntArray()
+        {
+            ///given
+            uint[] expected = new uint[numberOfElements];
+            uint[] result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToUInt32(random.Next(int.MaxValue));
+            }
+
+            //when
+            serverOutStream.Write(Messages.uintArrayTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveArrayOfUInts();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveUIntArrayException()
+        {
+            //when
+            serverOutStream.Write(Messages.intArrayTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveArrayOfUInts();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveULongArray()
+        {
+            ///given
+            ulong[] expected = new ulong[numberOfElements];
+            ulong[] result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = uint.MaxValue + Convert.ToUInt64(random.Next());
+            }
+
+            //when
+            serverOutStream.Write(Messages.ulongArrayTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveArrayOfULongs();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveULongArrayException()
+        {
+            //when
+            serverOutStream.Write(Messages.intArrayTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveArrayOfULongs();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveByteArray()
+        {
+            ///given
+            byte[] expected = new byte[numberOfElements];
+            byte[] result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToByte(random.Next(byte.MaxValue));
+            }
+
+            //when
+            serverOutStream.Write(Messages.byteArrayTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveArrayOfBytes();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveByteArrayException()
+        {
+            //when
+            serverOutStream.Write(Messages.intArrayTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveArrayOfBytes();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveSByteArray()
+        {
+            ///given
+            sbyte[] expected = new sbyte[numberOfElements];
+            sbyte[] result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToSByte(random.Next(sbyte.MinValue, sbyte.MaxValue));
+            }
+
+            //when
+            serverOutStream.Write(Messages.sbyteArrayTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveArrayOfSBytes();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveSByteArrayException()
+        {
+            //when
+            serverOutStream.Write(Messages.intArrayTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveArrayOfSBytes();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveCharArray()
+        {
+            ///given
+            char[] expected = new char[numberOfElements];
+            char[] result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToChar(random.Next(9));
+            }
+
+            //when
+            serverOutStream.Write(Messages.charArrayTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveArrayOfChars();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveCharArrayException()
+        {
+            //when
+            serverOutStream.Write(Messages.intArrayTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveArrayOfChars();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveStringArray()
+        {
+            ///given
+            string[] expected = new string[numberOfElements];
+            string[] result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = "napis testowy " + i.ToString();
+            }
+
+            //when
+            serverOutStream.Write(Messages.stringArrayTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveArrayOfStrings();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveStringArrayException()
+        {
+            //when
+            serverOutStream.Write(Messages.intArrayTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveArrayOfStrings();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveDecimalArray()
+        {
+            ///given
+            decimal[] expected = new decimal[numberOfElements];
+            decimal[] result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToDecimal(long.MaxValue) + Convert.ToDecimal(random.Next()); 
+            }
+
+            //when
+            serverOutStream.Write(Messages.decimalArrayTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveArrayOfDecimals();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveDecimalArrayException()
+        {
+            //when
+            serverOutStream.Write(Messages.intArrayTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveArrayOfDecimals();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveFloatArray()
+        {
+            ///given
+            float[] expected = new float[numberOfElements];
+            float[] result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToSingle(random.NextDouble());
+            }
+
+            //when
+            serverOutStream.Write(Messages.floatArrayTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveArrayOfFloats();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveFloatArrayException()
+        {
+            //when
+            serverOutStream.Write(Messages.intArrayTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveArrayOfFloats();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveDoubleArray()
+        {
+            ///given
+            double[] expected = new double[numberOfElements];
+            double[] result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = random.NextDouble();
+            }
+
+            //when
+            serverOutStream.Write(Messages.doubleArrayTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveArrayOfDoubles();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveDoubleArrayException()
+        {
+            //when
+            serverOutStream.Write(Messages.intArrayTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveArrayOfDoubles();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
         #endregion
 
         #region listTypeRecieve
