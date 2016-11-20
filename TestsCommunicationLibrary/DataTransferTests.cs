@@ -22,7 +22,7 @@ namespace TestsCommunicationLibrary
 
         private DataTransfer clientDataTransferConnection, serverDataTransferConnection;
 
-        private int numberOfElements = 10;
+        private int numberOfElements = 100;
         Random random;
 
         [TestInitialize]
@@ -58,8 +58,8 @@ namespace TestsCommunicationLibrary
 
         }
 
-        #region simpleTypeTests
-
+        #region simpleTypeSendTests
+        [TestCategory("simpleTypeSend")]
         [TestMethod]
         public void clientShouldSendBool()
         {
@@ -72,6 +72,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, serverInStream.ReadBoolean());
         }
 
+        [TestCategory("simpleTypeSend")]
         [TestMethod]
         public void clientShouldSendShort()
         {
@@ -84,6 +85,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, serverInStream.ReadInt16());
         }
 
+        [TestCategory("simpleTypeSend")]
         [TestMethod]
         public void clientShouldSendInt()
         {
@@ -96,6 +98,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, serverInStream.ReadInt32());
         }
 
+        [TestCategory("simpleTypeSend")]
         [TestMethod]
         public void clientShouldSendLong()
         {
@@ -107,6 +110,8 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(Messages.longTransfer, serverInStream.ReadString());
             Assert.AreEqual(expected, serverInStream.ReadInt64());
         }
+
+        [TestCategory("simpleTypeSend")]
         [TestMethod]
         public void clientShouldSendUShort()
         {
@@ -118,6 +123,8 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(Messages.ushortTransfer, serverInStream.ReadString());
             Assert.AreEqual(expected, serverInStream.ReadUInt16());
         }
+
+        [TestCategory("simpleTypeSend")]
         [TestMethod]
         public void clientShouldSendUInt()
         {
@@ -130,6 +137,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, serverInStream.ReadUInt32());
         }
 
+        [TestCategory("simpleTypeSend")]
         [TestMethod]
         public void clientShouldSendULong()
         {
@@ -141,6 +149,8 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(Messages.ulongTransfer, serverInStream.ReadString());
             Assert.AreEqual(expected, serverInStream.ReadUInt64());
         }
+
+        [TestCategory("simpleTypeSend")]
         [TestMethod]
         public void clientShouldSendByte()
         {
@@ -153,6 +163,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, serverInStream.ReadByte());
         }
 
+        [TestCategory("simpleTypeSend")]
         [TestMethod]
         public void clientShouldSendSByte()
         {
@@ -165,6 +176,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, serverInStream.ReadSByte());
         }
 
+        [TestCategory("simpleTypeSend")]
         [TestMethod]
         public void clientShouldSendChar()
         {
@@ -177,6 +189,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, serverInStream.ReadChar());
         }
 
+        [TestCategory("simpleTypeSend")]
         [TestMethod]
         public void clientShouldSendString()
         {
@@ -189,6 +202,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, serverInStream.ReadString());
         }
 
+        [TestCategory("simpleTypeSend")]
         [TestMethod]
         public void clientShouldSendDecimal()
         {
@@ -201,6 +215,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, serverInStream.ReadDecimal());
         }
 
+        [TestCategory("simpleTypeSend")]
         [TestMethod]
         public void clientShouldSendFloat()
         {
@@ -213,6 +228,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, serverInStream.ReadSingle());
         }
 
+        [TestCategory("simpleTypeSend")]
         [TestMethod]
         public void clientShouldSendDouble()
         {
@@ -226,7 +242,9 @@ namespace TestsCommunicationLibrary
         }
         #endregion
 
-        #region arrayTypeTests
+        #region arrayTypeSendTests
+
+        [TestCategory("arrayTypeSend")]
         [TestMethod]
         public void clientShouldSendBoolArray()
         {
@@ -257,6 +275,7 @@ namespace TestsCommunicationLibrary
 
         }
 
+        [TestCategory("arrayTypeSend")]
         [TestMethod]
         public void clientShouldSendShortArray()
         {
@@ -286,6 +305,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("arrayTypeSend")]
         [TestMethod]
         public void clientShouldSendIntArray()
         {
@@ -315,6 +335,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("arrayTypeSend")]
         [TestMethod]
         public void clientShouldSendLongArray()
         {
@@ -344,6 +365,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("arrayTypeSend")]
         [TestMethod]
         public void clientShouldSendUShortArray()
         {
@@ -373,6 +395,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("arrayTypeSend")]
         [TestMethod]
         public void clientShouldSendUIntArray()
         {
@@ -402,6 +425,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("arrayTypeSend")]
         [TestMethod]
         public void clientShouldSendULongArray()
         {
@@ -431,6 +455,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("arrayTypeSend")]
         [TestMethod]
         public void clientShouldSendByteArray()
         {
@@ -460,6 +485,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("arrayTypeSend")]
         [TestMethod]
         public void clientShouldSendSByteArray()
         {
@@ -489,6 +515,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("arrayTypeSend")]
         [TestMethod]
         public void clientShouldSendCharArray()
         {
@@ -518,6 +545,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("arrayTypeSend")]
         [TestMethod]
         public void clientShouldSendStringArray()
         {
@@ -547,6 +575,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("arrayTypeSend")]
         [TestMethod]
         public void clientShouldSendDecimalArray()
         {
@@ -576,6 +605,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("arrayTypeSend")]
         [TestMethod]
         public void clientShouldSendFloatArray()
         {
@@ -605,6 +635,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("arrayTypeSend")]
         [TestMethod]
         public void clientShouldSendDoubleArray()
         {
@@ -635,7 +666,9 @@ namespace TestsCommunicationLibrary
         }
         #endregion
 
-        #region listTypeTests
+        #region listTypeSendTests
+
+        [TestCategory("listTypeSend")]
         [TestMethod]
         public void clientShouldSendBoolList()
         {
@@ -660,11 +693,12 @@ namespace TestsCommunicationLibrary
 
             for (int i = 0; i < count; i++)
             {
-                result.Add( serverInStream.ReadBoolean());
+                result.Add(serverInStream.ReadBoolean());
                 Assert.AreEqual(expected[i], result[i]);
             }
         }
 
+        [TestCategory("listTypeSend")]
         [TestMethod]
         public void clientShouldSendShortList()
         {
@@ -694,6 +728,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("listTypeSend")]
         [TestMethod]
         public void clientShouldSendIntList()
         {
@@ -723,6 +758,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("listTypeSend")]
         [TestMethod]
         public void clientShouldSendLongList()
         {
@@ -732,7 +768,7 @@ namespace TestsCommunicationLibrary
             int count;
             for (int i = 0; i < numberOfElements; i++)
             {
-                expected.Add(Convert.ToInt64( int.MinValue) - Convert.ToInt64( random.Next(1, int.MaxValue)));
+                expected.Add(Convert.ToInt64(int.MinValue) - Convert.ToInt64(random.Next(1, int.MaxValue)));
             }
 
             //when
@@ -752,6 +788,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("listTypeSend")]
         [TestMethod]
         public void clientShouldSendUShortList()
         {
@@ -781,6 +818,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("listTypeSend")]
         [TestMethod]
         public void clientShouldSendUIntList()
         {
@@ -810,6 +848,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("listTypeSend")]
         [TestMethod]
         public void clientShouldSendULongList()
         {
@@ -839,6 +878,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("listTypeSend")]
         [TestMethod]
         public void clientShouldSendByteList()
         {
@@ -868,6 +908,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("listTypeSend")]
         [TestMethod]
         public void clientShouldSendSByteList()
         {
@@ -897,6 +938,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("listTypeSend")]
         [TestMethod]
         public void clientShouldSendCharList()
         {
@@ -926,6 +968,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("listTypeSend")]
         [TestMethod]
         public void clientShouldSendStringList()
         {
@@ -955,6 +998,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("listTypeSend")]
         [TestMethod]
         public void clientShouldSendDecimalList()
         {
@@ -984,6 +1028,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("listTypeSend")]
         [TestMethod]
         public void clientShouldSendFloatList()
         {
@@ -1013,11 +1058,12 @@ namespace TestsCommunicationLibrary
             }
         }
 
+        [TestCategory("listTypeSend")]
         [TestMethod]
         public void clientShouldSendDoubleList()
         {
             //given
-            List < double> expected = new List<double>();
+            List<double> expected = new List<double>();
             List<double> result;
             int count;
             for (int i = 0; i < numberOfElements; i++)
@@ -1041,6 +1087,578 @@ namespace TestsCommunicationLibrary
                 Assert.AreEqual(expected[i], result[i]);
             }
         }
+        #endregion
+
+        #region simpleTypeRecieve
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveBool()
+        {
+            //given
+            bool expected = true;
+            bool result;
+
+            //when
+            serverOutStream.Write(Messages.boolTransfer);
+            serverOutStream.Write(expected);
+
+            result = clientDataTransferConnection.recieveBool();
+            //then
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveBoolException()
+        {
+            //given
+            bool expected = true;
+            bool result;
+
+            //when
+            serverOutStream.Write(Messages.intTransfer);
+            serverOutStream.Write(expected);
+            try
+            {
+                result = clientDataTransferConnection.recieveBool();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveShort()
+        {
+            //given
+            short expected = short.MinValue;
+            short result;
+
+            //when
+            serverOutStream.Write(Messages.shortTransfer);
+            serverOutStream.Write(expected);
+
+            result = clientDataTransferConnection.recieveShort();
+            //then
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveShortException()
+        {
+            //given
+            short expected = short.MinValue;
+            short result;
+
+            //when
+            serverOutStream.Write(Messages.intTransfer);
+            serverOutStream.Write(expected);
+            try
+            {
+                result = clientDataTransferConnection.recieveShort();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveInt()
+        {
+            //given
+            int expected = int.MinValue;
+            int result;
+
+            //when
+            serverOutStream.Write(Messages.intTransfer);
+            serverOutStream.Write(expected);
+
+            result = clientDataTransferConnection.recieveInt();
+            //then
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveIntException()
+        {
+            //given
+            int expected = int.MinValue;
+            int result;
+
+            //when
+            serverOutStream.Write(Messages.boolTransfer);
+            serverOutStream.Write(expected);
+            try
+            {
+                result = clientDataTransferConnection.recieveInt();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveLong()
+        {
+            //given
+            long expected = long.MinValue;
+            long result;
+
+            //when
+            serverOutStream.Write(Messages.longTransfer);
+            serverOutStream.Write(expected);
+
+            result = clientDataTransferConnection.recieveLong();
+            //then
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveLongException()
+        {
+            //given
+            long expected = long.MinValue;
+            long result;
+
+            //when
+            serverOutStream.Write(Messages.intTransfer);
+            serverOutStream.Write(expected);
+            try
+            {
+                result = clientDataTransferConnection.recieveLong();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveUShort()
+        {
+            //given
+            ushort expected = ushort.MaxValue;
+            ushort result;
+
+            //when
+            serverOutStream.Write(Messages.ushortTransfer);
+            serverOutStream.Write(expected);
+
+            result = clientDataTransferConnection.recieveUShort();
+            //then
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveUShortException()
+        {
+            //given
+           ushort expected = ushort.MaxValue;
+            ushort result;
+
+            //when
+            serverOutStream.Write(Messages.intTransfer);
+            serverOutStream.Write(expected);
+            try
+            {
+                result = clientDataTransferConnection.recieveUShort();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveUInt()
+        {
+            //given
+            uint expected = uint.MaxValue;
+            uint result;
+
+            //when
+            serverOutStream.Write(Messages.uintTransfer);
+            serverOutStream.Write(expected);
+
+            result = clientDataTransferConnection.recieveUInt();
+            //then
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveUIntException()
+        {
+            //given
+            uint expected = uint.MaxValue;
+            uint result;
+
+            //when
+            serverOutStream.Write(Messages.intTransfer);
+            serverOutStream.Write(expected);
+            try
+            {
+                result = clientDataTransferConnection.recieveUInt();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveULong()
+        {
+            //given
+            ulong expected = ulong.MaxValue;
+            ulong result;
+
+            //when
+            serverOutStream.Write(Messages.ulongTransfer);
+            serverOutStream.Write(expected);
+
+            result = clientDataTransferConnection.recieveULong();
+            //then
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveULongException()
+        {
+            //given
+            ulong expected = ulong.MaxValue;
+            ulong result;
+
+            //when
+            serverOutStream.Write(Messages.intTransfer);
+            serverOutStream.Write(expected);
+            try
+            {
+                result = clientDataTransferConnection.recieveULong();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveByte()
+        {
+            //given
+            byte expected = byte.MaxValue;
+            byte result;
+
+            //when
+            serverOutStream.Write(Messages.byteTransfer);
+            serverOutStream.Write(expected);
+
+            result = clientDataTransferConnection.recieveByte();
+            //then
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveByteException()
+        {
+            //given
+            byte expected = byte.MaxValue;
+            byte result;
+
+            //when
+            serverOutStream.Write(Messages.intTransfer);
+            serverOutStream.Write(expected);
+            try
+            {
+                result = clientDataTransferConnection.recieveByte();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveSByte()
+        {
+            //given
+            sbyte expected = sbyte.MinValue;
+            sbyte result;
+
+            //when
+            serverOutStream.Write(Messages.sbyteTransfer);
+            serverOutStream.Write(expected);
+
+            result = clientDataTransferConnection.recieveSByte();
+            //then
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveSByteException()
+        {
+            //given
+            sbyte expected = sbyte.MinValue;
+            sbyte result;
+
+            //when
+            serverOutStream.Write(Messages.intTransfer);
+            serverOutStream.Write(expected);
+            try
+            {
+                result = clientDataTransferConnection.recieveSByte();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveChar()
+        {
+            //given
+            char expected = 'x';
+            char result;
+
+            //when
+            serverOutStream.Write(Messages.charTransfer);
+            serverOutStream.Write(expected);
+
+            result = clientDataTransferConnection.recieveChar();
+            //then
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveCharException()
+        {
+            //given
+            char expected = 'x' ;
+            char result;
+
+            //when
+            serverOutStream.Write(Messages.intTransfer);
+            serverOutStream.Write(expected);
+            try
+            {
+                result = clientDataTransferConnection.recieveChar();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveString()
+        {
+            //given
+            string expected = "napis testowy";
+            string result;
+
+            //when
+            serverOutStream.Write(Messages.stringTransfer);
+            serverOutStream.Write(expected);
+
+            result = clientDataTransferConnection.recieveString();
+            //then
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveStringException()
+        {
+            //given
+            string expected = "napis testowy";
+            string result;
+
+            //when
+            serverOutStream.Write(Messages.intTransfer);
+            serverOutStream.Write(expected);
+            try
+            {
+                result = clientDataTransferConnection.recieveString();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveDecimal()
+        {
+            //given
+            decimal expected = decimal.MinValue;
+            decimal result;
+
+            //when
+            serverOutStream.Write(Messages.decimalTransfer);
+            serverOutStream.Write(expected);
+
+            result = clientDataTransferConnection.recieveDecimal();
+            //then
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveDecimalException()
+        {
+            //given
+            decimal expected = decimal.MinValue;
+            decimal result;
+
+            //when
+            serverOutStream.Write(Messages.intTransfer);
+            serverOutStream.Write(expected);
+            try
+            {
+                result = clientDataTransferConnection.recieveDecimal();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveFloat()
+        {
+            //given
+            float expected = float.MinValue;
+            float result;
+
+            //when
+            serverOutStream.Write(Messages.floatTransfer);
+            serverOutStream.Write(expected);
+
+            result = clientDataTransferConnection.recieveFloat();
+            //then
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveFloatException()
+        {
+            //given
+            float expected = float.MinValue;
+            float result;
+
+            //when
+            serverOutStream.Write(Messages.intTransfer);
+            serverOutStream.Write(expected);
+            try
+            {
+                result = clientDataTransferConnection.recieveFloat();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveDouble()
+        {
+            //given
+            double expected = double.MinValue;
+            double result;
+
+            //when
+            serverOutStream.Write(Messages.doubleTransfer);
+            serverOutStream.Write(expected);
+
+            result = clientDataTransferConnection.recieveDouble();
+            //then
+            Assert.AreEqual(expected, result);
+        }
+
+        [TestCategory("simpleTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveFloatDouble()
+        {
+            //given
+            double expected = double.MinValue;
+            double result;
+
+            //when
+            serverOutStream.Write(Messages.intTransfer);
+            serverOutStream.Write(expected);
+            try
+            {
+                result = clientDataTransferConnection.recieveDouble();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        #endregion
+
+        #region arrayTypeRecieve
+
+        #endregion
+
+        #region listTypeRecieve
+
         #endregion
     }
 }

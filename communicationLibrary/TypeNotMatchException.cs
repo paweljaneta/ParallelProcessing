@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace communicationLibrary
 {
-    class TypeNotMatchException: Exception
+   public class TypeNotMatchException: Exception
     {
         public TypeNotMatchException()
         {

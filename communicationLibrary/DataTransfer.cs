@@ -21,19 +21,19 @@ namespace communicationLibrary
         #region exceptionHandlers
         private void IOExceptionHandler(IOException IOEx)
         {
-
+            throw IOEx;
         }
         private void ArgumentNullExceptionHandler(ArgumentNullException ArgNullEx)
         {
-
+            throw ArgNullEx;
         }
         private void ObjectDisposedExceptionHandler(ObjectDisposedException ObjDisposedEx)
         {
-
+            throw ObjDisposedEx;
         }
         private void EndOfStreamExceptionHandler(EndOfStreamException EOSEx)
         {
-
+            throw EOSEx;
         }
 
         #endregion
@@ -361,29 +361,6 @@ namespace communicationLibrary
             }
         }
 
-        // not sure if working
-        //public void send(object data)
-        //{
-        //    try
-        //    {
-        //        outStream.Write(Messages.objectTransfer);
-        //        outStream.Write(data);
-        //    }
-        //    catch (IOException IOEx)
-        //    {
-        //        IOExceptionHandler(IOEx);
-
-        //    }
-        //    catch (ArgumentNullException ArgNullEx)
-        //    {
-        //        ArgumentNullExceptionHandler(ArgNullEx);
-
-        //    }
-        //    catch (ObjectDisposedException ObjDisposedEx)
-        //    {
-        //        ObjectDisposedExceptionHandler(ObjDisposedEx);
-        //    }
-        //}
         #endregion
 
         #region arrayTypeSend
@@ -864,40 +841,7 @@ namespace communicationLibrary
             }
         }
 
-        // not sure if working
-        //public void send(object[] data)
-        //{
-        //    int count = data.Count();
-
-        //    if (count > 0)
-        //    {
-        //        try
-        //        {
-        //            outStream.Write(Messages.objectArrayTransfer);
-        //            outStream.Write(count);
-
-        //            for (int i = 0; i < count; i++)
-        //            {
-        //                outStream.Write(data[i]);
-        //            }
-
-        //        }
-        //        catch (IOException IOEx)
-        //        {
-        //            IOExceptionHandler(IOEx);
-
-        //        }
-        //        catch (ArgumentNullException ArgNullEx)
-        //        {
-        //            ArgumentNullExceptionHandler(ArgNullEx);
-
-        //        }
-        //        catch (ObjectDisposedException ObjDisposedEx)
-        //        {
-        //            ObjectDisposedExceptionHandler(ObjDisposedEx);
-        //        }
-        //    }
-        //}
+        
         #endregion
 
         #region listTypeSend
