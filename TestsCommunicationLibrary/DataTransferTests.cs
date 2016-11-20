@@ -1273,7 +1273,7 @@ namespace TestsCommunicationLibrary
         public void clientShouldRecieveUShortException()
         {
             //given
-           ushort expected = ushort.MaxValue;
+            ushort expected = ushort.MaxValue;
             ushort result;
 
             //when
@@ -1473,7 +1473,7 @@ namespace TestsCommunicationLibrary
         public void clientShouldRecieveCharException()
         {
             //given
-            char expected = 'x' ;
+            char expected = 'x';
             char result;
 
             //when
@@ -1659,10 +1659,10 @@ namespace TestsCommunicationLibrary
         public void clientShouldRecieveBoolArray()
         {
             //given
-            bool[] expected =new bool[numberOfElements];
+            bool[] expected = new bool[numberOfElements];
             bool[] result;
 
-            for(int i=0;i<numberOfElements;i++)
+            for (int i = 0; i < numberOfElements; i++)
             {
                 expected[i] = Convert.ToBoolean(i % 2);
             }
@@ -1671,20 +1671,20 @@ namespace TestsCommunicationLibrary
             serverOutStream.Write(Messages.boolArrayTransfer);
             serverOutStream.Write(numberOfElements);
 
-            
 
-            for(int i=0;i<numberOfElements;i++)
+
+            for (int i = 0; i < numberOfElements; i++)
             {
                 serverOutStream.Write(expected[i]);
             }
 
             result = clientDataTransferConnection.recieveArrayOfBools();
             //then
-            for(int i=0;i<numberOfElements;i++)
+            for (int i = 0; i < numberOfElements; i++)
             {
                 Assert.AreEqual(expected[i], result[i]);
             }
-           
+
         }
 
         [TestCategory("arrayTypeRecieve")]
@@ -2226,7 +2226,7 @@ namespace TestsCommunicationLibrary
 
             for (int i = 0; i < numberOfElements; i++)
             {
-                expected[i] = Convert.ToDecimal(long.MaxValue) + Convert.ToDecimal(random.Next()); 
+                expected[i] = Convert.ToDecimal(long.MaxValue) + Convert.ToDecimal(random.Next());
             }
 
             //when
@@ -2371,7 +2371,720 @@ namespace TestsCommunicationLibrary
         #endregion
 
         #region listTypeRecieve
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveBoolList()
+        {
+            //given
+            List<bool> expected = new List<bool>();
+            List<bool> result;
 
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToBoolean(i % 2));
+            }
+
+            //when
+            serverOutStream.Write(Messages.boolListTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveListOfBools();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveBoolListException()
+        {
+            //when
+            serverOutStream.Write(Messages.intListTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveListOfBools();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveShortList()
+        {
+            //given
+            List<short> expected = new List<short>();
+            List<short> result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToInt16(random.Next(-32768, 32767)));
+            }
+
+            //when
+            serverOutStream.Write(Messages.shortListTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveListOfShorts();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveShortListException()
+        {
+            //when
+            serverOutStream.Write(Messages.intListTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveListOfShorts();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveIntList()
+        {
+            //given
+            List<int> expected = new List<int>();
+            List<int> result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(random.Next());
+            }
+
+            //when
+            serverOutStream.Write(Messages.intListTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveListOfInts();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveIntListException()
+        {
+            //when
+            serverOutStream.Write(Messages.boolListTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveListOfInts();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveLongList()
+        {
+            //given
+            List<long> expected = new List<long>();
+            List<long> result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(int.MinValue - random.Next(1, int.MaxValue));
+            }
+
+            //when
+            serverOutStream.Write(Messages.longListTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveListOfLongs();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveLongListException()
+        {
+            //when
+            serverOutStream.Write(Messages.intListTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveListOfLongs();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveUShortList()
+        {
+            ///given
+            List<ushort> expected = new List<ushort>();
+            List<ushort> result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToUInt16(random.Next(ushort.MaxValue)));
+            }
+
+            //when
+            serverOutStream.Write(Messages.ushortListTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveListOfUShorts();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveUShortListException()
+        {
+            //when
+            serverOutStream.Write(Messages.intListTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveListOfUShorts();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveUIntList()
+        {
+            ///given
+            List<uint> expected = new List< uint>();
+            List<uint> result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToUInt32(random.Next(int.MaxValue)));
+            }
+
+            //when
+            serverOutStream.Write(Messages.uintListTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveListOfUInts();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveUIntListException()
+        {
+            //when
+            serverOutStream.Write(Messages.intListTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveListOfUInts();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveULongList()
+        {
+            ///given
+            List<ulong> expected = new List< ulong>();
+            List<ulong> result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(uint.MaxValue + Convert.ToUInt64(random.Next()));
+            }
+
+            //when
+            serverOutStream.Write(Messages.ulongListTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveListOfULongs();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveULongListException()
+        {
+            //when
+            serverOutStream.Write(Messages.intListTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveListOfULongs();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveByteList()
+        {
+            ///given
+            List<byte> expected = new List<byte>();
+            List<byte> result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToByte(random.Next(byte.MaxValue)));
+            }
+
+            //when
+            serverOutStream.Write(Messages.byteListTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveListOfBytes();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveByteListException()
+        {
+            //when
+            serverOutStream.Write(Messages.intListTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveListOfBytes();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveSByteList()
+        {
+            ///given
+            List<sbyte> expected = new List<sbyte>();
+            List<sbyte> result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToSByte(random.Next(sbyte.MinValue, sbyte.MaxValue)));
+            }
+
+            //when
+            serverOutStream.Write(Messages.sbyteListTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveListOfSBytes();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveSByteListException()
+        {
+            //when
+            serverOutStream.Write(Messages.intListTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveListOfSBytes();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveCharList()
+        {
+            ///given
+            List<char> expected = new List<char>();
+            List<char> result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToChar(random.Next(9)));
+            }
+
+            //when
+            serverOutStream.Write(Messages.charListTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveListOfChars();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveCharListException()
+        {
+            //when
+            serverOutStream.Write(Messages.intListTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveListOfChars();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveStringList()
+        {
+            ///given
+            List<string> expected = new List<string>();
+            List<string> result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add("napis testowy " + i.ToString());
+            }
+
+            //when
+            serverOutStream.Write(Messages.stringListTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveListOfStrings();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveStringListException()
+        {
+            //when
+            serverOutStream.Write(Messages.intListTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveListOfStrings();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveDecimalList()
+        {
+            ///given
+            List<decimal> expected = new List<decimal>();
+            List<decimal> result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToDecimal(long.MaxValue) + Convert.ToDecimal(random.Next()));
+            }
+
+            //when
+            serverOutStream.Write(Messages.decimalListTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveListOfDecimals();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveDecimalListException()
+        {
+            //when
+            serverOutStream.Write(Messages.intListTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveListOfDecimals();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveFloatList()
+        {
+            ///given
+            List<float> expected = new List<float>();
+            List<float> result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToSingle(random.NextDouble()));
+            }
+
+            //when
+            serverOutStream.Write(Messages.floatListTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveListOfFloats();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveFloatListException()
+        {
+            //when
+            serverOutStream.Write(Messages.intListTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveListOfFloats();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveDoubleList()
+        {
+            ///given
+            List<double> expected = new List<double>();
+            List<double> result;
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(random.NextDouble());
+            }
+
+            //when
+            serverOutStream.Write(Messages.doubleListTransfer);
+            serverOutStream.Write(numberOfElements);
+
+
+
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                serverOutStream.Write(expected[i]);
+            }
+
+            result = clientDataTransferConnection.recieveListOfDoubles();
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void clientShouldRecieveDoubleListException()
+        {
+            //when
+            serverOutStream.Write(Messages.intListTransfer);
+
+            try
+            {
+                clientDataTransferConnection.recieveListOfDoubles();
+                //then
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+            }
+
+        }
         #endregion
     }
 }
