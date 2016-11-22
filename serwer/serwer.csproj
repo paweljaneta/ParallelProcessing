@@ -44,8 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CalculationsView.cs" />
-    <Compile Include="ClientConnections.cs" />
-    <Compile Include="ClientConnectionThread.cs" />
     <Compile Include="Measurments.cs" />
     <Compile Include="serwerMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
