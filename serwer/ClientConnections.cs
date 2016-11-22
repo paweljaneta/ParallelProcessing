@@ -2930,6 +2930,205 @@ namespace serwer
         }
         #endregion
 
+        #region sendArray
+        public void sendBoolArray(bool[] data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendBoolArray(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendShortArray(short[] data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendShortArray(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendIntArray(int[] data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendIntArray(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendLongArray(long[] data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendLongArray(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendUShortArray(ushort[] data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendUShortArray(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendUIntArray(uint[] data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendUIntArray(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendULongArray(ulong[] data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendULongArray(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendByteArray(byte[] data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendByteArray(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendSByteArray(sbyte[] data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendSByteArray(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendCharArray(char[] data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendCharArray(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendStringArray(string[] data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendStringArray(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendDecimalArray(decimal[] data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendDecimalArray(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendFloatArray(float[] data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendFloatArray(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendDoubleArray(double[] data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendDoubleArray(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        #endregion
+
         #endregion
 
         #region sendByThreadID
