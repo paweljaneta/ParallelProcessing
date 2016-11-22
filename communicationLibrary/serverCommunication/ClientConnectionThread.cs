@@ -11,7 +11,7 @@ using communicationLibrary;
 
 namespace communicationLibrary
 {
-    class ClientConnectionThread
+    public class ClientConnectionThread
     {
         int clientID;
         int threadID;
