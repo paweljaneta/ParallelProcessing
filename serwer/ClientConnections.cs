@@ -2732,12 +2732,12 @@ namespace serwer
         #region sendMethods
         #region sendToFirstFree
         #region sendSimple
-        public void sendBool(bool data,out int threadID)
+        public void sendBool(bool data, out int threadID)
         {
             int thrID = -1;
-            for(int i=0;i<connectedClientsList.Count;i++)
+            for (int i = 0; i < connectedClientsList.Count; i++)
             {
-                if(!connectedClientsList[i].hasDataSend())
+                if (!connectedClientsList[i].hasDataSend())
                 {
                     connectedClientsList[i].sendBool(data);
                     thrID = connectedClientsList[i].getThreadID();
@@ -3129,10 +3129,1099 @@ namespace serwer
         }
         #endregion
 
+        #region sendList
+        public void sendBoolList(List<bool> data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendBoolList(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendShortList(List<short> data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendShortList(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendIntList(List<int> data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendIntList(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendLongList(List<long> data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendLongList(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendUShortList(List<ushort> data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendUShortList(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendUIntList(List<uint> data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendUIntList(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendULongList(List<ulong> data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendULongList(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendByteList(List<byte> data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendByteList(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendSByteList(List<sbyte> data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendSByteList(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendCharList(List<char> data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendCharList(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendStringList(List<string> data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendStringList(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendDecimalList(List<decimal> data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendDecimalList(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendFloatList(List<float> data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendFloatList(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendDoubleList(List<double> data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendDoubleList(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        #endregion
+
         #endregion
 
         #region sendByThreadID
+        #region sendSimple
+        public void sendBoolByID(bool data, int threadID)
+        {
+            int foundIndex = -1;
 
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendBool(data);
+            }
+
+        }
+        public void sendShortByID(short data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendShort(data);
+            }
+        }
+        public void sendIntByID(int data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendInt(data);
+            }
+        }
+        public void sendLongByID(long data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendLong(data);
+            }
+        }
+        public void sendUShortByID(ushort data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendUShort(data);
+            }
+        }
+        public void sendUIntByID(uint data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendUInt(data);
+            }
+        }
+        public void sendULongByID(ulong data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendULong(data);
+            }
+        }
+        public void sendByteByID(byte data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendByte(data);
+            }
+        }
+        public void sendSByteByID(sbyte data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendSByte(data);
+            }
+        }
+        public void sendCharByID(char data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendChar(data);
+            }
+        }
+        public void sendStringByID(string data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendString(data);
+            }
+        }
+        public void sendDecimalByID(decimal data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendDecimal(data);
+            }
+        }
+        public void sendFloatByID(float data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendFloat(data);
+            }
+        }
+        public void sendDoubleByID(double data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendDouble(data);
+            }
+        }
+        #endregion
+
+        #region sendArray
+        public void sendBoolArrayByID(bool[] data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendBoolArray(data);
+            }
+        }
+        public void sendShortArrayByID(short[] data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendShortArray(data);
+            }
+        }
+        public void sendIntArrayByID(int[] data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendIntArray(data);
+            }
+        }
+        public void sendLongArrayByID(long[] data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendLongArray(data);
+            }
+        }
+        public void sendUShortArrayByID(ushort[] data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendUShortArray(data);
+            }
+        }
+        public void sendUIntArrayByID(uint[] data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendUIntArray(data);
+            }
+        }
+        public void sendULongArrayByID(ulong[] data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendULongArray(data);
+            }
+        }
+        public void sendByteArrayByID(byte[] data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendByteArray(data);
+            }
+        }
+        public void sendSByteArrayByID(sbyte[] data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendSByteArray(data);
+            }
+        }
+        public void sendCharArrayByID(char[] data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendCharArray(data);
+            }
+        }
+        public void sendStringArrayByID(string[] data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendStringArray(data);
+            }
+        }
+        public void sendDecimalArrayByID(decimal[] data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendDecimalArray(data);
+            }
+        }
+        public void sendFloatArrayByID(float[] data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendFloatArray(data);
+            }
+        }
+        public void sendDoubleArrayByID(double[] data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendDoubleArray(data);
+            }
+        }
+        #endregion
+
+        #region sendList
+        public void sendBoolListByID(List<bool> data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendBoolList(data);
+            }
+        }
+        public void sendShortListByID(List<short> data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendShortList(data);
+            }
+        }
+        public void sendIntListByID(List<int> data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendIntList(data);
+            }
+        }
+        public void sendLongListByID(List<long> data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendLongList(data);
+            }
+        }
+        public void sendUShortListByID(List<ushort> data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendUShortList(data);
+            }
+        }
+        public void sendUIntListByID(List<uint> data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendUIntList(data);
+            }
+        }
+        public void sendULongListByID(List<ulong> data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendULongList(data);
+            }
+        }
+        public void sendByteListByID(List<byte> data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendByteList(data);
+            }
+        }
+        public void sendSByteListByID(List<sbyte> data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendSByteList(data);
+            }
+        }
+        public void sendCharListByID(List<char> data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendCharList(data);
+            }
+        }
+        public void sendStringListByID(List<string> data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendStringList(data);
+            }
+        }
+        public void sendDecimalListByID(List<decimal> data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendDecimalList(data);
+            }
+        }
+        public void sendFloatListByID(List<float> data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendFloatList(data);
+            }
+        }
+        public void sendDoubleListByID(List<double> data, int threadID)
+        {
+            int foundIndex = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getThreadID() == threadID)
+                {
+                    foundIndex = i;
+                }
+            }
+
+            if (foundIndex < 0)
+            {
+                throw new ArgumentException("ReadByID There is no client with that id");
+            }
+            else
+            {
+                connectedClientsList[foundIndex].sendDoubleList(data);
+            }
+        }
+        #endregion
         #endregion
 
         #endregion
