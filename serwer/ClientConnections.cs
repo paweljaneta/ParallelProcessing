@@ -18,9 +18,9 @@ namespace serwer
 
         #region readMethods
 
-            #region readFromFirstReady
+        #region readFromFirstReady
 
-                #region readSimple
+        #region readSimple
         public bool readBool(out int threadID)
         {
             foreach (ClientConnectionThread client in connectedClientsList)
@@ -499,7 +499,7 @@ namespace serwer
         }
         #endregion
 
-                #region readArray
+        #region readArray
         public bool[] readBoolArray(out int threadID)
         {
             foreach (ClientConnectionThread client in connectedClientsList)
@@ -976,7 +976,7 @@ namespace serwer
         #endregion
 
 
-                #region listTypes
+        #region listTypes
 
         public List<bool> readBoolList(out int threadID)
         {
@@ -1463,15 +1463,15 @@ namespace serwer
         {
             int foundIndex = -1;
 
-            for(int i=0;i<connectedClientsList.Count;i++)
+            for (int i = 0; i < connectedClientsList.Count; i++)
             {
-                if(connectedClientsList[i].getThreadID()==threadID)
+                if (connectedClientsList[i].getThreadID() == threadID)
                 {
                     foundIndex = i;
                 }
             }
 
-            if(foundIndex<0)
+            if (foundIndex < 0)
             {
                 throw new ArgumentException("ReadByID There is no client with that id");
             }
@@ -1480,7 +1480,7 @@ namespace serwer
                 connectedClientsList[foundIndex].recieveBool();
             }
 
-            while(!connectedClientsList[foundIndex].isDataRead())
+            while (!connectedClientsList[foundIndex].isDataRead())
             {
                 Thread.Sleep(1);
             }
@@ -2731,6 +2731,204 @@ namespace serwer
 
         #region sendMethods
         #region sendToFirstFree
+        #region sendSimple
+        public void sendBool(bool data,out int threadID)
+        {
+            int thrID = -1;
+            for(int i=0;i<connectedClientsList.Count;i++)
+            {
+                if(!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendBool(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendShort(short data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendShort(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendInt(int data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendInt(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendLong(long data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendLong(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendUShort(ushort data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendUShort(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendUInt(uint data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendUInt(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendULong(ulong data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendULong(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendByte(byte data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendByte(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendSByte(sbyte data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendSByte(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendChar(char data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendChar(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendString(string data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendString(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendDecimal(decimal data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendDecimal(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendFloat(float data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendFloat(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        public void sendDouble(double data, out int threadID)
+        {
+            int thrID = -1;
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (!connectedClientsList[i].hasDataSend())
+                {
+                    connectedClientsList[i].sendDouble(data);
+                    thrID = connectedClientsList[i].getThreadID();
+                    break;
+                }
+            }
+            threadID = thrID;
+        }
+        #endregion
 
         #endregion
 

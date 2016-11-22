@@ -97,6 +97,7 @@ namespace serwer
         public bool readBool()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.Bool;
         }
 
@@ -122,6 +123,7 @@ namespace serwer
         public short readShort()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.Short;
         }
 
@@ -147,6 +149,7 @@ namespace serwer
         public int readInt()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.Int;
         }
 
@@ -173,6 +176,7 @@ namespace serwer
         public long readLong()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.Long;
         }
 
@@ -199,6 +203,7 @@ namespace serwer
         public ushort readUShort()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.UShort;
         }
 
@@ -225,6 +230,7 @@ namespace serwer
         public uint readUInt()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.UInt;
         }
 
@@ -251,6 +257,7 @@ namespace serwer
         public ulong readULong()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.ULong;
         }
 
@@ -277,6 +284,7 @@ namespace serwer
         public byte readByte()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.Byte;
         }
 
@@ -303,6 +311,7 @@ namespace serwer
         public sbyte readSByte()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.SByte;
         }
 
@@ -328,6 +337,7 @@ namespace serwer
         public char readChar()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.Char;
         }
 
@@ -354,6 +364,7 @@ namespace serwer
         public string readString()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.String;
         }
 
@@ -380,6 +391,7 @@ namespace serwer
         public decimal readDecimal()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.Decimal;
         }
 
@@ -406,6 +418,7 @@ namespace serwer
         public float readFloat()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.Float;
         }
 
@@ -432,6 +445,7 @@ namespace serwer
         public double readDouble()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.Double;
         }
 
@@ -460,6 +474,7 @@ namespace serwer
         public bool[] readBoolArray()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.BoolArray;
         }
 
@@ -486,6 +501,7 @@ namespace serwer
         public short[] readShortArray()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.ShortArray;
         }
 
@@ -511,6 +527,7 @@ namespace serwer
         public int[] readIntArray()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.IntArray;
         }
 
@@ -536,6 +553,7 @@ namespace serwer
         public long[] readLongArray()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.LongArray;
         }
 
@@ -562,6 +580,7 @@ namespace serwer
         public ushort[] readUShortArray()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.UShortArray;
         }
 
@@ -588,6 +607,7 @@ namespace serwer
         public uint[] readUIntArray()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.UIntArray;
         }
 
@@ -614,6 +634,7 @@ namespace serwer
         public ulong[] readULongArray()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.ULongArray;
         }
 
@@ -640,6 +661,7 @@ namespace serwer
         public byte[] readByteArray()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.ByteArray;
         }
 
@@ -666,6 +688,7 @@ namespace serwer
         public sbyte[] readSByteArray()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.SByteArray;
         }
 
@@ -692,6 +715,7 @@ namespace serwer
         public char[] readCharArray()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.CharArray;
         }
 
@@ -718,6 +742,7 @@ namespace serwer
         public string[] readStringArray()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.StringArray;
         }
 
@@ -744,6 +769,7 @@ namespace serwer
         public decimal[] readDecimalArray()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.DecimalArray;
         }
 
@@ -770,6 +796,7 @@ namespace serwer
         public float[] readFloatArray()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.FloatArray;
         }
 
@@ -796,6 +823,7 @@ namespace serwer
         public double[] readDoubleArray()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.DoubleArray;
         }
 
@@ -825,6 +853,7 @@ namespace serwer
         public List<bool> readBoolList()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.BoolList;
         }
 
@@ -850,6 +879,7 @@ namespace serwer
         public List<short> readShortList()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.ShortList;
         }
 
@@ -876,6 +906,7 @@ namespace serwer
         public List<int> readIntList()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.IntList;
         }
 
@@ -909,6 +940,7 @@ namespace serwer
         public List<long> readLongList()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.LongList;
         }
 
@@ -935,6 +967,7 @@ namespace serwer
         public List<ushort> readUShortList()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.UShortList;
         }
 
@@ -961,6 +994,7 @@ namespace serwer
         public List<uint> readUIntList()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.UIntList;
         }
 
@@ -987,6 +1021,7 @@ namespace serwer
         public List<ulong> readULongList()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.ULongList;
         }
 
@@ -1013,6 +1048,7 @@ namespace serwer
         public List<byte> readByteList()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.ByteList;
         }
 
@@ -1039,6 +1075,7 @@ namespace serwer
         public List<sbyte> readSByteList()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.SByteList;
         }
 
@@ -1065,6 +1102,7 @@ namespace serwer
         public List<char> readCharList()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.CharList;
         }
 
@@ -1091,6 +1129,7 @@ namespace serwer
         public List<string> readStringList()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.StringList;
         }
 
@@ -1117,6 +1156,7 @@ namespace serwer
         public List<decimal> readDecimalList()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.DecimalList;
         }
 
@@ -1143,6 +1183,7 @@ namespace serwer
         public List<float> readFloatList()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.FloatList;
         }
 
@@ -1169,6 +1210,7 @@ namespace serwer
         public List<double> readDoubleList()
         {
             dataRead = false;
+            hasThreadData = false;
             return recievedData.DoubleList;
         }
 
@@ -1181,7 +1223,7 @@ namespace serwer
             hasThreadData = true;
             dataTransferConnection.send(data);
         }
-public void sendShort(short data)
+        public void sendShort(short data)
         {
             hasThreadData = true;
             dataTransferConnection.send(data);
