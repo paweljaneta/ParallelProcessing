@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 using communicationLibrary;
+using System.Threading;
 
 namespace TestsCommunicationLibrary
 {
@@ -24,6 +25,7 @@ namespace TestsCommunicationLibrary
         private DataTransfer clientToServerTransfers;
 
         private int numberOfElements = 5;
+        private int timeout = 20;
         Random random;
 
         [TestInitialize]
@@ -60,6 +62,8 @@ namespace TestsCommunicationLibrary
 
         }
 
+        #region simpleRecieve
+        [TestCategory("simpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveBool()
         {
@@ -80,6 +84,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
+        [TestCategory("simpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveShort()
         {
@@ -100,6 +105,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
+        [TestCategory("simpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveInt()
         {
@@ -120,6 +126,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
+        [TestCategory("simpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveLong()
         {
@@ -140,6 +147,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
+        [TestCategory("simpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveUShort()
         {
@@ -160,6 +168,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
+        [TestCategory("simpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveUInt()
         {
@@ -180,6 +189,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
+        [TestCategory("simpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveULong()
         {
@@ -200,6 +210,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
+        [TestCategory("simpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveByte()
         {
@@ -220,6 +231,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
+        [TestCategory("simpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveSByte()
         {
@@ -240,6 +252,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
+        [TestCategory("simpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveChar()
         {
@@ -260,6 +273,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
+        [TestCategory("simpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveString()
         {
@@ -280,6 +294,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
+        [TestCategory("simpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveDecimal()
         {
@@ -300,6 +315,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
+        [TestCategory("simpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveFloat()
         {
@@ -320,6 +336,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
+        [TestCategory("simpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveDouble()
         {
@@ -339,7 +356,516 @@ namespace TestsCommunicationLibrary
             //then
             Assert.AreEqual(expected, result);
         }
+        #endregion
 
+        #region arrayRecieve
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveBoolArray()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveBoolArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+           
+
+            result = clientConnectedToServer.readBoolArray();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveShortArray()
+        {
+            //given
+            short[] expected = new short[numberOfElements];
+            short[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToInt16(random.Next(-32768, 32767));
+            }
+            //when
+            clientConnectedToServer.recieveShortArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readShortArray();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveIntArray()
+        {
+            //given
+            int[] expected = new int[numberOfElements];
+            int[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = random.Next();
+            }
+            //when
+            clientConnectedToServer.recieveIntArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readIntArray();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveLongArray()
+        {
+            //given
+            long[] expected = new long[numberOfElements];
+            long[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = int.MinValue - random.Next(1, int.MaxValue);
+            }
+            //when
+            clientConnectedToServer.recieveLongArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readLongArray();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveUShortArray()
+        {
+            //given
+            ushort[] expected = new ushort[numberOfElements];
+            ushort[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToUInt16(random.Next(ushort.MaxValue));
+            }
+            //when
+            clientConnectedToServer.recieveUShortArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readUShortArray();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveUIntArray()
+        {
+            //given
+            uint[] expected = new uint[numberOfElements];
+            uint[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToUInt32(random.Next(int.MaxValue));
+            }
+            //when
+            clientConnectedToServer.recieveUIntArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readUIntArray();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveULongArray()
+        {
+            //given
+            ulong[] expected = new ulong[numberOfElements];
+            ulong[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = uint.MaxValue + Convert.ToUInt64(random.Next());
+            }
+            //when
+            clientConnectedToServer.recieveULongArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readULongArray();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveByteArray()
+        {
+            //given
+            byte[] expected = new byte[numberOfElements];
+            byte[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToByte(random.Next(byte.MaxValue));
+            }
+            //when
+            clientConnectedToServer.recieveByteArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readByteArray();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveSByteArray()
+        {
+            //given
+            sbyte[] expected = new sbyte[numberOfElements];
+            sbyte[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToSByte(random.Next(sbyte.MinValue, sbyte.MaxValue));
+            }
+            //when
+            clientConnectedToServer.recieveSByteArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readSByteArray();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveCharArray()
+        {
+            //given
+            char[] expected = new char[numberOfElements];
+            char[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToChar(random.Next(9));
+            }
+            //when
+            clientConnectedToServer.recieveCharArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readCharArray();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveStringArray()
+        {
+            //given
+            string[] expected = new string[numberOfElements];
+            string[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = "napis testowy " + i.ToString();
+            }
+            //when
+            clientConnectedToServer.recieveStringArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readStringArray();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveDecimalArray()
+        {
+            //given
+            decimal[] expected = new decimal[numberOfElements];
+            decimal[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToDecimal(long.MaxValue) + Convert.ToDecimal(random.Next());
+            }
+            //when
+            clientConnectedToServer.recieveDecimalArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readDecimalArray();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveFloatArray()
+        {
+            //given
+            float[] expected = new float[numberOfElements];
+            float[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToSingle(random.NextDouble());
+            }
+            //when
+            clientConnectedToServer.recieveFloatArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readFloatArray();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveDoubleArray()
+        {
+            //given
+            double[] expected = new double[numberOfElements];
+            double[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = random.NextDouble();
+            }
+
+            //when
+            clientConnectedToServer.recieveDoubleArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readDoubleArray();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+        #endregion
 
     }
 }
