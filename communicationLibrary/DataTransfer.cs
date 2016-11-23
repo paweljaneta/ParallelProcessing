@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Net.Sockets;
 
 namespace communicationLibrary
 {
@@ -16,6 +17,12 @@ namespace communicationLibrary
         {
             inStream = inputStream;
             outStream = outputStream;
+        }
+
+        public DataTransfer(TcpClient connection)
+        {
+            inStream = new BinaryReader(connection.GetStream());
+            outStream = new BinaryWriter(connection.GetStream());
         }
 
         #region exceptionHandlers
@@ -841,7 +848,7 @@ namespace communicationLibrary
             }
         }
 
-        
+
         #endregion
 
         #region listTypeSend
@@ -1326,7 +1333,7 @@ namespace communicationLibrary
         #region simpleTypeRecieve
         public bool recieveBool()
         {
-            bool result=false;
+            bool result = false;
 
             try
             {
@@ -1336,11 +1343,11 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.boolTransfer))
                 {
-                    result = inStream.ReadBoolean();   
+                    result = inStream.ReadBoolean();
                 }
                 else
                 {
-                    throw new TypeNotMatchException("Expected: "+Messages.boolTransfer+"Recieved: "+message);
+                    throw new TypeNotMatchException("Expected: " + Messages.boolTransfer + "Recieved: " + message);
                 }
 
             }
@@ -1409,7 +1416,7 @@ namespace communicationLibrary
 
         public int recieveInt()
         {
-            int result=0;
+            int result = 0;
 
             try
             {
@@ -1450,7 +1457,7 @@ namespace communicationLibrary
 
         public long recieveLong()
         {
-            long result=0;
+            long result = 0;
 
             try
             {
@@ -1491,7 +1498,7 @@ namespace communicationLibrary
 
         public ushort recieveUShort()
         {
-            ushort result=0;
+            ushort result = 0;
 
             try
             {
@@ -1532,7 +1539,7 @@ namespace communicationLibrary
 
         public uint recieveUInt()
         {
-            uint result=0;
+            uint result = 0;
 
             try
             {
@@ -1573,7 +1580,7 @@ namespace communicationLibrary
 
         public ulong recieveULong()
         {
-            ulong result=0;
+            ulong result = 0;
 
             try
             {
@@ -1614,7 +1621,7 @@ namespace communicationLibrary
 
         public byte recieveByte()
         {
-            byte result=0;
+            byte result = 0;
 
             try
             {
@@ -1655,7 +1662,7 @@ namespace communicationLibrary
 
         public sbyte recieveSByte()
         {
-            sbyte result=0;
+            sbyte result = 0;
 
             try
             {
@@ -1696,7 +1703,7 @@ namespace communicationLibrary
 
         public char recieveChar()
         {
-            char result='0';
+            char result = '0';
 
             try
             {
@@ -1778,7 +1785,7 @@ namespace communicationLibrary
 
         public decimal recieveDecimal()
         {
-            decimal result=0;
+            decimal result = 0;
 
             try
             {
@@ -1819,7 +1826,7 @@ namespace communicationLibrary
 
         public float recieveFloat()
         {
-            float result=0.0f;
+            float result = 0.0f;
 
             try
             {
@@ -1860,7 +1867,7 @@ namespace communicationLibrary
 
         public double recieveDouble()
         {
-            double result=0.0;
+            double result = 0.0;
 
             try
             {
@@ -1916,12 +1923,12 @@ namespace communicationLibrary
                 if (message.Equals(Messages.boolArrayTransfer))
                 {
                     count = inStream.ReadInt32();
-                    
-                    if(count>=0)
+
+                    if (count >= 0)
                     {
                         result = new bool[count];
 
-                        for(int i=0;i<count;i++)
+                        for (int i = 0; i < count; i++)
                         {
                             result[i] = inStream.ReadBoolean();
                         }
@@ -2320,7 +2327,7 @@ namespace communicationLibrary
 
                     if (count >= 0)
                     {
-                       // result = new byte[count];
+                        // result = new byte[count];
 
                         result = inStream.ReadBytes(count);
 
@@ -2437,14 +2444,14 @@ namespace communicationLibrary
 
                     if (count >= 0)
                     {
-                       // result = new int[count];
+                        // result = new int[count];
 
                         result = inStream.ReadChars(count);
 
-                      //  for (int i = 0; i < count; i++)
-                      //  {
-                     //       result[i] = inStream.ReadInt32();
-                     //   }
+                        //  for (int i = 0; i < count; i++)
+                        //  {
+                        //       result[i] = inStream.ReadInt32();
+                        //   }
 
                     }
                     else
@@ -2730,7 +2737,7 @@ namespace communicationLibrary
 
                         for (int i = 0; i < count; i++)
                         {
-                            result.Add (inStream.ReadBoolean());
+                            result.Add(inStream.ReadBoolean());
                         }
 
                     }
@@ -2884,7 +2891,7 @@ namespace communicationLibrary
 
         public List<long> recieveListOfLongs()
         {
-           List< long> result = new List<long>();
+            List<long> result = new List<long>();
 
             try
             {
@@ -3057,7 +3064,7 @@ namespace communicationLibrary
 
         public List<ulong> recieveListOfULongs()
         {
-           List< ulong> result = new List<ulong>();
+            List<ulong> result = new List<ulong>();
 
             try
             {
@@ -3173,7 +3180,7 @@ namespace communicationLibrary
 
         public List<sbyte> recieveListOfSBytes()
         {
-           List< sbyte> result = new List<sbyte>();
+            List<sbyte> result = new List<sbyte>();
 
             try
             {

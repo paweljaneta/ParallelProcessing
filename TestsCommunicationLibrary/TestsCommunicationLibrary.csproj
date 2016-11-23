@@ -55,6 +55,7 @@
     <Compile Include="DataTransferTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ClientConnectionThreadTests.cs" />
+    <Compile Include="ClientConnectionsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\communicationLibrary\communicationLibrary.csproj">

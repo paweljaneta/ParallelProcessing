@@ -21,8 +21,6 @@ namespace TestsCommunicationLibrary
         private string serverIP = "127.0.0.1", clientIP = "127.0.0.1";
         private int port = 1807;
 
-        //private DataTransfer clientDataTransferConnection, serverDataTransferConnection;
-
         private ClientConnectionThread clientConnectedToServer;
         private DataTransfer clientToServerTransfers;
 
