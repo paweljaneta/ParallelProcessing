@@ -865,6 +865,541 @@ namespace TestsCommunicationLibrary
                 Assert.AreEqual(expected[i], result[i]);
             }
         }
+
+
+
+        [TestCategory("arrayTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveBoolArrayException()
+        {
+            //given
+            short[] expected = new short[numberOfElements];
+            short[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToInt16(random.Next(-32768, 32767));
+            }
+            //when
+            clientConnectedToServer.recieveBoolArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readBoolArray();
+                Assert.Fail();
+            }
+            catch(TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveShortArrayException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveShortArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readShortArray();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveIntArrayException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveIntArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+               clientConnectedToServer.readIntArray();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveLongArrayException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveLongArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readLongArray();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveUShortArrayException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveUShortArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readUShortArray();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveUIntArrayException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveUIntArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readUIntArray();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveULongArrayException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveULongArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+               clientConnectedToServer.readULongArray();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveByteArrayException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveByteArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readByteArray();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveSByteArrayException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveSByteArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readSByteArray();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveCharArrayException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveCharArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readCharArray();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveStringArrayException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveStringArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+               clientConnectedToServer.readStringArray();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveDecimalArrayException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveDecimalArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readDecimalArray();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveFloatArrayException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveFloatArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+               clientConnectedToServer.readFloatArray();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("arrayTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveDoubleArrayException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveDoubleArray();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readDoubleArray();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
         #endregion
 
     }

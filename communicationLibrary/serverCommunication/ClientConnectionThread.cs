@@ -26,7 +26,9 @@ namespace communicationLibrary
 
         bool dataRead;
         bool hasThreadData;
+        bool exceptionCaught;
         DTO recievedData;
+        Exception exception;
 
         public ClientConnectionThread(TcpClient connection, int clientID, int threadID)
         {
@@ -45,6 +47,7 @@ namespace communicationLibrary
                 hasThreadData = false;
                 recievedData = new DTO();
                 readThread = null;
+                exceptionCaught = false;
                 this.clientID = clientID;
                 this.threadID = threadID;
 
@@ -93,13 +96,34 @@ namespace communicationLibrary
         private void recieveBoolThread()
         {
             recievedData = new DTO();
-            recievedData.Bool = dataTransferConnection.recieveBool();
+            try
+            {
+                recievedData.Bool = dataTransferConnection.recieveBool();
+
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
+
             dataRead = true;
         }
         public bool readBool()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
+
             return recievedData.Bool;
         }
 
@@ -119,13 +143,26 @@ namespace communicationLibrary
         private void recieveShortThread()
         {
             recievedData = new DTO();
-            recievedData.Short = dataTransferConnection.recieveShort();
+            try
+            {
+                recievedData.Short = dataTransferConnection.recieveShort();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public short readShort()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.Short;
         }
 
@@ -145,13 +182,26 @@ namespace communicationLibrary
         private void recieveIntThread()
         {
             recievedData = new DTO();
-            recievedData.Int = dataTransferConnection.recieveInt();
+            try
+            {
+                recievedData.Int = dataTransferConnection.recieveInt();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public int readInt()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.Int;
         }
 
@@ -172,13 +222,26 @@ namespace communicationLibrary
         private void recieveLongThread()
         {
             recievedData = new DTO();
-            recievedData.Long = dataTransferConnection.recieveLong();
+            try
+            {
+                recievedData.Long = dataTransferConnection.recieveLong();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public long readLong()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.Long;
         }
 
@@ -199,13 +262,26 @@ namespace communicationLibrary
         private void recieveUShortThread()
         {
             recievedData = new DTO();
-            recievedData.UShort = dataTransferConnection.recieveUShort();
+            try
+            {
+                recievedData.UShort = dataTransferConnection.recieveUShort();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public ushort readUShort()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.UShort;
         }
 
@@ -226,13 +302,26 @@ namespace communicationLibrary
         private void recieveUIntThread()
         {
             recievedData = new DTO();
-            recievedData.UInt = dataTransferConnection.recieveUInt();
+            try
+            {
+                recievedData.UInt = dataTransferConnection.recieveUInt();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public uint readUInt()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.UInt;
         }
 
@@ -253,13 +342,26 @@ namespace communicationLibrary
         private void recieveULongThread()
         {
             recievedData = new DTO();
-            recievedData.ULong = dataTransferConnection.recieveULong();
+            try
+            {
+                recievedData.ULong = dataTransferConnection.recieveULong();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public ulong readULong()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.ULong;
         }
 
@@ -280,13 +382,26 @@ namespace communicationLibrary
         private void recieveByteThread()
         {
             recievedData = new DTO();
-            recievedData.Byte = dataTransferConnection.recieveByte();
+            try
+            {
+                recievedData.Byte = dataTransferConnection.recieveByte();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public byte readByte()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.Byte;
         }
 
@@ -307,13 +422,26 @@ namespace communicationLibrary
         private void recieveSByteThread()
         {
             recievedData = new DTO();
-            recievedData.SByte = dataTransferConnection.recieveSByte();
+            try
+            {
+                recievedData.SByte = dataTransferConnection.recieveSByte();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public sbyte readSByte()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.SByte;
         }
 
@@ -333,13 +461,26 @@ namespace communicationLibrary
         private void recieveCharThread()
         {
             recievedData = new DTO();
-            recievedData.Char = dataTransferConnection.recieveChar();
+            try
+            {
+                recievedData.Char = dataTransferConnection.recieveChar();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public char readChar()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.Char;
         }
 
@@ -360,13 +501,26 @@ namespace communicationLibrary
         private void recieveStringThread()
         {
             recievedData = new DTO();
-            recievedData.String = dataTransferConnection.recieveString();
+            try
+            {
+                recievedData.String = dataTransferConnection.recieveString();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public string readString()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.String;
         }
 
@@ -387,13 +541,26 @@ namespace communicationLibrary
         private void recieveDecimalThread()
         {
             recievedData = new DTO();
-            recievedData.Decimal = dataTransferConnection.recieveDecimal();
+            try
+            {
+                recievedData.Decimal = dataTransferConnection.recieveDecimal();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public decimal readDecimal()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.Decimal;
         }
 
@@ -414,13 +581,26 @@ namespace communicationLibrary
         private void recieveFloatThread()
         {
             recievedData = new DTO();
-            recievedData.Float = dataTransferConnection.recieveFloat();
+            try
+            {
+                recievedData.Float = dataTransferConnection.recieveFloat();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public float readFloat()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.Float;
         }
 
@@ -441,13 +621,26 @@ namespace communicationLibrary
         private void recieveDoubleThread()
         {
             recievedData = new DTO();
-            recievedData.Double = dataTransferConnection.recieveDouble();
+            try
+            {
+                recievedData.Double = dataTransferConnection.recieveDouble();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public double readDouble()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.Double;
         }
 
@@ -470,13 +663,26 @@ namespace communicationLibrary
         private void recieveBoolArrayThread()
         {
             recievedData = new DTO();
-            recievedData.BoolArray = dataTransferConnection.recieveArrayOfBools();
+            try
+            {
+                recievedData.BoolArray = dataTransferConnection.recieveArrayOfBools();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public bool[] readBoolArray()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.BoolArray;
         }
 
@@ -497,13 +703,27 @@ namespace communicationLibrary
         private void recieveShortArrayThread()
         {
             recievedData = new DTO();
-            recievedData.ShortArray = dataTransferConnection.recieveArrayOfShorts();
+            try
+            {
+                recievedData.ShortArray = dataTransferConnection.recieveArrayOfShorts();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public short[] readShortArray()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
+
             return recievedData.ShortArray;
         }
 
@@ -523,13 +743,26 @@ namespace communicationLibrary
         private void recieveIntArrayThread()
         {
             recievedData = new DTO();
-            recievedData.IntArray = dataTransferConnection.recieveArrayOfInts();
+            try
+            {
+                recievedData.IntArray = dataTransferConnection.recieveArrayOfInts();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public int[] readIntArray()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.IntArray;
         }
 
@@ -549,13 +782,27 @@ namespace communicationLibrary
         private void recieveLongArrayThread()
         {
             recievedData = new DTO();
-            recievedData.LongArray = dataTransferConnection.recieveArrayOfLongs();
+            try
+            {
+                recievedData.LongArray = dataTransferConnection.recieveArrayOfLongs();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
+
             dataRead = true;
         }
         public long[] readLongArray()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.LongArray;
         }
 
@@ -576,13 +823,26 @@ namespace communicationLibrary
         private void recieveUShortArrayThread()
         {
             recievedData = new DTO();
-            recievedData.UShortArray = dataTransferConnection.recieveArrayOfUShorts();
+            try
+            {
+                recievedData.UShortArray = dataTransferConnection.recieveArrayOfUShorts();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public ushort[] readUShortArray()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.UShortArray;
         }
 
@@ -603,13 +863,26 @@ namespace communicationLibrary
         private void recieveUIntArrayThread()
         {
             recievedData = new DTO();
-            recievedData.UIntArray = dataTransferConnection.recieveArrayOfUInts();
+            try
+            {
+                recievedData.UIntArray = dataTransferConnection.recieveArrayOfUInts();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public uint[] readUIntArray()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.UIntArray;
         }
 
@@ -630,13 +903,26 @@ namespace communicationLibrary
         private void recieveULongArrayThread()
         {
             recievedData = new DTO();
-            recievedData.ULongArray = dataTransferConnection.recieveArrayOfULongs();
+            try
+            {
+                recievedData.ULongArray = dataTransferConnection.recieveArrayOfULongs();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public ulong[] readULongArray()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.ULongArray;
         }
 
@@ -657,13 +943,26 @@ namespace communicationLibrary
         private void recieveByteArrayThread()
         {
             recievedData = new DTO();
-            recievedData.ByteArray = dataTransferConnection.recieveArrayOfBytes();
+            try
+            {
+                recievedData.ByteArray = dataTransferConnection.recieveArrayOfBytes();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public byte[] readByteArray()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.ByteArray;
         }
 
@@ -684,13 +983,26 @@ namespace communicationLibrary
         private void recieveSByteArrayThread()
         {
             recievedData = new DTO();
-            recievedData.SByteArray = dataTransferConnection.recieveArrayOfSBytes();
+            try
+            {
+                recievedData.SByteArray = dataTransferConnection.recieveArrayOfSBytes();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public sbyte[] readSByteArray()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.SByteArray;
         }
 
@@ -711,13 +1023,26 @@ namespace communicationLibrary
         private void recieveCharArrayThread()
         {
             recievedData = new DTO();
-            recievedData.CharArray = dataTransferConnection.recieveArrayOfChars();
+            try
+            {
+                recievedData.CharArray = dataTransferConnection.recieveArrayOfChars();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public char[] readCharArray()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.CharArray;
         }
 
@@ -738,13 +1063,26 @@ namespace communicationLibrary
         private void recieveStringArrayThread()
         {
             recievedData = new DTO();
-            recievedData.StringArray = dataTransferConnection.recieveArrayOfStrings();
+            try
+            {
+                recievedData.StringArray = dataTransferConnection.recieveArrayOfStrings();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public string[] readStringArray()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.StringArray;
         }
 
@@ -765,13 +1103,26 @@ namespace communicationLibrary
         private void recieveDecimalArrayThread()
         {
             recievedData = new DTO();
-            recievedData.DecimalArray = dataTransferConnection.recieveArrayOfDecimals();
+            try
+            {
+                recievedData.DecimalArray = dataTransferConnection.recieveArrayOfDecimals();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public decimal[] readDecimalArray()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.DecimalArray;
         }
 
@@ -792,13 +1143,26 @@ namespace communicationLibrary
         private void recieveFloatArrayThread()
         {
             recievedData = new DTO();
-            recievedData.FloatArray = dataTransferConnection.recieveArrayOfFloats();
+            try
+            {
+                recievedData.FloatArray = dataTransferConnection.recieveArrayOfFloats();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public float[] readFloatArray()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.FloatArray;
         }
 
@@ -819,13 +1183,26 @@ namespace communicationLibrary
         private void recieveDoubleArrayThread()
         {
             recievedData = new DTO();
-            recievedData.DoubleArray = dataTransferConnection.recieveArrayOfDoubles();
+            try
+            {
+                recievedData.DoubleArray = dataTransferConnection.recieveArrayOfDoubles();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public double[] readDoubleArray()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.DoubleArray;
         }
 
@@ -849,13 +1226,26 @@ namespace communicationLibrary
         private void recieveBoolListThread()
         {
             recievedData = new DTO();
-            recievedData.BoolList = dataTransferConnection.recieveListOfBools();
+            try
+            {
+                recievedData.BoolList = dataTransferConnection.recieveListOfBools();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public List<bool> readBoolList()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.BoolList;
         }
 
@@ -875,13 +1265,26 @@ namespace communicationLibrary
         private void recieveShortListThread()
         {
             recievedData = new DTO();
-            recievedData.ShortList = dataTransferConnection.recieveListOfShorts();
+            try
+            {
+                recievedData.ShortList = dataTransferConnection.recieveListOfShorts();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public List<short> readShortList()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.ShortList;
         }
 
@@ -902,13 +1305,26 @@ namespace communicationLibrary
         private void recieveIntListThread()
         {
             recievedData = new DTO();
-            recievedData.IntList = dataTransferConnection.recieveListOfInts();
+            try
+            {
+                recievedData.IntList = dataTransferConnection.recieveListOfInts();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public List<int> readIntList()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.IntList;
         }
 
@@ -936,13 +1352,26 @@ namespace communicationLibrary
                 }
             }
             recievedData = new DTO();
-            recievedData.LongList = dataTransferConnection.recieveListOfLongs();
+            try
+            {
+                recievedData.LongList = dataTransferConnection.recieveListOfLongs();
+            }
+            catch (Exception ex)
+            {
+                exception = ex;
+                exceptionCaught = true;
+            }
             dataRead = true;
         }
         public List<long> readLongList()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.LongList;
         }
 
@@ -963,13 +1392,26 @@ namespace communicationLibrary
         private void recieveUShortListThread()
         {
             recievedData = new DTO();
-            recievedData.UShortList = dataTransferConnection.recieveListOfUShorts();
+            try
+            {
+                recievedData.UShortList = dataTransferConnection.recieveListOfUShorts();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public List<ushort> readUShortList()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.UShortList;
         }
 
@@ -990,13 +1432,26 @@ namespace communicationLibrary
         private void recieveUIntListThread()
         {
             recievedData = new DTO();
-            recievedData.UIntList = dataTransferConnection.recieveListOfUInts();
+            try
+            {
+                recievedData.UIntList = dataTransferConnection.recieveListOfUInts();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public List<uint> readUIntList()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.UIntList;
         }
 
@@ -1017,13 +1472,26 @@ namespace communicationLibrary
         private void recieveULongListThread()
         {
             recievedData = new DTO();
-            recievedData.ULongList = dataTransferConnection.recieveListOfULongs();
+            try
+            {
+                recievedData.ULongList = dataTransferConnection.recieveListOfULongs();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public List<ulong> readULongList()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.ULongList;
         }
 
@@ -1044,13 +1512,26 @@ namespace communicationLibrary
         private void recieveByteListThread()
         {
             recievedData = new DTO();
-            recievedData.ByteList = dataTransferConnection.recieveListOfBytes();
+            try
+            {
+                recievedData.ByteList = dataTransferConnection.recieveListOfBytes();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public List<byte> readByteList()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.ByteList;
         }
 
@@ -1071,13 +1552,26 @@ namespace communicationLibrary
         private void recieveSByteListThread()
         {
             recievedData = new DTO();
-            recievedData.SByteList = dataTransferConnection.recieveListOfSBytes();
+            try
+            {
+                recievedData.SByteList = dataTransferConnection.recieveListOfSBytes();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public List<sbyte> readSByteList()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.SByteList;
         }
 
@@ -1098,13 +1592,26 @@ namespace communicationLibrary
         private void recieveCharListThread()
         {
             recievedData = new DTO();
-            recievedData.CharList = dataTransferConnection.recieveListOfChars();
+            try
+            {
+                recievedData.CharList = dataTransferConnection.recieveListOfChars();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public List<char> readCharList()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.CharList;
         }
 
@@ -1125,13 +1632,26 @@ namespace communicationLibrary
         private void recieveStringListThread()
         {
             recievedData = new DTO();
-            recievedData.StringList = dataTransferConnection.recieveListOfStrings();
+            try
+            {
+                recievedData.StringList = dataTransferConnection.recieveListOfStrings();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public List<string> readStringList()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.StringList;
         }
 
@@ -1152,13 +1672,26 @@ namespace communicationLibrary
         private void recieveDecimalListThread()
         {
             recievedData = new DTO();
-            recievedData.DecimalList = dataTransferConnection.recieveListOfDecimals();
+            try
+            {
+                recievedData.DecimalList = dataTransferConnection.recieveListOfDecimals();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public List<decimal> readDecimalList()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.DecimalList;
         }
 
@@ -1179,13 +1712,26 @@ namespace communicationLibrary
         private void recieveFloatListThread()
         {
             recievedData = new DTO();
-            recievedData.FloatList = dataTransferConnection.recieveListOfFloats();
+            try
+            {
+                recievedData.FloatList = dataTransferConnection.recieveListOfFloats();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public List<float> readFloatList()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.FloatList;
         }
 
@@ -1206,13 +1752,26 @@ namespace communicationLibrary
         private void recieveDoubleListThread()
         {
             recievedData = new DTO();
-            recievedData.DoubleList = dataTransferConnection.recieveListOfDoubles();
+            try
+            {
+                recievedData.DoubleList = dataTransferConnection.recieveListOfDoubles();
+            }
+            catch (Exception ex)
+            {
+                exceptionCaught = true;
+                exception = ex;
+            }
             dataRead = true;
         }
         public List<double> readDoubleList()
         {
             dataRead = false;
             hasThreadData = false;
+            if (exceptionCaught)
+            {
+                exceptionCaught = false;
+                throw exception;
+            }
             return recievedData.DoubleList;
         }
 
