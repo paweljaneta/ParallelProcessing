@@ -5,6 +5,8 @@ using System.Net.Sockets;
 using System.IO;
 using communicationLibrary;
 using System.Threading;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace TestsCommunicationLibrary
 {
@@ -356,6 +358,541 @@ namespace TestsCommunicationLibrary
             //then
             Assert.AreEqual(expected, result);
         }
+
+
+
+        [TestCategory("simpleTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveBoolException()
+        {
+            //given
+            short[] expected = new short[numberOfElements];
+            short[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToInt16(random.Next(-32768, 32767));
+            }
+            //when
+            clientConnectedToServer.recieveBool();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readBool();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("simpleTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveShortException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveShort();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readShort();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("simpleTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveIntException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveInt();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readInt();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("simpleTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveLongException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveLong();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readLong();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("simpleTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveUShortException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveUShort();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readUShort();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("simpleTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveUIntException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveUInt();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readUInt();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("simpleTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveULongException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveULong();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readULong();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("simpleTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveByteException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveByte();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readByte();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("simpleTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveSByteException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveSByte();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readSByte();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("simpleTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveCharException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveChar();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readChar();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("simpleTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveStringException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveString();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readString();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("simpleTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveDecimalException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveDecimal();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readDecimal();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("simpleTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveFloatException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveFloat();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readFloat();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("simpleTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveDoubleException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveDouble();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readDouble();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
         #endregion
 
         #region arrayRecieve
@@ -1392,6 +1929,1050 @@ namespace TestsCommunicationLibrary
             try
             {
                 clientConnectedToServer.readDoubleArray();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        #endregion
+
+        #region listRecieve
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveBoolList()
+        {
+            //given
+            List<bool> expected = new List<bool>();
+            List<bool> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToBoolean(i % 2));
+            }
+            //when
+            clientConnectedToServer.recieveBoolList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+
+
+            result = clientConnectedToServer.readBoolList();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveShortList()
+        {
+            //given
+            List<short> expected = new List<short>();
+            List<short> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToInt16(random.Next(-32768, 32767)));
+            }
+            //when
+            clientConnectedToServer.recieveShortList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readShortList();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveIntList()
+        {
+            //given
+            List<int> expected = new List<int>();
+            List<int> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(random.Next());
+            }
+            //when
+            clientConnectedToServer.recieveIntList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readIntList();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveLongList()
+        {
+            //given
+            List<long> expected = new List<long>();
+            List<long> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(int.MinValue - random.Next(1, int.MaxValue));
+            }
+            //when
+            clientConnectedToServer.recieveLongList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readLongList();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveUShortList()
+        {
+            //given
+            List<ushort> expected = new List<ushort>();
+            List<ushort> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToUInt16(random.Next(ushort.MaxValue)));
+            }
+            //when
+            clientConnectedToServer.recieveUShortList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readUShortList();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveUIntList()
+        {
+            //given
+            List<uint> expected = new List<uint>();
+            List<uint> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToUInt32(random.Next(int.MaxValue)));
+            }
+            //when
+            clientConnectedToServer.recieveUIntList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readUIntList();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveULongList()
+        {
+            //given
+            List<ulong> expected = new List<ulong>();
+            List<ulong> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(uint.MaxValue + Convert.ToUInt64(random.Next()));
+            }
+            //when
+            clientConnectedToServer.recieveULongList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readULongList();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveByteList()
+        {
+            //given
+            List<byte> expected = new List<byte>();
+            List<byte> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToByte(random.Next(byte.MaxValue)));
+            }
+            //when
+            clientConnectedToServer.recieveByteList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readByteList();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveSByteList()
+        {
+            //given
+            List<sbyte> expected = new List<sbyte>();
+            List<sbyte> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToSByte(random.Next(sbyte.MinValue, sbyte.MaxValue)));
+            }
+            //when
+            clientConnectedToServer.recieveSByteList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readSByteList();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveCharList()
+        {
+            //given
+            List<char> expected = new List<char>();
+            List<char> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToChar(random.Next(9)));
+            }
+            //when
+            clientConnectedToServer.recieveCharList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readCharList();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveStringList()
+        {
+            //given
+            List<string> expected = new List<string>();
+            List<string> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add("napis testowy " + i.ToString());
+            }
+            //when
+            clientConnectedToServer.recieveStringList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readStringList();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveDecimalList()
+        {
+            //given
+            List<decimal> expected = new List<decimal>();
+            List<decimal> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToDecimal(long.MaxValue) + Convert.ToDecimal(random.Next()));
+            }
+            //when
+            clientConnectedToServer.recieveDecimalList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readDecimalList();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveFloatList()
+        {
+            //given
+            List<float> expected = new List<float>();
+            List<float> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToSingle(random.NextDouble()));
+            }
+            //when
+            clientConnectedToServer.recieveFloatList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readFloatList();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+        [TestCategory("listTypeRecieve")]
+        [TestMethod]
+        public void ShouldRecieveDoubleList()
+        {
+            //given
+            List<double> expected = new List<double>();
+            List<double> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(random.NextDouble());
+            }
+
+            //when
+            clientConnectedToServer.recieveDoubleList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            result = clientConnectedToServer.readDoubleList();
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+        }
+
+
+
+        [TestCategory("listTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveBoolListException()
+        {
+            //given
+            short[] expected = new short[numberOfElements];
+            short[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToInt16(random.Next(-32768, 32767));
+            }
+            //when
+            clientConnectedToServer.recieveBoolList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readBoolList();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("listTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveShortListException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveShortList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readShortList();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("listTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveIntListException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveIntList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readIntList();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("listTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveLongListException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveLongList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readLongList();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("listTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveUShortListException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveUShortList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readUShortList();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("listTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveUIntListException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveUIntList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readUIntList();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("listTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveULongListException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveULongList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readULongList();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("listTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveByteListException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveByteList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readByteList();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("listTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveSByteListException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveSByteList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readSByteList();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("listTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveCharListException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveCharList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readCharList();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("listTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveStringListException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveStringList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readStringList();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("listTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveDecimalListException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveDecimalList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readDecimalList();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("listTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveFloatListException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveFloatList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readFloatList();
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException ex)
+            {
+                Assert.AreEqual(1, 1);
+            }
+        }
+
+        [TestCategory("listTypeRecieveException")]
+        [TestMethod]
+        public void ShouldRecieveDoubleListException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            //when
+            clientConnectedToServer.recieveDoubleList();
+
+            clientToServerTransfers.send(expected);
+
+            int counter = 0;
+            while (!clientConnectedToServer.isDataRead())
+            {
+                counter++;
+                Thread.Sleep(1);
+                if (counter >= timeout)
+                {
+                    Assert.Fail();
+                }
+            }
+
+            try
+            {
+                clientConnectedToServer.readDoubleList();
                 Assert.Fail();
             }
             catch (TypeNotMatchException ex)

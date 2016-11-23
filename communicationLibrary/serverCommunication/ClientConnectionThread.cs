@@ -1344,13 +1344,6 @@ namespace communicationLibrary
         }
         private void recieveLongListThread()
         {
-            if (readThread != null)
-            {
-                if (readThread.IsAlive)
-                {
-                    readThread.Abort();
-                }
-            }
             recievedData = new DTO();
             try
             {
