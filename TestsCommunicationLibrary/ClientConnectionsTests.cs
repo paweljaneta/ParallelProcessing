@@ -1139,6 +1139,8 @@ namespace TestsCommunicationLibrary
         }
         #endregion
 
+        #region noClientException
+        [TestCategory("clientConnectionNoClientsException")]
         [TestMethod]
         public void ShouldReadBoolNoClientsException()
         {
@@ -1152,6 +1154,626 @@ namespace TestsCommunicationLibrary
             catch (ArgumentException e)
             { }
         }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadShortNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readShort(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadIntNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readInt(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadLongNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readLong(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadUShortNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readUShort(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadUIntNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readUInt(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadULongNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readULong(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadByteNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readByte(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadSByteNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readSByte(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadCharNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readChar(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadStringNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readString(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadDecimalNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readDecimal(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadFloatNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readFloat(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadDoubleNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readDouble(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadBoolArrayNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readBoolArray(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadShortArrayNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readShortArray(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadIntArrayNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readIntArray(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadLongArrayNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readLongArray(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadUShortArrayNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readUShortArray(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadUIntArrayNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readUIntArray(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadULongArrayNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readULongArray(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadByteArrayNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readByteArray(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadSByteArrayNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readSByteArray(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadCharArrayNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readCharArray(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadStringArrayNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readStringArray(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadDecimalArrayNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readDecimalArray(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadFloatArrayNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readFloatArray(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadDoubleArrayNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readDoubleArray(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadBoolListNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readBoolList(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadShortListNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readShortList(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadIntListNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readIntList(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadLongListNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readLongList(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadUShortListNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readUShortList(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadUIntListNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readUIntList(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadULongListNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readULongList(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadByteListNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readByteList(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadSByteListNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readSByteList(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadCharListNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readCharList(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadStringListNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readStringList(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadDecimalListNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readDecimalList(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadFloatListNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readFloatList(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        [TestCategory("clientConnectionNoClientsException")]
+        [TestMethod]
+        public void ShouldReadDoubleListNoClientsException()
+        {
+            int threadID;
+            try
+            {
+                ClientConnections.Instance().RemoveAll();
+                ClientConnections.Instance().readDoubleList(out threadID);
+
+            }
+            catch (ArgumentException e)
+            { }
+        }
+
+        #endregion
 
         [TestMethod]
         public void ShouldReadBoolTypeNotMatchException()
@@ -1172,6 +1794,7 @@ namespace TestsCommunicationLibrary
             { }
 
         }
+    
 
     }
 }

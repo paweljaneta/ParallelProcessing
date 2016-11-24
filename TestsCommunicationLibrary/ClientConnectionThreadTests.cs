@@ -63,7 +63,7 @@ namespace TestsCommunicationLibrary
         }
 
         #region simpleRecieve
-        [TestCategory("simpleTypeRecieve")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveBool()
         {
@@ -84,7 +84,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
-        [TestCategory("simpleTypeRecieve")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveShort()
         {
@@ -105,7 +105,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
-        [TestCategory("simpleTypeRecieve")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveInt()
         {
@@ -126,7 +126,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
-        [TestCategory("simpleTypeRecieve")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveLong()
         {
@@ -147,7 +147,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
-        [TestCategory("simpleTypeRecieve")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveUShort()
         {
@@ -168,7 +168,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
-        [TestCategory("simpleTypeRecieve")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveUInt()
         {
@@ -189,7 +189,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
-        [TestCategory("simpleTypeRecieve")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveULong()
         {
@@ -210,7 +210,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
-        [TestCategory("simpleTypeRecieve")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveByte()
         {
@@ -231,7 +231,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
-        [TestCategory("simpleTypeRecieve")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveSByte()
         {
@@ -252,7 +252,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
-        [TestCategory("simpleTypeRecieve")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveChar()
         {
@@ -273,7 +273,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
-        [TestCategory("simpleTypeRecieve")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveString()
         {
@@ -294,7 +294,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
-        [TestCategory("simpleTypeRecieve")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveDecimal()
         {
@@ -315,7 +315,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
-        [TestCategory("simpleTypeRecieve")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveFloat()
         {
@@ -336,7 +336,7 @@ namespace TestsCommunicationLibrary
             Assert.AreEqual(expected, result);
         }
 
-        [TestCategory("simpleTypeRecieve")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveDouble()
         {
@@ -359,7 +359,7 @@ namespace TestsCommunicationLibrary
 
 
 
-        [TestCategory("simpleTypeRecieveException")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveBoolException()
         {
@@ -397,7 +397,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("simpleTypeRecieveException")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveShortException()
         {
@@ -435,7 +435,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("simpleTypeRecieveException")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveIntException()
         {
@@ -473,7 +473,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("simpleTypeRecieveException")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveLongException()
         {
@@ -511,7 +511,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("simpleTypeRecieveException")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveUShortException()
         {
@@ -549,7 +549,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("simpleTypeRecieveException")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveUIntException()
         {
@@ -587,7 +587,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("simpleTypeRecieveException")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveULongException()
         {
@@ -625,7 +625,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("simpleTypeRecieveException")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveByteException()
         {
@@ -663,7 +663,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("simpleTypeRecieveException")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveSByteException()
         {
@@ -701,7 +701,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("simpleTypeRecieveException")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveCharException()
         {
@@ -739,7 +739,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("simpleTypeRecieveException")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveStringException()
         {
@@ -777,7 +777,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("simpleTypeRecieveException")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveDecimalException()
         {
@@ -815,7 +815,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("simpleTypeRecieveException")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveFloatException()
         {
@@ -853,7 +853,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("simpleTypeRecieveException")]
+        [TestCategory("clientConnectionThreadSimpleTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveDoubleException()
         {
@@ -894,7 +894,7 @@ namespace TestsCommunicationLibrary
         #endregion
 
         #region arrayRecieve
-        [TestCategory("arrayTypeRecieve")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveBoolArray()
         {
@@ -932,7 +932,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieve")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveShortArray()
         {
@@ -968,7 +968,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieve")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveIntArray()
         {
@@ -1004,7 +1004,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieve")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveLongArray()
         {
@@ -1040,7 +1040,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieve")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveUShortArray()
         {
@@ -1076,7 +1076,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieve")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveUIntArray()
         {
@@ -1112,7 +1112,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieve")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveULongArray()
         {
@@ -1148,7 +1148,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieve")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveByteArray()
         {
@@ -1184,7 +1184,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieve")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveSByteArray()
         {
@@ -1220,7 +1220,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieve")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveCharArray()
         {
@@ -1256,7 +1256,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieve")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveStringArray()
         {
@@ -1292,7 +1292,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieve")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveDecimalArray()
         {
@@ -1328,7 +1328,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieve")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveFloatArray()
         {
@@ -1364,7 +1364,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieve")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveDoubleArray()
         {
@@ -1403,7 +1403,7 @@ namespace TestsCommunicationLibrary
 
 
 
-        [TestCategory("arrayTypeRecieveException")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveBoolArrayException()
         {
@@ -1441,7 +1441,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieveException")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveShortArrayException()
         {
@@ -1479,7 +1479,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieveException")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveIntArrayException()
         {
@@ -1517,7 +1517,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieveException")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveLongArrayException()
         {
@@ -1555,7 +1555,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieveException")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveUShortArrayException()
         {
@@ -1593,7 +1593,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieveException")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveUIntArrayException()
         {
@@ -1631,7 +1631,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieveException")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveULongArrayException()
         {
@@ -1669,7 +1669,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieveException")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveByteArrayException()
         {
@@ -1707,7 +1707,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieveException")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveSByteArrayException()
         {
@@ -1745,7 +1745,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieveException")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveCharArrayException()
         {
@@ -1783,7 +1783,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieveException")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveStringArrayException()
         {
@@ -1821,7 +1821,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieveException")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveDecimalArrayException()
         {
@@ -1859,7 +1859,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieveException")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveFloatArrayException()
         {
@@ -1897,7 +1897,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("arrayTypeRecieveException")]
+        [TestCategory("clientConnectionThreadArrayTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveDoubleArrayException()
         {
@@ -1938,7 +1938,7 @@ namespace TestsCommunicationLibrary
         #endregion
 
         #region listRecieve
-        [TestCategory("listTypeRecieve")]
+        [TestCategory("clientConnectionThreadListTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveBoolList()
         {
@@ -1976,7 +1976,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieve")]
+        [TestCategory("clientConnectionThreadListTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveShortList()
         {
@@ -2012,7 +2012,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieve")]
+        [TestCategory("clientConnectionThreadListTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveIntList()
         {
@@ -2048,7 +2048,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieve")]
+        [TestCategory("clientConnectionThreadListTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveLongList()
         {
@@ -2084,7 +2084,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieve")]
+        [TestCategory("clientConnectionThreadListTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveUShortList()
         {
@@ -2120,7 +2120,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieve")]
+        [TestCategory("clientConnectionThreadListTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveUIntList()
         {
@@ -2156,7 +2156,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieve")]
+        [TestCategory("clientConnectionThreadListTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveULongList()
         {
@@ -2192,7 +2192,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieve")]
+        [TestCategory("clientConnectionThreadListTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveByteList()
         {
@@ -2228,7 +2228,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieve")]
+        [TestCategory("clientConnectionThreadListTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveSByteList()
         {
@@ -2264,7 +2264,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieve")]
+        [TestCategory("clientConnectionThreadListTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveCharList()
         {
@@ -2300,7 +2300,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieve")]
+        [TestCategory("clientConnectionThreadListTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveStringList()
         {
@@ -2336,7 +2336,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieve")]
+        [TestCategory("clientConnectionThreadListTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveDecimalList()
         {
@@ -2372,7 +2372,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieve")]
+        [TestCategory("clientConnectionThreadListTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveFloatList()
         {
@@ -2408,7 +2408,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieve")]
+        [TestCategory("clientConnectionThreadListTypeRecieve")]
         [TestMethod]
         public void ShouldRecieveDoubleList()
         {
@@ -2447,7 +2447,7 @@ namespace TestsCommunicationLibrary
 
 
 
-        [TestCategory("listTypeRecieveException")]
+        [TestCategory("clientConnectionThreadListTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveBoolListException()
         {
@@ -2485,7 +2485,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieveException")]
+        [TestCategory("clientConnectionThreadListTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveShortListException()
         {
@@ -2523,7 +2523,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieveException")]
+        [TestCategory("clientConnectionThreadListTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveIntListException()
         {
@@ -2561,7 +2561,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieveException")]
+        [TestCategory("clientConnectionThreadListTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveLongListException()
         {
@@ -2599,7 +2599,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieveException")]
+        [TestCategory("clientConnectionThreadListTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveUShortListException()
         {
@@ -2637,7 +2637,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieveException")]
+        [TestCategory("clientConnectionThreadListTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveUIntListException()
         {
@@ -2675,7 +2675,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieveException")]
+        [TestCategory("clientConnectionThreadListTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveULongListException()
         {
@@ -2713,7 +2713,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieveException")]
+        [TestCategory("clientConnectionThreadListTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveByteListException()
         {
@@ -2751,7 +2751,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieveException")]
+        [TestCategory("clientConnectionThreadListTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveSByteListException()
         {
@@ -2789,7 +2789,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieveException")]
+        [TestCategory("clientConnectionThreadListTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveCharListException()
         {
@@ -2827,7 +2827,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieveException")]
+        [TestCategory("clientConnectionThreadListTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveStringListException()
         {
@@ -2865,7 +2865,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieveException")]
+        [TestCategory("clientConnectionThreadListTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveDecimalListException()
         {
@@ -2903,7 +2903,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieveException")]
+        [TestCategory("clientConnectionThreadListTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveFloatListException()
         {
@@ -2941,7 +2941,7 @@ namespace TestsCommunicationLibrary
             }
         }
 
-        [TestCategory("listTypeRecieveException")]
+        [TestCategory("clientConnectionThreadListTypeRecieveException")]
         [TestMethod]
         public void ShouldRecieveDoubleListException()
         {
