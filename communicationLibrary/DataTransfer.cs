@@ -15,7 +15,7 @@ namespace communicationLibrary
         private BinaryWriter outStream;
         private TcpClient connection;
 
-        private int inStreamTimeout = 100;
+        private int inStreamTimeout = 10;
 
         //public DataTransfer(BinaryReader inputStream, BinaryWriter outputStream)
         //{

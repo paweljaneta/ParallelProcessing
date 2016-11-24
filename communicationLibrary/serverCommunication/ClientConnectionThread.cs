@@ -80,9 +80,7 @@ namespace communicationLibrary
 
         public void terminateReadThread()
         {
-           // dataTransferConnection.CloseInStream();
             readThread.Abort();
-          //  dataTransferConnection.OpenInStream();
         }
 
         #region readSimple
