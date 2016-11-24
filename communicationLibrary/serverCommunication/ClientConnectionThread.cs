@@ -78,6 +78,11 @@ namespace communicationLibrary
             return threadID;
         }
 
+        public void terminateReadThread()
+        {
+            readThread.Abort();
+        }
+
         #region readSimple
         public void recieveBool()
         {

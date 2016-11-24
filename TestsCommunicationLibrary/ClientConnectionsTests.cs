@@ -13,17 +13,17 @@ namespace TestsCommunicationLibrary
     {
         private TcpListener server;
         private TcpClient serverConnection, clientConnection;
-        private BinaryReader serverInStream, clientInStream;
-        private BinaryWriter serverOutStream, clientOutStream;
+
+        private List<DataTransfer> connectedClients = new List<DataTransfer>();
+        private List<TcpClient> connections = new List<TcpClient>();
 
         private string serverIP = "127.0.0.1", clientIP = "127.0.0.1";
         private int port = 1807;
 
-        private DataTransfer clientDataTransferConnection, serverDataTransferConnection;
 
         private int numberOfArrayListElements = 5;
 
-        private int numberOfClients = 1;
+        private int numberOfClients = 2;
 
 
         Random random;
@@ -33,16 +33,19 @@ namespace TestsCommunicationLibrary
         {
             server = new TcpListener(IPAddress.Parse(serverIP), port);
             server.Start();
-            clientConnection = new TcpClient(clientIP, port);
-            serverConnection = server.AcceptTcpClient();
-            server.Stop(); //?
-            serverInStream = new BinaryReader(serverConnection.GetStream());
-            serverOutStream = new BinaryWriter(serverConnection.GetStream());
-            clientInStream = new BinaryReader(clientConnection.GetStream());
-            clientOutStream = new BinaryWriter(clientConnection.GetStream());
 
-            clientDataTransferConnection = new DataTransfer(clientInStream, clientOutStream);
-            serverDataTransferConnection = new DataTransfer(serverInStream, serverOutStream);
+            for (int i = 0; i < numberOfClients; i++)
+            {
+                clientConnection = new TcpClient(clientIP, port);
+                serverConnection = server.AcceptTcpClient();
+
+                connections.Add(clientConnection);
+
+                connectedClients.Add(new DataTransfer(clientConnection));
+                ClientConnections.Instance().Add(new ClientConnectionThread(serverConnection, 0, i));
+
+            }
+            server.Stop();
 
             random = new Random();
 
@@ -51,19 +54,77 @@ namespace TestsCommunicationLibrary
         [TestCleanup]
         public void TestCleanup()
         {
-            serverInStream.Close();
-            serverOutStream.Close();
-            clientInStream.Close();
-            clientOutStream.Close();
+            ClientConnections.Instance().RemoveAll();
+            connectedClients.Clear();
+            connections.Clear();
+        }
 
-            clientConnection.Close();
-            serverConnection.Close();
+        [TestMethod]
+        public void ShouldRemoveFirst()
+        {
+            ClientConnections.Instance().Remove(0);
+        }
+
+        [TestMethod]
+        public void ShouldRemoveException()
+        {
+            //given
+            int index = ClientConnections.Instance().GetConnectedCliensCount();
+
+            try
+            {
+                ClientConnections.Instance().Remove(index);
+                Assert.Fail();
+
+            }
+            catch (ArgumentOutOfRangeException e)
+            { }
+        }
+
+        [TestMethod]
+        public void ShouldRemoveByThreadIDFirst()
+        {
+            ClientConnections.Instance().RemoveByThreadID(0);
+
+            try
+            {
+                ClientConnections.Instance().RemoveByThreadID(0);
+                Assert.Fail();
+            }catch(ArgumentOutOfRangeException e)
+            { }
 
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void ShouldReadBool()
         {
+            //given
+            bool expected = true;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readBool(out threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
         }
+
+        [TestMethod]
+        public void ShouldReadBoolNoClientsException()
+        {
+
+        }
+
+        [TestMethod]
+        public void ShouldReadBoolTypeNotMatchException()
+        {
+
+        }
+
     }
 }

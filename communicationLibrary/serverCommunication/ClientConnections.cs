@@ -7,7 +7,7 @@ using System.Threading;
 
 namespace communicationLibrary
 {
-    class ClientConnections
+    public class ClientConnections
     {
         private static ClientConnections instance = new ClientConnections();
         private volatile List<ClientConnectionThread> connectedClientsList = new List<ClientConnectionThread>();
@@ -26,24 +26,24 @@ namespace communicationLibrary
 
         public void Add(ClientConnectionThread clientConnection)
         {
-            lock(connectedClientsLock)
+            lock (connectedClientsLock)
             {
                 connectedClientsList.Add(clientConnection);
-            }  
+            }
         }
 
         public void Remove(int index)
         {
-            if(index<0||index>=connectedClientsList.Count)
+            if (index < 0 || index >= connectedClientsList.Count)
             {
                 throw new ArgumentOutOfRangeException("Remove id out of range");
             }
 
-            lock(connectedClientsLock)
+            lock (connectedClientsLock)
             {
                 connectedClientsList.RemoveAt(index);
             }
-            
+
 
         }
 
@@ -51,15 +51,15 @@ namespace communicationLibrary
         {
             int index = -1;
 
-            for(int i=0;i<connectedClientsList.Count;i++)
+            for (int i = 0; i < connectedClientsList.Count; i++)
             {
-                if(connectedClientsList[i].getThreadID()==threadID)
+                if (connectedClientsList[i].getThreadID() == threadID)
                 {
                     index = i;
                 }
             }
 
-            if (index < 0 )
+            if (index < 0)
             {
                 throw new ArgumentOutOfRangeException("Remove by threadID: no such threadID");
             }
@@ -69,6 +69,19 @@ namespace communicationLibrary
                 connectedClientsList.RemoveAt(index);
             }
         }
+
+        public void RemoveAll()
+        {
+            lock (connectedClientsLock)
+            {
+                connectedClientsList.Clear();
+            }
+        }
+
+        public int GetConnectedCliensCount()
+        {
+            return connectedClientsList.Count;
+        } 
 
         #region readMethods
 
