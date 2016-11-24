@@ -81,7 +81,15 @@ namespace communicationLibrary
         public int GetConnectedCliensCount()
         {
             return connectedClientsList.Count;
-        } 
+        }
+
+        private void terminateReadThreads()
+        {
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                connectedClientsList[i].terminateReadThread();
+            }
+        }
 
         #region readMethods
 
@@ -112,6 +120,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -148,6 +157,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -182,6 +192,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -216,6 +227,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -250,6 +262,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -284,6 +297,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -318,6 +332,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -352,6 +367,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -386,6 +402,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -420,6 +437,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -454,6 +472,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -488,6 +507,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -522,6 +542,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -556,6 +577,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -591,6 +613,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -625,6 +648,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -659,6 +683,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -693,6 +718,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -727,6 +753,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -761,6 +788,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -795,6 +823,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -829,6 +858,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -863,6 +893,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -897,6 +928,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -931,6 +963,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -965,6 +998,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -997,6 +1031,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1031,6 +1066,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1043,7 +1079,7 @@ namespace communicationLibrary
         #endregion
 
 
-        #region listTypes
+        #region readList
 
         public List<bool> readBoolList(out int threadID)
         {
@@ -1069,6 +1105,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1103,6 +1140,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1137,6 +1175,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1171,6 +1210,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1205,6 +1245,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1239,6 +1280,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1273,6 +1315,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1307,6 +1350,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1341,6 +1385,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1375,6 +1420,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1409,6 +1455,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1443,6 +1490,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1477,6 +1525,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 
@@ -1511,6 +1560,7 @@ namespace communicationLibrary
                     {
                         dataRead = true;
                         indexThatRecieved = i;
+                        terminateReadThreads();
                     }
                 }
 

@@ -38,8 +38,8 @@ namespace TestsCommunicationLibrary
             clientInStream = new BinaryReader(clientConnection.GetStream());
             clientOutStream = new BinaryWriter(clientConnection.GetStream());
 
-            clientDataTransferConnection = new DataTransfer(clientInStream, clientOutStream);
-            serverDataTransferConnection = new DataTransfer(serverInStream, serverOutStream);
+            clientDataTransferConnection = new DataTransfer(clientConnection);
+            serverDataTransferConnection = new DataTransfer(serverConnection);
 
             random = new Random();
 

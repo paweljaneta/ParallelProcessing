@@ -38,7 +38,7 @@ namespace communicationLibrary
                 inputStream = new BinaryReader(this.connection.GetStream());
                 outputStream = new BinaryWriter(this.connection.GetStream());
 
-                dataTransferConnection = new DataTransfer(inputStream, outputStream);
+                dataTransferConnection = new DataTransfer(connection);
 
                 thread = new Thread(run);
                 thread.Start();
@@ -80,7 +80,9 @@ namespace communicationLibrary
 
         public void terminateReadThread()
         {
+           // dataTransferConnection.CloseInStream();
             readThread.Abort();
+          //  dataTransferConnection.OpenInStream();
         }
 
         #region readSimple
@@ -111,6 +113,26 @@ namespace communicationLibrary
                 exceptionCaught = true;
                 exception = ex;
             }
+            //catch (EndOfStreamException EOSEx)
+            //{
+            //    exceptionCaught = true;
+            //    exception = EOSEx;
+            //}
+            //catch (ObjectDisposedException ObjDispEx)
+            //{
+            //    exceptionCaught = true;
+            //    exception = ObjDispEx;
+            //}
+            //catch (IOException IOEx)
+            //{
+            //    exceptionCaught = true;
+            //    exception = IOEx;
+            //}
+            //catch (TypeNotMatchException TypeNotMatchEx)
+            //{
+            //    exceptionCaught = true;
+            //    exception = TypeNotMatchEx;
+            //}
 
             dataRead = true;
         }

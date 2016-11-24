@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace communicationLibrary
 {
@@ -12,17 +13,56 @@ namespace communicationLibrary
     {
         private BinaryReader inStream;
         private BinaryWriter outStream;
+        private TcpClient connection;
 
-        public DataTransfer(BinaryReader inputStream, BinaryWriter outputStream)
-        {
-            inStream = inputStream;
-            outStream = outputStream;
-        }
+        private int inStreamTimeout = 100;
+
+        //public DataTransfer(BinaryReader inputStream, BinaryWriter outputStream)
+        //{
+        //    inStream = inputStream;
+        //    outStream = outputStream;
+        //}
 
         public DataTransfer(TcpClient connection)
         {
             inStream = new BinaryReader(connection.GetStream());
             outStream = new BinaryWriter(connection.GetStream());
+            this.connection = connection;
+
+            inStream.BaseStream.ReadTimeout = inStreamTimeout;
+
+        }
+
+        public void CloseInStream()
+        {
+            inStream.Dispose();
+        }
+
+        public void CloseOutStream()
+        {
+            outStream.Dispose();
+        }
+
+        public void CloseStreams()
+        {
+            CloseInStream();
+            CloseOutStream();
+        }
+
+        public void OpenInStream()
+        {
+            inStream = new BinaryReader(connection.GetStream());
+        }
+
+        public void OpenOutStream()
+        {
+            outStream = new BinaryWriter(connection.GetStream());
+        }
+
+        public void OpenStreams()
+        {
+            OpenInStream();
+            OpenOutStream();
         }
 
         #region exceptionHandlers
@@ -1337,9 +1377,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
+
 
                 if (message.Equals(Messages.boolTransfer))
                 {
@@ -1379,9 +1423,12 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.shortTransfer))
                 {
@@ -1420,9 +1467,12 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.intTransfer))
                 {
@@ -1461,9 +1511,12 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.longTransfer))
                 {
@@ -1502,9 +1555,12 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.ushortTransfer))
                 {
@@ -1543,9 +1599,12 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.uintTransfer))
                 {
@@ -1584,9 +1643,12 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.ulongTransfer))
                 {
@@ -1625,9 +1687,12 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.byteTransfer))
                 {
@@ -1666,9 +1731,12 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.sbyteTransfer))
                 {
@@ -1707,9 +1775,12 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.charTransfer))
                 {
@@ -1748,9 +1819,12 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.stringTransfer))
                 {
@@ -1789,9 +1863,12 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.decimalTransfer))
                 {
@@ -1830,9 +1907,12 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.floatTransfer))
                 {
@@ -1871,9 +1951,12 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.doubleTransfer))
                 {
@@ -1915,10 +1998,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.boolArrayTransfer))
                 {
@@ -1974,10 +2060,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.shortArrayTransfer))
                 {
@@ -2031,10 +2120,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.intArrayTransfer))
                 {
@@ -2088,10 +2180,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.longArrayTransfer))
                 {
@@ -2145,10 +2240,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.ushortArrayTransfer))
                 {
@@ -2202,10 +2300,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.uintArrayTransfer))
                 {
@@ -2259,10 +2360,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.ulongArrayTransfer))
                 {
@@ -2316,10 +2420,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.byteArrayTransfer))
                 {
@@ -2375,10 +2482,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.sbyteArrayTransfer))
                 {
@@ -2433,10 +2543,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.charArrayTransfer))
                 {
@@ -2492,10 +2605,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.stringArrayTransfer))
                 {
@@ -2549,10 +2665,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.decimalArrayTransfer))
                 {
@@ -2606,10 +2725,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.floatArrayTransfer))
                 {
@@ -2663,10 +2785,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.doubleArrayTransfer))
                 {
@@ -2723,10 +2848,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.boolListTransfer))
                 {
@@ -2780,10 +2908,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.shortListTransfer))
                 {
@@ -2837,10 +2968,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.intListTransfer))
                 {
@@ -2895,10 +3029,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.longListTransfer))
                 {
@@ -2953,10 +3090,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.ushortListTransfer))
                 {
@@ -3010,10 +3150,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.uintListTransfer))
                 {
@@ -3068,10 +3211,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.ulongListTransfer))
                 {
@@ -3126,10 +3272,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.byteListTransfer))
                 {
@@ -3184,10 +3333,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.sbyteListTransfer))
                 {
@@ -3242,10 +3394,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.charListTransfer))
                 {
@@ -3300,10 +3455,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.stringListTransfer))
                 {
@@ -3358,10 +3516,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.decimalListTransfer))
                 {
@@ -3416,10 +3577,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.floatListTransfer))
                 {
@@ -3474,10 +3638,13 @@ namespace communicationLibrary
 
             try
             {
-                string message;
+                string message = null;
                 int count;
 
-                message = inStream.ReadString();
+                while (message == null)
+                {
+                    message = inStream.ReadString();
+                }
 
                 if (message.Equals(Messages.doubleListTransfer))
                 {

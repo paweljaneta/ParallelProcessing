@@ -43,7 +43,7 @@ namespace TestsCommunicationLibrary
 
             clientConnectedToServer = new ClientConnectionThread(serverConnection, 0, 0);
 
-            clientToServerTransfers = new DataTransfer(clientInStream, clientOutStream);
+            clientToServerTransfers = new DataTransfer(clientConnection);
 
             random = new Random();
 
