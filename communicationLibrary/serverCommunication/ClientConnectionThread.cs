@@ -16,7 +16,7 @@ namespace communicationLibrary
         int clientID;
         int threadID;
 
-        Thread thread;
+       // Thread thread;
         Thread readThread;
         TcpClient connection;
         BinaryReader inputStream;
@@ -40,8 +40,8 @@ namespace communicationLibrary
 
                 dataTransferConnection = new DataTransfer(connection);
 
-                thread = new Thread(run);
-                thread.Start();
+              //  thread = new Thread(run);
+             ///   thread.Start();
 
                 dataRead = false;
                 hasThreadData = false;
@@ -58,10 +58,10 @@ namespace communicationLibrary
             }
         }
 
-        public void run()
-        {
-            outputStream.Write("Hello!");
-        }
+       // public void run()
+       // {
+       //     outputStream.Write("Hello!");
+       // }
 
         public bool isDataRead()
         {
@@ -111,26 +111,6 @@ namespace communicationLibrary
                 exceptionCaught = true;
                 exception = ex;
             }
-            //catch (EndOfStreamException EOSEx)
-            //{
-            //    exceptionCaught = true;
-            //    exception = EOSEx;
-            //}
-            //catch (ObjectDisposedException ObjDispEx)
-            //{
-            //    exceptionCaught = true;
-            //    exception = ObjDispEx;
-            //}
-            //catch (IOException IOEx)
-            //{
-            //    exceptionCaught = true;
-            //    exception = IOEx;
-            //}
-            //catch (TypeNotMatchException TypeNotMatchEx)
-            //{
-            //    exceptionCaught = true;
-            //    exception = TypeNotMatchEx;
-            //}
 
             dataRead = true;
         }
