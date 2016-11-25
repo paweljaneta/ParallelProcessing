@@ -2662,5 +2662,1053 @@ namespace TestsCommunicationLibrary
 
         }
         #endregion
+
+        #region readFromThreadID
+        #region readSimple
+        [TestCategory("clientConnectionSimpleTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadBoolByID()
+        {
+            //given
+            bool expected = true;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readBoolByID(threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadShortByID()
+        {
+            //given
+            short expected = short.MinValue;
+            short result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readShortByID(threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadIntByID()
+        {
+            //given
+            int expected = int.MinValue;
+            int result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readIntByID(threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadLongByID()
+        {
+            //given
+            long expected = long.MinValue;
+            long result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readLongByID(threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadUShortByID()
+        {
+            //given
+            ushort expected = ushort.MaxValue;
+            ushort result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readUShortByID(threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadUIntByID()
+        {
+            //given
+            uint expected = uint.MaxValue;
+            uint result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readUIntByID(threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadULongByID()
+        {
+            //given
+            ulong expected = ulong.MaxValue;
+            ulong result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readULongByID(threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadByteByID()
+        {
+            //given
+            byte expected = byte.MaxValue;
+            byte result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readByteByID(threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadSByteByID()
+        {
+            //given
+            sbyte expected = sbyte.MinValue;
+            sbyte result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readSByteByID(threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadCharByID()
+        {
+            //given
+            char expected = 'x';
+            char result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readCharByID(threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadStringByID()
+        {
+            //given
+            string expected = "napis testowy";
+            string result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readStringByID(threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadDecimalByID()
+        {
+            //given
+            decimal expected = decimal.MinValue;
+            decimal result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readDecimalByID(threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadFloatByID()
+        {
+            //given
+            float expected = float.MinValue;
+            float result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readFloatByID(threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadDoubleByID()
+        {
+            //given
+            double expected = double.MinValue;
+            double result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readDoubleByID(threadID);
+
+            //then
+            Assert.AreEqual(expected, result);
+            Assert.AreEqual(indexToSend, threadID);
+        }
+        #endregion
+
+        #region readArray
+        [TestCategory("clientConnectionArrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldReadBoolByIDArray()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+            bool[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToBoolean(i % 2);
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readBoolArrayByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionArrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldReadShortByIDArray()
+        {
+            //given
+            short[] expected = new short[numberOfElements];
+            short[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToInt16(random.Next(-32768, 32767));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readShortArrayByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionArrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldReadIntByIDArray()
+        {
+            //given
+            int[] expected = new int[numberOfElements];
+            int[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = random.Next();
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readIntArrayByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionArrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldReadLongByIDArray()
+        {
+            //given
+            long[] expected = new long[numberOfElements];
+            long[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = int.MinValue - random.Next(1, int.MaxValue);
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readLongArrayByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionArrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldReadUShortByIDArray()
+        {
+            //given
+            ushort[] expected = new ushort[numberOfElements];
+            ushort[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToUInt16(random.Next(ushort.MaxValue));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readUShortArrayByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionArrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldReadUIntByIDArray()
+        {
+            //given
+            uint[] expected = new uint[numberOfElements];
+            uint[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToUInt32(random.Next(int.MaxValue));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readUIntArrayByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionArrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldReadULongByIDArray()
+        {
+            //given
+            ulong[] expected = new ulong[numberOfElements];
+            ulong[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = uint.MaxValue + Convert.ToUInt64(random.Next());
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readULongArrayByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionArrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldReadByteByIDArray()
+        {
+            //given
+            byte[] expected = new byte[numberOfElements];
+            byte[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToByte(random.Next(byte.MaxValue));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readByteArrayByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionArrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldReadSByteByIDArray()
+        {
+            //given
+            sbyte[] expected = new sbyte[numberOfElements];
+            sbyte[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToSByte(random.Next(sbyte.MinValue, sbyte.MaxValue));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readSByteArrayByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionArrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldReadCharByIDArray()
+        {
+            //given
+            char[] expected = new char[numberOfElements];
+            char[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToChar(random.Next(9));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readCharArrayByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionArrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldReadStringByIDArray()
+        {
+            //given
+            string[] expected = new string[numberOfElements];
+            string[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = "napis testowy " + i.ToString();
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readStringArrayByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionArrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldReadDecimalByIDArray()
+        {
+            //given
+            decimal[] expected = new decimal[numberOfElements];
+            decimal[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToDecimal(long.MaxValue) + Convert.ToDecimal(random.Next());
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readDecimalArrayByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionArrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldReadFloatByIDArray()
+        {
+            //given
+            float[] expected = new float[numberOfElements];
+            float[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = Convert.ToSingle(random.NextDouble());
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readFloatArrayByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionArrayTypeRecieve")]
+        [TestMethod]
+        public void ShouldReadDoubleByIDArray()
+        {
+            //given
+            double[] expected = new double[numberOfElements];
+            double[] result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected[i] = random.NextDouble();
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readDoubleArrayByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        #endregion
+
+        #region readList
+        [TestCategory("clientConnectionListTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadBoolByIDList()
+        {
+            //given
+            List<bool> expected = new List<bool>();
+            List<bool> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToBoolean(i % 2));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readBoolListByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionListTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadShortByIDList()
+        {
+            //given
+            List<short> expected = new List<short>();
+            List<short> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToInt16(random.Next(-32768, 32767)));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readShortListByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionListTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadIntByIDList()
+        {
+            //given
+            List<int> expected = new List<int>();
+            List<int> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(random.Next());
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readIntListByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionListTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadLongByIDList()
+        {
+            //given
+            List<long> expected = new List<long>();
+            List<long> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(int.MinValue - random.Next(1, int.MaxValue));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readLongListByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionListTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadUShortByIDList()
+        {
+            //given
+            List<ushort> expected = new List<ushort>();
+            List<ushort> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToUInt16(random.Next(ushort.MaxValue)));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readUShortListByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionListTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadUIntByIDList()
+        {
+            //given
+            List<uint> expected = new List<uint>();
+            List<uint> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToUInt32(random.Next(int.MaxValue)));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readUIntListByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionListTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadULongByIDList()
+        {
+            //given
+            List<ulong> expected = new List<ulong>();
+            List<ulong> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(uint.MaxValue + Convert.ToUInt64(random.Next()));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readULongListByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionListTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadByteByIDList()
+        {
+            //given
+            List<byte> expected = new List<byte>();
+            List<byte> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToByte(random.Next(byte.MaxValue)));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readByteListByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionListTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadSByteByIDList()
+        {
+            //given
+            List<sbyte> expected = new List<sbyte>();
+            List<sbyte> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToSByte(random.Next(sbyte.MinValue, sbyte.MaxValue)));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readSByteListByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionListTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadCharByIDList()
+        {
+            //given
+            List<char> expected = new List<char>();
+            List<char> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToChar(random.Next(9)));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readCharListByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionListTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadStringByIDList()
+        {
+            //given
+            List<string> expected = new List<string>();
+            List<string> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add("napis testowy " + i.ToString());
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readStringListByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionListTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadDecimalByIDList()
+        {
+            //given
+            List<decimal> expected = new List<decimal>();
+            List<decimal> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToDecimal(long.MaxValue) + Convert.ToDecimal(random.Next()));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readDecimalListByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionListTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadFloatByIDList()
+        {
+            //given
+            List<float> expected = new List<float>();
+            List<float> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(Convert.ToSingle(random.NextDouble()));
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readFloatListByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+
+        [TestCategory("clientConnectionListTypeRecieveFromID")]
+        [TestMethod]
+        public void ShouldReadDoubleByIDList()
+        {
+            //given
+            List<double> expected = new List<double>();
+            List<double> result;
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                expected.Add(random.NextDouble());
+            }
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+
+            result = ClientConnections.Instance().readDoubleListByID(threadID);
+
+            //then
+            for (int i = 0; i < numberOfElements; i++)
+            {
+                Assert.AreEqual(expected[i], result[i]);
+            }
+            Assert.AreEqual(indexToSend, threadID);
+        }
+        #endregion
+
+
+
+        #endregion
     }
 }
