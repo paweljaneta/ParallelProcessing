@@ -4468,6 +4468,893 @@ namespace TestsCommunicationLibrary
         }
         #endregion
 
+        #region readByIDTypeNotMatchException
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadBoolByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readBoolByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadShortByIDTypeNotMatchException()
+        {
+            int expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readShortByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadIntByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readIntByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadLongByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readLongByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadUShortByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readUShortByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadUIntByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readUIntByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadULongByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readULongByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadByteByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readByteByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadSByteByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readSByteByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadCharByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readCharByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadStringByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readStringByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadDecimalByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readDecimalByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadFloatByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readFloatByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadDoubleByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readDoubleByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadBoolArrayByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readBoolArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadShortArrayByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readShortArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadIntArrayByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readIntArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadLongArrayByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readLongArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadUShortArrayByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readUShortArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadUIntArrayByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readUIntArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadULongArrayByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readULongArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadByteArrayByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readByteArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadSByteArrayByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readSByteArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadCharArrayByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readCharArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadStringArrayByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readStringArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadDecimalArrayByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readDecimalArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadFloatArrayByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readFloatArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadDoubleArrayByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readDoubleArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadBoolListByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readBoolListByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadShortListByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readShortListByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadIntListByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readIntListByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadLongListByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readLongListByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadUShortListByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readUShortListByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadUIntListByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readUIntListByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadULongListByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readULongListByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadByteListByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readByteListByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadSByteListByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readSByteListByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadCharListByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readCharListByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadStringListByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readStringListByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadDecimalListByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readDecimalListByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadFloatListByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readFloatListByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionTypeNotMatchException")]
+        [TestMethod]
+        public void ShouldReadDoubleListByIDTypeNotMatchException()
+        {
+            short expected = 2;
+            bool result;
+            int indexToSend = connectedClients.Count - 1;
+            int threadID = connectedClients.Count - 1;
+
+            //when
+            connectedClients[indexToSend].send(expected);
+            try
+            {
+                ClientConnections.Instance().readDoubleListByID(threadID);
+                Assert.Fail();
+            }
+            catch (TypeNotMatchException e)
+            { }
+
+        }
+        #endregion
+
         #endregion
     }
 }
