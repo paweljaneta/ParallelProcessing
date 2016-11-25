@@ -2852,197 +2852,351 @@ namespace communicationLibrary
         public void sendBool(bool data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendBool(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendBool(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendShort(short data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendShort(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendShort(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendInt(int data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendInt(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendInt(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendLong(long data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendLong(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendLong(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendUShort(ushort data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendUShort(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendUShort(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendUInt(uint data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendUInt(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendUInt(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendULong(ulong data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendULong(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendULong(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendByte(byte data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendByte(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendByte(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendSByte(sbyte data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendSByte(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendSByte(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendChar(char data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendChar(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendChar(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendString(string data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendString(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendString(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendDecimal(decimal data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendDecimal(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendDecimal(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendFloat(float data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendFloat(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendFloat(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendDouble(double data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendDouble(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendDouble(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         #endregion
@@ -3051,197 +3205,351 @@ namespace communicationLibrary
         public void sendBoolArray(bool[] data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendBoolArray(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendBoolArray(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendShortArray(short[] data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendShortArray(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendShortArray(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendIntArray(int[] data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendIntArray(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendIntArray(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendLongArray(long[] data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendLongArray(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendLongArray(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendUShortArray(ushort[] data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendUShortArray(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendUShortArray(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendUIntArray(uint[] data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendUIntArray(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendUIntArray(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendULongArray(ulong[] data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendULongArray(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendULongArray(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendByteArray(byte[] data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendByteArray(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendByteArray(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendSByteArray(sbyte[] data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendSByteArray(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendSByteArray(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendCharArray(char[] data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendCharArray(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendCharArray(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendStringArray(string[] data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendStringArray(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendStringArray(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendDecimalArray(decimal[] data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendDecimalArray(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendDecimalArray(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendFloatArray(float[] data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendFloatArray(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendFloatArray(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendDoubleArray(double[] data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendDoubleArray(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendDoubleArray(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         #endregion
@@ -3250,197 +3558,351 @@ namespace communicationLibrary
         public void sendBoolList(List<bool> data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendBoolList(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendBoolList(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendShortList(List<short> data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendShortList(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendShortList(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendIntList(List<int> data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendIntList(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendIntList(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendLongList(List<long> data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendLongList(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendLongList(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendUShortList(List<ushort> data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendUShortList(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendUShortList(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendUIntList(List<uint> data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendUIntList(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendUIntList(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendULongList(List<ulong> data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendULongList(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendULongList(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendByteList(List<byte> data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendByteList(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendByteList(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendSByteList(List<sbyte> data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendSByteList(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendSByteList(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendCharList(List<char> data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendCharList(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendCharList(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendStringList(List<string> data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendStringList(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendStringList(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendDecimalList(List<decimal> data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendDecimalList(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendDecimalList(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendFloatList(List<float> data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendFloatList(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendFloatList(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         public void sendDoubleList(List<double> data, out int threadID)
         {
             int thrID = -1;
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            bool dataSent = false;
+            if (connectedClientsList.Count == 0)
             {
-                if (!connectedClientsList[i].hasDataSend())
+                throw new ArgumentException("No clients to send data to");
+            }
+
+            while (!dataSent)
+            {
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    connectedClientsList[i].sendDoubleList(data);
-                    thrID = connectedClientsList[i].getThreadID();
-                    break;
+                    if (!connectedClientsList[i].hasDataSend())
+                    {
+                        connectedClientsList[i].sendDoubleList(data);
+                        thrID = connectedClientsList[i].getThreadID();
+                        dataSent = true;
+                        break;
+                    }
                 }
             }
+
             threadID = thrID;
         }
         #endregion
