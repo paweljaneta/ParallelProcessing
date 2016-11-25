@@ -3707,7 +3707,766 @@ namespace TestsCommunicationLibrary
         }
         #endregion
 
+        #region readByIDNoSuchIDException
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadBoolByIDNoSuchIDException()
+        {
+            //given
 
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readBoolByID(threadID);
+                Assert.Fail();
+            }catch(ArgumentException)
+            { }
+            
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadShortByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readShortByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadIntByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readIntByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadLongByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readLongByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadUShortByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readUShortByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadUIntByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readUIntByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadULongByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readULongByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadByteByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readByteByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadSByteByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readSByteByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadCharByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readCharByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadStringByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readStringByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadDecimalByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readDecimalByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadFloatByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readFloatByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadDoubleByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readDoubleByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadBoolArrayByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readBoolArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadShortArrayByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readShortArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadIntArrayByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readIntArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadLongArrayByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readLongArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadUShortArrayByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readUShortArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadUIntArrayByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readUIntArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadULongArrayByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readULongArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadByteArrayByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readByteArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadSByteArrayByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readSByteArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadCharArrayByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readCharArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadStringArrayByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readStringArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadDecimalArrayByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readDecimalArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadFloatArrayByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readFloatArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadDoubleArrayByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readDoubleArrayByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadBoolListByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readBoolListByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadShortListByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readShortListByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadIntListByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readIntListByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadLongListByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readLongListByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadUShortListByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readUShortListByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadUIntListByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readUIntListByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadULongListByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readULongListByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadByteListByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readByteListByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadSByteListByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readSByteListByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadCharListByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readCharListByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadStringListByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readStringListByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadDecimalListByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readDecimalListByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadFloatListByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readFloatListByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionSimpleTypeRecieveFromIDNoSuchIDException")]
+        [TestMethod]
+        public void ShouldReadDoubleListByIDNoSuchIDException()
+        {
+            //given
+
+            int threadID = connectedClients.Count;
+
+            try
+            {
+                ClientConnections.Instance().readDoubleListByID(threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException)
+            { }
+
+        }
+        #endregion
 
         #endregion
     }
