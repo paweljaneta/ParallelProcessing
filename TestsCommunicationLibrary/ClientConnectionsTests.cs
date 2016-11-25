@@ -6754,6 +6754,625 @@ namespace TestsCommunicationLibrary
             { }
 
         }
+
+
+        [TestCategory("clientConnectionArrayTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendBoolArrayNoClientsException()
+        {
+            //given
+            bool[] expected = new bool[numberOfElements];
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendBoolArray(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionArrayTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendShortArrayNoClientsException()
+        {
+            //given
+            short[] expected = new short[numberOfElements];
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendShortArray(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionArrayTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendIntArrayNoClientsException()
+        {
+            //given
+            int[] expected = new int[numberOfElements];
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendIntArray(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionArrayTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendLongArrayNoClientsException()
+        {
+            //given
+            long[] expected = new long[numberOfElements];
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendLongArray(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionArrayTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendUShortArrayNoClientsException()
+        {
+            //given
+            ushort[] expected = new ushort[numberOfElements];
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendUShortArray(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionArrayTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendUIntArrayNoClientsException()
+        {
+            //given
+            uint[] expected = new uint[numberOfElements];
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendUIntArray(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionArrayTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendULongArrayNoClientsException()
+        {
+            //given
+            ulong[] expected = new ulong[numberOfElements];
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendULongArray(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionArrayTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendByteArrayNoClientsException()
+        {
+            //given
+            byte[] expected = new byte[numberOfElements];
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendByteArray(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionArrayTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendSByteArrayNoClientsException()
+        {
+            //given
+            sbyte[] expected = new sbyte[numberOfElements];
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendSByteArray(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionArrayTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendCharArrayNoClientsException()
+        {
+            //given
+            char[] expected = new char[numberOfElements];
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendCharArray(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionArrayTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendStringArrayNoClientsException()
+        {
+            //given
+            string[] expected = new string[numberOfElements];
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendStringArray(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionArrayTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendDecimalArrayNoClientsException()
+        {
+            //given
+            decimal[] expected = new decimal[numberOfElements];
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendDecimalArray(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionArrayTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendFloatArrayNoClientsException()
+        {
+            //given
+            float[] expected = new float[numberOfElements];
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendFloatArray(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionArrayTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendDoubleArrayNoClientsException()
+        {
+            //given
+            double[] expected = new double[numberOfElements];
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendDoubleArray(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+
+
+        [TestCategory("clientConnectionListTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendBoolListNoClientsException()
+        {
+            //given
+            List<bool> expected = new List<bool>();
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendBoolList(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionListTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendShortListNoClientsException()
+        {
+            //given
+            List<short> expected = new List<short>();
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendShortList(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionListTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendIntListNoClientsException()
+        {
+            //given
+            List<int> expected = new List<int>();
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendIntList(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionListTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendLongListNoClientsException()
+        {
+            //given
+            List<long> expected = new List<long>();
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendLongList(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionListTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendUShortListNoClientsException()
+        {
+            //given
+            List<ushort> expected = new List<ushort>();
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendUShortList(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionListTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendUIntListNoClientsException()
+        {
+            //given
+            List<uint> expected = new List<uint>();
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendUIntList(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionListTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendULongListNoClientsException()
+        {
+            //given
+            List<ulong> expected = new List<ulong>();
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendULongList(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionListTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendByteListNoClientsException()
+        {
+            //given
+            List<byte> expected = new List<byte>();
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendByteList(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionListTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendSByteListNoClientsException()
+        {
+            //given
+            List<sbyte> expected = new List<sbyte>();
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendSByteList(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionListTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendCharListNoClientsException()
+        {
+            //given
+            List<char> expected = new List<char>();
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendCharList(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionListTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendStringListNoClientsException()
+        {
+            //given
+            List<string> expected = new List<string>();
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendStringList(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionListTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendDecimalListNoClientsException()
+        {
+            //given
+            List<decimal> expected = new List<decimal>();
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendDecimalList(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionListTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendFloatListNoClientsException()
+        {
+            //given
+            List<float> expected = new List<float>();
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendFloatList(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
+
+        [TestCategory("clientConnectionListTypeSendNoClientsException")]
+        [TestMethod]
+        public void ShouldSendDoubleListNoClientsException()
+        {
+            //given
+            List<double> expected = new List<double>();
+
+            int threadID;
+
+            ClientConnections.Instance().RemoveAll();
+
+            //when
+            try
+            {
+                ClientConnections.Instance().sendDoubleList(expected, out threadID);
+                Assert.Fail();
+            }
+            catch (ArgumentException e)
+            { }
+
+        }
         #endregion
 
         #endregion
