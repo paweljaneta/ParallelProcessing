@@ -12,6 +12,8 @@ namespace communicationLibrary
         private static ClientConnections instance = new ClientConnections();
         private volatile List<ClientConnectionThread> connectedClientsList = new List<ClientConnectionThread>();
 
+       // public static Dictionary<int, List<int>> clientIDThreadsIDMap = new Dictionary<int, List<int>>();
+
         private object connectedClientsLock = new object();
 
 

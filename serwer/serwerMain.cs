@@ -96,6 +96,9 @@ namespace serwer
                 else if (message.Equals(Messages.dataRequest))
                 {
                     //add threadID
+                    int remoteClientID = inputStream.ReadInt32();
+
+                    ClientConnections.Instance().Add(new ClientConnectionThread(client, remoteClientID, threadID));
                //     connectedClientsList.Add(new ClientConnectionThread(client));
 
                     threadID++;

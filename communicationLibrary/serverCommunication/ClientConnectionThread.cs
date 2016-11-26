@@ -40,8 +40,10 @@ namespace communicationLibrary
 
                 dataTransferConnection = new DataTransfer(connection);
 
-              //  thread = new Thread(run);
-             ///   thread.Start();
+                //  thread = new Thread(run);
+                ///   thread.Start();
+
+                outputStream.Write(threadID);
 
                 dataRead = false;
                 hasThreadData = false;

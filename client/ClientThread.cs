@@ -13,7 +13,9 @@ namespace client
 {
     class ClientThread
     {
-        int id;
+        int clientId;
+        int threadId;
+
         BinaryReader inputStream;
         BinaryWriter outputStream;
 
@@ -21,8 +23,10 @@ namespace client
 
         Thread thread;
 
-       public ClientThread(string adress, int port)
+        public ClientThread(string adress, int port, int clientId)
         {
+            this.clientId = clientId;
+
             try
             {
                 connection = new TcpClient(adress, port);
@@ -31,6 +35,9 @@ namespace client
                 outputStream = new BinaryWriter(connection.GetStream());
 
                 outputStream.Write(Messages.dataRequest);
+
+                outputStream.Write(clientId);
+                threadId = inputStream.ReadInt32();
 
                 thread = new Thread(run);
                 thread.Start();

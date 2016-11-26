@@ -59,7 +59,7 @@ namespace client
                 
                 for (int i=0;i<numberOfCPUcores;i++)
                 {
-                    workingThreads.Add(new ClientThread(ipAdress, port));
+                    workingThreads.Add(new ClientThread(ipAdress, port,clientID));
                 }
                 
                 //wait until finished
