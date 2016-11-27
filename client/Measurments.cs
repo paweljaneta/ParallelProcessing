@@ -117,7 +117,7 @@ namespace client
 
             if (stopwatch.ElapsedMilliseconds != 0)
             {
-                uploadToSrv = Convert.ToDouble(bufferSize) / (stopwatch.ElapsedMilliseconds * 1000); // bytes per second
+                uploadToSrv = Convert.ToDouble(bufferSize) / (stopwatch.ElapsedMilliseconds/1000.0); // bytes per second
             }
             else
             {
@@ -138,7 +138,7 @@ namespace client
             returnByte = reader.ReadByte();
             stopwatch.Stop();
 
-            uploadToSrv = Convert.ToDouble(bytesToSecondTransfer / (1024 * 1024)) / (stopwatch.ElapsedMilliseconds * 1000); // Mega bytes per second
+            uploadToSrv = Convert.ToDouble(bytesToSecondTransfer / (1024 * 1024)) / (stopwatch.ElapsedMilliseconds / 1000.0); // Mega bytes per second
 
             writer.Write(uploadToSrv);
         }
