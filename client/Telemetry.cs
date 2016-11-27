@@ -35,7 +35,7 @@ namespace client
             outStream = new BinaryWriter(connection.GetStream());
         }
 
-        public Telemetry(TcpClient connection,int TelemetryDelayMs)
+        public Telemetry(TcpClient connection, int TelemetryDelayMs)
         {
             this.connection = connection;
             inStream = new BinaryReader(connection.GetStream());
@@ -46,16 +46,17 @@ namespace client
         private void inThread()
         {
             string message;
-
-            message = inStream.ReadString();
-
-            switch (message)
+            while (true)
             {
-                case Messages.stopCalculations:
-                    stopCalculations();
-                    break;
-            }
+                message = inStream.ReadString();
 
+                switch (message)
+                {
+                    case Messages.stopCalculations:
+                        stopCalculations();
+                        break;
+                }
+            }
         }
 
         private void stopCalculations()
@@ -65,36 +66,49 @@ namespace client
 
         private void outThread()
         {
-            //send exceptions
-            while(exceptions.Count>0)
+            while (true)
             {
-                outStream.Write(Messages.exception);
-                lock(exceptionsLock)
+
+
+                //send exceptions
+                while (exceptions.Count > 0)
                 {
-                    outStream.Write(exceptions[0].ToString());
-                    exceptions.RemoveAt(0);
-                }  
+                    outStream.Write(Messages.exception);
+                    lock (exceptionsLock)
+                    {
+                        outStream.Write(exceptions[0].ToString());
+                        exceptions.RemoveAt(0);
+                    }
+                }
+
+                float cpuUsage, ramAvaliable;
+
+                //send CPU load
+                outStream.Write(Messages.CPULoad);
+
+                cpuUsage = cpu.NextValue();
+
+                outStream.Write(cpuUsage);
+
+                //send memory usage
+
+                outStream.Write(Messages.memoryAvaliable);
+
+                ramAvaliable = ram.NextValue();
+
+                outStream.Write(ramAvaliable);
+
+
+                Thread.Sleep(telemetryDelayMs);
             }
+        }
 
-            float cpuUsage,ramAvaliable;
-
-            //send CPU load
-            outStream.Write(Messages.CPULoad);
-
-            cpuUsage = cpu.NextValue();
-
-            outStream.Write(cpuUsage);
-
-            //send memory usage
-
-            outStream.Write(Messages.memoryAvaliable);
-
-            ramAvaliable = ram.NextValue();
-
-            outStream.Write(ramAvaliable);
-
-
-            Thread.Sleep(telemetryDelayMs);
+        public void addExceptionToList(Exception e)
+        {
+            lock (exceptionsLock)
+            {
+                exceptions.Add(e);
+            }
         }
 
     }
