@@ -47,6 +47,7 @@ namespace serwer
         static void Main(string[] args)
         {
             TcpListener listener = new TcpListener(IPAddress.Any, 1807);
+           // TcpListener listener = new TcpListener(IPAddress.Parse("192.168.254.136"), 1807);
             listener.Start();
             TcpClient client;
             BinaryReader inputStream;
@@ -73,7 +74,7 @@ namespace serwer
                 if (message.Equals(Messages.dllRequest))
                 {
                     //send dll
-                    sendDll(outputStream);
+                  //  sendDll(outputStream);
                     double flops = 0.0;
                     Measurments.NetworkSpeeds netSpeed;
 

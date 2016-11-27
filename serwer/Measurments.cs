@@ -48,7 +48,7 @@ namespace serwer
 
             if(stopwatch.ElapsedMilliseconds>0)
             {
-                uploadFromSrv = (Convert.ToDouble(bufferSize) * 1000.0) / (stopwatch.ElapsedMilliseconds); // bytes per second
+                uploadFromSrv = (Convert.ToDouble(bufferSize)) / (stopwatch.ElapsedMilliseconds/1000.0); // bytes per second
             }
             else
             {
@@ -72,7 +72,7 @@ namespace serwer
 
          //   Console.WriteLine("StopW: " + stopwatch.ElapsedMilliseconds);
 
-            uploadFromSrv = ((Convert.ToDouble(bytesToSecondTransfer) * 1000.0 / (1024.0 * 1024.0))) / (stopwatch.ElapsedMilliseconds); // Mega bytes per second
+            uploadFromSrv = ((Convert.ToDouble(bytesToSecondTransfer)  / (1024.0 * 1024.0))) / (stopwatch.ElapsedMilliseconds/1000.0); // Mega bytes per second
 
             buffer = new byte[bufferSize];
 
