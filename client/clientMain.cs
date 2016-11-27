@@ -15,7 +15,7 @@ namespace client
     {
         static void Main(string[] args)
         {
-            string ipAdress = "127.0.0.1";
+            string ipAdress = "192.168.254.136";
             int port = 1807;
             int clientID;
 
@@ -41,7 +41,7 @@ namespace client
 
                 //get dll
                 outStream.Write(Messages.dllRequest);
-                getDll(inStream);
+              //  getDll(inStream);
 
                 //do tests
                 flops = mesurments.CPUPerformanceFLOPS();
