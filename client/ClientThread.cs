@@ -53,8 +53,11 @@ namespace client
         {
             //load dll
             //execute
+            string message = inputStream.ReadString();
 
-            Console.WriteLine(inputStream.ReadString());
+            if(message.Equals(Messages.startCalculations))
+
+
         }
 
         public bool isThreadAlive()

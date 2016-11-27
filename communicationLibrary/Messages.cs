@@ -12,10 +12,14 @@ namespace communicationLibrary
         public const string dataRequest = "dataReq";
         public const string measurmentsRequest = "measReq";
         public const string deadlyPill = "deadlyPill";
-        public const string beginCalculations = "beginCalc";
+        public const string startCalculations = "beginCalc";
+        public const string stopCalculations = "stopCalc";
         public const string executionTime = "execTime";
         public const string connectionSpeedMeasurment = "conSpeedMeas";
         public const string flops = "FLOPS";
+        public const string exception = "exception";
+        public const string CPULoad = "CPULoad";
+        public const string memoryAvaliable = "memoryAvaliable";
 
         #region basicTypes
         public const string byteTransfer = "byteTransfer";

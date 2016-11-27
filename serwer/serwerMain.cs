@@ -26,28 +26,9 @@ namespace serwer
 
     class serwerMain
     {
-        //class RemoteEndPointNetworkSpeedPair
-        //{
-        //    public EndPoint endPoint { get; set; }
-        //    public Measurments.NetworkSpeeds netSpeeds { get; set; }
-        //    public double flops { get; set; }
-
-        //    public RemoteEndPointNetworkSpeedPair(EndPoint endPoint, Measurments.NetworkSpeeds networkSpeeds, double flops)
-        //    {
-        //        this.endPoint = endPoint;
-        //        netSpeeds = networkSpeeds;
-        //        this.flops = flops;
-        //    }
-        //}
-
-        
-
-
-
         static void Main(string[] args)
         {
             TcpListener listener = new TcpListener(IPAddress.Any, 1807);
-            // TcpListener listener = new TcpListener(IPAddress.Parse("192.168.254.136"), 1807);
             listener.Start();
             TcpClient client;
             BinaryReader inputStream;
@@ -104,7 +85,6 @@ namespace serwer
                     int remoteClientID = inputStream.ReadInt32();
 
                     ClientConnections.Instance().Add(new ClientConnectionThread(client, remoteClientID, threadID));
-                    //     connectedClientsList.Add(new ClientConnectionThread(client));
 
                     threadID++;
 

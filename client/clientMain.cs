@@ -15,7 +15,7 @@ namespace client
     {
         static void Main(string[] args)
         {
-            string ipAdress = "192.168.254.136";
+            string ipAdress = "127.0.0.1";
             int port = 1807;
             int clientID;
 
