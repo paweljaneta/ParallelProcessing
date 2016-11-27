@@ -10,44 +10,44 @@ using communicationLibrary;
 
 namespace serwer
 {
+    class ClientIDNetSpeedFlops
+    {
+        public int clientID { get; set; }
+        public Measurments.NetworkSpeeds netSpeeds { get; set; }
+        public double flops { get; set; }
+
+        public ClientIDNetSpeedFlops(int clientID, Measurments.NetworkSpeeds networkSpeeds, double flops)
+        {
+            this.clientID = clientID;
+            netSpeeds = networkSpeeds;
+            this.flops = flops;
+        }
+    }
+
     class serwerMain
     {
-        class RemoteEndPointNetworkSpeedPair
-        {
-            public EndPoint endPoint { get; set; }
-            public Measurments.NetworkSpeeds netSpeeds { get; set; }
-            public double flops { get; set; }
+        //class RemoteEndPointNetworkSpeedPair
+        //{
+        //    public EndPoint endPoint { get; set; }
+        //    public Measurments.NetworkSpeeds netSpeeds { get; set; }
+        //    public double flops { get; set; }
 
-            public RemoteEndPointNetworkSpeedPair(EndPoint endPoint, Measurments.NetworkSpeeds networkSpeeds, double flops)
-            {
-                this.endPoint = endPoint;
-                netSpeeds = networkSpeeds;
-                this.flops = flops;
-            }
+        //    public RemoteEndPointNetworkSpeedPair(EndPoint endPoint, Measurments.NetworkSpeeds networkSpeeds, double flops)
+        //    {
+        //        this.endPoint = endPoint;
+        //        netSpeeds = networkSpeeds;
+        //        this.flops = flops;
+        //    }
+        //}
 
-
-        }
-
-        class ClientIDNetSpeedFlops
-        {
-            public int clientID { get; set; }
-            public Measurments.NetworkSpeeds netSpeeds { get; set; }
-            public double flops { get; set; }
-
-            public ClientIDNetSpeedFlops(int clientID, Measurments.NetworkSpeeds networkSpeeds, double flops)
-            {
-                this.clientID = clientID;
-                netSpeeds = networkSpeeds;
-                this.flops = flops;
-            }
-        }
+        
 
 
 
         static void Main(string[] args)
         {
             TcpListener listener = new TcpListener(IPAddress.Any, 1807);
-           // TcpListener listener = new TcpListener(IPAddress.Parse("192.168.254.136"), 1807);
+            // TcpListener listener = new TcpListener(IPAddress.Parse("192.168.254.136"), 1807);
             listener.Start();
             TcpClient client;
             BinaryReader inputStream;
@@ -57,6 +57,8 @@ namespace serwer
 
             List<ClientConnectionThread> connectedClientsList = new List<ClientConnectionThread>();
             List<ClientIDNetSpeedFlops> clientIDNetSpeedFlopsList = new List<ClientIDNetSpeedFlops>();
+
+            View view = new View(clientIDNetSpeedFlopsList);
 
             int clientID = 0;
             int threadID = 0;
@@ -74,7 +76,7 @@ namespace serwer
                 if (message.Equals(Messages.dllRequest))
                 {
                     //send dll
-                  //  sendDll(outputStream);
+                    //  sendDll(outputStream);
                     double flops = 0.0;
                     Measurments.NetworkSpeeds netSpeed;
 
@@ -90,6 +92,8 @@ namespace serwer
 
                     clientIDNetSpeedFlopsList.Add(new ClientIDNetSpeedFlops(clientID, netSpeed, flops));
 
+                    view.updateList(clientIDNetSpeedFlopsList);
+
                     clientID++;
 
                     client.Close();
@@ -100,7 +104,7 @@ namespace serwer
                     int remoteClientID = inputStream.ReadInt32();
 
                     ClientConnections.Instance().Add(new ClientConnectionThread(client, remoteClientID, threadID));
-               //     connectedClientsList.Add(new ClientConnectionThread(client));
+                    //     connectedClientsList.Add(new ClientConnectionThread(client));
 
                     threadID++;
 

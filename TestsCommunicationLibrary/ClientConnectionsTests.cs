@@ -24,7 +24,7 @@ namespace TestsCommunicationLibrary
         private int numberOfElements = 5;
 
         //at least 2
-        private int numberOfClients = 2;
+        private int numberOfClients = 5;
 
 
         Random random;
@@ -44,6 +44,9 @@ namespace TestsCommunicationLibrary
 
                 connectedClients.Add(new DataTransfer(clientConnection));
                 ClientConnections.Instance().Add(new ClientConnectionThread(serverConnection, 0, i));
+                BinaryReader tempRead = new BinaryReader(clientConnection.GetStream());
+                tempRead.ReadInt32();
+                
 
             }
             server.Stop();
