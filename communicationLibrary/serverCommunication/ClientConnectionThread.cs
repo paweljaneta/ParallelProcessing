@@ -30,6 +30,8 @@ namespace communicationLibrary
         DTO recievedData;
         Exception exception;
 
+        List<object> sentData;
+
         public ClientConnectionThread(TcpClient connection, int clientID, int threadID)
         {
             try
@@ -52,6 +54,8 @@ namespace communicationLibrary
                 exceptionCaught = false;
                 this.clientID = clientID;
                 this.threadID = threadID;
+
+                sentData = new List<object>();
 
             }
             catch (Exception e)
@@ -83,6 +87,11 @@ namespace communicationLibrary
         public void terminateReadThread()
         {
             readThread.Abort();
+        }
+
+        public void clearSentDataList()
+        {
+            sentData.Clear();
         }
 
         #region readSimple
@@ -1782,72 +1791,86 @@ namespace communicationLibrary
         public void sendBool(bool data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendShort(short data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendInt(int data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendLong(long data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendUShort(ushort data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
 
         public void sendUInt(uint data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendULong(ulong data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendByte(byte data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendSByte(sbyte data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendChar(char data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendString(string data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendDecimal(decimal data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendFloat(float data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendDouble(double data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         #endregion
@@ -1856,71 +1879,85 @@ namespace communicationLibrary
         public void sendBoolArray(bool[] data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendShortArray(short[] data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendIntArray(int[] data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendLongArray(long[] data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendUShortArray(ushort[] data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendUIntArray(uint[] data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendULongArray(ulong[] data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendByteArray(byte[] data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendSByteArray(sbyte[] data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendCharArray(char[] data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendStringArray(string[] data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendDecimalArray(decimal[] data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendFloatArray(float[] data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendDoubleArray(double[] data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         #endregion
@@ -1929,71 +1966,85 @@ namespace communicationLibrary
         public void sendBoolList(List<bool> data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendShortList(List<short> data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendIntList(List<int> data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendLongList(List<long> data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendUShortList(List<ushort> data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendUIntList(List<uint> data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendULongList(List<ulong> data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendByteList(List<byte> data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendSByteList(List<sbyte> data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendCharList(List<char> data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendStringList(List<string> data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendDecimalList(List<decimal> data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendFloatList(List<float> data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         public void sendDoubleList(List<double> data)
         {
             hasThreadData = true;
+            sentData.Add(data);
             dataTransferConnection.send(data);
         }
         #endregion
