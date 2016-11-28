@@ -2866,6 +2866,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendBool(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -2891,6 +2892,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendShort(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -2916,6 +2918,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendInt(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -2941,6 +2944,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendLong(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -2966,6 +2970,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendUShort(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -2991,6 +2996,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendUInt(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3016,6 +3022,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendULong(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3041,6 +3048,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendByte(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3066,6 +3074,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendSByte(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3091,6 +3100,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendChar(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3116,6 +3126,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendString(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3141,6 +3152,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendDecimal(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3166,6 +3178,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendFloat(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3191,6 +3204,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendDouble(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3219,6 +3233,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendBoolArray(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3244,6 +3259,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendShortArray(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3269,6 +3285,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendIntArray(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3294,6 +3311,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendLongArray(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3319,6 +3337,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendUShortArray(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3344,6 +3363,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendUIntArray(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3369,6 +3389,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendULongArray(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3394,6 +3415,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendByteArray(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3419,6 +3441,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendSByteArray(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3444,6 +3467,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendCharArray(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3469,6 +3493,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendStringArray(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3494,6 +3519,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendDecimalArray(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3519,6 +3545,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendFloatArray(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3544,6 +3571,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendDoubleArray(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3572,6 +3600,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendBoolList(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3597,6 +3626,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendShortList(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3622,6 +3652,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendIntList(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3647,6 +3678,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendLongList(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3672,6 +3704,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendUShortList(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3697,6 +3730,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendUIntList(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3722,6 +3756,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendULongList(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3747,6 +3782,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendByteList(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3772,6 +3808,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendSByteList(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3797,6 +3834,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendCharList(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3822,6 +3860,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendStringList(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3847,6 +3886,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendDecimalList(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3872,6 +3912,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendFloatList(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
@@ -3897,6 +3938,7 @@ namespace communicationLibrary
                 {
                     if (!connectedClientsList[i].hasDataSend())
                     {
+                        connectedClientsList[i].clearSentDataList();
                         connectedClientsList[i].sendDoubleList(data);
                         thrID = connectedClientsList[i].getThreadID();
                         dataSent = true;
