@@ -56,6 +56,9 @@ namespace client
             string message = inputStream.ReadString();
 
             if(message.Equals(Messages.startCalculations))
+            {
+
+            }
 
 
         }

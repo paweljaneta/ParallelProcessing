@@ -93,7 +93,7 @@ namespace communicationLibrary
             }
         }
 
-        private void sendDataFromTerminatedThread()
+        private void sendDataFromTerminatedThread(List<object> data)
         {
             #region variables
             bool b = true;
@@ -140,7 +140,7 @@ namespace communicationLibrary
             List<decimal> dL = new List<decimal>();
             List<float> fL = new List<float>();
             List<double> dblL = new List<double>();
- 
+
             #endregion
             #region types
             Type boolType = b.GetType();
@@ -188,6 +188,563 @@ namespace communicationLibrary
             Type floatListType = fL.GetType();
             Type doubleListType = dblL.GetType();
             #endregion
+
+            bool sendToFirstFree = true;
+            int threadID = -1;
+
+            foreach (object o in data)
+            {
+                if (o.GetType().Equals(boolType))
+                {
+                    if(sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendBool((bool)o,out threadID);
+                    }
+                    else
+                    {
+                        sendBoolByID((bool)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(shortType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendShort((short)o, out threadID);
+                    }
+                    else
+                    {
+                        sendShortByID((short)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(intType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendInt((int)o, out threadID);
+                    }
+                    else
+                    {
+                        sendIntByID((int)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(longType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendLong((long)o, out threadID);
+                    }
+                    else
+                    {
+                        sendLongByID((long)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(ushortType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendUShort((ushort)o, out threadID);
+                    }
+                    else
+                    {
+                        sendUShortByID((ushort)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(uintType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendUInt((uint)o, out threadID);
+                    }
+                    else
+                    {
+                        sendUIntByID((uint)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(ulongType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendULong((ulong)o, out threadID);
+                    }
+                    else
+                    {
+                        sendULongByID((ulong)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(byteType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendByte((byte)o, out threadID);
+                    }
+                    else
+                    {
+                        sendByteByID((byte)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(sbyteType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendSByte((sbyte)o, out threadID);
+                    }
+                    else
+                    {
+                        sendSByteByID((sbyte)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(charType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendChar((char)o, out threadID);
+                    }
+                    else
+                    {
+                        sendCharByID((char)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(stringType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendString((string)o, out threadID);
+                    }
+                    else
+                    {
+                        sendStringByID((string)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(decimalType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendDecimal((decimal)o, out threadID);
+                    }
+                    else
+                    {
+                        sendDecimalByID((decimal)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(floatType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendFloat((float)o, out threadID);
+                    }
+                    else
+                    {
+                        sendFloatByID((float)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(doubleType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendDouble((double)o, out threadID);
+                    }
+                    else
+                    {
+                        sendDoubleByID((double)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(boolArrayType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendBoolArray((bool[])o, out threadID);
+                    }
+                    else
+                    {
+                        sendBoolArrayByID((bool[])o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(shortArrayType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendShortArray((short[])o, out threadID);
+                    }
+                    else
+                    {
+                        sendShortArrayByID((short[])o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(intArrayType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendIntArray((int[])o, out threadID);
+                    }
+                    else
+                    {
+                        sendIntArrayByID((int[])o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(longArrayType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendLongArray((long[])o, out threadID);
+                    }
+                    else
+                    {
+                        sendLongArrayByID((long[])o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(ushortArrayType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendUShortArray((ushort[])o, out threadID);
+                    }
+                    else
+                    {
+                        sendUShortArrayByID((ushort[])o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(uintArrayType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendUIntArray((uint[])o, out threadID);
+                    }
+                    else
+                    {
+                        sendUIntArrayByID((uint[])o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(ulongArrayType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendULongArray((ulong[])o, out threadID);
+                    }
+                    else
+                    {
+                        sendULongArrayByID((ulong[])o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(byteArrayType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendByteArray((byte[])o, out threadID);
+                    }
+                    else
+                    {
+                        sendByteArrayByID((byte[])o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(sbyteArrayType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendSByteArray((sbyte[])o, out threadID);
+                    }
+                    else
+                    {
+                        sendSByteArrayByID((sbyte[])o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(charArrayType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendCharArray((char[])o, out threadID);
+                    }
+                    else
+                    {
+                        sendCharArrayByID((char[])o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(stringArrayType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendStringArray((string[])o, out threadID);
+                    }
+                    else
+                    {
+                        sendStringArrayByID((string[])o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(decimalArrayType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendDecimalArray((decimal[])o, out threadID);
+                    }
+                    else
+                    {
+                        sendDecimalArrayByID((decimal[])o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(floatArrayType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendFloatArray((float[])o, out threadID);
+                    }
+                    else
+                    {
+                        sendFloatArrayByID((float[])o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(doubleArrayType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendDoubleArray((double[])o, out threadID);
+                    }
+                    else
+                    {
+                        sendDoubleArrayByID((double[])o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(boolListType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendBoolList((List<bool>)o, out threadID);
+                    }
+                    else
+                    {
+                        sendBoolListByID((List<bool>)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(shortListType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendShortList((List<short>)o, out threadID);
+                    }
+                    else
+                    {
+                        sendShortListByID((List<short>)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(intListType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendIntList((List<int>)o, out threadID);
+                    }
+                    else
+                    {
+                        sendIntListByID((List<int>)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(longListType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendLongList((List<long>)o, out threadID);
+                    }
+                    else
+                    {
+                        sendLongListByID((List<long>)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(ushortListType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendUShortList((List<ushort>)o, out threadID);
+                    }
+                    else
+                    {
+                        sendUShortListByID((List<ushort>)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(uintListType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendUIntList((List<uint>)o, out threadID);
+                    }
+                    else
+                    {
+                        sendUIntListByID((List<uint>)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(ulongListType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendULongList((List<ulong>)o, out threadID);
+                    }
+                    else
+                    {
+                        sendULongListByID((List<ulong>)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(byteListType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendByteList((List<byte>)o, out threadID);
+                    }
+                    else
+                    {
+                        sendByteListByID((List<byte>)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(sbyteListType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendSByteList((List<sbyte>)o, out threadID);
+                    }
+                    else
+                    {
+                        sendSByteListByID((List<sbyte>)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(charListType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendCharList((List<char>)o, out threadID);
+                    }
+                    else
+                    {
+                        sendCharListByID((List<char>)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(stringListType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendStringList((List<string>)o, out threadID);
+                    }
+                    else
+                    {
+                        sendStringListByID((List<string>)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(decimalListType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendDecimalList((List<decimal>)o, out threadID);
+                    }
+                    else
+                    {
+                        sendDecimalListByID((List<decimal>)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(floatListType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendFloatList((List<float>)o, out threadID);
+                    }
+                    else
+                    {
+                        sendFloatListByID((List<float>)o, threadID);
+                    }
+                }
+                else
+                    if (o.GetType().Equals(doubleListType))
+                {
+                    if (sendToFirstFree)
+                    {
+                        sendToFirstFree = false;
+                        sendDoubleList((List<double>)o, out threadID);
+                    }
+                    else
+                    {
+                        sendDoubleListByID((List<double>)o, threadID);
+                    }
+                }
+                else
+                {
+                    throw new ArgumentException("not supported type!");
+                }
+            }
+
         }
 
         #region readMethods
