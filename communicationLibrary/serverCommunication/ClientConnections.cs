@@ -12,7 +12,7 @@ namespace communicationLibrary
         private static ClientConnections instance = new ClientConnections();
         private volatile List<ClientConnectionThread> connectedClientsList = new List<ClientConnectionThread>();
 
-       // public static Dictionary<int, List<int>> clientIDThreadsIDMap = new Dictionary<int, List<int>>();
+        // public static Dictionary<int, List<int>> clientIDThreadsIDMap = new Dictionary<int, List<int>>();
 
         private object connectedClientsLock = new object();
 
@@ -91,6 +91,103 @@ namespace communicationLibrary
             {
                 connectedClientsList[i].terminateReadThread();
             }
+        }
+
+        private void sendDataFromTerminatedThread()
+        {
+            #region variables
+            bool b = true;
+            short s = 0;
+            int i = 0;
+            long l = 0;
+            ushort us = 0;
+            uint ui = 0;
+            ulong ul = 0;
+            byte by = 0;
+            sbyte sby = 0;
+            char c = 'x';
+            string st = "";
+            decimal d = 0;
+            float f = 0.0f;
+            double dbl = 0.0;
+
+            bool[] bA = new bool[1];
+            short[] sA = new short[1];
+            int[] iA = new int[1];
+            long[] lA = new long[1];
+            ushort[] usA = new ushort[1];
+            uint[] uiA = new uint[1];
+            ulong[] ulA = new ulong[1];
+            byte[] byA = new byte[1];
+            sbyte[] sbyA = new sbyte[1];
+            char[] cA = new char[1];
+            string[] stA = new string[1];
+            decimal[] dA = new decimal[1];
+            float[] fA = new float[1];
+            double[] dblA = new double[1];
+
+            List<bool> bL = new List<bool>();
+            List<short> sL = new List<short>();
+            List<int> iL = new List<int>();
+            List<long> lL = new List<long>();
+            List<ushort> usL = new List<ushort>();
+            List<uint> uiL = new List<uint>();
+            List<ulong> ulL = new List<ulong>();
+            List<byte> byL = new List<byte>();
+            List<sbyte> sbyL = new List<sbyte>();
+            List<char> cL = new List<char>();
+            List<string> stL = new List<string>();
+            List<decimal> dL = new List<decimal>();
+            List<float> fL = new List<float>();
+            List<double> dblL = new List<double>();
+ 
+            #endregion
+            #region types
+            Type boolType = b.GetType();
+            Type shortType = s.GetType();
+            Type intType = i.GetType();
+            Type longType = l.GetType();
+            Type ushortType = us.GetType();
+            Type uintType = ui.GetType();
+            Type ulongType = ul.GetType();
+            Type byteType = by.GetType();
+            Type sbyteType = sby.GetType();
+            Type charType = c.GetType();
+            Type stringType = st.GetType();
+            Type decimalType = d.GetType();
+            Type floatType = f.GetType();
+            Type doubleType = dbl.GetType();
+
+            Type boolArrayType = bA.GetType();
+            Type shortArrayType = sA.GetType();
+            Type intArrayType = iA.GetType();
+            Type longArrayType = lA.GetType();
+            Type ushortArrayType = usA.GetType();
+            Type uintArrayType = uiA.GetType();
+            Type ulongArrayType = ulA.GetType();
+            Type byteArrayType = byA.GetType();
+            Type sbyteArrayType = sbyA.GetType();
+            Type charArrayType = cA.GetType();
+            Type stringArrayType = stA.GetType();
+            Type decimalArrayType = dA.GetType();
+            Type floatArrayType = fA.GetType();
+            Type doubleArrayType = dblA.GetType();
+
+            Type boolListType = bL.GetType();
+            Type shortListType = sL.GetType();
+            Type intListType = iL.GetType();
+            Type longListType = lL.GetType();
+            Type ushortListType = usL.GetType();
+            Type uintListType = uiL.GetType();
+            Type ulongListType = ulL.GetType();
+            Type byteListType = byL.GetType();
+            Type sbyteListType = sbyL.GetType();
+            Type charListType = cL.GetType();
+            Type stringListType = stL.GetType();
+            Type decimalListType = dL.GetType();
+            Type floatListType = fL.GetType();
+            Type doubleListType = dblL.GetType();
+            #endregion
         }
 
         #region readMethods
