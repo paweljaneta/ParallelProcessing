@@ -75,9 +75,10 @@ namespace serwer
 
                     view.updateList(clientIDNetSpeedFlopsList);
 
+                    TelemetryConnections.Add(new TelemetryConnection(client, clientID));
+
                     clientID++;
 
-                    client.Close();
                 }
                 else if (message.Equals(Messages.dataRequest))
                 {

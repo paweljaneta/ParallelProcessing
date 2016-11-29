@@ -24,6 +24,7 @@ namespace client
         int readTimeout = 100;
 
         bool stopThreads = false;
+        bool stopCalc = false;
 
         List<Exception> exceptions = new List<Exception>();
         object exceptionsLock = new object();
@@ -37,6 +38,10 @@ namespace client
             inStream = new BinaryReader(connection.GetStream());
             inStream.BaseStream.ReadTimeout = readTimeout;
             outStream = new BinaryWriter(connection.GetStream());
+            inputThread = new Thread(inThread);
+            outputThread = new Thread(outThread);
+            inputThread.Start();
+            outputThread.Start();
         }
 
         public Telemetry(TcpClient connection, int TelemetryDelayMs)
@@ -46,6 +51,10 @@ namespace client
             inStream.BaseStream.ReadTimeout = readTimeout;
             outStream = new BinaryWriter(connection.GetStream());
             telemetryDelayMs = TelemetryDelayMs;
+            inputThread = new Thread(inThread);
+            outputThread = new Thread(outThread);
+            inputThread.Start();
+            outputThread.Start();
         }
 
         private void inThread()
@@ -69,7 +78,12 @@ namespace client
 
         private void stopCalculations()
         {
+            stopCalc = true;
+        }
 
+        public bool getStopCalculations()
+        {
+            return stopCalc;
         }
 
         private void outThread()

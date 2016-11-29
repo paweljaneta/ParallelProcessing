@@ -21,11 +21,15 @@ namespace client
 
         TcpClient connection;
 
-        Thread thread;
+        Telemetry telemetry;
 
-        public ClientThread(string adress, int port, int clientId)
+        Thread thread;
+        Thread calculationsStopObserverThread;
+
+        public ClientThread(string adress, int port, int clientId,Telemetry telemetry)
         {
             this.clientId = clientId;
+            this.telemetry = telemetry;
 
             try
             {
@@ -51,16 +55,39 @@ namespace client
 
         public void run()
         {
-            //load dll
-            //execute
+
             string message = inputStream.ReadString();
 
             if(message.Equals(Messages.startCalculations))
             {
-
+                try
+                {
+                    //load dll
+                    //execute
+                }
+                catch (Exception e)
+                {
+                    telemetry.addExceptionToList(e);
+                }
             }
+        }
 
+        private void calculationsStopObserver()
+        {
+            while(true)
+            {
+                if(!telemetry.getStopCalculations())
+                {
+                    abortThread();
+                }
+                Thread.Sleep(1);
+            }
+        }
 
+        public void abortThread()
+        {
+            thread.Abort();
+            calculationsStopObserverThread.Abort();
         }
 
         public bool isThreadAlive()

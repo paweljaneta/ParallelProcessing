@@ -21,7 +21,7 @@ namespace client
 
 
             List<ClientThread> workingThreads = new List<ClientThread>();
-           // Thread cpuLoadThread;
+            Telemetry telemetry;
             int numberOfCPUcores = Environment.ProcessorCount;
             double flops;
 
@@ -52,14 +52,14 @@ namespace client
 
                 clientID = inStream.ReadInt32();
 
-
-                connection.Close();
+                telemetry = new Telemetry(connection);
+                //connection.Close();
 
                 //start threads
                 
                 for (int i=0;i<numberOfCPUcores;i++)
                 {
-                    workingThreads.Add(new ClientThread(ipAdress, port,clientID));
+                    workingThreads.Add(new ClientThread(ipAdress, port,clientID,telemetry));
                 }
                 
                 //wait until finished
