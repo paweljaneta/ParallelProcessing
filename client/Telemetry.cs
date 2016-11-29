@@ -21,6 +21,9 @@ namespace client
         Thread outputThread;
 
         int telemetryDelayMs = 1000;
+        int readTimeout = 100;
+
+        bool stopThreads = false;
 
         List<Exception> exceptions = new List<Exception>();
         object exceptionsLock = new object();
@@ -32,6 +35,7 @@ namespace client
         {
             this.connection = connection;
             inStream = new BinaryReader(connection.GetStream());
+            inStream.BaseStream.ReadTimeout = readTimeout;
             outStream = new BinaryWriter(connection.GetStream());
         }
 
@@ -39,6 +43,7 @@ namespace client
         {
             this.connection = connection;
             inStream = new BinaryReader(connection.GetStream());
+            inStream.BaseStream.ReadTimeout = readTimeout;
             outStream = new BinaryWriter(connection.GetStream());
             telemetryDelayMs = TelemetryDelayMs;
         }
@@ -46,16 +51,19 @@ namespace client
         private void inThread()
         {
             string message;
-            while (true)
+            while (!stopThreads)
             {
                 message = inStream.ReadString();
 
-                switch (message)
+                if(message!=null)
                 {
-                    case Messages.stopCalculations:
-                        stopCalculations();
-                        break;
-                }
+                    switch (message)
+                    {
+                        case Messages.stopCalculations:
+                            stopCalculations();
+                            break;
+                    }
+                }  
             }
         }
 
@@ -66,18 +74,21 @@ namespace client
 
         private void outThread()
         {
-            while (true)
+            while (!stopThreads)
             {
-
-
                 //send exceptions
-                while (exceptions.Count > 0)
+                if(exceptions.Count>0)
                 {
                     outStream.Write(Messages.exception);
-                    lock (exceptionsLock)
+                    outStream.Write(exceptions.Count);
+                    
+                    while (exceptions.Count > 0)
                     {
-                        outStream.Write(exceptions[0].ToString());
-                        exceptions.RemoveAt(0);
+                        lock (exceptionsLock)
+                        {
+                            outStream.Write(exceptions[0].ToString());
+                            exceptions.RemoveAt(0);
+                        }
                     }
                 }
 
@@ -109,6 +120,11 @@ namespace client
             {
                 exceptions.Add(e);
             }
+        }
+
+        public void abortThreads()
+        {
+            stopThreads = true;
         }
 
     }

@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TelemetryConnection.cs" />
     <Compile Include="View.cs" />
     <Compile Include="Measurments.cs" />
     <Compile Include="serwerMain.cs" />
