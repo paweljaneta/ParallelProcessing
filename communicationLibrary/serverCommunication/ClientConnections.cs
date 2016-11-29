@@ -49,6 +49,22 @@ namespace communicationLibrary
 
         }
 
+        public bool isClientIDInList(int clientID)
+        {
+            bool result = false;
+
+            for(int i =0;i<connectedClientsList.Count;i++)
+            {
+                if(connectedClientsList[i].getClientID()==clientID)
+                {
+                    result = true;
+                    break;
+                }
+            }
+
+            return result;
+        }
+
         public void RemoveByThreadID(int threadID)
         {
             int index = -1;

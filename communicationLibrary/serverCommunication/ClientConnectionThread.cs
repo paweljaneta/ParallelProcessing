@@ -84,6 +84,11 @@ namespace communicationLibrary
             return threadID;
         }
 
+        public int getClientID()
+        {
+            return clientID;
+        }
+
         public void terminateReadThread()
         {
             readThread.Abort();

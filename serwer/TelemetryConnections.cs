@@ -20,6 +20,11 @@ namespace serwer
             }
         }
 
+        public static List<TelemetryConnection> getTelemetryConnections()
+        {
+            return telemetryConnections;
+        }
+
         public static void RemoveByClientID(int clientID)
         {
             for (int i = 0; i < telemetryConnections.Count; i++)
