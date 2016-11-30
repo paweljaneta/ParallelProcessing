@@ -88,6 +88,28 @@ namespace communicationLibrary
             }
         }
 
+        public void RemoveByClientID(int clientID)
+        {
+            int index = -1;
+
+            for (int i = 0; i < connectedClientsList.Count; i++)
+            {
+                if (connectedClientsList[i].getClientID() == clientID)
+                {
+                    lock (connectedClientsLock)
+                    {
+                        connectedClientsList.RemoveAt(i);
+                    }
+                    index = i;
+                }
+            }
+
+            if (index < 0)
+            {
+                throw new ArgumentOutOfRangeException("Remove by threadID: no such threadID");
+            }
+        }
+
         public void RemoveAll()
         {
             lock (connectedClientsLock)

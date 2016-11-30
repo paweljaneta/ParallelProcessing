@@ -99,6 +99,18 @@ namespace communicationLibrary
             sentData.Clear();
         }
 
+        private void EndOfStreamHandler()
+        {
+            terminateReadThread();
+            ClientConnections.Instance().RemoveByThreadID(threadID);
+        }
+
+        private void SocketExceptionHandler()
+        {
+            terminateReadThread();
+            ClientConnections.Instance().RemoveByThreadID(threadID);
+        }
+
         #region readSimple
         public void recieveBool()
         {
@@ -124,8 +136,18 @@ namespace communicationLibrary
             }
             catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
 
             dataRead = true;
@@ -167,11 +189,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.Short = dataTransferConnection.recieveShort();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -206,11 +237,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.Int = dataTransferConnection.recieveInt();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -246,11 +286,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.Long = dataTransferConnection.recieveLong();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -286,11 +335,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.UShort = dataTransferConnection.recieveUShort();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -326,11 +384,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.UInt = dataTransferConnection.recieveUInt();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -366,11 +433,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.ULong = dataTransferConnection.recieveULong();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -406,11 +482,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.Byte = dataTransferConnection.recieveByte();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -446,11 +531,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.SByte = dataTransferConnection.recieveSByte();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -485,11 +579,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.Char = dataTransferConnection.recieveChar();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -525,11 +628,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.String = dataTransferConnection.recieveString();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -565,11 +677,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.Decimal = dataTransferConnection.recieveDecimal();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -605,11 +726,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.Float = dataTransferConnection.recieveFloat();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -645,11 +775,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.Double = dataTransferConnection.recieveDouble();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -687,11 +826,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.BoolArray = dataTransferConnection.recieveArrayOfBools();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -727,11 +875,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.ShortArray = dataTransferConnection.recieveArrayOfShorts();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -767,11 +924,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.IntArray = dataTransferConnection.recieveArrayOfInts();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -806,11 +972,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.LongArray = dataTransferConnection.recieveArrayOfLongs();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
 
             dataRead = true;
@@ -847,11 +1022,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.UShortArray = dataTransferConnection.recieveArrayOfUShorts();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -887,11 +1071,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.UIntArray = dataTransferConnection.recieveArrayOfUInts();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -927,11 +1120,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.ULongArray = dataTransferConnection.recieveArrayOfULongs();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -967,11 +1169,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.ByteArray = dataTransferConnection.recieveArrayOfBytes();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1007,11 +1218,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.SByteArray = dataTransferConnection.recieveArrayOfSBytes();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1047,11 +1267,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.CharArray = dataTransferConnection.recieveArrayOfChars();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1087,11 +1316,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.StringArray = dataTransferConnection.recieveArrayOfStrings();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1127,11 +1365,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.DecimalArray = dataTransferConnection.recieveArrayOfDecimals();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1167,11 +1414,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.FloatArray = dataTransferConnection.recieveArrayOfFloats();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1207,11 +1463,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.DoubleArray = dataTransferConnection.recieveArrayOfDoubles();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1250,11 +1515,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.BoolList = dataTransferConnection.recieveListOfBools();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1289,11 +1563,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.ShortList = dataTransferConnection.recieveListOfShorts();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1329,11 +1612,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.IntList = dataTransferConnection.recieveListOfInts();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1409,11 +1701,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.UShortList = dataTransferConnection.recieveListOfUShorts();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1449,11 +1750,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.UIntList = dataTransferConnection.recieveListOfUInts();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1489,11 +1799,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.ULongList = dataTransferConnection.recieveListOfULongs();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1529,11 +1848,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.ByteList = dataTransferConnection.recieveListOfBytes();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1569,11 +1897,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.SByteList = dataTransferConnection.recieveListOfSBytes();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1609,11 +1946,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.CharList = dataTransferConnection.recieveListOfChars();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1649,11 +1995,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.StringList = dataTransferConnection.recieveListOfStrings();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1689,11 +2044,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.DecimalList = dataTransferConnection.recieveListOfDecimals();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1729,11 +2093,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.FloatList = dataTransferConnection.recieveListOfFloats();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }
@@ -1769,11 +2142,20 @@ namespace communicationLibrary
             try
             {
                 recievedData.DoubleList = dataTransferConnection.recieveListOfDoubles();
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
-                exceptionCaught = true;
-                exception = ex;
+                if(ex is EndOfStreamException)
+                {
+                    EndOfStreamHandler();
+                }else if(ex is SocketException)
+                {
+                    SocketExceptionHandler();
+                }
+                else
+                {
+                    exceptionCaught = true;
+                    exception = ex;
+                }
             }
             dataRead = true;
         }

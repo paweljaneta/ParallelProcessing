@@ -42,34 +42,54 @@ namespace serwer
 
         private void inThread()
         {
-            while(!stopThread)
+            while (!stopThread)
             {
                 string message;
-
-                message = inputStream.ReadString();
-
-                if(message!=null)
+                try
                 {
-                    if (message.Equals(Messages.exception))
-                    {
-                        int count;
-                        count = inputStream.ReadInt32();
+                    message = inputStream.ReadString();
 
-                        for(int i=0;i<count;i++)
+                    if (message != null)
+                    {
+                        if (message.Equals(Messages.exception))
                         {
-                            exceptions.Add(inputStream.ReadString());
+                            int count;
+                            count = inputStream.ReadInt32();
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                exceptions.Add(inputStream.ReadString());
+                            }
+
                         }
+                        else if (message.Equals(Messages.CPULoad))
+                        {
+                            cpuUsage = inputStream.ReadSingle();
 
-                    }else if(message.Equals(Messages.CPULoad))
-                    {
-                        cpuUsage = inputStream.ReadSingle();
-
-                    }else if(message.Equals(Messages.memoryAvaliable))
-                    {
-                        ramAvaliable = inputStream.ReadSingle();
+                        }
+                        else if (message.Equals(Messages.memoryAvaliable))
+                        {
+                            ramAvaliable = inputStream.ReadSingle();
+                        }
                     }
+
                 }
-               
+                catch (EndOfStreamException e)
+                {
+                    ClientConnections.Instance().RemoveByClientID(clientID);
+                    abortThread();
+                    TelemetryConnections.RemoveByClientID(clientID);
+                }
+                catch (IOException e)
+                {
+                    //exception from timeout
+                }
+                catch(SocketException e)
+                {
+                    ClientConnections.Instance().RemoveByClientID(clientID);
+                    abortThread();
+                    TelemetryConnections.RemoveByClientID(clientID);
+                }
             }
         }
 
