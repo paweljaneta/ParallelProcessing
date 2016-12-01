@@ -7,6 +7,8 @@ using System.Net.Sockets;
 using System.Net;
 using System.IO;
 using communicationLibrary;
+using System.Threading;
+using serwerDll;
 
 namespace serwer
 {
@@ -28,7 +30,8 @@ namespace serwer
     {
         static void Main(string[] args)
         {
-            TcpListener listener = new TcpListener(IPAddress.Parse("157.158.170.90"), 4200);
+            //Parse("157.158.170.90")
+            TcpListener listener = new TcpListener(IPAddress.Any, 1807);
             listener.Start();
             TcpClient client;
             BinaryReader inputStream;
@@ -40,6 +43,9 @@ namespace serwer
             List<ClientIDNetSpeedFlops> clientIDNetSpeedFlopsList = new List<ClientIDNetSpeedFlops>();
 
             View view = new View(clientIDNetSpeedFlopsList);
+
+            serwerDllMain serverDllMain = new serwerDllMain();
+            Thread serverDllThread = new Thread(serverDllMain.Main);
 
             int clientID = 0;
             int threadID = 0;
@@ -57,7 +63,7 @@ namespace serwer
                 if (message.Equals(Messages.dllRequest))
                 {
                     //send dll
-                    //  sendDll(outputStream);
+                    sendDll(outputStream);
                     double flops = 0.0;
                     Measurments.NetworkSpeeds netSpeed;
 
@@ -76,6 +82,8 @@ namespace serwer
                     view.updateList(clientIDNetSpeedFlopsList);
 
                     TelemetryConnections.Add(new TelemetryConnection(client, clientID));
+
+                    serverDllThread.Start();
 
                     clientID++;
 
@@ -103,7 +111,7 @@ namespace serwer
         {
             try
             {
-                byte[] fileBytes = File.ReadAllBytes("dllka.dll");
+                byte[] fileBytes = File.ReadAllBytes("clientDll.dll");
 
                 int size = fileBytes.Count();
 

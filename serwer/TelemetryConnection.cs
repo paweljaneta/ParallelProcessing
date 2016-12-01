@@ -16,7 +16,7 @@ namespace serwer
         BinaryReader inputStream;
         BinaryWriter outputStream;
 
-        int streamTimeout = 100;
+        int streamTimeout = 100000;
 
         int clientID;
 
@@ -82,6 +82,12 @@ namespace serwer
                 }
                 catch (IOException e)
                 {
+                    if(e.InnerException is SocketException)
+                    {
+                       // ClientConnections.Instance().RemoveByClientID(clientID);
+                       // abortThread();
+                       // TelemetryConnections.RemoveByClientID(clientID);
+                    }
                     //exception from timeout
                 }
                 catch(SocketException e)

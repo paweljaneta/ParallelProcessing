@@ -148,6 +148,7 @@ namespace serwer
         public void startCalculations()
         {
             calculationsStarted = true;
+            ClientConnections.startCalculations = true;
 
         }
 

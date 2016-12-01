@@ -16,6 +16,8 @@ namespace communicationLibrary
 
         private object connectedClientsLock = new object();
 
+        public static bool startCalculations = false;
+
 
         private ClientConnections()
         {
