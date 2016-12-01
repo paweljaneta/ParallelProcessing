@@ -43,7 +43,7 @@ namespace client
 
                     //get dll
                     outStream.Write(Messages.dllRequest);
-                    //  getDll(inStream);
+                    getDll(inStream);
 
                     //do tests
                     flops = mesurments.CPUPerformanceFLOPS();
@@ -59,7 +59,8 @@ namespace client
 
                     //start threads
 
-                    for (int i = 0; i < numberOfCPUcores; i++)
+                    // for (int i = 0; i < numberOfCPUcores; i++)
+                    for (int i = 0; i < 2; i++)
                     {
                         workingThreads.Add(new ClientThread(ipAdress, port, clientID, telemetry));
                     }
@@ -68,7 +69,7 @@ namespace client
 
 
 
-                    while (!threadsFinished(workingThreads))
+                    while (true)
                     {
                         Thread.Sleep(1);
                     }
@@ -88,7 +89,7 @@ namespace client
             byte[] file;
 
             file = reader.ReadBytes(dllSize);
-            File.WriteAllBytes("dllka.dll", file);
+            File.WriteAllBytes("clientDll.dll", file);
         }
 
 

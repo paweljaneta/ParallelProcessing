@@ -20,8 +20,8 @@ namespace client
         Thread inputThread;
         Thread outputThread;
 
-        int telemetryDelayMs = 1000;
-        int readTimeout = 100;
+        int telemetryDelayMs = 5000;
+        int readTimeout = 100000;
 
         bool stopThreads = false;
         bool stopCalc = false;

@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Net;
 using communicationLibrary;
+using System.Reflection;
 
 namespace client
 {
@@ -55,21 +56,33 @@ namespace client
 
         public void run()
         {
-            Telemetry.addExceptionToList(new ArgumentException("test exceptiona"));
-            string message = inputStream.ReadString();
+           // Telemetry.addExceptionToList(new ArgumentException("test exceptiona"));
+            //string message = inputStream.ReadString();
 
-            if(message.Equals(Messages.startCalculations))
-            {
+          //  if(message.Equals(Messages.startCalculations))
+           // {
                 try
                 {
                     //load dll
+                    string path = Directory.GetCurrentDirectory() + "\\clientDll.dll";
+
+                    Assembly assembly = Assembly.LoadFile(path);
+                    Type[] type = assembly.GetTypes();
+
                     //execute
+                    foreach (Type t in type)
+                    {
+                        var obj = Activator.CreateInstance(t);
+                        object[] arg = new object[] { new DataTransfer(connection) };
+                        t.GetMethod("Main").Invoke(obj, arg);
+                    }
+                    
                 }
                 catch (Exception e)
                 {
                     Telemetry.addExceptionToList(e);
                 }
-            }
+           // }
         }
 
         private void calculationsStopObserver()
