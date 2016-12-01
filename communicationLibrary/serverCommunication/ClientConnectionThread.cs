@@ -16,7 +16,7 @@ namespace communicationLibrary
         int clientID;
         int threadID;
 
-       // Thread thread;
+        // Thread thread;
         Thread readThread;
         TcpClient connection;
         BinaryReader inputStream;
@@ -64,10 +64,10 @@ namespace communicationLibrary
             }
         }
 
-       // public void run()
-       // {
-       //     outputStream.Write("Hello!");
-       // }
+        // public void run()
+        // {
+        //     outputStream.Write("Hello!");
+        // }
 
         public bool isDataRead()
         {
@@ -97,6 +97,11 @@ namespace communicationLibrary
         public void clearSentDataList()
         {
             sentData.Clear();
+        }
+
+        public List<object> getSentData()
+        {
+            return sentData;
         }
 
         private void EndOfStreamHandler()
@@ -136,10 +141,11 @@ namespace communicationLibrary
             }
             catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -189,12 +195,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.Short = dataTransferConnection.recieveShort();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -237,12 +245,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.Int = dataTransferConnection.recieveInt();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -286,12 +296,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.Long = dataTransferConnection.recieveLong();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -335,12 +347,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.UShort = dataTransferConnection.recieveUShort();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -384,12 +398,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.UInt = dataTransferConnection.recieveUInt();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -433,12 +449,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.ULong = dataTransferConnection.recieveULong();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -482,12 +500,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.Byte = dataTransferConnection.recieveByte();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -531,12 +551,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.SByte = dataTransferConnection.recieveSByte();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -579,12 +601,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.Char = dataTransferConnection.recieveChar();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -628,12 +652,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.String = dataTransferConnection.recieveString();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -677,12 +703,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.Decimal = dataTransferConnection.recieveDecimal();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -726,12 +754,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.Float = dataTransferConnection.recieveFloat();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -775,12 +805,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.Double = dataTransferConnection.recieveDouble();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -826,12 +858,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.BoolArray = dataTransferConnection.recieveArrayOfBools();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -875,12 +909,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.ShortArray = dataTransferConnection.recieveArrayOfShorts();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -924,12 +960,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.IntArray = dataTransferConnection.recieveArrayOfInts();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -972,12 +1010,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.LongArray = dataTransferConnection.recieveArrayOfLongs();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1022,12 +1062,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.UShortArray = dataTransferConnection.recieveArrayOfUShorts();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1071,12 +1113,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.UIntArray = dataTransferConnection.recieveArrayOfUInts();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1120,12 +1164,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.ULongArray = dataTransferConnection.recieveArrayOfULongs();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1169,12 +1215,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.ByteArray = dataTransferConnection.recieveArrayOfBytes();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1218,12 +1266,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.SByteArray = dataTransferConnection.recieveArrayOfSBytes();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1267,12 +1317,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.CharArray = dataTransferConnection.recieveArrayOfChars();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1316,12 +1368,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.StringArray = dataTransferConnection.recieveArrayOfStrings();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1365,12 +1419,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.DecimalArray = dataTransferConnection.recieveArrayOfDecimals();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1414,12 +1470,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.FloatArray = dataTransferConnection.recieveArrayOfFloats();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1463,12 +1521,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.DoubleArray = dataTransferConnection.recieveArrayOfDoubles();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1515,12 +1575,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.BoolList = dataTransferConnection.recieveListOfBools();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1563,12 +1625,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.ShortList = dataTransferConnection.recieveListOfShorts();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1612,12 +1676,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.IntList = dataTransferConnection.recieveListOfInts();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1701,12 +1767,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.UShortList = dataTransferConnection.recieveListOfUShorts();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1750,12 +1818,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.UIntList = dataTransferConnection.recieveListOfUInts();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1799,12 +1869,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.ULongList = dataTransferConnection.recieveListOfULongs();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1848,12 +1920,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.ByteList = dataTransferConnection.recieveListOfBytes();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1897,12 +1971,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.SByteList = dataTransferConnection.recieveListOfSBytes();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1946,12 +2022,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.CharList = dataTransferConnection.recieveListOfChars();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -1995,12 +2073,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.StringList = dataTransferConnection.recieveListOfStrings();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -2044,12 +2124,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.DecimalList = dataTransferConnection.recieveListOfDecimals();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -2093,12 +2175,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.FloatList = dataTransferConnection.recieveListOfFloats();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -2142,12 +2226,14 @@ namespace communicationLibrary
             try
             {
                 recievedData.DoubleList = dataTransferConnection.recieveListOfDoubles();
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                if(ex is EndOfStreamException)
+                if (ex is EndOfStreamException)
                 {
                     EndOfStreamHandler();
-                }else if(ex is SocketException)
+                }
+                else if (ex is SocketException)
                 {
                     SocketExceptionHandler();
                 }
@@ -2179,86 +2265,240 @@ namespace communicationLibrary
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendShort(short data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendInt(int data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendLong(long data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendUShort(ushort data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
 
         public void sendUInt(uint data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendULong(ulong data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendByte(byte data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendSByte(sbyte data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendChar(char data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendString(string data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendDecimal(decimal data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendFloat(float data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendDouble(double data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         #endregion
 
@@ -2267,85 +2507,239 @@ namespace communicationLibrary
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendShortArray(short[] data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendIntArray(int[] data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendLongArray(long[] data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendUShortArray(ushort[] data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendUIntArray(uint[] data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendULongArray(ulong[] data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendByteArray(byte[] data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendSByteArray(sbyte[] data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendCharArray(char[] data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendStringArray(string[] data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendDecimalArray(decimal[] data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendFloatArray(float[] data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendDoubleArray(double[] data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         #endregion
 
@@ -2354,85 +2748,239 @@ namespace communicationLibrary
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendShortList(List<short> data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendIntList(List<int> data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendLongList(List<long> data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendUShortList(List<ushort> data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendUIntList(List<uint> data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendULongList(List<ulong> data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendByteList(List<byte> data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendSByteList(List<sbyte> data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendCharList(List<char> data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendStringList(List<string> data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendDecimalList(List<decimal> data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendFloatList(List<float> data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         public void sendDoubleList(List<double> data)
         {
             hasThreadData = true;
             sentData.Add(data);
-            dataTransferConnection.send(data);
+            try
+            {
+                dataTransferConnection.send(data);
+            }
+            catch (EndOfStreamException e)
+            {
+                EndOfStreamHandler();
+            }
+            catch (SocketException e)
+            {
+                SocketExceptionHandler();
+            }
         }
         #endregion
 

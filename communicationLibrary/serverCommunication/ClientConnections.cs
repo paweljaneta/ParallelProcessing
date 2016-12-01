@@ -41,12 +41,13 @@ namespace communicationLibrary
                 throw new ArgumentOutOfRangeException("Remove id out of range");
             }
 
+            List<object> data = connectedClientsList[index].getSentData();
+
             lock (connectedClientsLock)
             {
                 connectedClientsList.RemoveAt(index);
             }
-
-
+            sendDataFromTerminatedThread(data);
         }
 
         public bool isClientIDInList(int clientID)
@@ -81,11 +82,14 @@ namespace communicationLibrary
             {
                 throw new ArgumentOutOfRangeException("Remove by threadID: no such threadID");
             }
+            List<object> data = connectedClientsList[index].getSentData();
 
             lock (connectedClientsLock)
             {
                 connectedClientsList.RemoveAt(index);
             }
+
+            sendDataFromTerminatedThread(data);
         }
 
         public void RemoveByClientID(int clientID)
@@ -96,10 +100,12 @@ namespace communicationLibrary
             {
                 if (connectedClientsList[i].getClientID() == clientID)
                 {
+                    List<object> data = connectedClientsList[i].getSentData();
                     lock (connectedClientsLock)
                     {
                         connectedClientsList.RemoveAt(i);
                     }
+                    sendDataFromTerminatedThread(data);
                     index = i;
                 }
             }
