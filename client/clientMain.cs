@@ -28,51 +28,57 @@ namespace client
             Measurments mesurments = new Measurments();
 
 
-           // ClientThread connectionThread = new ClientThread(ipAdress, port);
-           // ClientThread connectionThread2 = new ClientThread("127.0.0.1", 1807);
+            // ClientThread connectionThread = new ClientThread(ipAdress, port);
+            // ClientThread connectionThread2 = new ClientThread("127.0.0.1", 1807);
 
             while (true) //infinite loop
             {
-                //connect to server
-                TcpClient connection = new TcpClient(ipAdress, port);
-
-                BinaryWriter outStream = new BinaryWriter(connection.GetStream());
-                BinaryReader inStream = new BinaryReader(connection.GetStream());
-
-                //get dll
-                outStream.Write(Messages.dllRequest);
-              //  getDll(inStream);
-
-                //do tests
-                flops = mesurments.CPUPerformanceFLOPS();
-                outStream.Write(Messages.flops);
-                outStream.Write(flops);
-                mesurments.networkSpeed(inStream, outStream);
-
-
-                clientID = inStream.ReadInt32();
-
-                telemetry = new Telemetry(connection);
-                //connection.Close();
-
-                //start threads
-                
-                for (int i=0;i<numberOfCPUcores;i++)
+                try
                 {
-                    workingThreads.Add(new ClientThread(ipAdress, port,clientID,telemetry));
+                    //connect to server
+                    TcpClient connection = new TcpClient(ipAdress, port);
+
+                    BinaryWriter outStream = new BinaryWriter(connection.GetStream());
+                    BinaryReader inStream = new BinaryReader(connection.GetStream());
+
+                    //get dll
+                    outStream.Write(Messages.dllRequest);
+                    //  getDll(inStream);
+
+                    //do tests
+                    flops = mesurments.CPUPerformanceFLOPS();
+                    outStream.Write(Messages.flops);
+                    outStream.Write(flops);
+                    mesurments.networkSpeed(inStream, outStream);
+
+
+                    clientID = inStream.ReadInt32();
+
+                    telemetry = new Telemetry(connection);
+                    //connection.Close();
+
+                    //start threads
+
+                    for (int i = 0; i < numberOfCPUcores; i++)
+                    {
+                        workingThreads.Add(new ClientThread(ipAdress, port, clientID, telemetry));
+                    }
+
+                    //wait until finished
+
+
+
+                    while (!threadsFinished(workingThreads))
+                    {
+                        Thread.Sleep(1);
+                    }
+
                 }
-                
-                //wait until finished
-
-
-
-                while(!threadsFinished(workingThreads))
+                catch (SocketException SockEx)
                 {
-                    Thread.Sleep(1);
-                }
 
+                }
             }
-
         }
 
         public static void getDll(BinaryReader reader)
@@ -91,7 +97,7 @@ namespace client
         {
             bool result = true;
 
-            foreach(ClientThread thread in threads)
+            foreach (ClientThread thread in threads)
             {
                 if (thread.isThreadAlive())
                     result = false;

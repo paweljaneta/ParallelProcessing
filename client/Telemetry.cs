@@ -26,8 +26,8 @@ namespace client
         bool stopThreads = false;
         bool stopCalc = false;
 
-        List<Exception> exceptions = new List<Exception>();
-        object exceptionsLock = new object();
+        static List<Exception> exceptions = new List<Exception>();
+        static object exceptionsLock = new object();
 
         PerformanceCounter cpu = new PerformanceCounter("Processor", "% Processor Time", "_Total");
         PerformanceCounter ram = new PerformanceCounter("Memory", "Available MBytes");
@@ -62,17 +62,33 @@ namespace client
             string message;
             while (!stopThreads)
             {
-                message = inStream.ReadString();
-
-                if(message!=null)
+                try
                 {
-                    switch (message)
+                    message = inStream.ReadString();
+
+                    if (message != null)
                     {
-                        case Messages.stopCalculations:
-                            stopCalculations();
-                            break;
+                        switch (message)
+                        {
+                            case Messages.stopCalculations:
+                                stopCalculations();
+                                break;
+                        }
                     }
-                }  
+
+                }
+                catch (EndOfStreamException e)
+                {
+                    abortThreads();
+                }
+                catch (IOException e)
+                {
+                    //exception from timeout
+                }
+                catch (SocketException e)
+                {
+                    abortThreads();
+                }
             }
         }
 
@@ -91,11 +107,11 @@ namespace client
             while (!stopThreads)
             {
                 //send exceptions
-                if(exceptions.Count>0)
+                if (exceptions.Count > 0)
                 {
                     outStream.Write(Messages.exception);
                     outStream.Write(exceptions.Count);
-                    
+
                     while (exceptions.Count > 0)
                     {
                         lock (exceptionsLock)
@@ -128,7 +144,7 @@ namespace client
             }
         }
 
-        public void addExceptionToList(Exception e)
+        public static void addExceptionToList(Exception e)
         {
             lock (exceptionsLock)
             {

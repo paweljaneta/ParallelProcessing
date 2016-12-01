@@ -55,7 +55,7 @@ namespace client
 
         public void run()
         {
-
+            Telemetry.addExceptionToList(new ArgumentException("test exceptiona"));
             string message = inputStream.ReadString();
 
             if(message.Equals(Messages.startCalculations))
@@ -67,7 +67,7 @@ namespace client
                 }
                 catch (Exception e)
                 {
-                    telemetry.addExceptionToList(e);
+                    Telemetry.addExceptionToList(e);
                 }
             }
         }

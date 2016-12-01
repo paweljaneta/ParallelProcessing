@@ -28,7 +28,7 @@ namespace serwer
     {
         static void Main(string[] args)
         {
-            TcpListener listener = new TcpListener(IPAddress.Any, 1807);
+            TcpListener listener = new TcpListener(IPAddress.Parse("157.158.170.90"), 4200);
             listener.Start();
             TcpClient client;
             BinaryReader inputStream;
