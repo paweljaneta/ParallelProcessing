@@ -1530,7 +1530,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -1544,7 +1547,10 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.boolTransfer))
                 {
-                    result = inStream.ReadBoolean();
+                    lock (recieveLock)
+                    {
+                        result = inStream.ReadBoolean();
+                    }
                 }
                 else
                 {
@@ -1586,7 +1592,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -1599,7 +1608,10 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.shortTransfer))
                 {
-                    result = inStream.ReadInt16();
+                    lock (recieveLock)
+                    {
+                        result = inStream.ReadInt16();
+                    }
                 }
                 else
                 {
@@ -1640,7 +1652,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -1653,7 +1668,10 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.intTransfer))
                 {
-                    result = inStream.ReadInt32();
+                    lock (recieveLock)
+                    {
+                        result = inStream.ReadInt32();
+                    }
                 }
                 else
                 {
@@ -1694,7 +1712,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -1707,7 +1728,10 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.longTransfer))
                 {
-                    result = inStream.ReadInt64();
+                    lock (recieveLock)
+                    {
+                        result = inStream.ReadInt64();
+                    }
                 }
                 else
                 {
@@ -1748,7 +1772,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -1761,7 +1788,10 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.ushortTransfer))
                 {
-                    result = inStream.ReadUInt16();
+                    lock (recieveLock)
+                    {
+                        result = inStream.ReadUInt16();
+                    }
                 }
                 else
                 {
@@ -1802,7 +1832,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -1815,7 +1848,10 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.uintTransfer))
                 {
-                    result = inStream.ReadUInt32();
+                    lock (recieveLock)
+                    {
+                        result = inStream.ReadUInt32();
+                    }
                 }
                 else
                 {
@@ -1856,7 +1892,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -1869,7 +1908,10 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.ulongTransfer))
                 {
-                    result = inStream.ReadUInt64();
+                    lock (recieveLock)
+                    {
+                        result = inStream.ReadUInt64();
+                    }
                 }
                 else
                 {
@@ -1910,7 +1952,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -1923,7 +1968,10 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.byteTransfer))
                 {
-                    result = inStream.ReadByte();
+                    lock (recieveLock)
+                    {
+                        result = inStream.ReadByte();
+                    }
                 }
                 else
                 {
@@ -1964,7 +2012,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -1977,7 +2028,10 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.sbyteTransfer))
                 {
-                    result = inStream.ReadSByte();
+                    lock (recieveLock)
+                    {
+                        result = inStream.ReadSByte();
+                    }
                 }
                 else
                 {
@@ -2018,7 +2072,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2031,7 +2088,10 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.charTransfer))
                 {
-                    result = inStream.ReadChar();
+                    lock (recieveLock)
+                    {
+                        result = inStream.ReadChar();
+                    }
                 }
                 else
                 {
@@ -2072,7 +2132,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2085,7 +2148,10 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.stringTransfer))
                 {
-                    result = inStream.ReadString();
+                    lock (recieveLock)
+                    {
+                        result = inStream.ReadString();
+                    }
                 }
                 else
                 {
@@ -2126,7 +2192,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2139,7 +2208,10 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.decimalTransfer))
                 {
-                    result = inStream.ReadDecimal();
+                    lock (recieveLock)
+                    {
+                        result = inStream.ReadDecimal();
+                    }
                 }
                 else
                 {
@@ -2180,7 +2252,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2193,7 +2268,10 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.floatTransfer))
                 {
-                    result = inStream.ReadSingle();
+                    lock (recieveLock)
+                    {
+                        result = inStream.ReadSingle();
+                    }
                 }
                 else
                 {
@@ -2234,7 +2312,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2247,7 +2328,10 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.doubleTransfer))
                 {
-                    result = inStream.ReadDouble();
+                    lock (recieveLock)
+                    {
+                        result = inStream.ReadDouble();
+                    }
                 }
                 else
                 {
@@ -2292,7 +2376,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2305,23 +2392,26 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.boolArrayTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
-                        result = new bool[count];
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result[i] = inStream.ReadBoolean();
+                            result = new bool[count];
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                result[i] = inStream.ReadBoolean();
+                            }
+
                         }
 
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                    }
-
 
                 }
                 else
@@ -2364,7 +2454,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2377,21 +2470,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.shortArrayTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
-                        result = new short[count];
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result[i] = inStream.ReadInt16();
-                        }
+                            result = new short[count];
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            for (int i = 0; i < count; i++)
+                            {
+                                result[i] = inStream.ReadInt16();
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -2434,7 +2530,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2447,21 +2546,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.intArrayTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
-                        result = new int[count];
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result[i] = inStream.ReadInt32();
-                        }
+                            result = new int[count];
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            for (int i = 0; i < count; i++)
+                            {
+                                result[i] = inStream.ReadInt32();
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -2504,7 +2606,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2517,21 +2622,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.longArrayTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
-                        result = new long[count];
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result[i] = inStream.ReadInt64();
-                        }
+                            result = new long[count];
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            for (int i = 0; i < count; i++)
+                            {
+                                result[i] = inStream.ReadInt64();
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -2574,7 +2682,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2587,21 +2698,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.ushortArrayTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
-                        result = new ushort[count];
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result[i] = inStream.ReadUInt16();
-                        }
+                            result = new ushort[count];
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            for (int i = 0; i < count; i++)
+                            {
+                                result[i] = inStream.ReadUInt16();
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -2644,7 +2758,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2657,21 +2774,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.uintArrayTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
-                        result = new uint[count];
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result[i] = inStream.ReadUInt32();
-                        }
+                            result = new uint[count];
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            for (int i = 0; i < count; i++)
+                            {
+                                result[i] = inStream.ReadUInt32();
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -2714,7 +2834,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2727,21 +2850,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.ulongArrayTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
-                        result = new ulong[count];
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result[i] = inStream.ReadUInt64();
-                        }
+                            result = new ulong[count];
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            for (int i = 0; i < count; i++)
+                            {
+                                result[i] = inStream.ReadUInt64();
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -2784,7 +2910,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2797,23 +2926,26 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.byteArrayTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
-                        // result = new byte[count];
+                        count = inStream.ReadInt32();
 
-                        result = inStream.ReadBytes(count);
+                        if (count >= 0)
+                        {
+                            // result = new byte[count];
 
-                        //for (int i = 0; i < count; i++)
-                        //{
-                        //    result[i] = inStream.ReadInt32();
-                        //}
+                            result = inStream.ReadBytes(count);
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            //for (int i = 0; i < count; i++)
+                            //{
+                            //    result[i] = inStream.ReadInt32();
+                            //}
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -2856,7 +2988,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2869,22 +3004,25 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.sbyteArrayTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
-                        result = new sbyte[count];
+                        count = inStream.ReadInt32();
 
-
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result[i] = inStream.ReadSByte();
-                        }
+                            result = new sbyte[count];
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                result[i] = inStream.ReadSByte();
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -2927,7 +3065,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -2940,23 +3081,26 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.charArrayTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
-                        // result = new int[count];
+                        count = inStream.ReadInt32();
 
-                        result = inStream.ReadChars(count);
+                        if (count >= 0)
+                        {
+                            // result = new int[count];
 
-                        //  for (int i = 0; i < count; i++)
-                        //  {
-                        //       result[i] = inStream.ReadInt32();
-                        //   }
+                            result = inStream.ReadChars(count);
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            //  for (int i = 0; i < count; i++)
+                            //  {
+                            //       result[i] = inStream.ReadInt32();
+                            //   }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -2999,7 +3143,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -3012,21 +3159,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.stringArrayTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
-                        result = new string[count];
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result[i] = inStream.ReadString();
-                        }
+                            result = new string[count];
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            for (int i = 0; i < count; i++)
+                            {
+                                result[i] = inStream.ReadString();
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -3069,7 +3219,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -3082,21 +3235,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.decimalArrayTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
-                        result = new decimal[count];
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result[i] = inStream.ReadDecimal();
-                        }
+                            result = new decimal[count];
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            for (int i = 0; i < count; i++)
+                            {
+                                result[i] = inStream.ReadDecimal();
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -3139,7 +3295,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -3152,21 +3311,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.floatArrayTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
-                        result = new float[count];
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result[i] = inStream.ReadSingle();
-                        }
+                            result = new float[count];
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            for (int i = 0; i < count; i++)
+                            {
+                                result[i] = inStream.ReadSingle();
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -3209,7 +3371,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -3222,21 +3387,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.doubleArrayTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
-                        result = new double[count];
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result[i] = inStream.ReadDouble();
-                        }
+                            result = new double[count];
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            for (int i = 0; i < count; i++)
+                            {
+                                result[i] = inStream.ReadDouble();
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -3282,7 +3450,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -3295,20 +3466,23 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.boolListTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result.Add(inStream.ReadBoolean());
-                        }
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            for (int i = 0; i < count; i++)
+                            {
+                                result.Add(inStream.ReadBoolean());
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -3352,7 +3526,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -3365,20 +3542,23 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.shortListTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result.Add(inStream.ReadInt16());
-                        }
 
-                    }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            for (int i = 0; i < count; i++)
+                            {
+                                result.Add(inStream.ReadInt16());
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
                 }
                 else
@@ -3422,7 +3602,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -3435,22 +3618,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.intListTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result.Add(inStream.ReadInt32());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                result.Add(inStream.ReadInt32());
+                            }
+
                         }
-
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                    }
-
 
                 }
                 else
@@ -3493,7 +3678,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -3506,22 +3694,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.longListTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result.Add(inStream.ReadInt64());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                result.Add(inStream.ReadInt64());
+                            }
+
                         }
-
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                    }
-
 
                 }
                 else
@@ -3564,7 +3754,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -3577,22 +3770,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.ushortListTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result.Add(inStream.ReadUInt16());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                result.Add(inStream.ReadUInt16());
+                            }
+
                         }
-
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                    }
-
                 }
                 else
                 {
@@ -3634,7 +3829,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -3647,22 +3845,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.uintListTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result.Add(inStream.ReadUInt32());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                result.Add(inStream.ReadUInt32());
+                            }
+
                         }
-
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                    }
-
 
                 }
                 else
@@ -3705,7 +3905,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -3718,23 +3921,25 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.ulongListTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result.Add(inStream.ReadUInt64());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                result.Add(inStream.ReadUInt64());
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
                         }
 
                     }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                    }
-
-
                 }
                 else
                 {
@@ -3776,7 +3981,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -3789,22 +3997,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.byteListTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result.Add(inStream.ReadByte());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                result.Add(inStream.ReadByte());
+                            }
+
                         }
-
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                    }
-
 
                 }
                 else
@@ -3847,7 +4057,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -3860,23 +4073,25 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.sbyteListTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result.Add(inStream.ReadSByte());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                result.Add(inStream.ReadSByte());
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
                         }
 
                     }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                    }
-
-
                 }
                 else
                 {
@@ -3918,7 +4133,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -3931,22 +4149,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.charListTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result.Add(inStream.ReadChar());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                result.Add(inStream.ReadChar());
+                            }
+
                         }
-
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                    }
-
 
                 }
                 else
@@ -3989,7 +4209,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -4002,22 +4225,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.stringListTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result.Add(inStream.ReadString());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                result.Add(inStream.ReadString());
+                            }
+
                         }
-
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                    }
-
 
                 }
                 else
@@ -4060,7 +4285,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -4073,23 +4301,25 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.decimalListTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result.Add(inStream.ReadDecimal());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                result.Add(inStream.ReadDecimal());
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
                         }
 
                     }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                    }
-
-
                 }
                 else
                 {
@@ -4131,7 +4361,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -4144,22 +4377,24 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.floatListTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result.Add(inStream.ReadSingle());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                result.Add(inStream.ReadSingle());
+                            }
+
                         }
-
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                        }
                     }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                    }
-
 
                 }
                 else
@@ -4202,7 +4437,10 @@ namespace communicationLibrary
                 {
                     try
                     {
-                        message = inStream.ReadString();
+                        lock (recieveLock)
+                        {
+                            message = inStream.ReadString();
+                        }
                     }
                     catch (IOException IOEx)
                     {
@@ -4215,23 +4453,25 @@ namespace communicationLibrary
 
                 if (message.Equals(Messages.doubleListTransfer))
                 {
-                    count = inStream.ReadInt32();
-
-                    if (count >= 0)
+                    lock (recieveLock)
                     {
+                        count = inStream.ReadInt32();
 
-                        for (int i = 0; i < count; i++)
+                        if (count >= 0)
                         {
-                            result.Add(inStream.ReadDouble());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                result.Add(inStream.ReadDouble());
+                            }
+
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
                         }
 
                     }
-                    else
-                    {
-                        throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                    }
-
-
                 }
                 else
                 {

@@ -25,7 +25,7 @@ namespace TestsCommunicationLibrary
         private DataTransfer clientToServerTransfers;
 
         private int numberOfElements = 5;
-        private int timeout = 20;
+        private int timeout = 500;
         Random random;
 
         [TestInitialize]
