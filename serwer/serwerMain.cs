@@ -46,6 +46,7 @@ namespace serwer
 
             serwerDllMain serverDllMain = new serwerDllMain();
             Thread serverDllThread = new Thread(serverDllMain.Main);
+            serverDllThread.Name = "ServerDllThread";
 
             int clientID = 0;
             int threadID = 0;

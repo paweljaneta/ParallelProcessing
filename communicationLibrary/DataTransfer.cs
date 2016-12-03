@@ -17,6 +17,9 @@ namespace communicationLibrary
 
         private int inStreamTimeout = 1;
 
+        private static object sendLock = new object();
+        private static object recieveLock = new object();
+
         //public DataTransfer(BinaryReader inputStream, BinaryWriter outputStream)
         //{
         //    inStream = inputStream;
@@ -108,8 +111,11 @@ namespace communicationLibrary
         {
             try
             {
-                outStream.Write(Messages.boolTransfer);
-                outStream.Write(data);
+                lock (sendLock)
+                {
+                    outStream.Write(Messages.boolTransfer);
+                    outStream.Write(data);
+                }
             }
             catch (IOException IOEx)
             {
@@ -131,8 +137,11 @@ namespace communicationLibrary
         {
             try
             {
-                outStream.Write(Messages.shortTransfer);
-                outStream.Write(data);
+                lock (sendLock)
+                {
+                    outStream.Write(Messages.shortTransfer);
+                    outStream.Write(data);
+                }
             }
             catch (IOException IOEx)
             {
@@ -154,8 +163,11 @@ namespace communicationLibrary
         {
             try
             {
-                outStream.Write(Messages.intTransfer);
-                outStream.Write(data);
+                lock (sendLock)
+                {
+                    outStream.Write(Messages.intTransfer);
+                    outStream.Write(data);
+                }
             }
             catch (IOException IOEx)
             {
@@ -177,8 +189,11 @@ namespace communicationLibrary
         {
             try
             {
-                outStream.Write(Messages.longTransfer);
-                outStream.Write(data);
+                lock (sendLock)
+                {
+                    outStream.Write(Messages.longTransfer);
+                    outStream.Write(data);
+                }
             }
             catch (IOException IOEx)
             {
@@ -200,8 +215,11 @@ namespace communicationLibrary
         {
             try
             {
-                outStream.Write(Messages.ushortTransfer);
-                outStream.Write(data);
+                lock (sendLock)
+                {
+                    outStream.Write(Messages.ushortTransfer);
+                    outStream.Write(data);
+                }
             }
             catch (IOException IOEx)
             {
@@ -223,8 +241,11 @@ namespace communicationLibrary
         {
             try
             {
-                outStream.Write(Messages.uintTransfer);
-                outStream.Write(data);
+                lock (sendLock)
+                {
+                    outStream.Write(Messages.uintTransfer);
+                    outStream.Write(data);
+                }
             }
             catch (IOException IOEx)
             {
@@ -246,8 +267,11 @@ namespace communicationLibrary
         {
             try
             {
-                outStream.Write(Messages.ulongTransfer);
-                outStream.Write(data);
+                lock (sendLock)
+                {
+                    outStream.Write(Messages.ulongTransfer);
+                    outStream.Write(data);
+                }
             }
             catch (IOException IOEx)
             {
@@ -269,8 +293,11 @@ namespace communicationLibrary
         {
             try
             {
-                outStream.Write(Messages.byteTransfer);
-                outStream.Write(data);
+                lock (sendLock)
+                {
+                    outStream.Write(Messages.byteTransfer);
+                    outStream.Write(data);
+                }
             }
             catch (IOException IOEx)
             {
@@ -292,8 +319,11 @@ namespace communicationLibrary
         {
             try
             {
-                outStream.Write(Messages.sbyteTransfer);
-                outStream.Write(data);
+                lock (sendLock)
+                {
+                    outStream.Write(Messages.sbyteTransfer);
+                    outStream.Write(data);
+                }
             }
             catch (IOException IOEx)
             {
@@ -315,8 +345,11 @@ namespace communicationLibrary
         {
             try
             {
-                outStream.Write(Messages.charTransfer);
-                outStream.Write(data);
+                lock (sendLock)
+                {
+                    outStream.Write(Messages.charTransfer);
+                    outStream.Write(data);
+                }
             }
             catch (IOException IOEx)
             {
@@ -338,8 +371,11 @@ namespace communicationLibrary
         {
             try
             {
-                outStream.Write(Messages.stringTransfer);
-                outStream.Write(data);
+                lock (sendLock)
+                {
+                    outStream.Write(Messages.stringTransfer);
+                    outStream.Write(data);
+                }
             }
             catch (IOException IOEx)
             {
@@ -361,8 +397,11 @@ namespace communicationLibrary
         {
             try
             {
-                outStream.Write(Messages.decimalTransfer);
-                outStream.Write(data);
+                lock (sendLock)
+                {
+                    outStream.Write(Messages.decimalTransfer);
+                    outStream.Write(data);
+                }
             }
             catch (IOException IOEx)
             {
@@ -384,8 +423,11 @@ namespace communicationLibrary
         {
             try
             {
-                outStream.Write(Messages.floatTransfer);
-                outStream.Write(data);
+                lock (sendLock)
+                {
+                    outStream.Write(Messages.floatTransfer);
+                    outStream.Write(data);
+                }
             }
             catch (IOException IOEx)
             {
@@ -407,8 +449,11 @@ namespace communicationLibrary
         {
             try
             {
-                outStream.Write(Messages.doubleTransfer);
-                outStream.Write(data);
+                lock (sendLock)
+                {
+                    outStream.Write(Messages.doubleTransfer);
+                    outStream.Write(data);
+                }
             }
             catch (IOException IOEx)
             {
@@ -437,14 +482,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.boolArrayTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.boolArrayTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -472,14 +520,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.shortArrayTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.shortArrayTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -506,14 +557,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.intArrayTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.intArrayTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -540,14 +594,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.longArrayTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.longArrayTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -574,14 +631,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.ushortArrayTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.ushortArrayTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -608,14 +668,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.uintArrayTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.uintArrayTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -642,14 +705,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.ulongArrayTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.ulongArrayTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -676,14 +742,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.byteArrayTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.byteArrayTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -710,14 +779,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.sbyteArrayTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.sbyteArrayTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -744,14 +816,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.charArrayTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.charArrayTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -778,14 +853,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.stringArrayTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.stringArrayTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -812,14 +890,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.decimalArrayTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.decimalArrayTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -846,14 +927,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.floatArrayTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.floatArrayTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -880,14 +964,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.doubleArrayTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.doubleArrayTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -918,14 +1005,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.boolListTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.boolListTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -952,14 +1042,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.shortListTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.shortListTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -986,14 +1079,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.intListTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.intListTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -1020,14 +1116,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.longListTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.longListTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -1054,14 +1153,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.ushortListTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.ushortListTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -1088,14 +1190,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.uintListTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.uintListTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -1122,14 +1227,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.ulongListTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.ulongListTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -1156,14 +1264,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.byteListTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.byteListTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -1190,14 +1301,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.sbyteListTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.sbyteListTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -1224,14 +1338,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.charListTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.charListTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -1258,14 +1375,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.stringListTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.stringListTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -1292,14 +1412,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.decimalListTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.decimalListTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -1326,14 +1449,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.floatListTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.floatListTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
@@ -1360,14 +1486,17 @@ namespace communicationLibrary
             {
                 try
                 {
-                    outStream.Write(Messages.doubleListTransfer);
-                    outStream.Write(count);
-
-                    for (int i = 0; i < count; i++)
+                    lock (sendLock)
                     {
-                        outStream.Write(data[i]);
-                    }
+                        outStream.Write(Messages.doubleListTransfer);
+                        outStream.Write(count);
 
+                        for (int i = 0; i < count; i++)
+                        {
+                            outStream.Write(data[i]);
+                        }
+
+                    }
                 }
                 catch (IOException IOEx)
                 {
