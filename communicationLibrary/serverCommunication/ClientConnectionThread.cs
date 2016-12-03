@@ -16,6 +16,8 @@ namespace communicationLibrary
         int clientID;
         int threadID;
 
+        int threadSleepValue = 1;
+
         // Thread thread;
         Thread readThread;
         TcpClient connection;
@@ -125,6 +127,10 @@ namespace communicationLibrary
                 {
                     readThread.Abort();
                 }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
+                }
             }
 
             readThread = new Thread(recieveBoolThread);
@@ -178,11 +184,15 @@ namespace communicationLibrary
 
         public void recieveShort()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveShortThread);
@@ -228,11 +238,15 @@ namespace communicationLibrary
 
         public void recieveInt()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveIntThread);
@@ -279,11 +293,15 @@ namespace communicationLibrary
 
         public void recieveLong()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveLongThread);
@@ -330,11 +348,15 @@ namespace communicationLibrary
 
         public void recieveUShort()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveUShortThread);
@@ -381,11 +403,15 @@ namespace communicationLibrary
 
         public void recieveUInt()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveUIntThread);
@@ -432,11 +458,15 @@ namespace communicationLibrary
 
         public void recieveULong()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveULongThread);
@@ -483,11 +513,15 @@ namespace communicationLibrary
 
         public void recieveByte()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveByteThread);
@@ -534,11 +568,15 @@ namespace communicationLibrary
 
         public void recieveSByte()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveSByteThread);
@@ -584,11 +622,15 @@ namespace communicationLibrary
 
         public void recieveChar()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveCharThread);
@@ -635,11 +677,15 @@ namespace communicationLibrary
 
         public void recieveString()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveStringThread);
@@ -686,11 +732,15 @@ namespace communicationLibrary
 
         public void recieveDecimal()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveDecimalThread);
@@ -737,11 +787,15 @@ namespace communicationLibrary
 
         public void recieveFloat()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveFloatThread);
@@ -788,11 +842,15 @@ namespace communicationLibrary
 
         public void recieveDouble()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveDoubleThread);
@@ -841,11 +899,15 @@ namespace communicationLibrary
         #region readArray
         public void recieveBoolArray()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveBoolArrayThread);
@@ -892,11 +954,15 @@ namespace communicationLibrary
 
         public void recieveShortArray()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveShortArrayThread);
@@ -943,11 +1009,15 @@ namespace communicationLibrary
 
         public void recieveIntArray()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveIntArrayThread);
@@ -993,11 +1063,15 @@ namespace communicationLibrary
 
         public void recieveLongArray()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveLongArrayThread);
@@ -1045,11 +1119,15 @@ namespace communicationLibrary
 
         public void recieveUShortArray()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveUShortArrayThread);
@@ -1096,11 +1174,15 @@ namespace communicationLibrary
 
         public void recieveUIntArray()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveUIntArrayThread);
@@ -1147,11 +1229,15 @@ namespace communicationLibrary
 
         public void recieveULongArray()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveULongArrayThread);
@@ -1198,11 +1284,15 @@ namespace communicationLibrary
 
         public void recieveByteArray()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveByteArrayThread);
@@ -1249,11 +1339,15 @@ namespace communicationLibrary
 
         public void recieveSByteArray()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveSByteArrayThread);
@@ -1300,11 +1394,15 @@ namespace communicationLibrary
 
         public void recieveCharArray()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveCharArrayThread);
@@ -1351,11 +1449,15 @@ namespace communicationLibrary
 
         public void recieveStringArray()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveStringArrayThread);
@@ -1402,11 +1504,15 @@ namespace communicationLibrary
 
         public void recieveDecimalArray()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveDecimalArrayThread);
@@ -1453,11 +1559,15 @@ namespace communicationLibrary
 
         public void recieveFloatArray()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveFloatArrayThread);
@@ -1504,11 +1614,15 @@ namespace communicationLibrary
 
         public void recieveDoubleArray()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveDoubleArrayThread);
@@ -1558,11 +1672,15 @@ namespace communicationLibrary
         #region readList
         public void recieveBoolList()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveBoolListThread);
@@ -1608,11 +1726,15 @@ namespace communicationLibrary
 
         public void recieveShortList()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveShortListThread);
@@ -1659,11 +1781,15 @@ namespace communicationLibrary
 
         public void recieveIntList()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveIntListThread);
@@ -1710,11 +1836,15 @@ namespace communicationLibrary
 
         public void recieveLongList()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveLongListThread);
@@ -1750,11 +1880,15 @@ namespace communicationLibrary
 
         public void recieveUShortList()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveUShortListThread);
@@ -1801,11 +1935,15 @@ namespace communicationLibrary
 
         public void recieveUIntList()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveUIntListThread);
@@ -1852,11 +1990,15 @@ namespace communicationLibrary
 
         public void recieveULongList()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveULongListThread);
@@ -1903,11 +2045,15 @@ namespace communicationLibrary
 
         public void recieveByteList()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveByteListThread);
@@ -1954,11 +2100,15 @@ namespace communicationLibrary
 
         public void recieveSByteList()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveSByteListThread);
@@ -2005,11 +2155,15 @@ namespace communicationLibrary
 
         public void recieveCharList()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveCharListThread);
@@ -2056,11 +2210,15 @@ namespace communicationLibrary
 
         public void recieveStringList()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveStringListThread);
@@ -2107,11 +2265,15 @@ namespace communicationLibrary
 
         public void recieveDecimalList()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveDecimalListThread);
@@ -2158,11 +2320,15 @@ namespace communicationLibrary
 
         public void recieveFloatList()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveFloatListThread);
@@ -2209,11 +2375,15 @@ namespace communicationLibrary
 
         public void recieveDoubleList()
         {
-            if (readThread != null)
+             if (readThread != null)
             {
                 if (readThread.IsAlive)
                 {
                     readThread.Abort();
+                }
+                while(readThread.IsAlive)
+                {
+                    Thread.Sleep(threadSleepValue);
                 }
             }
             readThread = new Thread(recieveDoubleListThread);

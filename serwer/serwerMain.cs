@@ -50,6 +50,8 @@ namespace serwer
             int clientID = 0;
             int threadID = 0;
 
+            bool serverDllThreadStarted = false;
+
 
             while (true)
             {
@@ -83,7 +85,12 @@ namespace serwer
 
                     TelemetryConnections.Add(new TelemetryConnection(client, clientID));
 
-                    serverDllThread.Start();
+                    if(!serverDllThreadStarted)
+                    {
+                        serverDllThread.Start();
+                        serverDllThreadStarted = true;
+                    }
+                    
 
                     clientID++;
 

@@ -36,6 +36,8 @@ namespace serwerDll
             int sentLine = 0;
             int numberOfThreads = ClientConnections.Instance().GetConnectedCliensCount();
 
+            int[] sentToThreads = new int[numberOfThreads];
+
             for (int i = 0; i < numberOfThreads; i++)
             {
                 ClientConnections.Instance().sendInt(dimension, out threadID);
@@ -49,6 +51,7 @@ namespace serwerDll
 
                 ClientConnections.Instance().sendIntArrayByID(lineA, threadID);
                 ClientConnections.Instance().sendIntArrayByID(lineB, threadID);
+                sentToThreads[threadID]++;
                 sentLine = i;
             }
 
@@ -79,6 +82,7 @@ namespace serwerDll
 
                 ClientConnections.Instance().sendIntArrayByID(lineA, threadID);
                 ClientConnections.Instance().sendIntArrayByID(lineB, threadID);
+                sentToThreads[threadID]++;
 
                 sentLine++;
             }
