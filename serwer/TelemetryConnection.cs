@@ -37,7 +37,7 @@ namespace serwer
             outputStream = new BinaryWriter(connection.GetStream());
             this.clientID = clientID;
             readThread = new Thread(inThread);
-            readThread.Start();
+         //   readThread.Start();
         }
 
         private void inThread()

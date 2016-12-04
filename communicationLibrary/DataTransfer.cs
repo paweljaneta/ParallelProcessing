@@ -32,8 +32,13 @@ namespace communicationLibrary
             outStream = new BinaryWriter(connection.GetStream());
             this.connection = connection;
 
-            inStream.BaseStream.ReadTimeout = inStreamTimeout;
+          //  inStream.BaseStream.ReadTimeout = inStreamTimeout;
 
+        }
+
+        public void setTimeoutTESTS_ONLY()
+        {
+            inStream.BaseStream.ReadTimeout = 100;
         }
 
         public void CloseInStream()

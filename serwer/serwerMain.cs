@@ -84,8 +84,8 @@ namespace serwer
 
                     view.updateList(clientIDNetSpeedFlopsList);
 
-                    TelemetryConnections.Add(new TelemetryConnection(client, clientID));
-
+                    //TelemetryConnections.Add(new TelemetryConnection(client, clientID));
+                    client.Close();
                     if(!serverDllThreadStarted)
                     {
                         serverDllThread.Start();

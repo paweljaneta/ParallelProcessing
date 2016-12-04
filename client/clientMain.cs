@@ -54,15 +54,15 @@ namespace client
 
                     clientID = inStream.ReadInt32();
 
-                    telemetry = new Telemetry(connection);
-                    //connection.Close();
+                    //telemetry = new Telemetry(connection);
+                    connection.Close();
 
                     //start threads
 
                     // for (int i = 0; i < numberOfCPUcores; i++)
                     for (int i = 0; i < 1; i++)
                     {
-                        workingThreads.Add(new ClientThread(ipAdress, port, clientID, telemetry));
+                        workingThreads.Add(new ClientThread(ipAdress, port, clientID));
                     }
 
                     //wait until finished

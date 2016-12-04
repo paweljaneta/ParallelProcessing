@@ -54,6 +54,33 @@ namespace client
             }
         }
 
+        public ClientThread(string adress, int port, int clientId)
+        {
+            this.clientId = clientId;
+           // this.telemetry = telemetry;
+
+            try
+            {
+                connection = new TcpClient(adress, port);
+
+                inputStream = new BinaryReader(connection.GetStream());
+                outputStream = new BinaryWriter(connection.GetStream());
+
+                outputStream.Write(Messages.dataRequest);
+
+                outputStream.Write(clientId);
+                threadId = inputStream.ReadInt32();
+
+                thread = new Thread(run);
+                thread.Start();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
         public void run()
         {
            // Telemetry.addExceptionToList(new ArgumentException("test exceptiona"));

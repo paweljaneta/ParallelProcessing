@@ -41,9 +41,12 @@ namespace TestsCommunicationLibrary
                 serverConnection = server.AcceptTcpClient();
 
                 connections.Add(clientConnection);
-
-                connectedClients.Add(new DataTransfer(clientConnection));
-                ClientConnections.Instance().Add(new ClientConnectionThread(serverConnection, 0, i));
+                DataTransfer dataTransfer = new DataTransfer(clientConnection);
+                dataTransfer.setTimeoutTESTS_ONLY();
+                connectedClients.Add(dataTransfer);
+                ClientConnectionThread clientConnectionThread = new ClientConnectionThread(serverConnection, 0, i);
+                clientConnectionThread.setTimeoutTESTS_ONLY();
+                ClientConnections.Instance().Add(clientConnectionThread);
                 BinaryReader tempRead = new BinaryReader(clientConnection.GetStream());
                 tempRead.ReadInt32();
                 
