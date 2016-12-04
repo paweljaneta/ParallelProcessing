@@ -20,6 +20,7 @@ namespace communicationLibrary
         public const string exception = "exception";
         public const string CPULoad = "CPULoad";
         public const string memoryAvaliable = "memoryAvaliable";
+        public const string nop = "nop";
 
         #region basicTypes
         public const string byteTransfer = "byteTransfer";
