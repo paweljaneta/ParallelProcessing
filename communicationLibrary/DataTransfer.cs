@@ -15,10 +15,13 @@ namespace communicationLibrary
         private BinaryWriter outStream;
         private TcpClient connection;
 
-        private int inStreamTimeout = 1000;
+        private int inStreamTimeout = 3600 * 1000;
 
-        private static object sendLock = new object();
+        private object sendLock = new object();
         private static object recieveLock = new object();
+
+        private bool abortRecieve = false;
+        private bool isDataRecieved = false;
 
         //public DataTransfer(BinaryReader inputStream, BinaryWriter outputStream)
         //{
@@ -32,7 +35,7 @@ namespace communicationLibrary
             outStream = new BinaryWriter(connection.GetStream());
             this.connection = connection;
 
-          //  inStream.BaseStream.ReadTimeout = inStreamTimeout;
+            inStream.BaseStream.ReadTimeout = inStreamTimeout;
 
         }
 
@@ -41,37 +44,47 @@ namespace communicationLibrary
             inStream.BaseStream.ReadTimeout = 100;
         }
 
-        public void CloseInStream()
+        public void abortRead()
         {
-            inStream.Dispose();
+            abortRecieve = true;
         }
 
-        public void CloseOutStream()
+        public bool isDataRead()
         {
-            outStream.Dispose();
+            return isDataRecieved;
         }
 
-        public void CloseStreams()
-        {
-            CloseInStream();
-            CloseOutStream();
-        }
+        //public void CloseInStream()
+        //{
+        //    inStream.Dispose();
+        //}
 
-        public void OpenInStream()
-        {
-            inStream = new BinaryReader(connection.GetStream());
-        }
+        //public void CloseOutStream()
+        //{
+        //    outStream.Dispose();
+        //}
 
-        public void OpenOutStream()
-        {
-            outStream = new BinaryWriter(connection.GetStream());
-        }
+        //public void CloseStreams()
+        //{
+        //    CloseInStream();
+        //    CloseOutStream();
+        //}
 
-        public void OpenStreams()
-        {
-            OpenInStream();
-            OpenOutStream();
-        }
+        //public void OpenInStream()
+        //{
+        //    inStream = new BinaryReader(connection.GetStream());
+        //}
+
+        //public void OpenOutStream()
+        //{
+        //    outStream = new BinaryWriter(connection.GetStream());
+        //}
+
+        //public void OpenStreams()
+        //{
+        //    OpenInStream();
+        //    OpenOutStream();
+        //}
 
         #region exceptionHandlers
         private void IOExceptionHandler(IOException IOEx)
@@ -115,7 +128,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.nop);
                 }
@@ -141,7 +154,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.boolTransfer);
                     outStream.Write(data);
@@ -167,7 +180,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.shortTransfer);
                     outStream.Write(data);
@@ -193,7 +206,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.intTransfer);
                     outStream.Write(data);
@@ -219,7 +232,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.longTransfer);
                     outStream.Write(data);
@@ -245,7 +258,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.ushortTransfer);
                     outStream.Write(data);
@@ -271,7 +284,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.uintTransfer);
                     outStream.Write(data);
@@ -297,7 +310,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.ulongTransfer);
                     outStream.Write(data);
@@ -323,7 +336,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.byteTransfer);
                     outStream.Write(data);
@@ -349,7 +362,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.sbyteTransfer);
                     outStream.Write(data);
@@ -375,7 +388,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.charTransfer);
                     outStream.Write(data);
@@ -401,7 +414,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.stringTransfer);
                     outStream.Write(data);
@@ -427,7 +440,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.decimalTransfer);
                     outStream.Write(data);
@@ -453,7 +466,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.floatTransfer);
                     outStream.Write(data);
@@ -479,7 +492,7 @@ namespace communicationLibrary
         {
             try
             {
-                //lock (sendLock)
+                lock (sendLock)
                 {
                     outStream.Write(Messages.doubleTransfer);
                     outStream.Write(data);
@@ -512,7 +525,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.boolArrayTransfer);
                         outStream.Write(count);
@@ -550,7 +563,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.shortArrayTransfer);
                         outStream.Write(count);
@@ -587,7 +600,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.intArrayTransfer);
                         outStream.Write(count);
@@ -624,7 +637,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.longArrayTransfer);
                         outStream.Write(count);
@@ -661,7 +674,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.ushortArrayTransfer);
                         outStream.Write(count);
@@ -698,7 +711,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.uintArrayTransfer);
                         outStream.Write(count);
@@ -735,7 +748,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.ulongArrayTransfer);
                         outStream.Write(count);
@@ -772,7 +785,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.byteArrayTransfer);
                         outStream.Write(count);
@@ -809,7 +822,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.sbyteArrayTransfer);
                         outStream.Write(count);
@@ -846,7 +859,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.charArrayTransfer);
                         outStream.Write(count);
@@ -883,7 +896,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.stringArrayTransfer);
                         outStream.Write(count);
@@ -920,7 +933,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.decimalArrayTransfer);
                         outStream.Write(count);
@@ -957,7 +970,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.floatArrayTransfer);
                         outStream.Write(count);
@@ -994,7 +1007,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.doubleArrayTransfer);
                         outStream.Write(count);
@@ -1035,7 +1048,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.boolListTransfer);
                         outStream.Write(count);
@@ -1072,7 +1085,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.shortListTransfer);
                         outStream.Write(count);
@@ -1109,7 +1122,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.intListTransfer);
                         outStream.Write(count);
@@ -1146,7 +1159,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.longListTransfer);
                         outStream.Write(count);
@@ -1183,7 +1196,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.ushortListTransfer);
                         outStream.Write(count);
@@ -1220,7 +1233,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.uintListTransfer);
                         outStream.Write(count);
@@ -1257,7 +1270,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.ulongListTransfer);
                         outStream.Write(count);
@@ -1294,7 +1307,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.byteListTransfer);
                         outStream.Write(count);
@@ -1331,7 +1344,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.sbyteListTransfer);
                         outStream.Write(count);
@@ -1368,7 +1381,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.charListTransfer);
                         outStream.Write(count);
@@ -1405,7 +1418,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.stringListTransfer);
                         outStream.Write(count);
@@ -1442,7 +1455,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.decimalListTransfer);
                         outStream.Write(count);
@@ -1479,7 +1492,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.floatListTransfer);
                         outStream.Write(count);
@@ -1516,7 +1529,7 @@ namespace communicationLibrary
             {
                 try
                 {
-                    //lock (sendLock)
+                    lock (sendLock)
                     {
                         outStream.Write(Messages.doubleListTransfer);
                         outStream.Write(count);
@@ -1558,24 +1571,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
 
@@ -1624,24 +1637,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.shortTransfer))
@@ -1686,40 +1699,48 @@ namespace communicationLibrary
             {
                 string message = null;
 
-                while (message == null)
+                isDataRecieved = false;
+                abortRecieve = false;
+
+                while ((message == null))
                 {
-                    try
+                    if (abortRecieve)
+                        break;
+                    //try
+                    // {
+                    //lock (recieveLock)
+                    {
+                        message = inStream.ReadString();
+                    }
+                    if (message.Equals(Messages.nop))
+                    {
+                        message = null;
+                    }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
+                }
+
+                if (message != null)
+                {
+                    if (message.Equals(Messages.intTransfer))
                     {
                         //lock (recieveLock)
                         {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
+                            result = inStream.ReadInt32();
+                            isDataRecieved = true;
                         }
                     }
-                    catch (IOException IOEx)
+                    else
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        throw new TypeNotMatchException("Expected: " + Messages.intTransfer + "Recieved: " + message);
                     }
                 }
-
-                if (message.Equals(Messages.intTransfer))
-                {
-                    //lock (recieveLock)
-                    {
-                        result = inStream.ReadInt32();
-                    }
-                }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.intTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -1752,24 +1773,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.longTransfer))
@@ -1816,24 +1837,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.ushortTransfer))
@@ -1880,24 +1901,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.uintTransfer))
@@ -1944,24 +1965,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.ulongTransfer))
@@ -2008,24 +2029,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.byteTransfer))
@@ -2072,24 +2093,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.sbyteTransfer))
@@ -2136,24 +2157,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.charTransfer))
@@ -2200,24 +2221,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.stringTransfer))
@@ -2264,24 +2285,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.decimalTransfer))
@@ -2328,24 +2349,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.floatTransfer))
@@ -2392,24 +2413,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.doubleTransfer))
@@ -2460,24 +2481,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.boolArrayTransfer))
@@ -2542,24 +2563,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.shortArrayTransfer))
@@ -2620,55 +2641,61 @@ namespace communicationLibrary
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
-                    try
+                    if (abortRecieve)
+                        break;
+                    //try
+                    // {
+                    //lock (recieveLock)
+                    {
+                        message = inStream.ReadString();
+                    }
+                    if (message.Equals(Messages.nop))
+                    {
+                        message = null;
+                    }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
+                }
+                if (message != null)
+                {
+                    if (message.Equals(Messages.intArrayTransfer))
                     {
                         //lock (recieveLock)
                         {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
-                    }
-                    catch (IOException IOEx)
-                    {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
-                    }
-                }
+                            count = inStream.ReadInt32();
 
-                if (message.Equals(Messages.intArrayTransfer))
-                {
-                    //lock (recieveLock)
-                    {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
-                        {
-                            result = new int[count];
-
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result[i] = inStream.ReadInt32();
-                            }
+                                result = new int[count];
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result[i] = inStream.ReadInt32();
+                                }
+                                isDataRecieved = true;
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.intArrayTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.intArrayTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -2702,24 +2729,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.longArrayTransfer))
@@ -2782,24 +2809,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.ushortArrayTransfer))
@@ -2862,24 +2889,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.uintArrayTransfer))
@@ -2942,24 +2969,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.ulongArrayTransfer))
@@ -3022,24 +3049,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.byteArrayTransfer))
@@ -3104,24 +3131,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.sbyteArrayTransfer))
@@ -3185,24 +3212,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.charArrayTransfer))
@@ -3267,24 +3294,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.stringArrayTransfer))
@@ -3347,24 +3374,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.decimalArrayTransfer))
@@ -3427,24 +3454,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.floatArrayTransfer))
@@ -3507,24 +3534,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.doubleArrayTransfer))
@@ -3590,24 +3617,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.boolListTransfer))
@@ -3670,24 +3697,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.shortListTransfer))
@@ -3750,24 +3777,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.intListTransfer))
@@ -3830,24 +3857,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.longListTransfer))
@@ -3910,24 +3937,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.ushortListTransfer))
@@ -3989,24 +4016,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.uintListTransfer))
@@ -4069,24 +4096,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.ulongListTransfer))
@@ -4149,24 +4176,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.byteListTransfer))
@@ -4229,24 +4256,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.sbyteListTransfer))
@@ -4309,24 +4336,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.charListTransfer))
@@ -4389,24 +4416,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.stringListTransfer))
@@ -4469,24 +4496,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.decimalListTransfer))
@@ -4549,24 +4576,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.floatListTransfer))
@@ -4629,24 +4656,24 @@ namespace communicationLibrary
 
                 while (message == null)
                 {
-                    try
+                    //try
+                    // {
+                    //lock (recieveLock)
                     {
-                        //lock (recieveLock)
-                        {
-                            message = inStream.ReadString();
-                        }
-                        if(message.Equals(Messages.nop))
-                        {
-                            message = null;
-                        }
+                        message = inStream.ReadString();
                     }
-                    catch (IOException IOEx)
+                    if (message.Equals(Messages.nop))
                     {
-                        if (!checkIfTimeout(IOEx))
-                        {
-                            throw IOEx;
-                        }
+                        message = null;
                     }
+                    //  }
+                    // catch (IOException IOEx)
+                    // {
+                    //      if (!checkIfTimeout(IOEx))
+                    //     {
+                    //         throw IOEx;
+                    //    }
+                    // }
                 }
 
                 if (message.Equals(Messages.doubleListTransfer))

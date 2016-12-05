@@ -22,9 +22,14 @@ namespace client
 
         TcpClient connection;
 
+        DataTransfer dataTransfer;
+
         Telemetry telemetry;
 
         Thread thread;
+        Thread nopThread;
+        int nopDelayMs = 100;
+
         Thread calculationsStopObserverThread;
 
         public ClientThread(string adress, int port, int clientId,Telemetry telemetry)
@@ -44,8 +49,13 @@ namespace client
                 outputStream.Write(clientId);
                 threadId = inputStream.ReadInt32();
 
+                dataTransfer = new DataTransfer(connection);
+
                 thread = new Thread(run);
                 thread.Start();
+
+                nopThread = new Thread(nopSendThread);
+                nopThread.Start();
 
             }
             catch (Exception e)
@@ -71,13 +81,27 @@ namespace client
                 outputStream.Write(clientId);
                 threadId = inputStream.ReadInt32();
 
+                dataTransfer = new DataTransfer(connection);
+
                 thread = new Thread(run);
                 thread.Start();
+
+                nopThread = new Thread(nopSendThread);
+                nopThread.Start();
 
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+            }
+        }
+
+        private void nopSendThread()
+        {
+            while (true)
+            {
+                dataTransfer.sendNop();
+                Thread.Sleep(nopDelayMs);
             }
         }
 
@@ -100,7 +124,7 @@ namespace client
                     foreach (Type t in type)
                     {
                         var obj = Activator.CreateInstance(t);
-                        object[] arg = new object[] { new DataTransfer(connection) };
+                        object[] arg = new object[] { dataTransfer };
                         t.GetMethod("Main").Invoke(obj, arg);
                     }
                     

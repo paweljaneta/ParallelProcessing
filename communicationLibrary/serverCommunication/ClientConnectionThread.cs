@@ -98,7 +98,8 @@ namespace communicationLibrary
 
         public void terminateReadThread()
         {
-            readThread.Abort();
+            //readThread.Abort();
+            dataTransferConnection.abortRead();
         }
 
         public void clearSentDataList()
@@ -205,7 +206,7 @@ namespace communicationLibrary
             if (!dataRead)
             {
                 readThread = new Thread(recieveShortThread);
-                readThread.Name = "recieveShortThread"; 
+                readThread.Name = "recieveShortThread";
                 readThread.Start();
             }
         }
@@ -252,7 +253,8 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    //readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -271,7 +273,13 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.Int = dataTransferConnection.recieveInt();
+                int data = dataTransferConnection.recieveInt();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.Int = data;
+                    dataRead = true;
+                }
+
             }
             catch (Exception ex)
             {
@@ -289,7 +297,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public int readInt()
         {
@@ -494,7 +501,7 @@ namespace communicationLibrary
             if (!dataRead)
             {
                 readThread = new Thread(recieveULongThread);
-                readThread.Name = "recieveULongThread"; 
+                readThread.Name = "recieveULongThread";
                 readThread.Start();
             }
         }
@@ -610,7 +617,7 @@ namespace communicationLibrary
             if (!dataRead)
             {
                 readThread = new Thread(recieveSByteThread);
-                readThread.Name = "recieveSByteThread"; 
+                readThread.Name = "recieveSByteThread";
                 readThread.Start();
             }
         }
@@ -1065,7 +1072,8 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    //readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1084,7 +1092,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.IntArray = dataTransferConnection.recieveArrayOfInts();
+                int[] data = dataTransferConnection.recieveArrayOfInts();
+                if(dataTransferConnection.isDataRead())
+                {
+                    recievedData.IntArray = data;
+                    dataRead = true;
+                }   
             }
             catch (Exception ex)
             {
@@ -1102,7 +1115,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public int[] readIntArray()
         {
