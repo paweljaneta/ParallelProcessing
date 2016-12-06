@@ -39,10 +39,10 @@ namespace communicationLibrary
 
         }
 
-        public void setTimeoutTESTS_ONLY()
-        {
-            inStream.BaseStream.ReadTimeout = 100;
-        }
+        //public void setTimeoutTESTS_ONLY()
+        //{
+        //    inStream.BaseStream.ReadTimeout = 100;
+        //}
 
         public void abortRead()
         {

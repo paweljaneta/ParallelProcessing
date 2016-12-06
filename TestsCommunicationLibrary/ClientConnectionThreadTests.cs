@@ -376,7 +376,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+            while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -388,6 +388,7 @@ namespace TestsCommunicationLibrary
 
             try
             {
+                //clientConnectedToServer.throwException();
                 clientConnectedToServer.readBool();
                 Assert.Fail();
             }
@@ -414,7 +415,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -452,7 +453,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -490,7 +491,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -528,7 +529,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -566,7 +567,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -604,7 +605,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -642,7 +643,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -680,7 +681,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -718,7 +719,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -756,7 +757,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -794,7 +795,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -832,7 +833,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -870,7 +871,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -1420,7 +1421,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -1458,7 +1459,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -1496,7 +1497,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -1534,7 +1535,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -1572,7 +1573,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -1610,7 +1611,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -1648,7 +1649,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -1686,7 +1687,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -1724,7 +1725,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -1762,7 +1763,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -1800,7 +1801,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -1838,7 +1839,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -1876,7 +1877,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -1914,7 +1915,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -2464,7 +2465,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -2502,7 +2503,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -2540,7 +2541,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -2578,7 +2579,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -2616,7 +2617,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -2654,7 +2655,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -2692,7 +2693,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -2730,7 +2731,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -2768,7 +2769,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -2806,7 +2807,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -2844,7 +2845,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -2882,7 +2883,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -2920,7 +2921,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);
@@ -2958,7 +2959,7 @@ namespace TestsCommunicationLibrary
             clientToServerTransfers.send(expected);
 
             int counter = 0;
-            while (!clientConnectedToServer.isDataRead())
+             while (!(clientConnectedToServer.isDataRead()||clientConnectedToServer.getIsExceptionCaught()))
             {
                 counter++;
                 Thread.Sleep(1);

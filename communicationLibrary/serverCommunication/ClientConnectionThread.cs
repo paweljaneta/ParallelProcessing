@@ -66,10 +66,10 @@ namespace communicationLibrary
             }
         }
 
-        public void setTimeoutTESTS_ONLY()
-        {
-            dataTransferConnection.setTimeoutTESTS_ONLY();
-        }
+        //public void setTimeoutTESTS_ONLY()
+        //{
+        //    dataTransferConnection.setTimeoutTESTS_ONLY();
+        //}
 
         // public void run()
         // {
@@ -91,6 +91,21 @@ namespace communicationLibrary
             return threadID;
         }
 
+        public bool getIsExceptionCaught()
+        {
+            return exceptionCaught;
+        }
+
+        public Exception getException()
+        {
+            return exception;
+        }
+
+        public void throwException()
+        {
+            throw exception;
+        }
+
         public int getClientID()
         {
             return clientID;
@@ -100,6 +115,11 @@ namespace communicationLibrary
         {
             //dataTransferConnection.abortRead();
             dataTransferConnection.abortRead();
+        }
+
+        public bool isThreadAlive()
+        {
+            return readThread.IsAlive;
         }
 
         public void clearSentDataList()
@@ -174,8 +194,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-
-            dataRead = true;
         }
         public bool readBool()
         {
@@ -243,8 +261,8 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
+
         public short readShort()
         {
             dataRead = false;
@@ -307,7 +325,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public int readInt()
         {
@@ -370,7 +387,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public long readLong()
         {
@@ -433,7 +449,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public ushort readUShort()
         {
@@ -496,7 +511,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public uint readUInt()
         {
@@ -559,7 +573,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public ulong readULong()
         {
@@ -622,7 +635,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public byte readByte()
         {
@@ -685,7 +697,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public sbyte readSByte()
         {
@@ -747,7 +758,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public char readChar()
         {
@@ -810,7 +820,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public string readString()
         {
@@ -873,7 +882,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public decimal readDecimal()
         {
@@ -936,7 +944,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public float readFloat()
         {
@@ -999,7 +1006,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public double readDouble()
         {
@@ -1064,7 +1070,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public bool[] readBoolArray()
         {
@@ -1127,7 +1132,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public short[] readShortArray()
         {
@@ -1191,7 +1195,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public int[] readIntArray()
         {
@@ -1253,8 +1256,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-
-            dataRead = true;
         }
         public long[] readLongArray()
         {
@@ -1317,7 +1318,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public ushort[] readUShortArray()
         {
@@ -1380,7 +1380,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public uint[] readUIntArray()
         {
@@ -1443,7 +1442,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public ulong[] readULongArray()
         {
@@ -1506,7 +1504,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public byte[] readByteArray()
         {
@@ -1569,7 +1566,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public sbyte[] readSByteArray()
         {
@@ -1632,7 +1628,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public char[] readCharArray()
         {
@@ -1695,7 +1690,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public string[] readStringArray()
         {
@@ -1758,7 +1752,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public decimal[] readDecimalArray()
         {
@@ -1821,7 +1814,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public float[] readFloatArray()
         {
@@ -1884,7 +1876,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public double[] readDoubleArray()
         {
@@ -1950,7 +1941,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public List<bool> readBoolList()
         {
@@ -2012,7 +2002,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public List<short> readShortList()
         {
@@ -2075,7 +2064,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public List<int> readIntList()
         {
@@ -2190,7 +2178,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public List<ushort> readUShortList()
         {
@@ -2253,7 +2240,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public List<uint> readUIntList()
         {
@@ -2316,7 +2302,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public List<ulong> readULongList()
         {
@@ -2379,7 +2364,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public List<byte> readByteList()
         {
@@ -2442,7 +2426,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public List<sbyte> readSByteList()
         {
@@ -2505,7 +2488,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public List<char> readCharList()
         {
@@ -2568,7 +2550,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public List<string> readStringList()
         {
@@ -2631,7 +2612,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public List<decimal> readDecimalList()
         {
@@ -2694,7 +2674,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public List<float> readFloatList()
         {
@@ -2757,7 +2736,6 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
-            dataRead = true;
         }
         public List<double> readDoubleList()
         {

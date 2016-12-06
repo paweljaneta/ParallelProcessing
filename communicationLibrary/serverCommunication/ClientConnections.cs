@@ -137,6 +137,18 @@ namespace communicationLibrary
             {
                 connectedClientsList[i].terminateReadThread();
             }
+            //bool threadsStopped = false;
+
+            //while (!threadsStopped)
+            //{
+            //    threadsStopped = true;
+            //    for (int i = 0; i < connectedClientsList.Count; i++)
+            //    {
+            //        if (connectedClientsList[i].isThreadAlive() == true)
+            //            threadsStopped = false;
+            //    }
+            //}
+
         }
 
         private void sendDataFromTerminatedThread(List<object> data)
