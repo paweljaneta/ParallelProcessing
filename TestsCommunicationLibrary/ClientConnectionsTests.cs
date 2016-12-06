@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Net;
 using communicationLibrary;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace TestsCommunicationLibrary
 {
@@ -17,9 +18,12 @@ namespace TestsCommunicationLibrary
         private List<DataTransfer> connectedClients = new List<DataTransfer>();
         private List<TcpClient> connections = new List<TcpClient>();
 
+        private Thread nopSendThread;
+        private bool abortThread;
+        private int nopSendDelay = 10;
+
         private string serverIP = "127.0.0.1", clientIP = "127.0.0.1";
         private int port = 1807;
-
 
         private int numberOfElements = 5;
 
@@ -42,25 +46,41 @@ namespace TestsCommunicationLibrary
 
                 connections.Add(clientConnection);
                 DataTransfer dataTransfer = new DataTransfer(clientConnection);
-                dataTransfer.setTimeoutTESTS_ONLY();
+                // dataTransfer.setTimeoutTESTS_ONLY();
                 connectedClients.Add(dataTransfer);
                 ClientConnectionThread clientConnectionThread = new ClientConnectionThread(serverConnection, 0, i);
-                clientConnectionThread.setTimeoutTESTS_ONLY();
+                // clientConnectionThread.setTimeoutTESTS_ONLY();
                 ClientConnections.Instance().Add(clientConnectionThread);
                 BinaryReader tempRead = new BinaryReader(clientConnection.GetStream());
                 tempRead.ReadInt32();
-                
+
 
             }
             server.Stop();
 
             random = new Random();
+            abortThread = false;
+            nopSendThread = new Thread(nopSend);
+            nopSendThread.Start();
 
+        }
+
+        private void nopSend()
+        {
+            while (!abortThread)
+            {
+                foreach (DataTransfer connection in connectedClients)
+                {
+                    connection.sendNop();
+                }
+                Thread.Sleep(nopSendDelay);
+            }
         }
 
         [TestCleanup]
         public void TestCleanup()
         {
+            abortThread = true;
             ClientConnections.Instance().RemoveAll();
             connectedClients.Clear();
             connections.Clear();
@@ -6470,9 +6490,10 @@ namespace TestsCommunicationLibrary
             {
                 ClientConnections.Instance().sendBool(expected, out threadID);
                 Assert.Fail();
-            } catch(ArgumentException e)
+            }
+            catch (ArgumentException e)
             { }
-           
+
         }
 
         [TestCategory("clientConnectionSimpleTypeSendNoClientsException")]
@@ -8459,7 +8480,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8481,7 +8502,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8503,7 +8524,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8525,7 +8546,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8547,7 +8568,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8569,7 +8590,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8591,7 +8612,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8613,7 +8634,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8635,7 +8656,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8657,7 +8678,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8679,7 +8700,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8701,7 +8722,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8723,7 +8744,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8745,7 +8766,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8768,7 +8789,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8790,7 +8811,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8812,7 +8833,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8834,7 +8855,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8856,7 +8877,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8878,7 +8899,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8900,7 +8921,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8922,7 +8943,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8944,7 +8965,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8966,7 +8987,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -8988,7 +9009,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9010,7 +9031,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9032,7 +9053,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9054,7 +9075,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9078,7 +9099,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9100,7 +9121,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9122,7 +9143,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9144,7 +9165,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9166,7 +9187,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9188,7 +9209,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9210,7 +9231,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9232,7 +9253,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9254,7 +9275,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9276,7 +9297,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9298,7 +9319,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9320,7 +9341,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9342,7 +9363,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try
@@ -9364,7 +9385,7 @@ namespace TestsCommunicationLibrary
 
             int threadID = connectedClients.Count;
 
-            
+
 
             //when
             try

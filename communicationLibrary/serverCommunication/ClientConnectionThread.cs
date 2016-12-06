@@ -307,6 +307,7 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
+            dataRead = true;
         }
         public int readInt()
         {
@@ -1190,6 +1191,7 @@ namespace communicationLibrary
                     exception = ex;
                 }
             }
+            dataRead = true;
         }
         public int[] readIntArray()
         {
