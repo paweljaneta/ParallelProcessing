@@ -1565,12 +1565,17 @@ namespace communicationLibrary
         {
             bool result = false;
 
-            try
+             try
             {
                 string message = null;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -1591,19 +1596,23 @@ namespace communicationLibrary
                     // }
                 }
 
-
-                if (message.Equals(Messages.boolTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+
+                    if (message.Equals(Messages.boolTransfer))
                     {
-                        result = inStream.ReadBoolean();
+                        //lock (recieveLock)
+                        {
+                            result = inStream.ReadBoolean();
+                            isDataRecieved = true;
+                        }
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.boolTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.boolTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -1631,12 +1640,17 @@ namespace communicationLibrary
         {
             short result = 0;
 
-            try
+             try
             {
                 string message = null;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -1657,18 +1671,22 @@ namespace communicationLibrary
                     // }
                 }
 
-                if (message.Equals(Messages.shortTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.shortTransfer))
                     {
-                        result = inStream.ReadInt16();
+                        //lock (recieveLock)
+                        {
+                            result = inStream.ReadInt16();
+                            isDataRecieved = true;
+                        }
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.shortTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.shortTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -1702,7 +1720,7 @@ namespace communicationLibrary
                 isDataRecieved = false;
                 abortRecieve = false;
 
-                while ((message == null))
+                while (message == null)
                 {
                     if (abortRecieve)
                         break;
@@ -1767,12 +1785,17 @@ namespace communicationLibrary
         {
             long result = 0;
 
-            try
+             try
             {
                 string message = null;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -1793,18 +1816,23 @@ namespace communicationLibrary
                     // }
                 }
 
-                if (message.Equals(Messages.longTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.longTransfer))
                     {
-                        result = inStream.ReadInt64();
+                        //lock (recieveLock)
+                        {
+                            result = inStream.ReadInt64();
+                            isDataRecieved = true;
+
+                        }
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.longTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.longTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -1831,12 +1859,17 @@ namespace communicationLibrary
         {
             ushort result = 0;
 
-            try
+             try
             {
                 string message = null;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -1857,18 +1890,23 @@ namespace communicationLibrary
                     // }
                 }
 
-                if (message.Equals(Messages.ushortTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.ushortTransfer))
                     {
-                        result = inStream.ReadUInt16();
+                        //lock (recieveLock)
+                        {
+                            result = inStream.ReadUInt16();
+                            isDataRecieved = true;
+
+                        }
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.ushortTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.ushortTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -1895,12 +1933,17 @@ namespace communicationLibrary
         {
             uint result = 0;
 
-            try
+             try
             {
                 string message = null;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -1921,18 +1964,23 @@ namespace communicationLibrary
                     // }
                 }
 
-                if (message.Equals(Messages.uintTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.uintTransfer))
                     {
-                        result = inStream.ReadUInt32();
+                        //lock (recieveLock)
+                        {
+                            result = inStream.ReadUInt32();
+                            isDataRecieved = true;
+
+                        }
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.uintTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.uintTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -1959,12 +2007,17 @@ namespace communicationLibrary
         {
             ulong result = 0;
 
-            try
+             try
             {
                 string message = null;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -1985,18 +2038,23 @@ namespace communicationLibrary
                     // }
                 }
 
-                if (message.Equals(Messages.ulongTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.ulongTransfer))
                     {
-                        result = inStream.ReadUInt64();
+                        //lock (recieveLock)
+                        {
+                            result = inStream.ReadUInt64();
+                            isDataRecieved = true;
+
+                        }
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.ulongTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.ulongTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -2023,12 +2081,17 @@ namespace communicationLibrary
         {
             byte result = 0;
 
-            try
+             try
             {
                 string message = null;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -2049,18 +2112,23 @@ namespace communicationLibrary
                     // }
                 }
 
-                if (message.Equals(Messages.byteTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.byteTransfer))
                     {
-                        result = inStream.ReadByte();
+                        //lock (recieveLock)
+                        {
+                            result = inStream.ReadByte();
+                            isDataRecieved = true;
+
+                        }
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.byteTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.byteTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -2087,12 +2155,17 @@ namespace communicationLibrary
         {
             sbyte result = 0;
 
-            try
+             try
             {
                 string message = null;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -2113,18 +2186,23 @@ namespace communicationLibrary
                     // }
                 }
 
-                if (message.Equals(Messages.sbyteTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.sbyteTransfer))
                     {
-                        result = inStream.ReadSByte();
+                        //lock (recieveLock)
+                        {
+                            result = inStream.ReadSByte();
+                            isDataRecieved = true;
+
+                        }
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.sbyteTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.sbyteTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -2151,12 +2229,17 @@ namespace communicationLibrary
         {
             char result = '0';
 
-            try
+             try
             {
                 string message = null;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -2177,18 +2260,23 @@ namespace communicationLibrary
                     // }
                 }
 
-                if (message.Equals(Messages.charTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.charTransfer))
                     {
-                        result = inStream.ReadChar();
+                        //lock (recieveLock)
+                        {
+                            result = inStream.ReadChar();
+                            isDataRecieved = true;
+
+                        }
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.charTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.charTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -2215,12 +2303,17 @@ namespace communicationLibrary
         {
             string result = "";
 
-            try
+             try
             {
                 string message = null;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -2241,18 +2334,23 @@ namespace communicationLibrary
                     // }
                 }
 
-                if (message.Equals(Messages.stringTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.stringTransfer))
                     {
-                        result = inStream.ReadString();
+                        //lock (recieveLock)
+                        {
+                            result = inStream.ReadString();
+                            isDataRecieved = true;
+
+                        }
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.stringTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.stringTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -2279,12 +2377,17 @@ namespace communicationLibrary
         {
             decimal result = 0;
 
-            try
+             try
             {
                 string message = null;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -2305,18 +2408,23 @@ namespace communicationLibrary
                     // }
                 }
 
-                if (message.Equals(Messages.decimalTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.decimalTransfer))
                     {
-                        result = inStream.ReadDecimal();
+                        //lock (recieveLock)
+                        {
+                            result = inStream.ReadDecimal();
+                            isDataRecieved = true;
+
+                        }
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.decimalTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.decimalTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -2343,12 +2451,17 @@ namespace communicationLibrary
         {
             float result = 0.0f;
 
-            try
+             try
             {
                 string message = null;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -2369,18 +2482,23 @@ namespace communicationLibrary
                     // }
                 }
 
-                if (message.Equals(Messages.floatTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.floatTransfer))
                     {
-                        result = inStream.ReadSingle();
+                        //lock (recieveLock)
+                        {
+                            result = inStream.ReadSingle();
+                            isDataRecieved = true;
+
+                        }
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.floatTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.floatTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -2407,12 +2525,17 @@ namespace communicationLibrary
         {
             double result = 0.0;
 
-            try
+             try
             {
                 string message = null;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -2433,18 +2556,23 @@ namespace communicationLibrary
                     // }
                 }
 
-                if (message.Equals(Messages.doubleTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.doubleTransfer))
                     {
-                        result = inStream.ReadDouble();
+                        //lock (recieveLock)
+                        {
+                            result = inStream.ReadDouble();
+                            isDataRecieved = true;
+
+                        }
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.doubleTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.doubleTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -2472,15 +2600,18 @@ namespace communicationLibrary
         #region arrayTypeRecieve
         public bool[] recieveArrayOfBools()
         {
-            bool[] result = new bool[1];
-
-            try
+            bool[] result = new bool[1];try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -2500,36 +2631,39 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.boolArrayTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.boolArrayTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
-                            result = new bool[count];
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result[i] = inStream.ReadBoolean();
+                                result = new bool[count];
+
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result[i] = inStream.ReadBoolean();
+                                }
+                                isDataRecieved = true;
+
                             }
 
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
 
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                        }
                     }
-
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.boolArrayTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.boolArrayTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -2554,15 +2688,18 @@ namespace communicationLibrary
 
         public short[] recieveArrayOfShorts()
         {
-            short[] result = new short[1];
-
-            try
+            short[] result = new short[1];try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -2582,34 +2719,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.shortArrayTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.shortArrayTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
-                            result = new short[count];
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result[i] = inStream.ReadInt16();
-                            }
+                                result = new short[count];
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result[i] = inStream.ReadInt16();
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.shortArrayTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.shortArrayTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -2720,15 +2860,18 @@ namespace communicationLibrary
 
         public long[] recieveArrayOfLongs()
         {
-            long[] result = new long[1];
-
-            try
+            long[] result = new long[1];try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -2748,34 +2891,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.longArrayTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.longArrayTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
-                            result = new long[count];
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result[i] = inStream.ReadInt64();
-                            }
+                                result = new long[count];
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result[i] = inStream.ReadInt64();
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.longArrayTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.longArrayTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -2800,15 +2946,18 @@ namespace communicationLibrary
 
         public ushort[] recieveArrayOfUShorts()
         {
-            ushort[] result = new ushort[1];
-
-            try
+            ushort[] result = new ushort[1];try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -2828,34 +2977,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.ushortArrayTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.ushortArrayTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
-                            result = new ushort[count];
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result[i] = inStream.ReadUInt16();
-                            }
+                                result = new ushort[count];
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result[i] = inStream.ReadUInt16();
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.ushortArrayTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.ushortArrayTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -2880,15 +3032,18 @@ namespace communicationLibrary
 
         public uint[] recieveArrayOfUInts()
         {
-            uint[] result = new uint[1];
-
-            try
+            uint[] result = new uint[1];try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -2908,34 +3063,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.uintArrayTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.uintArrayTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
-                            result = new uint[count];
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result[i] = inStream.ReadUInt32();
-                            }
+                                result = new uint[count];
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result[i] = inStream.ReadUInt32();
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.uintArrayTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.uintArrayTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -2960,15 +3118,18 @@ namespace communicationLibrary
 
         public ulong[] recieveArrayOfULongs()
         {
-            ulong[] result = new ulong[1];
-
-            try
+            ulong[] result = new ulong[1];try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -2988,34 +3149,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.ulongArrayTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.ulongArrayTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
-                            result = new ulong[count];
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result[i] = inStream.ReadUInt64();
-                            }
+                                result = new ulong[count];
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result[i] = inStream.ReadUInt64();
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.ulongArrayTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.ulongArrayTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -3040,15 +3204,18 @@ namespace communicationLibrary
 
         public byte[] recieveArrayOfBytes()
         {
-            byte[] result = new byte[1];
-
-            try
+            byte[] result = new byte[1];try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -3068,36 +3235,39 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.byteArrayTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.byteArrayTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
-                            // result = new byte[count];
+                            count = inStream.ReadInt32();
 
-                            result = inStream.ReadBytes(count);
+                            if (count >= 0)
+                            {
+                                // result = new byte[count];
 
-                            //for (int i = 0; i < count; i++)
-                            //{
-                            //    result[i] = inStream.ReadInt32();
-                            //}
+                                result = inStream.ReadBytes(count);
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                //for (int i = 0; i < count; i++)
+                                //{
+                                //    result[i] = inStream.ReadInt32();
+                                //}
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.byteArrayTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.byteArrayTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -3122,15 +3292,18 @@ namespace communicationLibrary
 
         public sbyte[] recieveArrayOfSBytes()
         {
-            sbyte[] result = new sbyte[1];
-
-            try
+            sbyte[] result = new sbyte[1];try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -3150,35 +3323,38 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.sbyteArrayTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.sbyteArrayTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
-                            result = new sbyte[count];
+                            count = inStream.ReadInt32();
 
-
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result[i] = inStream.ReadSByte();
-                            }
+                                result = new sbyte[count];
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result[i] = inStream.ReadSByte();
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.sbyteArrayTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.sbyteArrayTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -3203,15 +3379,18 @@ namespace communicationLibrary
 
         public char[] recieveArrayOfChars()
         {
-            char[] result = new char[1];
-
-            try
+            char[] result = new char[1];try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -3231,36 +3410,39 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.charArrayTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.charArrayTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
-                            // result = new int[count];
+                            count = inStream.ReadInt32();
 
-                            result = inStream.ReadChars(count);
+                            if (count >= 0)
+                            {
+                                // result = new int[count];
 
-                            //  for (int i = 0; i < count; i++)
-                            //  {
-                            //       result[i] = inStream.ReadInt32();
-                            //   }
+                                result = inStream.ReadChars(count);
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                //  for (int i = 0; i < count; i++)
+                                //  {
+                                //       result[i] = inStream.ReadInt32();
+                                //   }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.charArrayTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.charArrayTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -3285,15 +3467,18 @@ namespace communicationLibrary
 
         public string[] recieveArrayOfStrings()
         {
-            string[] result = new string[1];
-
-            try
+            string[] result = new string[1];try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -3313,34 +3498,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.stringArrayTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.stringArrayTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
-                            result = new string[count];
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result[i] = inStream.ReadString();
-                            }
+                                result = new string[count];
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result[i] = inStream.ReadString();
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.stringArrayTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.stringArrayTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -3365,15 +3553,18 @@ namespace communicationLibrary
 
         public decimal[] recieveArrayOfDecimals()
         {
-            decimal[] result = new decimal[1];
-
-            try
+            decimal[] result = new decimal[1];try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -3393,34 +3584,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.decimalArrayTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.decimalArrayTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
-                            result = new decimal[count];
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result[i] = inStream.ReadDecimal();
-                            }
+                                result = new decimal[count];
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result[i] = inStream.ReadDecimal();
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.decimalArrayTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.decimalArrayTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -3445,15 +3639,18 @@ namespace communicationLibrary
 
         public float[] recieveArrayOfFloats()
         {
-            float[] result = new float[1];
-
-            try
+            float[] result = new float[1];try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -3473,34 +3670,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.floatArrayTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.floatArrayTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
-                            result = new float[count];
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result[i] = inStream.ReadSingle();
-                            }
+                                result = new float[count];
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result[i] = inStream.ReadSingle();
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.floatArrayTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.floatArrayTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -3525,15 +3725,18 @@ namespace communicationLibrary
 
         public double[] recieveArrayOfDoubles()
         {
-            double[] result = new double[1];
-
-            try
+            double[] result = new double[1];try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -3553,34 +3756,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.doubleArrayTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.doubleArrayTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
-                            result = new double[count];
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result[i] = inStream.ReadDouble();
-                            }
+                                result = new double[count];
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result[i] = inStream.ReadDouble();
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.doubleArrayTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.doubleArrayTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -3608,15 +3814,18 @@ namespace communicationLibrary
         #region listTypeRecieve
         public List<bool> recieveListOfBools()
         {
-            List<bool> result = new List<bool>();
-
-            try
+            List<bool> result = new List<bool>();try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -3636,33 +3845,36 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.boolListTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.boolListTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result.Add(inStream.ReadBoolean());
-                            }
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result.Add(inStream.ReadBoolean());
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.boolListTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.boolListTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -3688,15 +3900,18 @@ namespace communicationLibrary
 
         public List<short> recieveListOfShorts()
         {
-            List<short> result = new List<short>();
-
-            try
+            List<short> result = new List<short>();try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -3716,33 +3931,36 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.shortListTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.shortListTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result.Add(inStream.ReadInt16());
-                            }
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result.Add(inStream.ReadInt16());
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.shortListTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.shortListTransfer + "Recieved: " + message);
-                }
-
 
             }
             catch (EndOfStreamException EOSEx)
@@ -3768,15 +3986,18 @@ namespace communicationLibrary
 
         public List<int> recieveListOfInts()
         {
-            List<int> result = new List<int>();
-
-            try
+            List<int> result = new List<int>();try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -3796,34 +4017,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.intListTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.intListTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result.Add(inStream.ReadInt32());
+
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result.Add(inStream.ReadInt32());
+                                }
+                                isDataRecieved = true;
+
                             }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
+                        }
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                        }
                     }
-
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.intListTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.intListTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -3848,15 +4072,18 @@ namespace communicationLibrary
 
         public List<long> recieveListOfLongs()
         {
-            List<long> result = new List<long>();
-
-            try
+            List<long> result = new List<long>();try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -3876,34 +4103,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.longListTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.longListTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result.Add(inStream.ReadInt64());
+
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result.Add(inStream.ReadInt64());
+                                }
+                                isDataRecieved = true;
+
                             }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
+                        }
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                        }
                     }
-
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.longListTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.longListTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -3928,15 +4158,18 @@ namespace communicationLibrary
 
         public List<ushort> recieveListOfUShorts()
         {
-            List<ushort> result = new List<ushort>();
-
-            try
+            List<ushort> result = new List<ushort>();try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -3956,33 +4189,36 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.ushortListTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.ushortListTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result.Add(inStream.ReadUInt16());
-                            }
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result.Add(inStream.ReadUInt16());
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.ushortListTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.ushortListTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -4007,15 +4243,18 @@ namespace communicationLibrary
 
         public List<uint> recieveListOfUInts()
         {
-            List<uint> result = new List<uint>();
-
-            try
+            List<uint> result = new List<uint>();try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -4035,34 +4274,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.uintListTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.uintListTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result.Add(inStream.ReadUInt32());
+
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result.Add(inStream.ReadUInt32());
+                                }
+                                isDataRecieved = true;
+
                             }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
+                        }
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                        }
                     }
-
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.uintListTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.uintListTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -4087,15 +4329,18 @@ namespace communicationLibrary
 
         public List<ulong> recieveListOfULongs()
         {
-            List<ulong> result = new List<ulong>();
-
-            try
+            List<ulong> result = new List<ulong>();try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -4115,34 +4360,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.ulongListTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.ulongListTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result.Add(inStream.ReadUInt64());
+
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result.Add(inStream.ReadUInt64());
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
                             }
 
                         }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                        }
-
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.ulongListTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.ulongListTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -4167,15 +4415,18 @@ namespace communicationLibrary
 
         public List<byte> recieveListOfBytes()
         {
-            List<byte> result = new List<byte>();
-
-            try
+            List<byte> result = new List<byte>();try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -4195,34 +4446,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.byteListTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.byteListTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result.Add(inStream.ReadByte());
+
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result.Add(inStream.ReadByte());
+                                }
+                                isDataRecieved = true;
+
                             }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
+                        }
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                        }
                     }
-
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.byteListTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.byteListTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -4247,15 +4501,18 @@ namespace communicationLibrary
 
         public List<sbyte> recieveListOfSBytes()
         {
-            List<sbyte> result = new List<sbyte>();
-
-            try
+            List<sbyte> result = new List<sbyte>();try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -4275,34 +4532,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.sbyteListTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.sbyteListTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result.Add(inStream.ReadSByte());
+
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result.Add(inStream.ReadSByte());
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
                             }
 
                         }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                        }
-
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.sbyteListTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.sbyteListTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -4327,15 +4587,18 @@ namespace communicationLibrary
 
         public List<char> recieveListOfChars()
         {
-            List<char> result = new List<char>();
-
-            try
+            List<char> result = new List<char>();try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -4355,34 +4618,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.charListTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.charListTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result.Add(inStream.ReadChar());
+
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result.Add(inStream.ReadChar());
+                                }
+                                isDataRecieved = true;
+
                             }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
+                        }
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                        }
                     }
-
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.charListTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.charListTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -4407,15 +4673,18 @@ namespace communicationLibrary
 
         public List<string> recieveListOfStrings()
         {
-            List<string> result = new List<string>();
-
-            try
+            List<string> result = new List<string>();try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -4435,34 +4704,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.stringListTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.stringListTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result.Add(inStream.ReadString());
+
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result.Add(inStream.ReadString());
+                                }
+                                isDataRecieved = true;
+
                             }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
+                        }
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                        }
                     }
-
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.stringListTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.stringListTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -4487,15 +4759,18 @@ namespace communicationLibrary
 
         public List<decimal> recieveListOfDecimals()
         {
-            List<decimal> result = new List<decimal>();
-
-            try
+            List<decimal> result = new List<decimal>();try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -4515,34 +4790,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.decimalListTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.decimalListTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result.Add(inStream.ReadDecimal());
+
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result.Add(inStream.ReadDecimal());
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
                             }
 
                         }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                        }
-
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.decimalListTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.decimalListTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -4567,15 +4845,18 @@ namespace communicationLibrary
 
         public List<float> recieveListOfFloats()
         {
-            List<float> result = new List<float>();
-
-            try
+            List<float> result = new List<float>();try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -4595,34 +4876,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.floatListTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.floatListTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result.Add(inStream.ReadSingle());
+
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result.Add(inStream.ReadSingle());
+                                }
+                                isDataRecieved = true;
+
                             }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
+                            }
+                        }
 
-                        }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                        }
                     }
-
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.floatListTransfer + "Recieved: " + message);
+                    }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.floatListTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {
@@ -4647,15 +4931,18 @@ namespace communicationLibrary
 
         public List<double> recieveListOfDoubles()
         {
-            List<double> result = new List<double>();
-
-            try
+            List<double> result = new List<double>();try
             {
                 string message = null;
                 int count;
 
+                isDataRecieved = false;
+                abortRecieve = false;
+
                 while (message == null)
                 {
+                    if (abortRecieve)
+                        break;
                     //try
                     // {
                     //lock (recieveLock)
@@ -4675,34 +4962,37 @@ namespace communicationLibrary
                     //    }
                     // }
                 }
-
-                if (message.Equals(Messages.doubleListTransfer))
+                if (message != null)
                 {
-                    //lock (recieveLock)
+
+                    if (message.Equals(Messages.doubleListTransfer))
                     {
-                        count = inStream.ReadInt32();
-
-                        if (count >= 0)
+                        //lock (recieveLock)
                         {
+                            count = inStream.ReadInt32();
 
-                            for (int i = 0; i < count; i++)
+                            if (count >= 0)
                             {
-                                result.Add(inStream.ReadDouble());
+
+                                for (int i = 0; i < count; i++)
+                                {
+                                    result.Add(inStream.ReadDouble());
+                                }
+                                isDataRecieved = true;
+
+                            }
+                            else
+                            {
+                                throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
                             }
 
                         }
-                        else
-                        {
-                            throw new ArgumentOutOfRangeException("Count of bytes to transfer below zero");
-                        }
-
+                    }
+                    else
+                    {
+                        throw new TypeNotMatchException("Expected: " + Messages.doubleListTransfer + "Recieved: " + message);
                     }
                 }
-                else
-                {
-                    throw new TypeNotMatchException("Expected: " + Messages.doubleListTransfer + "Recieved: " + message);
-                }
-
             }
             catch (EndOfStreamException EOSEx)
             {

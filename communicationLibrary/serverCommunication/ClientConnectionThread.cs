@@ -98,7 +98,7 @@ namespace communicationLibrary
 
         public void terminateReadThread()
         {
-            //readThread.Abort();
+            //dataTransferConnection.abortRead();
             dataTransferConnection.abortRead();
         }
 
@@ -131,7 +131,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -150,7 +150,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.Bool = dataTransferConnection.recieveBool();
+                bool data = dataTransferConnection.recieveBool();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.Bool = data;
+                    dataRead = true;
+                }
 
             }
             catch (Exception ex)
@@ -196,7 +201,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -215,7 +220,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.Short = dataTransferConnection.recieveShort();
+                short data = dataTransferConnection.recieveShort();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.Short = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -253,7 +263,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    //readThread.Abort();
+                    //dataTransferConnection.abortRead();
                     dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
@@ -317,7 +327,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -336,7 +346,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.Long = dataTransferConnection.recieveLong();
+                long data = dataTransferConnection.recieveLong();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.Long = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -375,7 +390,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -394,7 +409,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.UShort = dataTransferConnection.recieveUShort();
+                ushort data = dataTransferConnection.recieveUShort();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.UShort = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -433,7 +453,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -452,7 +472,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.UInt = dataTransferConnection.recieveUInt();
+                uint data = dataTransferConnection.recieveUInt();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.UInt = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -491,7 +516,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -510,7 +535,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.ULong = dataTransferConnection.recieveULong();
+                ulong data = dataTransferConnection.recieveULong();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.ULong = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -549,7 +579,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -568,7 +598,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.Byte = dataTransferConnection.recieveByte();
+                byte data = dataTransferConnection.recieveByte();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.Byte = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -607,7 +642,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -626,7 +661,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.SByte = dataTransferConnection.recieveSByte();
+                sbyte data = dataTransferConnection.recieveSByte();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.SByte = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -664,7 +704,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -683,7 +723,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.Char = dataTransferConnection.recieveChar();
+                char data = dataTransferConnection.recieveChar();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.Char = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -722,7 +767,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -741,7 +786,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.String = dataTransferConnection.recieveString();
+                string data = dataTransferConnection.recieveString();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.String = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -780,7 +830,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -799,7 +849,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.Decimal = dataTransferConnection.recieveDecimal();
+                decimal data = dataTransferConnection.recieveDecimal();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.Decimal = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -838,7 +893,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -857,7 +912,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.Float = dataTransferConnection.recieveFloat();
+                float data = dataTransferConnection.recieveFloat();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.Float = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -896,7 +956,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -915,7 +975,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.Double = dataTransferConnection.recieveDouble();
+                double data = dataTransferConnection.recieveDouble();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.Double = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -956,7 +1021,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -975,7 +1040,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.BoolArray = dataTransferConnection.recieveArrayOfBools();
+                bool[] data = dataTransferConnection.recieveArrayOfBools();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.BoolArray = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1014,7 +1084,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1033,7 +1103,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.ShortArray = dataTransferConnection.recieveArrayOfShorts();
+                short[] data = dataTransferConnection.recieveArrayOfShorts();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.ShortArray = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1072,7 +1147,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    //readThread.Abort();
+                    //dataTransferConnection.abortRead();
                     dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
@@ -1093,11 +1168,11 @@ namespace communicationLibrary
             try
             {
                 int[] data = dataTransferConnection.recieveArrayOfInts();
-                if(dataTransferConnection.isDataRead())
+                if (dataTransferConnection.isDataRead())
                 {
                     recievedData.IntArray = data;
                     dataRead = true;
-                }   
+                }
             }
             catch (Exception ex)
             {
@@ -1134,7 +1209,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1153,7 +1228,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.LongArray = dataTransferConnection.recieveArrayOfLongs();
+                long[] data = dataTransferConnection.recieveArrayOfLongs();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.LongArray = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1193,7 +1273,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1212,7 +1292,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.UShortArray = dataTransferConnection.recieveArrayOfUShorts();
+                ushort[] data = dataTransferConnection.recieveArrayOfUShorts();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.UShortArray = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1251,7 +1336,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1270,7 +1355,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.UIntArray = dataTransferConnection.recieveArrayOfUInts();
+                uint[] data = dataTransferConnection.recieveArrayOfUInts();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.UIntArray = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1309,7 +1399,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1328,7 +1418,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.ULongArray = dataTransferConnection.recieveArrayOfULongs();
+                ulong[] data = dataTransferConnection.recieveArrayOfULongs();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.ULongArray = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1367,7 +1462,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1386,7 +1481,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.ByteArray = dataTransferConnection.recieveArrayOfBytes();
+                byte[] data = dataTransferConnection.recieveArrayOfBytes();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.ByteArray = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1425,7 +1525,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1444,7 +1544,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.SByteArray = dataTransferConnection.recieveArrayOfSBytes();
+                sbyte[] data = dataTransferConnection.recieveArrayOfSBytes();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.SByteArray = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1483,7 +1588,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1502,7 +1607,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.CharArray = dataTransferConnection.recieveArrayOfChars();
+                char[] data = dataTransferConnection.recieveArrayOfChars();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.CharArray = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1541,7 +1651,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1560,7 +1670,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.StringArray = dataTransferConnection.recieveArrayOfStrings();
+                string[] data = dataTransferConnection.recieveArrayOfStrings();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.StringArray = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1599,7 +1714,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1618,7 +1733,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.DecimalArray = dataTransferConnection.recieveArrayOfDecimals();
+                decimal[] data = dataTransferConnection.recieveArrayOfDecimals();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.DecimalArray = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1657,7 +1777,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1676,7 +1796,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.FloatArray = dataTransferConnection.recieveArrayOfFloats();
+                float[] data = dataTransferConnection.recieveArrayOfFloats();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.FloatArray = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1715,7 +1840,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1734,7 +1859,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.DoubleArray = dataTransferConnection.recieveArrayOfDoubles();
+                double[] data = dataTransferConnection.recieveArrayOfDoubles();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.DoubleArray = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1776,7 +1906,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1795,7 +1925,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.BoolList = dataTransferConnection.recieveListOfBools();
+                List<bool> data = dataTransferConnection.recieveListOfBools();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.BoolList = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1833,7 +1968,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1852,7 +1987,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.ShortList = dataTransferConnection.recieveListOfShorts();
+                List<short> data = dataTransferConnection.recieveListOfShorts();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.ShortList = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1891,7 +2031,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1910,7 +2050,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.IntList = dataTransferConnection.recieveListOfInts();
+                List<int> data = dataTransferConnection.recieveListOfInts();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.IntList = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1949,7 +2094,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -1968,7 +2113,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.LongList = dataTransferConnection.recieveListOfLongs();
+                List<long> data = dataTransferConnection.recieveListOfLongs();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.LongList = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -1996,7 +2146,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -2015,7 +2165,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.UShortList = dataTransferConnection.recieveListOfUShorts();
+                List<ushort> data = dataTransferConnection.recieveListOfUShorts();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.UShortList = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -2054,7 +2209,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -2073,7 +2228,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.UIntList = dataTransferConnection.recieveListOfUInts();
+                List<uint> data = dataTransferConnection.recieveListOfUInts();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.UIntList = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -2112,7 +2272,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -2131,7 +2291,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.ULongList = dataTransferConnection.recieveListOfULongs();
+                List<ulong> data = dataTransferConnection.recieveListOfULongs();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.ULongList = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -2170,7 +2335,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -2189,7 +2354,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.ByteList = dataTransferConnection.recieveListOfBytes();
+                List<byte> data = dataTransferConnection.recieveListOfBytes();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.ByteList = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -2228,7 +2398,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -2247,7 +2417,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.SByteList = dataTransferConnection.recieveListOfSBytes();
+                List<sbyte> data = dataTransferConnection.recieveListOfSBytes();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.SByteList = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -2286,7 +2461,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -2305,7 +2480,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.CharList = dataTransferConnection.recieveListOfChars();
+                List<char> data = dataTransferConnection.recieveListOfChars();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.CharList = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -2344,7 +2524,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -2363,7 +2543,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.StringList = dataTransferConnection.recieveListOfStrings();
+                List<string> data = dataTransferConnection.recieveListOfStrings();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.StringList = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -2402,7 +2587,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -2421,7 +2606,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.DecimalList = dataTransferConnection.recieveListOfDecimals();
+                List<decimal> data = dataTransferConnection.recieveListOfDecimals();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.DecimalList = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -2460,7 +2650,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -2479,7 +2669,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.FloatList = dataTransferConnection.recieveListOfFloats();
+                List<float> data = dataTransferConnection.recieveListOfFloats();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.FloatList = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
@@ -2518,7 +2713,7 @@ namespace communicationLibrary
             {
                 if (readThread.IsAlive)
                 {
-                    readThread.Abort();
+                    dataTransferConnection.abortRead();
                 }
                 while (readThread.IsAlive)
                 {
@@ -2537,7 +2732,12 @@ namespace communicationLibrary
             recievedData = new DTO();
             try
             {
-                recievedData.DoubleList = dataTransferConnection.recieveListOfDoubles();
+                List<double> data = dataTransferConnection.recieveListOfDoubles();
+                if (dataTransferConnection.isDataRead())
+                {
+                    recievedData.DoubleList = data;
+                    dataRead = true;
+                }
             }
             catch (Exception ex)
             {
