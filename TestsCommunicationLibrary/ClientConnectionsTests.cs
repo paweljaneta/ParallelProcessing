@@ -81,6 +81,7 @@ namespace TestsCommunicationLibrary
         public void TestCleanup()
         {
             abortThread = true;
+            while (nopSendThread.IsAlive) ;
             ClientConnections.Instance().RemoveAll();
             connectedClients.Clear();
             connections.Clear();

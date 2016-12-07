@@ -830,6 +830,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -867,6 +872,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -902,6 +912,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -937,6 +952,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -972,6 +992,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1007,6 +1032,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1042,6 +1072,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1077,6 +1112,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1112,6 +1152,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1147,6 +1192,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1182,6 +1232,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1217,6 +1272,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1252,6 +1312,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1287,6 +1352,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1323,6 +1393,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1358,6 +1433,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1393,6 +1473,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1428,6 +1513,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1463,6 +1553,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1498,6 +1593,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1533,6 +1633,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1568,6 +1673,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1603,6 +1713,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1638,6 +1753,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1673,6 +1793,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1708,6 +1833,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1741,6 +1871,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1776,6 +1911,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1815,6 +1955,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1850,6 +1995,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1885,6 +2035,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1920,6 +2075,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1955,6 +2115,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -1990,6 +2155,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -2025,6 +2195,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -2060,6 +2235,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -2095,6 +2275,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -2130,6 +2315,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -2165,6 +2355,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -2200,6 +2395,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -2235,6 +2435,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -2270,6 +2475,11 @@ namespace communicationLibrary
 
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
+                    if(connectedClientsList[i].getIsExceptionCaught())
+                    {
+                        connectedClientsList[i].throwException();
+                    }
+
                     if (connectedClientsList[i].isDataRead())
                     {
                         dataRead = true;
@@ -2311,7 +2521,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveBool();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2341,7 +2551,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveShort();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2371,7 +2581,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveInt();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2401,7 +2611,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveLong();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2431,7 +2641,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveUShort();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2461,7 +2671,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveUInt();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2491,7 +2701,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveULong();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2521,7 +2731,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveByte();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2551,7 +2761,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveSByte();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2581,7 +2791,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveChar();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2611,7 +2821,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveString();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2641,7 +2851,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveDecimal();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2671,7 +2881,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveFloat();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2701,7 +2911,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveDouble();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2733,7 +2943,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveBoolArray();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2763,7 +2973,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveShortArray();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2793,7 +3003,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveIntArray();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2823,7 +3033,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveLongArray();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2853,7 +3063,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveUShortArray();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2883,7 +3093,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveUIntArray();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2913,7 +3123,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveULongArray();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2943,7 +3153,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveByteArray();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2973,7 +3183,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveSByteArray();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3003,7 +3213,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveCharArray();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3033,7 +3243,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveStringArray();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3063,7 +3273,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveDecimalArray();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3093,7 +3303,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveFloatArray();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3123,7 +3333,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveDoubleArray();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3156,7 +3366,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveBoolList();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3185,7 +3395,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveShortList();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3215,7 +3425,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveIntList();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3245,7 +3455,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveLongList();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3275,7 +3485,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveUShortList();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3305,7 +3515,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveUIntList();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3335,7 +3545,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveULongList();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3365,7 +3575,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveByteList();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3395,7 +3605,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveSByteList();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3425,7 +3635,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveCharList();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3455,7 +3665,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveStringList();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3485,7 +3695,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveDecimalList();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3515,7 +3725,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveFloatList();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3545,7 +3755,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveDoubleList();
             }
 
-            while (!connectedClientsList[foundIndex].isDataRead())
+            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
