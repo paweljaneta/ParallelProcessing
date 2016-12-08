@@ -20,6 +20,8 @@ namespace serwer
 
         int refreshDelayMs = 1000;
 
+        int prog = 0;
+
         public View(List<ClientIDNetSpeedFlops> ClientIDNetSpeedFlopsList)
         {
             clientIDNetSpeedFlopsList = ClientIDNetSpeedFlopsList;
@@ -42,7 +44,7 @@ namespace serwer
                 Console.Clear();
                 int connectedThreads = ClientConnections.Instance().GetConnectedCliensCount();
 
-                if(calculationsStarted)
+                if (calculationsStarted)
                 {
                     Console.WriteLine("To stop calculations press 's'");
                 }
@@ -53,15 +55,19 @@ namespace serwer
                 Console.WriteLine();
                 Console.WriteLine("Connected threads: " + connectedThreads);
 
+                drawProgress();
+                if(prog<100)
+                prog += 1;
+
                 //check for changes in connected clients
                 lock (listLock)
                 {
                     foreach (ClientIDNetSpeedFlops client in clientIDNetSpeedFlopsList)
                     {
-                    //    checkIfInConnectedClientsElseDelete(client.clientID);
+                        //    checkIfInConnectedClientsElseDelete(client.clientID);
                     }
                 }
-                
+
 
                 //print exceptions
                 Console.BackgroundColor = ConsoleColor.Red;
@@ -70,11 +76,11 @@ namespace serwer
                 foreach (TelemetryConnection telemetry in telemertyConnections)
                 {
                     List<string> exceptions = telemetry.getExceptions();
-                    if(exceptions.Count>0)
+                    if (exceptions.Count > 0)
                     {
                         Console.WriteLine();
                         Console.WriteLine("CLIENT ID:   " + telemetry.getClientID());
-                        foreach(string exception in exceptions)
+                        foreach (string exception in exceptions)
                         {
                             Console.WriteLine(exception);
                         }
@@ -117,13 +123,13 @@ namespace serwer
 
         private void checkIfInConnectedClientsElseDelete(int clientID)
         {
-            if(!ClientConnections.Instance().isClientIDInList(clientID))
+            if (!ClientConnections.Instance().isClientIDInList(clientID))
             {
-                for(int i=0;i<clientIDNetSpeedFlopsList.Count;i++)
+                for (int i = 0; i < clientIDNetSpeedFlopsList.Count; i++)
                 {
                     if (clientIDNetSpeedFlopsList[i].clientID == clientID)
                     {
-                        lock(listLock)
+                        lock (listLock)
                         {
                             clientIDNetSpeedFlopsList.RemoveAt(i);
                         }
@@ -156,6 +162,25 @@ namespace serwer
         {
             calculationsStarted = false;
 
+        }
+
+        public void drawProgress()
+        {
+            float progress = ClientConnections.Instance().getProgress(); //0-100%
+            int numberOfChars = 50;
+            int filled =(int)progress/(100/numberOfChars);
+            int empty = numberOfChars - filled;
+            Console.WriteLine();
+            Console.Write(" ");
+            for (int i = 0; i < filled; i++)
+            {
+                Console.Write('|');
+            }
+            for (int i = 0; i < empty; i++)
+            {
+                Console.Write('.');
+            }
+            Console.WriteLine();
         }
 
     }

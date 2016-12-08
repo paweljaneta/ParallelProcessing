@@ -21,7 +21,7 @@ namespace client
         Thread outputThread;
 
         int telemetryDelayMs = 5000;
-        int readTimeout = 100000;
+        int readTimeout = 3600*1000;
 
         bool stopThreads = false;
         bool stopCalc = false;
@@ -70,6 +70,9 @@ namespace client
                     {
                         switch (message)
                         {
+                            case Messages.nop:
+                                break;
+
                             case Messages.stopCalculations:
                                 stopCalculations();
                                 break;

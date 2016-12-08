@@ -54,8 +54,8 @@ namespace client
 
                     clientID = inStream.ReadInt32();
 
-                    //telemetry = new Telemetry(connection);
-                    connection.Close();
+                    telemetry = new Telemetry(connection);
+                    //connection.Close();
 
                     //start threads
 
@@ -69,7 +69,7 @@ namespace client
 
 
 
-                    while (true)
+                    while (!threadsFinished(workingThreads))
                     {
                         Thread.Sleep(1);
                     }

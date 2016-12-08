@@ -16,7 +16,7 @@ namespace serwer
         BinaryReader inputStream;
         BinaryWriter outputStream;
 
-        int streamTimeout = 100000;
+        int streamTimeout = 1000*3600;
 
         int clientID;
 
@@ -25,6 +25,9 @@ namespace serwer
         float ramAvaliable;
 
         Thread readThread;
+        Thread nopOutThread;
+        int nopDelayMs = 1000;
+
         bool stopThread = false;
 
         public TelemetryConnection(TcpClient connection,int clientID)
@@ -37,7 +40,18 @@ namespace serwer
             outputStream = new BinaryWriter(connection.GetStream());
             this.clientID = clientID;
             readThread = new Thread(inThread);
-         //   readThread.Start();
+            nopOutThread = new Thread(nopSend);
+            nopOutThread.Start();
+            readThread.Start();
+        }
+
+        private void nopSend()
+        {
+            while(!stopThread)
+            {
+                outputStream.Write(Messages.nop);
+                Thread.Sleep(nopDelayMs);
+            }
         }
 
         private void inThread()
@@ -82,13 +96,9 @@ namespace serwer
                 }
                 catch (IOException e)
                 {
-                    if(e.InnerException is SocketException)
-                    {
-                       // ClientConnections.Instance().RemoveByClientID(clientID);
-                       // abortThread();
-                       // TelemetryConnections.RemoveByClientID(clientID);
-                    }
-                    //exception from timeout
+                    ClientConnections.Instance().RemoveByClientID(clientID);
+                    abortThread();
+                    TelemetryConnections.RemoveByClientID(clientID);
                 }
                 catch(SocketException e)
                 {

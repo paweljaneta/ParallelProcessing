@@ -18,6 +18,8 @@ namespace communicationLibrary
 
         public static bool startCalculations = false;
 
+        private float progress=0;
+
 
         private ClientConnections()
         {
@@ -129,6 +131,21 @@ namespace communicationLibrary
         public int GetConnectedCliensCount()
         {
             return connectedClientsList.Count;
+        }
+
+        public float getProgress()
+        {
+            return progress;
+        }
+
+        public void setProgress(float progress)
+        {
+            if (progress < 0)
+                this.progress = 0;
+            else if (progress > 100)
+                this.progress = 100;
+            else
+                this.progress = progress;
         }
 
         private void terminateReadThreads()

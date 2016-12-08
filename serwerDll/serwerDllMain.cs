@@ -19,7 +19,7 @@ namespace serwerDll
             while (!ClientConnections.startCalculations)
                 Thread.Sleep(1);
 
-            int dimension = 10;
+            int dimension = 1000;
             int[,] matrixA = new int[dimension, dimension];
             int[,] matrixB = new int[dimension, dimension];
             int[,] matrixC = new int[dimension, dimension];
