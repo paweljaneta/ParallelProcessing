@@ -4105,15 +4105,18 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                lock(connectedClientsLock)
                 {
-                    if (!connectedClientsList[i].hasDataSend())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        connectedClientsList[i].clearSentDataList();
-                        connectedClientsList[i].sendBool(data);
-                        thrID = connectedClientsList[i].getThreadID();
-                        dataSent = true;
-                        break;
+                        if (!connectedClientsList[i].hasDataSend())
+                        {
+                            connectedClientsList[i].clearSentDataList();
+                            connectedClientsList[i].sendBool(data);
+                            thrID = connectedClientsList[i].getThreadID();
+                            dataSent = true;
+                            break;
+                        }
                     }
                 }
             }
@@ -4131,6 +4134,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4142,6 +4147,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4157,6 +4163,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4168,6 +4176,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4183,6 +4192,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4194,6 +4205,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4209,6 +4221,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4220,6 +4234,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4235,6 +4250,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4246,6 +4263,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4261,6 +4279,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4272,6 +4292,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4287,6 +4308,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4298,6 +4321,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4313,6 +4337,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4324,6 +4350,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4339,6 +4366,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4350,6 +4379,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4365,6 +4395,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4376,6 +4408,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4391,6 +4424,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4402,6 +4437,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4417,6 +4453,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4428,6 +4466,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4443,6 +4482,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4454,6 +4495,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4472,6 +4514,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4483,6 +4527,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4498,6 +4543,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4509,6 +4556,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4524,6 +4572,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4535,6 +4585,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4550,6 +4601,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4561,6 +4614,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4576,6 +4630,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4587,6 +4643,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4602,6 +4659,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4613,6 +4672,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4628,6 +4688,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4639,6 +4701,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4654,6 +4717,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4665,6 +4730,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4680,6 +4746,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4691,6 +4759,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4706,6 +4775,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4717,6 +4788,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4732,6 +4804,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4743,6 +4817,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4758,6 +4833,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4769,6 +4846,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4784,6 +4862,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4795,6 +4875,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4810,6 +4891,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4821,6 +4904,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4839,6 +4923,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4850,6 +4936,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4865,6 +4952,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4876,6 +4965,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4891,6 +4981,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4902,6 +4994,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4917,6 +5010,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4928,6 +5023,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4943,6 +5039,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4954,6 +5052,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4969,6 +5068,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -4980,6 +5081,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -4995,6 +5097,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -5006,6 +5110,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -5021,6 +5126,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -5032,6 +5139,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -5047,6 +5155,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -5058,6 +5168,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -5073,6 +5184,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -5084,6 +5197,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -5099,6 +5213,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -5110,6 +5226,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -5125,6 +5242,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -5136,6 +5255,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -5151,6 +5271,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -5162,6 +5284,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -5177,6 +5300,8 @@ namespace communicationLibrary
 
             while (!dataSent)
             {
+                lock(connectedClientsLock)
+                {
                 for (int i = 0; i < connectedClientsList.Count; i++)
                 {
                     if (!connectedClientsList[i].hasDataSend())
@@ -5188,6 +5313,7 @@ namespace communicationLibrary
                         break;
                     }
                 }
+            }
             }
 
             threadID = thrID;
@@ -5201,15 +5327,16 @@ namespace communicationLibrary
         public void sendBoolByID(bool data, int threadID)
         {
             int foundIndex = -1;
-
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
-
             if (foundIndex < 0)
             {
                 throw new ArgumentException("ReadByID There is no client with that id");
@@ -5224,11 +5351,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5245,11 +5375,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5266,11 +5399,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5287,11 +5423,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5308,11 +5447,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5329,11 +5471,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5350,11 +5495,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5371,11 +5519,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5392,11 +5543,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5413,11 +5567,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5434,11 +5591,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5455,11 +5615,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5476,11 +5639,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5500,11 +5666,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5521,11 +5690,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5542,11 +5714,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5563,11 +5738,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5584,11 +5762,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5605,11 +5786,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5626,11 +5810,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5647,11 +5834,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5668,11 +5858,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5689,11 +5882,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5710,11 +5906,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5731,11 +5930,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5752,11 +5954,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5773,11 +5978,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5797,11 +6005,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5818,11 +6029,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5839,11 +6053,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5860,11 +6077,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5881,11 +6101,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5902,11 +6125,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5923,11 +6149,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5944,11 +6173,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5965,11 +6197,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -5986,11 +6221,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -6007,11 +6245,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -6028,11 +6269,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -6049,11 +6293,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
@@ -6070,11 +6317,14 @@ namespace communicationLibrary
         {
             int foundIndex = -1;
 
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock(connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    foundIndex = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        foundIndex = i;
+                    }
                 }
             }
 
