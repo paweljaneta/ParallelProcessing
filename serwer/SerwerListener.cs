@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace serwer
 {
@@ -25,12 +26,30 @@ namespace serwer
 
         public TcpClient acceptTcpClient()
         {
-            return listener.AcceptTcpClient();
+            TcpClient result = null;
+            try {
+                if (isListening)
+                    result = listener.AcceptTcpClient();
+            }catch(Exception e)
+            {
+                result = null;
+            }
+            return result;
         }
 
         public bool isPendingConnection()
         {
-            return listener.Pending();
+            bool result=false;
+            try
+            {
+                if (isListening)
+                    result = listener.Pending();
+            }catch(Exception e)
+            {
+                result = false;
+            }
+            
+            return result;
         }
     }
 }

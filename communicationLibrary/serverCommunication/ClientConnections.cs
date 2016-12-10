@@ -158,7 +158,7 @@ namespace communicationLibrary
                 this.progress = progress;
         }
 
-        private void terminateReadThreads()
+        public void terminateReadThreads()
         {
             lock (connectedClientsLock)
             {

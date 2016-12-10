@@ -20,6 +20,17 @@ namespace serwer
             }
         }
 
+        public static void stopTelemetryThreads()
+        {
+            lock(telemetryConnectionsLock)
+            {
+                for (int i = 0; i < telemetryConnections.Count; i++)
+                {
+                    telemetryConnections[i].abortThread();
+                }
+            }        
+        }
+
         public static List<TelemetryConnection> getTelemetryConnections()
         {
             return telemetryConnections;

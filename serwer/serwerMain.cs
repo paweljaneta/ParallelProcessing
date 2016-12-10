@@ -35,8 +35,8 @@ namespace serwer
             listener.Start();
             SerwerListener serwerListener = new SerwerListener(listener);
             TcpClient client;
-            BinaryReader inputStream;
-            BinaryWriter outputStream;
+            BinaryReader inputStream = null;
+            BinaryWriter outputStream = null;
 
             Measurments mesurments = new Measurments();
 
@@ -61,63 +61,80 @@ namespace serwer
                 if (serwerListener.isPendingConnection())
                 {
                     client = serwerListener.acceptTcpClient();
-                    inputStream = new BinaryReader(client.GetStream());
-                    outputStream = new BinaryWriter(client.GetStream());
+                    if (client != null)
+                    {
+                        inputStream = new BinaryReader(client.GetStream());
+                        outputStream = new BinaryWriter(client.GetStream());
+                    }
                     string message;
 
-                    message = inputStream.ReadString();
-
-                    if (message.Equals(Messages.dllRequest))
+                    if (SerwerListener.isListening)
                     {
-                        //send dll
-                        sendDll(outputStream);
-                        double flops = 0.0;
-                        Measurments.NetworkSpeeds netSpeed;
-
                         message = inputStream.ReadString();
 
-                        if (message.Equals(Messages.flops))
+                        if (message.Equals(Messages.dllRequest))
                         {
-                            flops = inputStream.ReadDouble();
+                            //send dll
+                            sendDll(outputStream);
+                            double flops = 0.0;
+                            Measurments.NetworkSpeeds netSpeed;
+
+                            message = inputStream.ReadString();
+
+                            if (message.Equals(Messages.flops))
+                            {
+                                flops = inputStream.ReadDouble();
+                            }
+                            netSpeed = mesurments.networkSpeed(inputStream, outputStream);
+
+                            outputStream.Write(clientID);
+
+                            clientIDNetSpeedFlopsList.Add(new ClientIDNetSpeedFlops(clientID, netSpeed, flops));
+
+                            view.updateList(clientIDNetSpeedFlopsList);
+
+                            TelemetryConnections.Add(new TelemetryConnection(client, clientID));
+                            //client.Close();
+                            if (!serverDllThreadStarted)
+                            {
+                                serverDllThread.Start();
+                                serverDllThreadStarted = true;
+                            }
+
+
+                            clientID++;
+
                         }
-                        netSpeed = mesurments.networkSpeed(inputStream, outputStream);
-
-                        outputStream.Write(clientID);
-
-                        clientIDNetSpeedFlopsList.Add(new ClientIDNetSpeedFlops(clientID, netSpeed, flops));
-
-                        view.updateList(clientIDNetSpeedFlopsList);
-
-                        TelemetryConnections.Add(new TelemetryConnection(client, clientID));
-                        //client.Close();
-                        if (!serverDllThreadStarted)
+                        else if (message.Equals(Messages.dataRequest))
                         {
-                            serverDllThread.Start();
-                            serverDllThreadStarted = true;
+                            //add threadID
+                            int remoteClientID = inputStream.ReadInt32();
+
+                            ClientConnections.Instance().Add(new ClientConnectionThread(client, remoteClientID, threadID));
+
+                            threadID++;
+
                         }
-
-
-                        clientID++;
-
-                    }
-                    else if (message.Equals(Messages.dataRequest))
-                    {
-                        //add threadID
-                        int remoteClientID = inputStream.ReadInt32();
-
-                        ClientConnections.Instance().Add(new ClientConnectionThread(client, remoteClientID, threadID));
-
-                        threadID++;
-
+                        else
+                        {
+                            //error
+                        }
+                        Thread.Sleep(1);
                     }
                     else
                     {
-                        //error
+                        try
+                        {
+                            outputStream.Write(0); //send dllsize 0 bytes
+                        }
+                        catch (Exception e)
+                        { }
                     }
-                    Thread.Sleep(1);
                 }
             }
-
+            view.closeViewThread();
+            TelemetryConnections.stopTelemetryThreads();
+            ClientConnections.Instance().terminateReadThreads();
         }
 
         public static void sendDll(BinaryWriter writer)

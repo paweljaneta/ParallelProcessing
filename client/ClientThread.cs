@@ -30,12 +30,15 @@ namespace client
         Thread nopThread;
         int nopDelayMs = 100;
 
+        int dllCounter;
+
         Thread calculationsStopObserverThread;
 
-        public ClientThread(string adress, int port, int clientId,Telemetry telemetry)
+        public ClientThread(string adress, int port, int clientId, Telemetry telemetry, int dllCounter)
         {
             this.clientId = clientId;
             this.telemetry = telemetry;
+            this.dllCounter = dllCounter;
 
             try
             {
@@ -64,10 +67,11 @@ namespace client
             }
         }
 
-        public ClientThread(string adress, int port, int clientId)
+        public ClientThread(string adress, int port, int clientId, int dllCounter)
         {
             this.clientId = clientId;
-           // this.telemetry = telemetry;
+            this.dllCounter = dllCounter;
+            // this.telemetry = telemetry;
 
             try
             {
@@ -92,55 +96,70 @@ namespace client
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+            //    Console.WriteLine(e.Message);
             }
         }
 
         private void nopSendThread()
         {
-            while (true)
+            try
             {
-                dataTransfer.sendNop();
-                Thread.Sleep(nopDelayMs);
+                while (true)
+                {
+                    dataTransfer.sendNop();
+                    Thread.Sleep(nopDelayMs);
+                }
+            }
+            catch (EndOfStreamException e)
+            {
+
+            }
+            catch (IOException e)
+            {
+
+            }
+            catch (SocketException e)
+            {
+
             }
         }
 
         public void run()
         {
-           // Telemetry.addExceptionToList(new ArgumentException("test exceptiona"));
+            // Telemetry.addExceptionToList(new ArgumentException("test exceptiona"));
             //string message = inputStream.ReadString();
 
-          //  if(message.Equals(Messages.startCalculations))
-           // {
-                try
-                {
-                    //load dll
-                    string path = Directory.GetCurrentDirectory() + "\\clientDll.dll";
+            //  if(message.Equals(Messages.startCalculations))
+            // {
+            try
+            {
+                //load dll
+                string path = Directory.GetCurrentDirectory() + "\\clientDll" + dllCounter + ".dll";
 
-                    Assembly assembly = Assembly.LoadFile(path);
-                    Type[] type = assembly.GetTypes();
+                Assembly assembly = Assembly.LoadFile(path);
+                Type[] type = assembly.GetTypes();
 
-                    //execute
-                    foreach (Type t in type)
-                    {
-                        var obj = Activator.CreateInstance(t);
-                        object[] arg = new object[] { dataTransfer };
-                        t.GetMethod("Main").Invoke(obj, arg);
-                    }
-                    
-                }
-                catch (Exception e)
+                //execute
+                foreach (Type t in type)
                 {
-                    Telemetry.addExceptionToList(e);
+                    var obj = Activator.CreateInstance(t);
+                    object[] arg = new object[] { dataTransfer };
+                    t.GetMethod("Main").Invoke(obj, arg);
                 }
-           // }
+
+            }
+            catch (Exception e)
+            {
+                Telemetry.addExceptionToList(e);
+            }
+            // }
         }
 
         private void calculationsStopObserver()
         {
-            while(true)
+            while (true)
             {
-                if(!telemetry.getStopCalculations())
+                if (!telemetry.getStopCalculations())
                 {
                     abortThread();
                 }

@@ -90,19 +90,19 @@ namespace serwer
                 }
                 catch (EndOfStreamException e)
                 {
-                    ClientConnections.Instance().RemoveByClientID(clientID);
+                //    ClientConnections.Instance().RemoveByClientID(clientID);
                     abortThread();
                     TelemetryConnections.RemoveByClientID(clientID);
                 }
                 catch (IOException e)
                 {
-                    ClientConnections.Instance().RemoveByClientID(clientID);
+                 //   ClientConnections.Instance().RemoveByClientID(clientID);
                     abortThread();
                     TelemetryConnections.RemoveByClientID(clientID);
                 }
                 catch(SocketException e)
                 {
-                    ClientConnections.Instance().RemoveByClientID(clientID);
+                 //   ClientConnections.Instance().RemoveByClientID(clientID);
                     abortThread();
                     TelemetryConnections.RemoveByClientID(clientID);
                 }

@@ -79,8 +79,9 @@ namespace serwerDll
               //  logStream.WriteLine("r lineNumber " + lineNumber + " thr " + threadID);
               //  logStream.Flush();
                 line = ClientConnections.Instance().readIntArrayByID(threadID);
-              //  logStream.WriteLine("r line " + line + " thr " + threadID);
-              //  logStream.Flush();
+                //  logStream.WriteLine("r line " + line + " thr " + threadID);
+                //  logStream.Flush();
+                ClientConnections.Instance().setProgress(sentLine * 100 / dimension);
 
                 for (int i = 0; i < dimension; i++)
                 {
@@ -124,6 +125,7 @@ namespace serwerDll
                 ClientConnections.Instance().sendIntByID(-1, threadID); //deadly pill
                // logStream.WriteLine("s pill " + -1 + " thr " + threadID);
                // logStream.Flush();
+               ClientConnections.Instance().setProgress((sentLine+i) * 100 / dimension);
 
                 for (int j = 0; j < dimension; j++)
                 {
