@@ -18,7 +18,7 @@ namespace communicationLibrary
 
         public static bool startCalculations = false;
 
-        private float progress=0;
+        private float progress = 0;
 
 
         private ClientConnections()
@@ -57,13 +57,15 @@ namespace communicationLibrary
         public bool isClientIDInList(int clientID)
         {
             bool result = false;
-
-            for(int i =0;i<connectedClientsList.Count;i++)
+            lock (connectedClientsLock)
             {
-                if(connectedClientsList[i].getClientID()==clientID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    result = true;
-                    break;
+                    if (connectedClientsList[i].getClientID() == clientID)
+                    {
+                        result = true;
+                        break;
+                    }
                 }
             }
 
@@ -73,15 +75,16 @@ namespace communicationLibrary
         public void RemoveByThreadID(int threadID)
         {
             int index = -1;
-
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList[i].getThreadID() == threadID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    index = i;
+                    if (connectedClientsList[i].getThreadID() == threadID)
+                    {
+                        index = i;
+                    }
                 }
             }
-
             if (index < 0)
             {
                 throw new ArgumentOutOfRangeException("Remove by threadID: no such threadID");
@@ -99,21 +102,22 @@ namespace communicationLibrary
         public void RemoveByClientID(int clientID)
         {
             int index = -1;
-
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList[i].getClientID() == clientID)
+                for (int i = 0; i < connectedClientsList.Count; i++)
                 {
-                    List<object> data = connectedClientsList[i].getSentData();
-                    lock (connectedClientsLock)
+                    if (connectedClientsList[i].getClientID() == clientID)
                     {
-                        connectedClientsList.RemoveAt(i);
+                        List<object> data = connectedClientsList[i].getSentData();
+                        lock (connectedClientsLock)
+                        {
+                            connectedClientsList.RemoveAt(i);
+                        }
+                        sendDataFromTerminatedThread(data);
+                        index = i;
                     }
-                    sendDataFromTerminatedThread(data);
-                    index = i;
                 }
             }
-
             if (index < 0)
             {
                 throw new ArgumentOutOfRangeException("Remove by threadID: no such threadID");
@@ -130,7 +134,13 @@ namespace communicationLibrary
 
         public int GetConnectedCliensCount()
         {
-            return connectedClientsList.Count;
+            int result = -1;
+            lock (connectedClientsLock)
+            {
+                result = connectedClientsList.Count;
+            }
+
+            return result;
         }
 
         public float getProgress()
@@ -150,9 +160,12 @@ namespace communicationLibrary
 
         private void terminateReadThreads()
         {
-            for (int i = 0; i < connectedClientsList.Count; i++)
+            lock (connectedClientsLock)
             {
-                connectedClientsList[i].terminateReadThread();
+                for (int i = 0; i < connectedClientsList.Count; i++)
+                {
+                    connectedClientsList[i].terminateReadThread();
+                }
             }
             //bool threadsStopped = false;
 
@@ -271,10 +284,10 @@ namespace communicationLibrary
             {
                 if (o.GetType().Equals(boolType))
                 {
-                    if(sendToFirstFree)
+                    if (sendToFirstFree)
                     {
                         sendToFirstFree = false;
-                        sendBool((bool)o,out threadID);
+                        sendBool((bool)o, out threadID);
                     }
                     else
                     {
@@ -829,40 +842,43 @@ namespace communicationLibrary
         #region readSimple
         public bool readBool(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveBool();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveBool();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
-
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
 
             return connectedClientsList[indexThatRecieved].readBool();
@@ -871,38 +887,42 @@ namespace communicationLibrary
 
         public short readShort(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveShort();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveShort();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readShort();
@@ -911,38 +931,42 @@ namespace communicationLibrary
 
         public int readInt(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveInt();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveInt();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readInt();
@@ -951,38 +975,42 @@ namespace communicationLibrary
 
         public long readLong(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveLong();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveLong();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readLong();
@@ -991,38 +1019,42 @@ namespace communicationLibrary
 
         public ushort readUShort(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveUShort();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveUShort();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readUShort();
@@ -1031,38 +1063,42 @@ namespace communicationLibrary
 
         public uint readUInt(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveUInt();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveUInt();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readUInt();
@@ -1071,38 +1107,42 @@ namespace communicationLibrary
 
         public ulong readULong(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveULong();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveULong();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readULong();
@@ -1111,38 +1151,42 @@ namespace communicationLibrary
 
         public byte readByte(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveByte();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveByte();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readByte();
@@ -1151,38 +1195,42 @@ namespace communicationLibrary
 
         public sbyte readSByte(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveSByte();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveSByte();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readSByte();
@@ -1191,38 +1239,42 @@ namespace communicationLibrary
 
         public char readChar(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveChar();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveChar();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readChar();
@@ -1231,38 +1283,42 @@ namespace communicationLibrary
 
         public string readString(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveString();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveString();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readString();
@@ -1271,38 +1327,42 @@ namespace communicationLibrary
 
         public decimal readDecimal(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveDecimal();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveDecimal();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readDecimal();
@@ -1311,38 +1371,42 @@ namespace communicationLibrary
 
         public float readFloat(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveFloat();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveFloat();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readFloat();
@@ -1351,38 +1415,42 @@ namespace communicationLibrary
 
         public double readDouble(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveDouble();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveDouble();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readDouble();
@@ -1392,38 +1460,42 @@ namespace communicationLibrary
         #region readArray
         public bool[] readBoolArray(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveBoolArray();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveBoolArray();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readBoolArray();
@@ -1432,38 +1504,42 @@ namespace communicationLibrary
 
         public short[] readShortArray(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveShortArray();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveShortArray();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readShortArray();
@@ -1472,38 +1548,42 @@ namespace communicationLibrary
 
         public int[] readIntArray(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveIntArray();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveIntArray();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readIntArray();
@@ -1512,38 +1592,42 @@ namespace communicationLibrary
 
         public long[] readLongArray(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveLongArray();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveLongArray();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readLongArray();
@@ -1552,38 +1636,42 @@ namespace communicationLibrary
 
         public ushort[] readUShortArray(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveUShortArray();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveUShortArray();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readUShortArray();
@@ -1592,38 +1680,42 @@ namespace communicationLibrary
 
         public uint[] readUIntArray(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveUIntArray();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveUIntArray();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readUIntArray();
@@ -1632,38 +1724,42 @@ namespace communicationLibrary
 
         public ulong[] readULongArray(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveULongArray();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveULongArray();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readULongArray();
@@ -1672,38 +1768,42 @@ namespace communicationLibrary
 
         public byte[] readByteArray(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveByteArray();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveByteArray();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readByteArray();
@@ -1712,38 +1812,42 @@ namespace communicationLibrary
 
         public sbyte[] readSByteArray(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveSByteArray();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveSByteArray();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readSByteArray();
@@ -1752,38 +1856,42 @@ namespace communicationLibrary
 
         public char[] readCharArray(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveCharArray();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveCharArray();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readCharArray();
@@ -1792,38 +1900,42 @@ namespace communicationLibrary
 
         public string[] readStringArray(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveStringArray();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveStringArray();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readStringArray();
@@ -1832,38 +1944,42 @@ namespace communicationLibrary
 
         public decimal[] readDecimalArray(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveDecimalArray();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveDecimalArray();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readDecimalArray();
@@ -1872,36 +1988,40 @@ namespace communicationLibrary
 
         public float[] readFloatArray(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
+            int indexThatRecieved = -1;
+            lock (connectedClientsLock)
             {
-                client.recieveFloatArray();
-            }
-
-            bool dataRead = false;
-
-            int indexThatRecieved = -1; while (!dataRead)
-            {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveFloatArray();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readFloatArray();
@@ -1910,38 +2030,42 @@ namespace communicationLibrary
 
         public double[] readDoubleArray(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveDoubleArray();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveDoubleArray();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readDoubleArray();
@@ -1954,38 +2078,42 @@ namespace communicationLibrary
 
         public List<bool> readBoolList(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveBoolList();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveBoolList();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readBoolList();
@@ -1994,38 +2122,42 @@ namespace communicationLibrary
 
         public List<short> readShortList(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveShortList();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveShortList();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readShortList();
@@ -2034,38 +2166,42 @@ namespace communicationLibrary
 
         public List<int> readIntList(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveIntList();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveIntList();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readIntList();
@@ -2074,38 +2210,42 @@ namespace communicationLibrary
 
         public List<long> readLongList(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveLongList();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveLongList();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readLongList();
@@ -2114,38 +2254,42 @@ namespace communicationLibrary
 
         public List<ushort> readUShortList(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveUShortList();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveUShortList();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readUShortList();
@@ -2154,38 +2298,42 @@ namespace communicationLibrary
 
         public List<uint> readUIntList(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveUIntList();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveUIntList();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readUIntList();
@@ -2194,38 +2342,42 @@ namespace communicationLibrary
 
         public List<ulong> readULongList(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveULongList();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveULongList();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readULongList();
@@ -2234,38 +2386,42 @@ namespace communicationLibrary
 
         public List<byte> readByteList(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveByteList();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveByteList();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readByteList();
@@ -2274,38 +2430,42 @@ namespace communicationLibrary
 
         public List<sbyte> readSByteList(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveSByteList();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveSByteList();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readSByteList();
@@ -2314,38 +2474,42 @@ namespace communicationLibrary
 
         public List<char> readCharList(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveCharList();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveCharList();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readCharList();
@@ -2354,38 +2518,42 @@ namespace communicationLibrary
 
         public List<string> readStringList(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveStringList();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveStringList();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readStringList();
@@ -2394,38 +2562,42 @@ namespace communicationLibrary
 
         public List<decimal> readDecimalList(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveDecimalList();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveDecimalList();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readDecimalList();
@@ -2434,38 +2606,42 @@ namespace communicationLibrary
 
         public List<float> readFloatList(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveFloatList();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveFloatList();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readFloatList();
@@ -2474,38 +2650,42 @@ namespace communicationLibrary
 
         public List<double> readDoubleList(out int threadID)
         {
-            foreach (ClientConnectionThread client in connectedClientsList)
-            {
-                client.recieveDoubleList();
-            }
-
-            bool dataRead = false;
-
             int indexThatRecieved = -1;
-
-            while (!dataRead)
+            lock (connectedClientsLock)
             {
-                if (connectedClientsList.Count == 0)
+                foreach (ClientConnectionThread client in connectedClientsList)
                 {
-                    throw new ArgumentException("No clients to read data from");
+                    client.recieveDoubleList();
                 }
 
-                for (int i = 0; i < connectedClientsList.Count; i++)
+                bool dataRead = false;
+
+
+
+                while (!dataRead)
                 {
-                    if(connectedClientsList[i].getIsExceptionCaught())
+                    if (connectedClientsList.Count == 0)
                     {
-                        connectedClientsList[i].throwException();
+                        throw new ArgumentException("No clients to read data from");
                     }
 
-                    if (connectedClientsList[i].isDataRead())
+                    for (int i = 0; i < connectedClientsList.Count; i++)
                     {
-                        dataRead = true;
-                        indexThatRecieved = i;
-                        terminateReadThreads();
+                        if (connectedClientsList[i].getIsExceptionCaught())
+                        {
+                            connectedClientsList[i].throwException();
+                        }
+
+                        if (connectedClientsList[i].isDataRead())
+                        {
+                            dataRead = true;
+                            indexThatRecieved = i;
+                            terminateReadThreads();
+                        }
                     }
+
+                    Thread.Sleep(1);
                 }
-
-                Thread.Sleep(1);
             }
             threadID = connectedClientsList[indexThatRecieved].getThreadID();
             return connectedClientsList[indexThatRecieved].readDoubleList();
@@ -2538,7 +2718,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveBool();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2568,7 +2748,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveShort();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2598,7 +2778,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveInt();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2628,7 +2808,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveLong();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2658,7 +2838,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveUShort();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2688,7 +2868,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveUInt();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2718,7 +2898,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveULong();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2748,7 +2928,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveByte();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2778,7 +2958,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveSByte();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2808,7 +2988,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveChar();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2838,7 +3018,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveString();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2868,7 +3048,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveDecimal();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2898,7 +3078,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveFloat();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2928,7 +3108,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveDouble();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2960,7 +3140,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveBoolArray();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -2990,7 +3170,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveShortArray();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3020,7 +3200,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveIntArray();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3050,7 +3230,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveLongArray();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3080,7 +3260,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveUShortArray();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3110,7 +3290,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveUIntArray();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3140,7 +3320,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveULongArray();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3170,7 +3350,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveByteArray();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3200,7 +3380,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveSByteArray();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3230,7 +3410,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveCharArray();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3260,7 +3440,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveStringArray();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3290,7 +3470,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveDecimalArray();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3320,7 +3500,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveFloatArray();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3350,7 +3530,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveDoubleArray();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3383,7 +3563,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveBoolList();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3412,7 +3592,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveShortList();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3442,7 +3622,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveIntList();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3472,7 +3652,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveLongList();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3502,7 +3682,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveUShortList();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3532,7 +3712,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveUIntList();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3562,7 +3742,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveULongList();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3592,7 +3772,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveByteList();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3622,7 +3802,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveSByteList();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3652,7 +3832,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveCharList();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3682,7 +3862,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveStringList();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3712,7 +3892,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveDecimalList();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3742,7 +3922,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveFloatList();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }
@@ -3772,7 +3952,7 @@ namespace communicationLibrary
                 connectedClientsList[foundIndex].recieveDoubleList();
             }
 
-            while (!(connectedClientsList[foundIndex].isDataRead()|| connectedClientsList[foundIndex].getIsExceptionCaught()))
+            while (!(connectedClientsList[foundIndex].isDataRead() || connectedClientsList[foundIndex].getIsExceptionCaught()))
             {
                 Thread.Sleep(1);
             }

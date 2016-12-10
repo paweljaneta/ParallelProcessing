@@ -33,6 +33,7 @@ namespace serwer
             //Parse("157.158.170.90")
             TcpListener listener = new TcpListener(IPAddress.Any, 1807);
             listener.Start();
+            SerwerListener serwerListener = new SerwerListener(listener);
             TcpClient client;
             BinaryReader inputStream;
             BinaryWriter outputStream;
@@ -44,8 +45,8 @@ namespace serwer
 
             View view = new View(clientIDNetSpeedFlopsList);
 
-            serwerDllMain serverDllMain = new serwerDllMain();
-            Thread serverDllThread = new Thread(serverDllMain.Main);
+            //serwerDllMain serverDllMain = new serwerDllMain();
+            Thread serverDllThread = new Thread(SerwerDllCaller.run);
             serverDllThread.Name = "ServerDllThread";
 
             int clientID = 0;
@@ -54,64 +55,68 @@ namespace serwer
             bool serverDllThreadStarted = false;
 
 
-            while (true)
+            while (SerwerListener.isListening)
             {
-                client = listener.AcceptTcpClient();
-                inputStream = new BinaryReader(client.GetStream());
-                outputStream = new BinaryWriter(client.GetStream());
-                string message;
-
-                message = inputStream.ReadString();
-
-                if (message.Equals(Messages.dllRequest))
+                //client = listener.AcceptTcpClient();
+                if (serwerListener.isPendingConnection())
                 {
-                    //send dll
-                    sendDll(outputStream);
-                    double flops = 0.0;
-                    Measurments.NetworkSpeeds netSpeed;
+                    client = serwerListener.acceptTcpClient();
+                    inputStream = new BinaryReader(client.GetStream());
+                    outputStream = new BinaryWriter(client.GetStream());
+                    string message;
 
                     message = inputStream.ReadString();
 
-                    if (message.Equals(Messages.flops))
+                    if (message.Equals(Messages.dllRequest))
                     {
-                        flops = inputStream.ReadDouble();
+                        //send dll
+                        sendDll(outputStream);
+                        double flops = 0.0;
+                        Measurments.NetworkSpeeds netSpeed;
+
+                        message = inputStream.ReadString();
+
+                        if (message.Equals(Messages.flops))
+                        {
+                            flops = inputStream.ReadDouble();
+                        }
+                        netSpeed = mesurments.networkSpeed(inputStream, outputStream);
+
+                        outputStream.Write(clientID);
+
+                        clientIDNetSpeedFlopsList.Add(new ClientIDNetSpeedFlops(clientID, netSpeed, flops));
+
+                        view.updateList(clientIDNetSpeedFlopsList);
+
+                        TelemetryConnections.Add(new TelemetryConnection(client, clientID));
+                        //client.Close();
+                        if (!serverDllThreadStarted)
+                        {
+                            serverDllThread.Start();
+                            serverDllThreadStarted = true;
+                        }
+
+
+                        clientID++;
+
                     }
-                    netSpeed = mesurments.networkSpeed(inputStream, outputStream);
-
-                    outputStream.Write(clientID);
-
-                    clientIDNetSpeedFlopsList.Add(new ClientIDNetSpeedFlops(clientID, netSpeed, flops));
-
-                    view.updateList(clientIDNetSpeedFlopsList);
-
-                    TelemetryConnections.Add(new TelemetryConnection(client, clientID));
-                    //client.Close();
-                    if(!serverDllThreadStarted)
+                    else if (message.Equals(Messages.dataRequest))
                     {
-                        serverDllThread.Start();
-                        serverDllThreadStarted = true;
+                        //add threadID
+                        int remoteClientID = inputStream.ReadInt32();
+
+                        ClientConnections.Instance().Add(new ClientConnectionThread(client, remoteClientID, threadID));
+
+                        threadID++;
+
                     }
-                    
-
-                    clientID++;
-
-                }
-                else if (message.Equals(Messages.dataRequest))
-                {
-                    //add threadID
-                    int remoteClientID = inputStream.ReadInt32();
-
-                    ClientConnections.Instance().Add(new ClientConnectionThread(client, remoteClientID, threadID));
-
-                    threadID++;
-
-                }
-                else
-                {
-                    //error
+                    else
+                    {
+                        //error
+                    }
+                    Thread.Sleep(1);
                 }
             }
-
 
         }
 

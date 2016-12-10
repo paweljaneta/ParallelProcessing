@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SerwerDllCaller.cs" />
+    <Compile Include="SerwerListener.cs" />
     <Compile Include="TelemetryConnection.cs" />
     <Compile Include="View.cs" />
     <Compile Include="Measurments.cs" />

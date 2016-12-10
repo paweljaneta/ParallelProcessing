@@ -46,7 +46,7 @@ namespace serwer
 
                 if (calculationsStarted)
                 {
-                    Console.WriteLine("To stop calculations press 's'");
+              //      Console.WriteLine("To stop calculations press 's'");
                 }
                 else
                 {
@@ -108,7 +108,7 @@ namespace serwer
                     {
                         if (calculationsStarted)
                         {
-                            stopCalculations();
+                     //       stopCalculations();
                         }
                         else
                         {
