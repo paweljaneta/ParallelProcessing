@@ -19,6 +19,7 @@ namespace client
             int port = 1807;
             int clientID;
 
+            int dllCounter = 0;
 
             List<ClientThread> workingThreads = new List<ClientThread>();
             Telemetry telemetry;
@@ -43,7 +44,7 @@ namespace client
 
                     //get dll
                     outStream.Write(Messages.dllRequest);
-                    getDll(inStream);
+                    getDll(inStream,ref dllCounter);
 
                     //do tests
                     flops = mesurments.CPUPerformanceFLOPS();
@@ -59,10 +60,10 @@ namespace client
 
                     //start threads
 
-                    // for (int i = 0; i < numberOfCPUcores; i++)
-                    for (int i = 0; i < 4; i++)
+                     for (int i = 0; i < numberOfCPUcores; i++)
+                    //for (int i = 0; i < 4; i++)
                     {
-                        workingThreads.Add(new ClientThread(ipAdress, port, clientID));
+                        workingThreads.Add(new ClientThread(ipAdress, port, clientID,dllCounter));
                     }
 
                     //wait until finished
@@ -73,23 +74,34 @@ namespace client
                     {
                         Thread.Sleep(1);
                     }
-
+                    workingThreads.Clear();
+                   // telemetry.abortThreads();
+                    Thread.Sleep(1000);
                 }
-                catch (SocketException SockEx)
+                catch (Exception Ex)
                 {
 
                 }
             }
         }
 
-        public static void getDll(BinaryReader reader)
+        public static void getDll(BinaryReader reader,ref int dllCounter)
         {
             int dllSize = reader.ReadInt32();
 
-            byte[] file;
+            if (dllSize > 0)
+            {
+                byte[] file;
 
-            file = reader.ReadBytes(dllSize);
-            File.WriteAllBytes("clientDll.dll", file);
+                dllCounter++;
+
+                file = reader.ReadBytes(dllSize);
+                File.WriteAllBytes("clientDll" + dllCounter + ".dll", file);
+            } else
+            {
+                throw new ArgumentException();
+            }
+            
         }
 
 

@@ -21,7 +21,7 @@ namespace client
         Thread outputThread;
 
         int telemetryDelayMs = 5000;
-        int readTimeout = 3600*1000;
+        int readTimeout = 3600 * 1000;
 
         bool stopThreads = false;
         bool stopCalc = false;
@@ -86,7 +86,7 @@ namespace client
                 }
                 catch (IOException e)
                 {
-                    //exception from timeout
+                    abortThreads();
                 }
                 catch (SocketException e)
                 {
@@ -109,40 +109,53 @@ namespace client
         {
             while (!stopThreads)
             {
-                //send exceptions
-                if (exceptions.Count > 0)
+                try
                 {
-                    outStream.Write(Messages.exception);
-                    outStream.Write(exceptions.Count);
-
-                    while (exceptions.Count > 0)
+                    //send exceptions
+                    if (exceptions.Count > 0)
                     {
-                        lock (exceptionsLock)
+                        outStream.Write(Messages.exception);
+                        outStream.Write(exceptions.Count);
+
+                        while (exceptions.Count > 0)
                         {
-                            outStream.Write(exceptions[0].ToString());
-                            exceptions.RemoveAt(0);
+                            lock (exceptionsLock)
+                            {
+                                outStream.Write(exceptions[0].ToString());
+                                exceptions.RemoveAt(0);
+                            }
                         }
                     }
+
+                    float cpuUsage, ramAvaliable;
+
+                    //send CPU load
+                    outStream.Write(Messages.CPULoad);
+
+                    cpuUsage = cpu.NextValue();
+
+                    outStream.Write(cpuUsage);
+
+                    //send memory usage
+
+                    outStream.Write(Messages.memoryAvaliable);
+
+                    ramAvaliable = ram.NextValue();
+
+                    outStream.Write(ramAvaliable);
                 }
-
-                float cpuUsage, ramAvaliable;
-
-                //send CPU load
-                outStream.Write(Messages.CPULoad);
-
-                cpuUsage = cpu.NextValue();
-
-                outStream.Write(cpuUsage);
-
-                //send memory usage
-
-                outStream.Write(Messages.memoryAvaliable);
-
-                ramAvaliable = ram.NextValue();
-
-                outStream.Write(ramAvaliable);
-
-
+                catch (EndOfStreamException e)
+                {
+                    abortThreads();
+                }
+                catch (IOException e)
+                {
+                    abortThreads();
+                }
+                catch (SocketException e)
+                {
+                    abortThreads();
+                }
                 Thread.Sleep(telemetryDelayMs);
             }
         }
