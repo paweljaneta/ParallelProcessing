@@ -131,6 +131,7 @@ namespace serwer
                         { }
                     }
                 }
+                Thread.Sleep(1);
             }
             view.closeViewThread();
             TelemetryConnections.stopTelemetryThreads();

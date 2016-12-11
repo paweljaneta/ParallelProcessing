@@ -80,7 +80,7 @@ namespace client
                 }
                 catch (Exception Ex)
                 {
-
+                    workingThreads.Clear();
                 }
             }
         }
