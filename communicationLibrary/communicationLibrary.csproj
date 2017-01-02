@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="communicationLibMain.cs" />
     <Compile Include="DataTransfer.cs" />
     <Compile Include="DTO.cs" />
     <Compile Include="Messages.cs" />
@@ -48,6 +47,9 @@
     <Compile Include="serverCommunication\ClientConnections.cs" />
     <Compile Include="serverCommunication\ClientConnectionThread.cs" />
     <Compile Include="TypeNotMatchException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CommunicationLibraryDiagram.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

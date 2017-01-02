@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="communicationLibrary.DataTransfer">
+    <Position X="5" Y="0.5" Width="2.5" />
+    <Members>
+      <Method Name="recieveArrayOfBytes" Hidden="true" />
+      <Method Name="recieveArrayOfChars" Hidden="true" />
+      <Method Name="recieveArrayOfDecimals" Hidden="true" />
+      <Method Name="recieveArrayOfDoubles" Hidden="true" />
+      <Method Name="recieveArrayOfFloats" Hidden="true" />
+      <Method Name="recieveArrayOfInts" Hidden="true" />
+      <Method Name="recieveArrayOfLongs" Hidden="true" />
+      <Method Name="recieveArrayOfSBytes" Hidden="true" />
+      <Method Name="recieveArrayOfShorts" Hidden="true" />
+      <Method Name="recieveArrayOfStrings" Hidden="true" />
+      <Method Name="recieveArrayOfUInts" Hidden="true" />
+      <Method Name="recieveArrayOfULongs" Hidden="true" />
+      <Method Name="recieveArrayOfUShorts" Hidden="true" />
+      <Method Name="recieveByte" Hidden="true" />
+      <Method Name="recieveChar" Hidden="true" />
+      <Method Name="recieveDecimal" Hidden="true" />
+      <Method Name="recieveDouble" Hidden="true" />
+      <Method Name="recieveFloat" Hidden="true" />
+      <Method Name="recieveInt" Hidden="true" />
+      <Method Name="recieveListOfBytes" Hidden="true" />
+      <Method Name="recieveListOfChars" Hidden="true" />
+      <Method Name="recieveListOfDecimals" Hidden="true" />
+      <Method Name="recieveListOfDoubles" Hidden="true" />
+      <Method Name="recieveListOfFloats" Hidden="true" />
+      <Method Name="recieveListOfInts" Hidden="true" />
+      <Method Name="recieveListOfLongs" Hidden="true" />
+      <Method Name="recieveListOfSBytes" Hidden="true" />
+      <Method Name="recieveListOfShorts" Hidden="true" />
+      <Method Name="recieveListOfStrings" Hidden="true" />
+      <Method Name="recieveListOfUInts" Hidden="true" />
+      <Method Name="recieveListOfULongs" Hidden="true" />
+      <Method Name="recieveListOfUShorts" Hidden="true" />
+      <Method Name="recieveLong" Hidden="true" />
+      <Method Name="recieveSByte" Hidden="true" />
+      <Method Name="recieveShort" Hidden="true" />
+      <Method Name="recieveString" Hidden="true" />
+      <Method Name="recieveUInt" Hidden="true" />
+      <Method Name="recieveULong" Hidden="true" />
+      <Method Name="recieveUShort" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>RBxkQABAAGUBQIAYQAAJKICCEIIACQBJAABwIDQ9Ecg=</HashCode>
+      <FileName>DataTransfer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="communicationLibrary.DTO">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAQAAUEIAAAgABSxYRAAAAlCBAAHEiAEAAAighAgDSI=</HashCode>
+      <FileName>DTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="communicationLibrary.Messages">
+    <Position X="9" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ATABoigQHAAiwCBAACIKMAQQIEQSIMBwACgAWMhYQoA=</HashCode>
+      <FileName>Messages.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="communicationLibrary.ClientConnections">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <Members>
+      <Method Name="readByte" Hidden="true" />
+      <Method Name="readByteArray" Hidden="true" />
+      <Method Name="readByteArrayByID" Hidden="true" />
+      <Method Name="readByteByID" Hidden="true" />
+      <Method Name="readByteList" Hidden="true" />
+      <Method Name="readByteListByID" Hidden="true" />
+      <Method Name="readChar" Hidden="true" />
+      <Method Name="readCharArray" Hidden="true" />
+      <Method Name="readCharArrayByID" Hidden="true" />
+      <Method Name="readCharByID" Hidden="true" />
+      <Method Name="readCharList" Hidden="true" />
+      <Method Name="readCharListByID" Hidden="true" />
+      <Method Name="readDecimal" Hidden="true" />
+      <Method Name="readDecimalArray" Hidden="true" />
+      <Method Name="readDecimalArrayByID" Hidden="true" />
+      <Method Name="readDecimalByID" Hidden="true" />
+      <Method Name="readDecimalList" Hidden="true" />
+      <Method Name="readDecimalListByID" Hidden="true" />
+      <Method Name="readDouble" Hidden="true" />
+      <Method Name="readDoubleArray" Hidden="true" />
+      <Method Name="readDoubleArrayByID" Hidden="true" />
+      <Method Name="readDoubleByID" Hidden="true" />
+      <Method Name="readDoubleList" Hidden="true" />
+      <Method Name="readDoubleListByID" Hidden="true" />
+      <Method Name="readFloat" Hidden="true" />
+      <Method Name="readFloatArray" Hidden="true" />
+      <Method Name="readFloatArrayByID" Hidden="true" />
+      <Method Name="readFloatByID" Hidden="true" />
+      <Method Name="readFloatList" Hidden="true" />
+      <Method Name="readFloatListByID" Hidden="true" />
+      <Method Name="readInt" Hidden="true" />
+      <Method Name="readIntArray" Hidden="true" />
+      <Method Name="readIntArrayByID" Hidden="true" />
+      <Method Name="readIntByID" Hidden="true" />
+      <Method Name="readIntList" Hidden="true" />
+      <Method Name="readIntListByID" Hidden="true" />
+      <Method Name="readLong" Hidden="true" />
+      <Method Name="readLongArray" Hidden="true" />
+      <Method Name="readLongArrayByID" Hidden="true" />
+      <Method Name="readLongByID" Hidden="true" />
+      <Method Name="readLongList" Hidden="true" />
+      <Method Name="readLongListByID" Hidden="true" />
+      <Method Name="readSByte" Hidden="true" />
+      <Method Name="readSByteArray" Hidden="true" />
+      <Method Name="readSByteArrayByID" Hidden="true" />
+      <Method Name="readSByteByID" Hidden="true" />
+      <Method Name="readSByteList" Hidden="true" />
+      <Method Name="readSByteListByID" Hidden="true" />
+      <Method Name="readShort" Hidden="true" />
+      <Method Name="readShortArray" Hidden="true" />
+      <Method Name="readShortArrayByID" Hidden="true" />
+      <Method Name="readShortByID" Hidden="true" />
+      <Method Name="readShortList" Hidden="true" />
+      <Method Name="readShortListByID" Hidden="true" />
+      <Method Name="readString" Hidden="true" />
+      <Method Name="readStringArray" Hidden="true" />
+      <Method Name="readStringArrayByID" Hidden="true" />
+      <Method Name="readStringByID" Hidden="true" />
+      <Method Name="readStringList" Hidden="true" />
+      <Method Name="readStringListByID" Hidden="true" />
+      <Method Name="readUInt" Hidden="true" />
+      <Method Name="readUIntArray" Hidden="true" />
+      <Method Name="readUIntArrayByID" Hidden="true" />
+      <Method Name="readUIntByID" Hidden="true" />
+      <Method Name="readUIntList" Hidden="true" />
+      <Method Name="readUIntListByID" Hidden="true" />
+      <Method Name="readULong" Hidden="true" />
+      <Method Name="readULongArray" Hidden="true" />
+      <Method Name="readULongArrayByID" Hidden="true" />
+      <Method Name="readULongByID" Hidden="true" />
+      <Method Name="readULongList" Hidden="true" />
+      <Method Name="readULongListByID" Hidden="true" />
+      <Method Name="readUShort" Hidden="true" />
+      <Method Name="readUShortArray" Hidden="true" />
+      <Method Name="readUShortArrayByID" Hidden="true" />
+      <Method Name="readUShortByID" Hidden="true" />
+      <Method Name="readUShortList" Hidden="true" />
+      <Method Name="readUShortListByID" Hidden="true" />
+      <Method Name="sendByte" Hidden="true" />
+      <Method Name="sendByteArray" Hidden="true" />
+      <Method Name="sendByteArrayByID" Hidden="true" />
+      <Method Name="sendByteByID" Hidden="true" />
+      <Method Name="sendByteList" Hidden="true" />
+      <Method Name="sendByteListByID" Hidden="true" />
+      <Method Name="sendChar" Hidden="true" />
+      <Method Name="sendCharArray" Hidden="true" />
+      <Method Name="sendCharArrayByID" Hidden="true" />
+      <Method Name="sendCharByID" Hidden="true" />
+      <Method Name="sendCharList" Hidden="true" />
+      <Method Name="sendCharListByID" Hidden="true" />
+      <Method Name="sendDataFromTerminatedThread" Hidden="true" />
+      <Method Name="sendDecimal" Hidden="true" />
+      <Method Name="sendDecimalArray" Hidden="true" />
+      <Method Name="sendDecimalArrayByID" Hidden="true" />
+      <Method Name="sendDecimalByID" Hidden="true" />
+      <Method Name="sendDecimalList" Hidden="true" />
+      <Method Name="sendDecimalListByID" Hidden="true" />
+      <Method Name="sendDouble" Hidden="true" />
+      <Method Name="sendDoubleArray" Hidden="true" />
+      <Method Name="sendDoubleArrayByID" Hidden="true" />
+      <Method Name="sendDoubleByID" Hidden="true" />
+      <Method Name="sendDoubleList" Hidden="true" />
+      <Method Name="sendDoubleListByID" Hidden="true" />
+      <Method Name="sendFloat" Hidden="true" />
+      <Method Name="sendFloatArray" Hidden="true" />
+      <Method Name="sendFloatArrayByID" Hidden="true" />
+      <Method Name="sendFloatByID" Hidden="true" />
+      <Method Name="sendFloatList" Hidden="true" />
+      <Method Name="sendFloatListByID" Hidden="true" />
+      <Method Name="sendInt" Hidden="true" />
+      <Method Name="sendIntArray" Hidden="true" />
+      <Method Name="sendIntArrayByID" Hidden="true" />
+      <Method Name="sendIntByID" Hidden="true" />
+      <Method Name="sendIntList" Hidden="true" />
+      <Method Name="sendIntListByID" Hidden="true" />
+      <Method Name="sendLong" Hidden="true" />
+      <Method Name="sendLongArray" Hidden="true" />
+      <Method Name="sendLongArrayByID" Hidden="true" />
+      <Method Name="sendLongByID" Hidden="true" />
+      <Method Name="sendLongList" Hidden="true" />
+      <Method Name="sendLongListByID" Hidden="true" />
+      <Method Name="sendSByte" Hidden="true" />
+      <Method Name="sendSByteArray" Hidden="true" />
+      <Method Name="sendSByteArrayByID" Hidden="true" />
+      <Method Name="sendSByteByID" Hidden="true" />
+      <Method Name="sendSByteList" Hidden="true" />
+      <Method Name="sendSByteListByID" Hidden="true" />
+      <Method Name="sendShort" Hidden="true" />
+      <Method Name="sendShortArray" Hidden="true" />
+      <Method Name="sendShortArrayByID" Hidden="true" />
+      <Method Name="sendShortByID" Hidden="true" />
+      <Method Name="sendShortList" Hidden="true" />
+      <Method Name="sendShortListByID" Hidden="true" />
+      <Method Name="sendString" Hidden="true" />
+      <Method Name="sendStringArray" Hidden="true" />
+      <Method Name="sendStringArrayByID" Hidden="true" />
+      <Method Name="sendStringByID" Hidden="true" />
+      <Method Name="sendStringList" Hidden="true" />
+      <Method Name="sendStringListByID" Hidden="true" />
+      <Method Name="sendUInt" Hidden="true" />
+      <Method Name="sendUIntArray" Hidden="true" />
+      <Method Name="sendUIntArrayByID" Hidden="true" />
+      <Method Name="sendUIntByID" Hidden="true" />
+      <Method Name="sendUIntList" Hidden="true" />
+      <Method Name="sendUIntListByID" Hidden="true" />
+      <Method Name="sendULong" Hidden="true" />
+      <Method Name="sendULongArray" Hidden="true" />
+      <Method Name="sendULongArrayByID" Hidden="true" />
+      <Method Name="sendULongByID" Hidden="true" />
+      <Method Name="sendULongList" Hidden="true" />
+      <Method Name="sendULongListByID" Hidden="true" />
+      <Method Name="sendUShort" Hidden="true" />
+      <Method Name="sendUShortArray" Hidden="true" />
+      <Method Name="sendUShortArrayByID" Hidden="true" />
+      <Method Name="sendUShortByID" Hidden="true" />
+      <Method Name="sendUShortList" Hidden="true" />
+      <Method Name="sendUShortListByID" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>zA99Ji4xqM4cNH74EHxPx7MvgujW2ozk7d3ZdoqzSd4=</HashCode>
+      <FileName>serverCommunication\ClientConnections.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="communicationLibrary.ClientConnectionThread">
+    <Position X="2.75" Y="0.5" Width="2.25" />
+    <Members>
+      <Method Name="readByte" Hidden="true" />
+      <Method Name="readByteArray" Hidden="true" />
+      <Method Name="readByteList" Hidden="true" />
+      <Method Name="readChar" Hidden="true" />
+      <Method Name="readCharArray" Hidden="true" />
+      <Method Name="readCharList" Hidden="true" />
+      <Method Name="readDecimal" Hidden="true" />
+      <Method Name="readDecimalArray" Hidden="true" />
+      <Method Name="readDecimalList" Hidden="true" />
+      <Method Name="readDouble" Hidden="true" />
+      <Method Name="readDoubleArray" Hidden="true" />
+      <Method Name="readDoubleList" Hidden="true" />
+      <Method Name="readFloat" Hidden="true" />
+      <Method Name="readFloatArray" Hidden="true" />
+      <Method Name="readFloatList" Hidden="true" />
+      <Method Name="readInt" Hidden="true" />
+      <Method Name="readIntArray" Hidden="true" />
+      <Method Name="readIntList" Hidden="true" />
+      <Method Name="readLong" Hidden="true" />
+      <Method Name="readLongArray" Hidden="true" />
+      <Method Name="readLongList" Hidden="true" />
+      <Method Name="readSByte" Hidden="true" />
+      <Method Name="readSByteArray" Hidden="true" />
+      <Method Name="readSByteList" Hidden="true" />
+      <Method Name="readShort" Hidden="true" />
+      <Method Name="readShortArray" Hidden="true" />
+      <Method Name="readShortList" Hidden="true" />
+      <Method Name="readString" Hidden="true" />
+      <Method Name="readStringArray" Hidden="true" />
+      <Method Name="readStringList" Hidden="true" />
+      <Method Name="readUInt" Hidden="true" />
+      <Method Name="readUIntArray" Hidden="true" />
+      <Method Name="readUIntList" Hidden="true" />
+      <Method Name="readULong" Hidden="true" />
+      <Method Name="readULongArray" Hidden="true" />
+      <Method Name="readULongList" Hidden="true" />
+      <Method Name="readUShort" Hidden="true" />
+      <Method Name="readUShortArray" Hidden="true" />
+      <Method Name="readUShortList" Hidden="true" />
+      <Method Name="recieveByte" Hidden="true" />
+      <Method Name="recieveByteArray" Hidden="true" />
+      <Method Name="recieveByteArrayThread" Hidden="true" />
+      <Method Name="recieveByteList" Hidden="true" />
+      <Method Name="recieveByteListThread" Hidden="true" />
+      <Method Name="recieveByteThread" Hidden="true" />
+      <Method Name="recieveChar" Hidden="true" />
+      <Method Name="recieveCharArray" Hidden="true" />
+      <Method Name="recieveCharArrayThread" Hidden="true" />
+      <Method Name="recieveCharList" Hidden="true" />
+      <Method Name="recieveCharListThread" Hidden="true" />
+      <Method Name="recieveCharThread" Hidden="true" />
+      <Method Name="recieveDecimal" Hidden="true" />
+      <Method Name="recieveDecimalArray" Hidden="true" />
+      <Method Name="recieveDecimalArrayThread" Hidden="true" />
+      <Method Name="recieveDecimalList" Hidden="true" />
+      <Method Name="recieveDecimalListThread" Hidden="true" />
+      <Method Name="recieveDecimalThread" Hidden="true" />
+      <Method Name="recieveDouble" Hidden="true" />
+      <Method Name="recieveDoubleArray" Hidden="true" />
+      <Method Name="recieveDoubleArrayThread" Hidden="true" />
+      <Method Name="recieveDoubleList" Hidden="true" />
+      <Method Name="recieveDoubleListThread" Hidden="true" />
+      <Method Name="recieveDoubleThread" Hidden="true" />
+      <Method Name="recieveFloat" Hidden="true" />
+      <Method Name="recieveFloatArray" Hidden="true" />
+      <Method Name="recieveFloatArrayThread" Hidden="true" />
+      <Method Name="recieveFloatList" Hidden="true" />
+      <Method Name="recieveFloatListThread" Hidden="true" />
+      <Method Name="recieveFloatThread" Hidden="true" />
+      <Method Name="recieveInt" Hidden="true" />
+      <Method Name="recieveIntArray" Hidden="true" />
+      <Method Name="recieveIntArrayThread" Hidden="true" />
+      <Method Name="recieveIntList" Hidden="true" />
+      <Method Name="recieveIntListThread" Hidden="true" />
+      <Method Name="recieveIntThread" Hidden="true" />
+      <Method Name="recieveLong" Hidden="true" />
+      <Method Name="recieveLongArray" Hidden="true" />
+      <Method Name="recieveLongArrayThread" Hidden="true" />
+      <Method Name="recieveLongList" Hidden="true" />
+      <Method Name="recieveLongListThread" Hidden="true" />
+      <Method Name="recieveLongThread" Hidden="true" />
+      <Method Name="recieveSByte" Hidden="true" />
+      <Method Name="recieveSByteArray" Hidden="true" />
+      <Method Name="recieveSByteArrayThread" Hidden="true" />
+      <Method Name="recieveSByteList" Hidden="true" />
+      <Method Name="recieveSByteListThread" Hidden="true" />
+      <Method Name="recieveSByteThread" Hidden="true" />
+      <Method Name="recieveShort" Hidden="true" />
+      <Method Name="recieveShortArray" Hidden="true" />
+      <Method Name="recieveShortArrayThread" Hidden="true" />
+      <Method Name="recieveShortList" Hidden="true" />
+      <Method Name="recieveShortListThread" Hidden="true" />
+      <Method Name="recieveShortThread" Hidden="true" />
+      <Method Name="recieveString" Hidden="true" />
+      <Method Name="recieveStringArray" Hidden="true" />
+      <Method Name="recieveStringArrayThread" Hidden="true" />
+      <Method Name="recieveStringList" Hidden="true" />
+      <Method Name="recieveStringListThread" Hidden="true" />
+      <Method Name="recieveStringThread" Hidden="true" />
+      <Method Name="recieveUInt" Hidden="true" />
+      <Method Name="recieveUIntArray" Hidden="true" />
+      <Method Name="recieveUIntArrayThread" Hidden="true" />
+      <Method Name="recieveUIntList" Hidden="true" />
+      <Method Name="recieveUIntListThread" Hidden="true" />
+      <Method Name="recieveUIntThread" Hidden="true" />
+      <Method Name="recieveULong" Hidden="true" />
+      <Method Name="recieveULongArray" Hidden="true" />
+      <Method Name="recieveULongArrayThread" Hidden="true" />
+      <Method Name="recieveULongList" Hidden="true" />
+      <Method Name="recieveULongListThread" Hidden="true" />
+      <Method Name="recieveULongThread" Hidden="true" />
+      <Method Name="recieveUShort" Hidden="true" />
+      <Method Name="recieveUShortArray" Hidden="true" />
+      <Method Name="recieveUShortArrayThread" Hidden="true" />
+      <Method Name="recieveUShortList" Hidden="true" />
+      <Method Name="recieveUShortListThread" Hidden="true" />
+      <Method Name="recieveUShortThread" Hidden="true" />
+      <Method Name="sendByte" Hidden="true" />
+      <Method Name="sendByteArray" Hidden="true" />
+      <Method Name="sendByteList" Hidden="true" />
+      <Method Name="sendChar" Hidden="true" />
+      <Method Name="sendCharArray" Hidden="true" />
+      <Method Name="sendCharList" Hidden="true" />
+      <Method Name="sendDecimal" Hidden="true" />
+      <Method Name="sendDecimalArray" Hidden="true" />
+      <Method Name="sendDecimalList" Hidden="true" />
+      <Method Name="sendDouble" Hidden="true" />
+      <Method Name="sendDoubleArray" Hidden="true" />
+      <Method Name="sendDoubleList" Hidden="true" />
+      <Method Name="sendFloat" Hidden="true" />
+      <Method Name="sendFloatArray" Hidden="true" />
+      <Method Name="sendFloatList" Hidden="true" />
+      <Method Name="sendInt" Hidden="true" />
+      <Method Name="sendIntArray" Hidden="true" />
+      <Method Name="sendIntList" Hidden="true" />
+      <Method Name="sendLong" Hidden="true" />
+      <Method Name="sendLongArray" Hidden="true" />
+      <Method Name="sendLongList" Hidden="true" />
+      <Method Name="sendSByte" Hidden="true" />
+      <Method Name="sendSByteArray" Hidden="true" />
+      <Method Name="sendSByteList" Hidden="true" />
+      <Method Name="sendShort" Hidden="true" />
+      <Method Name="sendShortArray" Hidden="true" />
+      <Method Name="sendShortList" Hidden="true" />
+      <Method Name="sendString" Hidden="true" />
+      <Method Name="sendStringArray" Hidden="true" />
+      <Method Name="sendStringList" Hidden="true" />
+      <Method Name="sendUInt" Hidden="true" />
+      <Method Name="sendUIntArray" Hidden="true" />
+      <Method Name="sendUIntList" Hidden="true" />
+      <Method Name="sendULong" Hidden="true" />
+      <Method Name="sendULongArray" Hidden="true" />
+      <Method Name="sendULongList" Hidden="true" />
+      <Method Name="sendUShort" Hidden="true" />
+      <Method Name="sendUShortArray" Hidden="true" />
+      <Method Name="sendUShortList" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>7Tskrhyw1t+89LrwU37Po+OrhmQSTM/E7Z/y7wa/W88=</HashCode>
+      <FileName>serverCommunication\ClientConnectionThread.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="communicationLibrary.TypeNotMatchException">
+    <Position X="11.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TypeNotMatchException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

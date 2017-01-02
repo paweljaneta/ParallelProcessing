@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="serwer.Measurments">
+    <Position X="0.5" Y="2" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="serwer.Measurments.NetworkSpeeds">
+        <TypeIdentifier>
+          <NewMemberFileName>Measurments.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Measurments.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="serwer.SerwerDllCaller">
+    <Position X="5" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>SerwerDllCaller.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="serwer.SerwerListener">
+    <Position X="10.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAEAAAAAAAAAAAAAAACAIAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>SerwerListener.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="serwer.ClientIDNetSpeedFlops">
+    <Position X="10.5" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAgAIAAA=</HashCode>
+      <FileName>serwerMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="serwer.serwerMain">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>serwerMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="serwer.TelemetryConnection">
+    <Position X="2.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgCAAAAQEQAAAQSAADAgAIgAAIAAAAAAQQAoAIAAA=</HashCode>
+      <FileName>TelemetryConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="serwer.TelemetryConnections">
+    <Position X="5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAQAAAAAAAABEAAABAAAAAAAAAEAAAAAAAAwEA=</HashCode>
+      <FileName>TelemetryConnections.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="serwer.View">
+    <Position X="7.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAgAAAgAAAAAIACAAIAAAAIIAAAgIACAAABA=</HashCode>
+      <FileName>View.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="SerwerDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\communicationLibrary\communicationLibrary.csproj">

@@ -15,7 +15,13 @@ namespace client
     {
         static void Main(string[] args)
         {
-            string ipAdress = "127.0.0.1";
+            string ipAdress;
+
+            if (args.Length > 0)
+                ipAdress = args[0];
+            else
+                ipAdress = "127.0.0.1";
+
             int port = 1807;
             int clientID;
 
@@ -44,7 +50,7 @@ namespace client
 
                     //get dll
                     outStream.Write(Messages.dllRequest);
-                    getDll(inStream,ref dllCounter);
+                    getDll(inStream, ref dllCounter);
 
                     //do tests
                     flops = mesurments.CPUPerformanceFLOPS();
@@ -60,10 +66,10 @@ namespace client
 
                     //start threads
 
-                     for (int i = 0; i < numberOfCPUcores; i++)
+                    for (int i = 0; i < numberOfCPUcores; i++)
                     //for (int i = 0; i < 4; i++)
                     {
-                        workingThreads.Add(new ClientThread(ipAdress, port, clientID,dllCounter));
+                        workingThreads.Add(new ClientThread(ipAdress, port, clientID, dllCounter));
                     }
 
                     //wait until finished
@@ -75,7 +81,7 @@ namespace client
                         Thread.Sleep(1);
                     }
                     workingThreads.Clear();
-                   // telemetry.abortThreads();
+                    // telemetry.abortThreads();
                     Thread.Sleep(1000);
                 }
                 catch (Exception Ex)
@@ -85,7 +91,7 @@ namespace client
             }
         }
 
-        public static void getDll(BinaryReader reader,ref int dllCounter)
+        public static void getDll(BinaryReader reader, ref int dllCounter)
         {
             int dllSize = reader.ReadInt32();
 
@@ -97,11 +103,12 @@ namespace client
 
                 file = reader.ReadBytes(dllSize);
                 File.WriteAllBytes("clientDll" + dllCounter + ".dll", file);
-            } else
+            }
+            else
             {
                 throw new ArgumentException();
             }
-            
+
         }
 
 
