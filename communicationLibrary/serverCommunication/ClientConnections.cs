@@ -135,7 +135,7 @@ namespace communicationLibrary
         public int GetConnectedCliensCount()
         {
             int result = -1;
-            lock (connectedClientsLock)
+           // lock (connectedClientsLock)
             {
                 result = connectedClientsList.Count;
             }

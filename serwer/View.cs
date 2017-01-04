@@ -56,8 +56,8 @@ namespace serwer
                 Console.WriteLine("Connected threads: " + connectedThreads);
 
                 drawProgress();
-                if(prog<100)
-                prog += 1;
+                //if(prog<100)
+               // prog += 1;
 
                 //check for changes in connected clients
                 lock (listLock)
